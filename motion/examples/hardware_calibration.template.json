@@ -1,0 +1,83 @@
+{
+  "status": "unmeasured",
+  "servo_model": null,
+  "serial_port": null,
+  "baudrate": null,
+  "protocol_version": null,
+  "imu_to_body_rotation": null,
+  "notes": "Fill zero_tick as the encoder coordinate corresponding to URDF q=0. IDs must match wiring. Replace all nulls with measurements.",
+  "joints": {
+    "neck_pitch": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "right_fore_root": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "right_fore_bend": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "left_fore_root": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "left_fore_bend": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "right_hind_root": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "right_hind_bend": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "left_hind_root": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    },
+    "left_hind_bend": {
+      "id": null,
+      "zero_tick": null,
+      "direction": null,
+      "ticks_per_turn": null,
+      "min_tick": null,
+      "max_tick": null
+    }
+  }
+}

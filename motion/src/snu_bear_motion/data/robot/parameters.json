@@ -1,0 +1,46 @@
+{
+  "units": "mm",
+  "torso_xyz": [
+    82,
+    94,
+    104
+  ],
+  "head_xyz": [
+    112,
+    138,
+    114
+  ],
+  "fore_lengths": [
+    40,
+    28
+  ],
+  "hind_lengths": [
+    34,
+    30
+  ],
+  "motors": 9,
+  "passive_joints": 0,
+  "fore_paw_xyz": [
+    48,
+    50,
+    62
+  ],
+  "hind_paw_xyz": [
+    52,
+    60,
+    66
+  ],
+  "paw_motor_case_moves_with": "lower link",
+  "paw_centre_local_z_mm": 14,
+  "neck_origin": [
+    0,
+    0,
+    52
+  ],
+  "head_center_from_neck": [
+    0,
+    0,
+    57
+  ],
+  "status": "packaging and kinematic candidate; hardware mounting unqualified"
+}

@@ -1,0 +1,137 @@
+[
+  {
+    "name": "neck_pitch",
+    "parent": "torso",
+    "child": "head",
+    "origin_xyz_m": [
+      4.438227242340876e-18,
+      0.0,
+      0.052000000000000005
+    ],
+    "origin_pitch_rad": -0.17453292519943298,
+    "angle_key": "neck_pitch_deg",
+    "neutral_angle_deg": -10.000000000000002,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "right_fore_root",
+    "parent": "torso",
+    "child": "right_fore_upper",
+    "origin_xyz_m": [
+      0.028,
+      -0.04,
+      0.030000000000000002
+    ],
+    "origin_pitch_rad": 0.7777863104414671,
+    "angle_key": "right_fore_root_deg",
+    "neutral_angle_deg": 44.563872951348095,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "right_fore_bend",
+    "parent": "right_fore_upper",
+    "child": "right_fore_lower",
+    "origin_xyz_m": [
+      1.5258158519607974e-18,
+      0.0,
+      0.0399999999999874
+    ],
+    "origin_pitch_rad": 1.4066874488460395,
+    "angle_key": "right_fore_bend_deg",
+    "neutral_angle_deg": 80.59725391290293,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "left_fore_root",
+    "parent": "torso",
+    "child": "left_fore_upper",
+    "origin_xyz_m": [
+      0.028,
+      0.04,
+      0.030000000000000002
+    ],
+    "origin_pitch_rad": 0.7777863104414671,
+    "angle_key": "left_fore_root_deg",
+    "neutral_angle_deg": 44.563872951348095,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "left_fore_bend",
+    "parent": "left_fore_upper",
+    "child": "left_fore_lower",
+    "origin_xyz_m": [
+      1.5258158519607974e-18,
+      0.0,
+      0.0399999999999874
+    ],
+    "origin_pitch_rad": 1.4066874488460395,
+    "angle_key": "left_fore_bend_deg",
+    "neutral_angle_deg": 80.59725391290293,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "right_hind_root",
+    "parent": "torso",
+    "child": "right_hind_upper",
+    "origin_xyz_m": [
+      -0.005000000000000001,
+      -0.038,
+      -0.03200000000000001
+    ],
+    "origin_pitch_rad": 0.49592817519721066,
+    "angle_key": "right_hind_root_deg",
+    "neutral_angle_deg": 28.414591380424643,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "right_hind_bend",
+    "parent": "right_hind_upper",
+    "child": "right_hind_lower",
+    "origin_xyz_m": [
+      -1.0561576799559513e-18,
+      0.0,
+      0.03399999999999721
+    ],
+    "origin_pitch_rad": 1.6755638992576374,
+    "angle_key": "right_hind_bend_deg",
+    "neutral_angle_deg": 96.00273973194608,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "left_hind_root",
+    "parent": "torso",
+    "child": "left_hind_upper",
+    "origin_xyz_m": [
+      -0.005000000000000001,
+      0.038,
+      -0.03200000000000001
+    ],
+    "origin_pitch_rad": 0.49592817519721066,
+    "angle_key": "left_hind_root_deg",
+    "neutral_angle_deg": 28.414591380424643,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  },
+  {
+    "name": "left_hind_bend",
+    "parent": "left_hind_upper",
+    "child": "left_hind_lower",
+    "origin_xyz_m": [
+      -1.0561576799559513e-18,
+      0.0,
+      0.03399999999999721
+    ],
+    "origin_pitch_rad": 1.6755638992576374,
+    "angle_key": "left_hind_bend_deg",
+    "neutral_angle_deg": 96.00273973194608,
+    "actuated": true,
+    "limits_status": "illustrative placeholders; not a controller configuration"
+  }
+]

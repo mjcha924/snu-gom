@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="snu_bear_v06_teddy_motion_study">
+  <link name="torso">
+    <inertial>
+      <origin xyz="-0.002127982057894562 -6.787298418522178e-07 0.0038718057697311307" />
+      <mass value="0.25293739958733136" />
+      <inertia ixx="0.00030858831222419923" ixy="7.436102324138665e-09" ixz="-1.5606647417776256e-05" iyy="0.00036383130370397235" iyz="4.3516428516577834e-09" izz="0.0002462415157791324" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/torso.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/torso.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="head">
+    <inertial>
+      <origin xyz="0.0032043910040172774 -2.3516920134118655e-06 0.06264870021560383" />
+      <mass value="0.19080327471497407" />
+      <inertia ixx="0.0005036240700417869" ixy="-6.097407432344613e-08" ixz="8.361148551065578e-06" iyy="0.0003984038869952608" iyz="1.0281913945181348e-08" izz="0.000498280980986785" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/head.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/head.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_fore_upper">
+    <inertial>
+      <origin xyz="-5.07926830732324e-13 -0.007999999966555945 0.019999999978464467" />
+      <mass value="0.0072491656137103275" />
+      <inertia ixx="1.6963275597804726e-06" ixy="-1.264636208486357e-18" ixz="1.0456957035245533e-14" iyy="1.8805646297429575e-06" iyz="1.6660345081597973e-16" izz="2.031363656068073e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/right_fore_upper.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/right_fore_upper.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_fore_lower">
+    <inertial>
+      <origin xyz="2.4886659674734998e-06 -0.025197473645081275 0.011730419366545102" />
+      <mass value="0.04530164744893958" />
+      <inertia ixx="1.709010397882157e-05" ixy="-1.382544899164325e-09" ixz="5.366953925260967e-09" iyy="1.7394790100242993e-05" iyz="2.382271044864718e-07" izz="1.1507154107949043e-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/right_fore_lower.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/right_fore_lower.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_fore_upper">
+    <inertial>
+      <origin xyz="-5.079255752159585e-13 0.008000000033444053 0.019999999978464474" />
+      <mass value="0.007249165613710326" />
+      <inertia ixx="1.6963275597804734e-06" ixy="-1.2646208465077144e-18" ixz="1.0456957068645058e-14" iyy="1.8805646297429565e-06" iyz="1.666029582706706e-16" izz="2.0313636560680747e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/left_fore_upper.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/left_fore_upper.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_fore_lower">
+    <inertial>
+      <origin xyz="-3.97665272201465e-06 0.025186975283811277 0.011719589110777156" />
+      <mass value="0.045333117204567244" />
+      <inertia ixx="1.710450551774775e-05" ixy="-3.1927831073604346e-09" ixz="4.188519547558879e-09" iyy="1.740341994085426e-05" iyz="-2.422908371370888e-07" izz="1.1512989318798014e-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/left_fore_lower.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/left_fore_lower.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_hind_upper">
+    <inertial>
+      <origin xyz="-1.4169851034683053e-13 -0.001999999964622285 0.016999999978890405" />
+      <mass value="0.0067278553675185135" />
+      <inertia ixx="1.2635132913261408e-06" ixy="-3.2545455482966604e-18" ixz="9.361704633170107e-15" iyy="1.4354740775528346e-06" iyz="1.48177474501225e-16" izz="1.8952365739943077e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/right_hind_upper.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/right_hind_upper.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_hind_lower">
+    <inertial>
+      <origin xyz="-5.1604851049115216e-05 -0.028409244173146404 0.012077905468268512" />
+      <mass value="0.05101446946437444" />
+      <inertia ixx="2.3675189764151583e-05" ixy="4.913867269020079e-08" ixz="1.0652161808465435e-08" iyy="2.46318873734844e-05" iyz="3.4116485131153267e-07" izz="1.61787566130486e-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/right_hind_lower.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/right_hind_lower.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hind_upper">
+    <inertial>
+      <origin xyz="-1.4169972045110655e-13 0.002000000035377716 0.016999999978890387" />
+      <mass value="0.006727855367518516" />
+      <inertia ixx="1.2635132913261431e-06" ixy="-3.2545449917554855e-18" ixz="9.361704601113318e-15" iyy="1.4354740775528376e-06" iyz="1.48177311673094e-16" izz="1.8952365739943085e-07" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/left_hind_upper.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/left_hind_upper.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hind_lower">
+    <inertial>
+      <origin xyz="1.3516880055634755e-05 0.02826888056875825 0.012083787351268327" />
+      <mass value="0.051446233069696944" />
+      <inertia ixx="2.386959633432664e-05" ixy="4.223636010073412e-09" ixz="7.937386996546289e-09" iyy="2.4746765028938345e-05" iyz="-3.4017992943690957e-07" izz="1.6362703943165325e-05" />
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="meshes_m/left_hind_lower.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="meshes_m/left_hind_lower.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="neck_pitch" type="revolute">
+    <parent link="torso" />
+    <child link="head" />
+    <origin xyz="4.438227242340876e-18 0.0 0.052000000000000005" rpy="0 -0.17453292519943298 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="right_fore_root" type="revolute">
+    <parent link="torso" />
+    <child link="right_fore_upper" />
+    <origin xyz="0.028 -0.04 0.030000000000000002" rpy="0 0.7777863104414671 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="right_fore_bend" type="revolute">
+    <parent link="right_fore_upper" />
+    <child link="right_fore_lower" />
+    <origin xyz="1.5258158519607974e-18 0.0 0.0399999999999874" rpy="0 1.4066874488460395 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="left_fore_root" type="revolute">
+    <parent link="torso" />
+    <child link="left_fore_upper" />
+    <origin xyz="0.028 0.04 0.030000000000000002" rpy="0 0.7777863104414671 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="left_fore_bend" type="revolute">
+    <parent link="left_fore_upper" />
+    <child link="left_fore_lower" />
+    <origin xyz="1.5258158519607974e-18 0.0 0.0399999999999874" rpy="0 1.4066874488460395 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="right_hind_root" type="revolute">
+    <parent link="torso" />
+    <child link="right_hind_upper" />
+    <origin xyz="-0.005000000000000001 -0.038 -0.03200000000000001" rpy="0 0.49592817519721066 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="right_hind_bend" type="revolute">
+    <parent link="right_hind_upper" />
+    <child link="right_hind_lower" />
+    <origin xyz="-1.0561576799559513e-18 0.0 0.03399999999999721" rpy="0 1.6755638992576374 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="left_hind_root" type="revolute">
+    <parent link="torso" />
+    <child link="left_hind_upper" />
+    <origin xyz="-0.005000000000000001 0.038 -0.03200000000000001" rpy="0 0.49592817519721066 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+  <joint name="left_hind_bend" type="revolute">
+    <parent link="left_hind_upper" />
+    <child link="left_hind_lower" />
+    <origin xyz="-1.0561576799559513e-18 0.0 0.03399999999999721" rpy="0 1.6755638992576374 0" />
+    <axis xyz="0 1 0" />
+    <limit lower="-3.141592653589793" upper="3.141592653589793" effort="0.2" velocity="1" />
+  </joint>
+</robot>

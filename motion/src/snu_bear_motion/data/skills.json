@@ -1,0 +1,32 @@
+{
+  "hold_sit": {
+    "task_id": "SNU-Bear-HoldSit-v0",
+    "start": "sit",
+    "goal": "sit",
+    "episode_seconds": 10
+  },
+  "hold_low": {
+    "task_id": "SNU-Bear-HoldLow-v0",
+    "start": "low",
+    "goal": "low",
+    "episode_seconds": 10
+  },
+  "sit_to_low": {
+    "task_id": "SNU-Bear-SitToLow-v0",
+    "start": "sit",
+    "goal": "low",
+    "episode_seconds": 15
+  },
+  "low_to_sit": {
+    "task_id": "SNU-Bear-LowToSit-v0",
+    "start": "low",
+    "goal": "sit",
+    "episode_seconds": 15
+  },
+  "crawl_forward": {
+    "task_id": "SNU-Bear-CrawlForward-v0",
+    "start": "low",
+    "goal": "low",
+    "episode_seconds": 20
+  }
+}

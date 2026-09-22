@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "model": "SNU_Bear_v06",
+  "status": "simulation_assumptions_unmeasured",
+  "joints": [
+    "neck_pitch",
+    "right_fore_root",
+    "right_fore_bend",
+    "left_fore_root",
+    "left_fore_bend",
+    "right_hind_root",
+    "right_hind_bend",
+    "left_hind_root",
+    "left_hind_bend"
+  ],
+  "policy_hz": 50,
+  "physics_hz": 200,
+  "frame_size": 34,
+  "history_length": 4,
+  "observation_size": 136,
+  "action_size": 9,
+  "q_lower_rad": [
+    -0.2617993877991494,
+    -0.2942527975431604,
+    -2.192085612243488,
+    -0.2942527975431604,
+    -2.192085612243488,
+    -0.40723217886757307,
+    -1.227805788577128,
+    -0.40723217886757307,
+    -1.227805788577128
+  ],
+  "q_upper_rad": [
+    0.4363323129985824,
+    1.316608791951728,
+    -0.12699146384369348,
+    1.316608791951728,
+    -0.12699146384369348,
+    0.973222437965519,
+    0.7431440602997097,
+    0.973222437965519,
+    0.7431440602997097
+  ],
+  "target_slew_rad_s": 1.0,
+  "effort_limit_nm": 0.2,
+  "kp_nm_per_rad": 1.5,
+  "kd_nm_s_per_rad": 0.04,
+  "velocity_scale": 0.5,
+  "gyro_scale": 0.25,
+  "command_scale_m_s": 0.03,
+  "poses": {
+    "sit": {
+      "q_rad": [
+        0.17453292519943298,
+        1.0548094041525786,
+        -1.9302862244443386,
+        1.0548094041525786,
+        -1.9302862244443386,
+        0.7114230501663696,
+        -0.9660064007779787,
+        0.7114230501663696,
+        -0.9660064007779787
+      ],
+      "root_height_m": 0.052,
+      "pitch_rad": 0.0,
+      "quaternion_wxyz": [
+        1.0,
+        0,
+        0.0,
+        0
+      ],
+      "gravity_body": [
+        0.0,
+        0,
+        -1.0
+      ]
+    },
+    "low": {
+      "q_rad": [
+        0.0,
+        -0.03245340974401101,
+        -0.3887908516428429,
+        -0.03245340974401101,
+        -0.3887908516428429,
+        -0.014308243379755614,
+        -0.06646756180238866,
+        -0.014308243379755614,
+        -0.06646756180238866
+      ],
+      "root_height_m": 0.055,
+      "pitch_rad": 0.9599310885968813,
+      "quaternion_wxyz": [
+        0.8870108331782217,
+        0,
+        0.4617486132350339,
+        0
+      ],
+      "gravity_body": [
+        0.8191520442889918,
+        0,
+        -0.5735764363510462
+      ]
+    }
+  },
+  "max_command_m_s": 0.02,
+  "notes": [
+    "Joint coordinates are URDF offsets, not geometric angles or servo positions.",
+    "Joint envelope derives from the previous kinematic candidate plus 15 degrees; it is not measured mechanical travel.",
+    "Motor effort, gains, speed and timing are exploratory assumptions, not a chosen Dynamixel specification."
+  ]
+}

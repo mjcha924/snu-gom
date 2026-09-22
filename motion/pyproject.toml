@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snu-bear-motion"
+version = "0.1.0"
+description = "Goal-conditioned motion skill training and inference interfaces for SNU Bear V0.6"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3"]
+
+[project.optional-dependencies]
+inference = ["onnxruntime>=1.18,<2"]
+
+[project.scripts]
+snu-bear = "snu_bear_motion.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+snu_bear_motion = ["data/*.json", "data/robot/*.json", "data/robot/*.urdf", "data/robot/meshes_m/*.stl"]

@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "skills": {
+    "hold_sit": {
+      "task_id": "SNU-Bear-HoldSit-v0",
+      "start": "sit",
+      "goal": "sit",
+      "episode_seconds": 10,
+      "status": "untrained",
+      "onnx": null,
+      "sha256": null,
+      "contract_sha256": null,
+      "evaluation": null
+    },
+    "hold_low": {
+      "task_id": "SNU-Bear-HoldLow-v0",
+      "start": "low",
+      "goal": "low",
+      "episode_seconds": 10,
+      "status": "untrained",
+      "onnx": null,
+      "sha256": null,
+      "contract_sha256": null,
+      "evaluation": null
+    },
+    "sit_to_low": {
+      "task_id": "SNU-Bear-SitToLow-v0",
+      "start": "sit",
+      "goal": "low",
+      "episode_seconds": 15,
+      "status": "untrained",
+      "onnx": null,
+      "sha256": null,
+      "contract_sha256": null,
+      "evaluation": null
+    },
+    "low_to_sit": {
+      "task_id": "SNU-Bear-LowToSit-v0",
+      "start": "low",
+      "goal": "sit",
+      "episode_seconds": 15,
+      "status": "untrained",
+      "onnx": null,
+      "sha256": null,
+      "contract_sha256": null,
+      "evaluation": null
+    },
+    "crawl_forward": {
+      "task_id": "SNU-Bear-CrawlForward-v0",
+      "start": "low",
+      "goal": "low",
+      "episode_seconds": 20,
+      "status": "untrained",
+      "onnx": null,
+      "sha256": null,
+      "contract_sha256": null,
+      "evaluation": null
+    }
+  },
+  "future_skills": {
+    "turn_left": "feasibility_pending",
+    "turn_right": "feasibility_pending",
+    "recover": "feasibility_pending"
+  }
+}
