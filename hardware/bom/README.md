@@ -8,14 +8,14 @@
 
 | Item | Estimated KRW |
 | --- | --- |
-| Base purchasing subtotal | 707,412 |
+| Base purchasing subtotal | 971,412 |
 | Shipping | 20,000 |
-| 15% contingency, rounded up to the next thousand | 107,000 |
-| Total baseline request | **834,412** |
-| Optional neck, SBC, foot sensors and spare motor | 143,600 additional |
+| 15% contingency, rounded up to the next thousand | 146,000 |
+| Total baseline request | **1,137,412** |
+| Optional neck, foot sensors and spare motor | 98,600 additional |
 | If test power supply/meters cannot be borrowed | 200,000 additional |
 
-The baseline has ten leg joints, fixed head/arms and external-PC control. Buy mandatory body items and bench items 2, 3, 4 and 7; assume other mandatory bench equipment can be borrowed. Adding a neck requires another power, structure and wiring review.
+The HRI baseline has ten leg joints, fixed head/arms, a nose camera, USB microphone/audio, speaker and onboard Pi. Large-model inference uses APIs/PC. Buy mandatory body items and bench items 2, 3, 4 and 7; assume other mandatory bench equipment can be borrowed. Adding a neck requires another power, structure and wiring review.
 
 Body item 5 budgets three 1kg PETG rolls together at KRW 56,100. Related printed parts priced at zero are covered by this pool, not free. Printer fees and outsourced machining are excluded. Horns use two five-piece packs; only cables additional to motor-included cables are budgeted separately.
 
@@ -33,14 +33,14 @@ Recalculate with `python tools/check_project.py`. Update this summary and the pr
 
 | 항목 | 예상 금액 |
 | --- | --- |
-| 기본 구매 소계 | 707,412원 |
+| 기본 구매 소계 | 971,412원 |
 | 배송비 | 20,000원 |
-| 예비비 15%, 천 원 올림 | 107,000원 |
-| 기본 요청 총액 | **834,412원** |
-| 선택 목·SBC·발 센서·예비 모터 추가 | 143,600원 |
+| 예비비 15%, 천 원 올림 | 146,000원 |
+| 기본 요청 총액 | **1,137,412원** |
+| 선택 목·발 센서·예비 모터 추가 | 98,600원 |
 | 시험 전원·측정기 대여 불가 시 추가 | 200,000원 |
 
-기본안은 다리 10축, 고정 머리·팔, 외부 PC 제어입니다. 기본 본체 필수 항목과 시험 장비 2·3·4·7번을 구매하고 나머지 필수 시험 장비는 대여를 가정합니다. 목을 추가하면 전원·구조·배선 비용도 재검토합니다.
+HRI 기본안은 다리 10축·고정 머리/팔·코 카메라·USB 마이크/오디오·스피커·온보드 Pi이며 대형 모델은 API/PC를 사용합니다. 기본 본체 필수 항목과 시험 장비 2·3·4·7번을 구매하고 나머지 필수 시험 장비는 대여를 가정합니다. 목을 추가하면 전원·구조·배선 비용도 재검토합니다.
 
 본체 5번은 PETG 1kg 3롤 공통 재료비 56,100원을 일괄 계상합니다. 관련 출력 부품의 0원은 공통 예산 포함을 뜻합니다. 프린터 사용료·외주 가공은 제외되어 있습니다. 혼은 5개입 2팩, 모터당 포함 케이블 외 추가 배선분만 별도 계상합니다.
 
@@ -49,3 +49,9 @@ Recalculate with `python tools/check_project.py`. Update this summary and the pr
 재계산: `python tools/check_project.py`. 가격·수량 변경 시 이 요약과 제안서 예산도 같이 갱신합니다.
 
 CSV의 숫자 필드는 기존 예산 기준을 유지하며 영문 텍스트 열은 품명·규격·설계 및 구매 가정을 번역합니다. [열 이름 안내](COLUMNS.md)를 참고하세요.
+
+## HRI revision / HRI 변경
+
+Pi is now required rather than an optional SBC. Rows 33–37 add camera, audio and interface hardware; row27 increases logic-power allowance. New prices are planning estimates with links, not freshly confirmed vendor quotations. The prior ₩834,412 budget is superseded by the HRI total above. API fees/network service are ongoing costs outside this hardware budget.
+
+Pi는 필수로 바뀌었고 33–37번에 카메라·오디오·조작부, 27번에 로직 전원 증액을 반영했습니다. 새 단가는 링크가 있는 계획용 추정이며 판매처 확정 견적은 아닙니다. 이전 834,412원 대신 위 HRI 총액을 사용합니다. API 사용료·통신비는 하드웨어 예산 밖의 운영비입니다.

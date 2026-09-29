@@ -1,0 +1,25 @@
+{
+  "revision": "hri-layout-v0.1",
+  "status": "proposed_not_purchased",
+  "camera_location": "nose",
+  "head_actuated": false,
+  "leg_motor_count": 10,
+  "computer": "Raspberry Pi 4 Model B >=2GB",
+  "camera": "Camera Module 3 Standard",
+  "audio": "ReSpeaker Lite USB + compatible speaker",
+  "logic_power_target": {
+    "V": 5.1,
+    "continuous_A": 4,
+    "status": "design_target_not_validated"
+  },
+  "large_model_compute": "external_api_or_pc",
+  "mass_status": "recalculate_after_CAD_and_weighing",
+  "budget_krw": {
+    "base": 971412,
+    "shipping": 20000,
+    "contingency": 146000,
+    "total": 1137412,
+    "optional": 98600,
+    "borrowed": 200000
+  }
+}

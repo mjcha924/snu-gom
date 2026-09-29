@@ -7,7 +7,7 @@ Numeric columns and IDs are shared by both languages. English text columns are t
 | --- | --- |
 | 번호 | Item ID / 항목 번호 |
 | 구분 | Requirement: 필수 = required, 선택 = optional |
-| 분류 | Category: 구동 = actuation, 기구 = mechanical, 외장 = shells, 제어 = control, 센서 = sensors, 전원 = power, 배선 = wiring, 시험 = testing, 충전 = charging, 예비 = spares |
+| 분류 | Category: 구동 = actuation, 기구 = mechanical, 외장 = shells, 제어 = control, 센서 = sensors, 전원 = power, 배선 = wiring, 시험 = testing, 충전 = charging, 예비 = spares, HRI = human–robot interaction |
 | 품명 / item_en | Korean / English item name / 품명 |
 | 규격 / specification_en | Korean / English specification / 규격 |
 | 수량 | Quantity / 수량 |

@@ -4,7 +4,7 @@
 
 # SNU GOM · 스누곰
 
-A small bipedal bear robot for the SNU SHAPE-UP project. Short legs and large paws support research into standing, short walks, waddling and expressive body tilts.
+A small bipedal bear robot for the SNU SHAPE-UP project. Short legs and large paws support standing, short walks, waddling and expressive body tilts. Camera/audio and API-connected human–robot interaction are now part of the design; the camera is in the nose. See [HRI architecture](docs/HRI.md).
 
 **Confirmed: five XL330-M288-T motors per leg, ten in total.** Hip roll/pitch → knee pitch → ankle pitch/roll is the proposed arrangement. The initial head and arms are fixed; a two-axis neck is optional.
 
@@ -70,7 +70,7 @@ The repository is now **mjcha924/snu-gom**. For an existing clone, run `git remo
 
 # SNU GOM · 스누곰
 
-서울대 SHAPE-UP 소형 이족보행 곰 로봇 프로젝트. 짧은 다리와 큰 발의 곰 외형을 유지하면서 기립, 짧은 보행, 뒤뚱거림과 몸 기울이기 같은 표현 동작을 개발합니다.
+서울대 SHAPE-UP 소형 이족보행 곰 로봇 프로젝트. 짧은 다리와 큰 발의 곰 외형을 유지하면서 기립·보행·표현 동작을 개발합니다. 코 카메라·음성 입출력·API 기반 HRI를 추가합니다. [HRI 구성](docs/HRI.md)을 참고하세요.
 
 **확정: XL330-M288-T를 다리당 5개, 총 10개 사용.** 고관절 롤/피치 → 무릎 피치 → 발목 피치/롤은 검토 중인 축 배치입니다. 기본안의 머리와 팔은 고정이며 목 2축은 선택 사항입니다.
 

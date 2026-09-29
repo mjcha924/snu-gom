@@ -4,6 +4,8 @@
 
 # Electronics and power draft
 
+**HRI update:** add a Raspberry Pi 4, nose camera and USB microphone/speaker audio. Use a separate regulated logic rail and review USB backfeeding. Full wiring, API and packaging plan: [HRI.md](HRI.md).
+
 XL330-M288-T uses half-duplex TTL communication and an internal driver. Recommended voltage is 5V; allowed range is 3.7–6V. Do not connect a 2S pack directly to the motors.
 
 Candidate path: 2S battery → disconnect switch/fuse → 5V motor converter → external distribution harness → left/right motor branches. Review logic power for the controller and IMU, and connect common GND and communication DATA. Do not parallel outputs from different regulators.
@@ -21,6 +23,8 @@ Manufacturer references: [XL330](https://www.robotis.com/shop/item.php?it_id=902
 <a id="한국어"></a>
 
 # 전장과 전원 초안
+
+**HRI 변경:** Raspberry Pi 4, 코 카메라, USB 마이크·스피커를 추가하고 별도 로직 전원과 USB 역급전을 검토합니다. 배선·API·배치 계획은 [HRI.md](HRI.md)를 따릅니다.
 
 XL330-M288-T는 TTL 반이중 통신과 내장 드라이버를 사용합니다. 권장 5V, 허용 3.7~6V입니다. 2S 팩을 모터에 직접 연결하지 않습니다.
 

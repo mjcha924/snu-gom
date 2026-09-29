@@ -6,7 +6,7 @@
 
 SNU GOM is a small bipedal research platform with a bear's short legs and large paws. It uses five joints per leg and ten XL330-M288-T motors. Develop standing and short walks first, then expressive waddles and body tilts.
 
-The baseline has fixed head/arms, no camera, and uses an IMU plus joint feedback. A two-axis neck, onboard SBC and foot-contact sensors are optional. Human-motion imitation, skating and autonomous recovery are outside the current acceptance criteria.
+The baseline has fixed head/arms, an IMU and joint feedback, plus a required nose camera, microphone, speaker and onboard HRI computer. See [HRI](HRI.md). A two-axis neck and foot-contact sensors remain optional. Human-motion imitation, skating and autonomous recovery are outside the current acceptance criteria.
 
 ### Proposed acceptance criteria
 
@@ -28,7 +28,7 @@ Project period: September 15, 2026–January 30, 2027. See [roadmap](ROADMAP.md)
 
 SNU GOM은 곰처럼 짧은 다리와 큰 발을 가진 소형 이족보행 연구 플랫폼입니다. 다리 5축씩, XL330-M288-T 10개를 사용합니다. 기립·짧은 보행을 먼저 만들고 뒤뚱거림·몸 기울이기 같은 표현 동작을 확장합니다.
 
-기본안은 고정 머리·팔, 카메라 없이 IMU 및 관절 피드백을 사용합니다. 목 2축·온보드 SBC·발 접촉 센서는 선택입니다. 사람 동작 모방, 스케이팅, 자율 회복은 현 단계의 완료 조건이 아닙니다.
+기본안은 고정 머리·팔, IMU·관절 피드백에 필수 코 카메라·마이크·스피커·온보드 HRI 컴퓨터를 추가합니다. [HRI](HRI.md)를 참고하세요. 목 2축·발 접촉 센서는 선택입니다. 사람 동작 모방, 스케이팅, 자율 회복은 현 단계의 완료 조건이 아닙니다.
 
 ## 제안 완료 기준
 

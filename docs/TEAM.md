@@ -97,3 +97,9 @@ See the [research page](RESEARCH.md) for a role-based reading plan and note temp
 | M3 펌웨어 | [#3 단일 모터 통신](https://github.com/mjcha924/snu-gom/issues/3) |
 | M4 모델/시뮬레이션 | [#4 모델·학습 환경](https://github.com/mjcha924/snu-gom/issues/4) |
 | M5 통합/시험 | [#5 역할·반복 시험 운영](https://github.com/mjcha924/snu-gom/issues/5) |
+
+## HRI responsibilities / HRI 담당
+
+M1: nose camera, acoustic/board mounting. M2: added electronics, power and mass budget. M3: MCU transport and feedback. M4: perception and local policy timing. M5: API/dialogue integration and stationary interaction tests. See [HRI.md](HRI.md).
+
+M1 코 카메라·음향·보드 장착, M2 추가 전장·전원·질량 예산, M3 MCU 통신·피드백, M4 인식·로컬 정책 주기, M5 API·대화 통합·정지 상태 HRI 시험을 맡습니다. [HRI.md](HRI.md)를 참고하세요.

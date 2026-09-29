@@ -47,3 +47,8 @@ Candidate observations are joint q/dq, torso IMU and the previous command. Actio
 ## 모델 ↔ 학습 계약
 
 관측은 관절 q/dq, 몸통 IMU와 이전 명령을 후보로 합니다. 행동은 10축 관절 목표값입니다. 정규화, 기준 자세, 행동 스케일, 주기는 실측 후 별도 버전으로 고정합니다. 모델 revision 또는 관절 순서가 바뀌면 기존 정책은 재검증 전 사용하지 않습니다.
+
+## HRI boundary / HRI 경계
+
+[HRI.md](HRI.md) defines high-level behavior/API requests. Dialogue and cloud responses never directly populate `positions_rad[10]`; a validated local controller owns that conversion.
+[HRI.md](HRI.md)의 행동·API 요청은 상위 의도이며 대화·클라우드 응답이 `positions_rad[10]`을 직접 채우지 않습니다. 검증된 로컬 제어기가 변환합니다.

@@ -15,7 +15,7 @@ Ten XL330-M288-T leg motors are confirmed. Hip roll/pitch, knee pitch and ankle 
 | Thigh / shin axis spacing | 55 mm each |
 | Foot envelope | 75 L × 55 W mm |
 | Hip spacing | 85–95 mm |
-| Target mass | About 600 g; ten motors alone weigh 180 g |
+| Target mass | Re-budget after HRI packaging; ten motors alone weigh 180 g; 600 g is no longer an equipped-robot estimate |
 
 `robot/config.json` describes a primitive inspection model. Adjacent roll/pitch axes coincide in this idealization; that does not establish that two 20×34×26 mm motors fit there. Finalize brackets, offsets and cable bend clearance in CAD, then update the model. Link masses assume motors are included and need measured allocation.
 
@@ -40,10 +40,16 @@ See [mechanical handoff](../hardware/mechanical/README.md). Treat the old nine-j
 | 허벅지 / 종아리 축간 | 각각 55 mm |
 | 발 외곽 | 길이 75 × 폭 55 mm |
 | 고관절 간격 | 85~95 mm |
-| 질량 목표 | 약 600 g, 10개 모터만 180 g |
+| 질량 목표 | HRI 추가 후 재산정; 모터 10개만 180 g, 완성 600 g 가정 폐기 |
 
 `robot/config.json`의 값은 기본 도형 검토 모델입니다. 인접 roll/pitch 축을 같은 위치에 놓은 이상화 모델이므로 실제 20×34×26 mm 모터 2개를 그 위치에 넣을 수 있다는 뜻이 아닙니다. 모터 브래킷·축 오프셋·배선 굽힘 공간을 CAD로 확정한 뒤 모델을 바꿉니다. 링크 질량에는 모터를 포함한다고 가정하며 실측 분배가 필요합니다.
 
 한쪽 다리부터 조립해 하중·발열·기어 유격을 측정합니다. 혼 반대쪽 지지, 바닥 마찰, 발 사이 간섭, 머리 무게중심과 케이블 장력을 확인합니다. 스톨 토크 0.52 Nm는 연속 허용 토크가 아닙니다. URDF의 0.2 Nm와 1 rad/s는 시뮬레이션용 임시 제한이며 하드웨어 정격이 아닙니다.
 
 기구 인수인계 항목은 [hardware/mechanical/README.md](../hardware/mechanical/README.md)에 있습니다. 이전 9축 Onshape는 [역사 자료](legacy/README.md)로만 취급합니다.
+
+## HRI packaging update / HRI 배치 변경
+
+The new detailed prototype places the camera in the nose and reserves torso compute, separate power, head audio, speaker and service access. Earlier dimensions above are target history; use the delivered prototype dimension table for its actual envelope. Electronics except the supplied XL330 assembly are packaging envelopes pending exact vendor CAD.
+
+상세 프로토타입은 코 카메라, 몸통 컴퓨터·별도 전원, 머리 오디오, 스피커·점검구를 반영합니다. 위 치수는 이전 목표이며 실제 외곽은 전달된 프로토타입 치수표를 확인합니다. 제공된 XL330 외 전자부품은 정확한 제조사 CAD 반영 전 배치용 외곽입니다.

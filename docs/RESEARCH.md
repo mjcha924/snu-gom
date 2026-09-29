@@ -57,6 +57,16 @@ These link to the original pages hosting or linking the videos; no video files a
 
 Create a note from [research/TEMPLATE.md](research/TEMPLATE.md), then link an issue if it changes our design. Record an upstream commit/version, a short summary, applicability, limitations, and one proposed experiment. Add findings to [DECISIONS.md](DECISIONS.md) only after team review. Link to papers rather than uploading copies; check the upstream license before reusing code or CAD.
 
+### HRI and nose-camera integration
+
+| ID | Primary resource | Team experiment |
+| --- | --- | --- |
+| R12 | [Raspberry Pi camera documentation](https://www.raspberrypi.com/documentation/accessories/camera.html) · [Camera Module 3](https://www.raspberrypi.com/products/camera-module-3/) | M1/M4: record the nose-mounted view at table height and with a person standing nearby; check bezel occlusion and autofocus. |
+| R13 | [ReSpeaker Lite documentation](https://wiki.seeedstudio.com/reSpeaker_usb_v3/) | M2/M5: measure speech quality with the speaker active and motors energized; verify the USB audio and echo-cancellation configuration. |
+| R14 | [Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) · [power documentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) | M2/M3: log supply voltage, peak demand and temperature during camera, audio and motor operation. |
+
+See [HRI architecture](HRI.md) for the proposed API boundary and stationary interaction milestone. These are integration resources, not evidence that the assembled robot has passed those tests.
+
 ---
 
 <a id="한국어"></a>
@@ -98,6 +108,16 @@ Create a note from [research/TEMPLATE.md](research/TEMPLATE.md), then link an is
 - **Open Duck Mini README(R3):** 실물·시뮬레이션 클립에서 로봇 버전과 외부 지지·개입 여부를 기록합니다. 영상 하나는 반복 성공률 측정이 아닙니다.
 
 영상이 포함되거나 연결된 원본 페이지를 사용하며 저장소에 영상 파일을 복사하지 않습니다.
+
+### HRI·코 카메라 통합
+
+| ID | 공식 자료 | 팀 실험 |
+| --- | --- | --- |
+| R12 | [Pi 카메라 문서](https://www.raspberrypi.com/documentation/accessories/camera.html) · [Camera Module 3](https://www.raspberrypi.com/products/camera-module-3/) | M1/M4: 책상 위와 사람이 서 있는 상황에서 코 카메라 영상을 기록하고 베젤 가림·초점 동작을 확인합니다. |
+| R13 | [ReSpeaker Lite 문서](https://wiki.seeedstudio.com/reSpeaker_usb_v3/) | M2/M5: 스피커·모터 작동 중 음질, USB 오디오와 반향 제거 설정을 확인합니다. |
+| R14 | [Pi 4](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/) · [전원 문서](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html) | M2/M3: 카메라·오디오·모터 동시 동작 중 전압·최대 소비·온도를 기록합니다. |
+
+API 경계와 정지 상태 상호작용 목표는 [HRI 설계](HRI.md)를 참고합니다. 위 자료가 조립 로봇의 시험 통과를 뜻하지는 않습니다.
 
 ### 5인 자료조사 분담 제안
 
