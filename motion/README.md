@@ -1,3 +1,5 @@
+> Update 2026-09-29: meshes are now included as lossless restorable assets. Run `python scripts/restore_meshes.py` from the repository root. For CAD playback and experimental physics, see [Simulating motion](../docs/SIMULATING_MOTION.md). Earlier asset-omission notes below describe the initial release.
+
 # SNU Bear motion library · v0.1
 
 **CAD-free GitHub release:** robot meshes are intentionally omitted. CPU tooling works; simulation and training require the [matching external assets](../docs/SIMULATION_ASSETS.md). The URDF, parameters and joint registry are retained as text metadata. The CAD workspace is linked in the [Onshape guide](../docs/ONSHAPE.md).
@@ -77,3 +79,4 @@ The exact Dynamixel model, motor IDs, zero offsets, directions, allowable travel
 The CAD model also has very small clearances: the earlier kinematic study found about 0.107 mm at the neck and 0.349 mm between approaching paws. Convex decomposition may change those gaps. The earlier static support margin also became negative under some ±20% mass combinations. Passing those earlier geometry checks does not establish reliable dynamics or successful training.
 
 After obtaining policies that work in physics, calibrate the real robot and evaluate skill handoffs before deploying them. [DEPLOYMENT.md](docs/DEPLOYMENT.md) defines the exact interface and what remains to implement for your selected motors.
+

@@ -1,17 +1,15 @@
-# Simulation assets omitted from this release
+# Simulation assets
 
-This GitHub upload intentionally excludes CAD geometry and STL meshes. CPU policy/runtime tooling and XML model checks can run; Isaac robot import and training need matching geometry first.
+The repository includes the audited V0.6 URDF and all ten original CAD-derived meshes. STEP/BRep manufacturing files remain in the shared Onshape/CAD workspace.
 
-The included URDF expects these ten files under `motion/src/snu_bear_motion/data/robot/meshes_m/`:
+Run from the repository root:
 
-- `torso.stl`, `head.stl`
-- `left_fore_upper.stl`, `left_fore_lower.stl`
-- `right_fore_upper.stl`, `right_fore_lower.stl`
-- `left_hind_upper.stl`, `left_hind_lower.stl`
-- `right_hind_upper.stl`, `right_hind_lower.stl`
+```bash
+python scripts/restore_meshes.py
+```
 
-For exact baseline reproduction, copy the meter-scale, link-local meshes from the previously saved V0.6 CAD bundle or motion-library bundle. [V06_MESH_SHA256.json](V06_MESH_SHA256.json) records their expected SHA-256 checksums. Keep those files local; geometry extensions are ignored by Git for this release.
+This reconstructs binary STL files into `motion/src/snu_bear_motion/data/robot/meshes_m/`, using lossless XZ/base64 chunks in `assets/v06_meshes/`. The text representation supports the repository upload connection; these are the original meshes, not simplified substitutes. No downloads or CAD libraries are required. Original STL SHA-256 and byte sizes are checked before each write; edited local meshes are not overwritten. The generated STL files are intentionally ignored by git.
 
-The [Onshape document](ONSHAPE.md) is the CAD collaboration reference. A new export from Onshape must be converted into the URDF's link-local frames and meter units; a whole-assembly STL or millimeter export cannot be dropped into these paths. If the geometry differs, update mass/inertia, collision shapes, joint frames, endpoint fixtures and the motion contract deliberately. Record the exact Onshape version and revalidate the robot model.
+The simulation runner restores them automatically. Restore before installing a non-editable wheel or invoking the Isaac tools. All ten meshes must accompany the URDF, and are already in metres.
 
-The test suite skips the mesh test only when every referenced mesh is absent. If some are supplied, it requires the full set. Restoring or changing assets changes the library's contract fingerprint; train/export policies against the completed model. All initial policy registry entries remain untrained.
+See [Simulating motion](SIMULATING_MOTION.md) for setup, playback, experimental physics and Isaac import instructions. A URDF alone does not supply a control policy. Mesh restoration does not establish valid collision cooking or physical stability.

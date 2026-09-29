@@ -1,0 +1,122 @@
+{
+  "encoding": "base64 of xz-compressed original binary STL; chunks concatenate in order",
+  "files": [
+    {
+      "name": "head.stl",
+      "sha256": "e180bf36823ea7be3513dd8b1b70ce38cb1a6d544af7c48d0de419403179b81c",
+      "size_bytes": 4907584,
+      "chunks": [
+        "head.stl.xz.b64.000",
+        "head.stl.xz.b64.001",
+        "head.stl.xz.b64.002",
+        "head.stl.xz.b64.003",
+        "head.stl.xz.b64.004",
+        "head.stl.xz.b64.005",
+        "head.stl.xz.b64.006",
+        "head.stl.xz.b64.007",
+        "head.stl.xz.b64.008",
+        "head.stl.xz.b64.009",
+        "head.stl.xz.b64.010"
+      ]
+    },
+    {
+      "name": "left_fore_lower.stl",
+      "sha256": "430bdec798c4a26bd2494201d6c64ad3cf17827d58f0bb683bb864686f23e638",
+      "size_bytes": 3026784,
+      "chunks": [
+        "left_fore_lower.stl.xz.b64.000",
+        "left_fore_lower.stl.xz.b64.001",
+        "left_fore_lower.stl.xz.b64.002",
+        "left_fore_lower.stl.xz.b64.003",
+        "left_fore_lower.stl.xz.b64.004",
+        "left_fore_lower.stl.xz.b64.005"
+      ]
+    },
+    {
+      "name": "left_fore_upper.stl",
+      "sha256": "66d27350eaee66806a7ffb8f467f9096845842f85b5aeaab4574a8b1dc2867a1",
+      "size_bytes": 185484,
+      "chunks": [
+        "left_fore_upper.stl.xz.b64.000"
+      ]
+    },
+    {
+      "name": "left_hind_lower.stl",
+      "sha256": "f0e32c4d0da6136a4c745007f5e6faa68744f29f5e1ce2cc0fdd0d33f9cb914e",
+      "size_bytes": 2308984,
+      "chunks": [
+        "left_hind_lower.stl.xz.b64.000",
+        "left_hind_lower.stl.xz.b64.001",
+        "left_hind_lower.stl.xz.b64.002",
+        "left_hind_lower.stl.xz.b64.003",
+        "left_hind_lower.stl.xz.b64.004"
+      ]
+    },
+    {
+      "name": "left_hind_upper.stl",
+      "sha256": "76f5db4aa8e4de0b33f04255af9215fd50af8cb83e6bc0b5e4f8207d257ca6b1",
+      "size_bytes": 185484,
+      "chunks": [
+        "left_hind_upper.stl.xz.b64.000"
+      ]
+    },
+    {
+      "name": "right_fore_lower.stl",
+      "sha256": "6b114e7fa9f3293385efbe4b3834da55924cfe1d7b771af6fb5b347058114764",
+      "size_bytes": 3015084,
+      "chunks": [
+        "right_fore_lower.stl.xz.b64.000",
+        "right_fore_lower.stl.xz.b64.001",
+        "right_fore_lower.stl.xz.b64.002",
+        "right_fore_lower.stl.xz.b64.003",
+        "right_fore_lower.stl.xz.b64.004",
+        "right_fore_lower.stl.xz.b64.005"
+      ]
+    },
+    {
+      "name": "right_fore_upper.stl",
+      "sha256": "7c958ac0eba2e5ababd78237972259f5740d654e2e9d0cf02a9998b0e4078ad1",
+      "size_bytes": 185484,
+      "chunks": [
+        "right_fore_upper.stl.xz.b64.000"
+      ]
+    },
+    {
+      "name": "right_hind_lower.stl",
+      "sha256": "89deeb49a946d85031d452feb4629f6157c0b6229c4b44e41250cb12de2b59bb",
+      "size_bytes": 2307684,
+      "chunks": [
+        "right_hind_lower.stl.xz.b64.000",
+        "right_hind_lower.stl.xz.b64.001",
+        "right_hind_lower.stl.xz.b64.002",
+        "right_hind_lower.stl.xz.b64.003",
+        "right_hind_lower.stl.xz.b64.004"
+      ]
+    },
+    {
+      "name": "right_hind_upper.stl",
+      "sha256": "9079811c5cb2b6b2786635eca25c7f861fdf60ef83db73a6878ff26a5c96504e",
+      "size_bytes": 185484,
+      "chunks": [
+        "right_hind_upper.stl.xz.b64.000"
+      ]
+    },
+    {
+      "name": "torso.stl",
+      "sha256": "4aec8ce12c9beaec043716d10ffe2270f6b56b6e6a2289d8fbca9876eadd914b",
+      "size_bytes": 6549884,
+      "chunks": [
+        "torso.stl.xz.b64.000",
+        "torso.stl.xz.b64.001",
+        "torso.stl.xz.b64.002",
+        "torso.stl.xz.b64.003",
+        "torso.stl.xz.b64.004",
+        "torso.stl.xz.b64.005",
+        "torso.stl.xz.b64.006",
+        "torso.stl.xz.b64.007",
+        "torso.stl.xz.b64.008",
+        "torso.stl.xz.b64.009"
+      ]
+    }
+  ]
+}

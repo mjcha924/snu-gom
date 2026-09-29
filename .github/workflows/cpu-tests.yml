@@ -20,9 +20,27 @@ jobs:
           python-version: '3.11'
       - name: Install motion core
         run: python -m pip install -e ./motion
+      - name: Restore and verify CAD meshes
+        run: python scripts/restore_meshes.py
       - name: Run existing CPU tests
         run: python -m unittest discover -s motion/tests -v
       - name: Compile Python sources
         run: python -m compileall -q motion/src motion/scripts motion/examples
       - name: List policy status
         run: snu-bear list --registry motion/policies/registry.json
+
+
+  pybullet-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -r requirements-sim.txt
+      - name: Load and play CAD samples (not a dynamics test)
+        run: python scripts/simulate.py --mode replay --headless --seconds 7
+      - name: Step floating-base physics (not a balance test)
+        run: python scripts/simulate.py --mode physics --headless --seconds 1

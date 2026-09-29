@@ -75,4 +75,5 @@ This release does not automatically mark policies hardware-ready, and does not i
 Use a fresh evaluation seed and inspect outcomes across actual mass/friction/servo uncertainty. Train and evaluate the return transition independently. Its existence in the registry is not evidence that the mechanism can perform it.
 # Asset prerequisite for the GitHub release
 
-The geometry meshes are intentionally omitted from this checkout. Complete [simulation asset setup](../../docs/SIMULATION_ASSETS.md) before any simulator import, smoke check or training command below. The URDF alone is insufficient.
+The geometry meshes are included as restorable compressed assets. Complete [simulation asset setup](../../docs/SIMULATION_ASSETS.md) before any simulator import, smoke check or training command below. The URDF alone is insufficient.
+

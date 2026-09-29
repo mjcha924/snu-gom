@@ -1,0 +1,48 @@
+{
+  "sit": {
+    "base_xyz_m": [
+      0.0,
+      0.0,
+      0.052
+    ],
+    "base_rpy_rad": [
+      0,
+      0.0,
+      0
+    ],
+    "joint_positions_rad": {
+      "neck_pitch": 0.17453292519943275,
+      "right_fore_root": 1.0548094041525786,
+      "right_fore_bend": -1.9302862244443384,
+      "left_fore_root": 1.0548094041525786,
+      "left_fore_bend": -1.9302862244443384,
+      "right_hind_root": 0.7114230501663696,
+      "right_hind_bend": -0.966006400777979,
+      "left_hind_root": 0.7114230501663696,
+      "left_hind_bend": -0.966006400777979
+    }
+  },
+  "crawl": {
+    "base_xyz_m": [
+      0.0,
+      0.0,
+      0.055
+    ],
+    "base_rpy_rad": [
+      0,
+      0.9599310885968813,
+      0
+    ],
+    "joint_positions_rad": {
+      "neck_pitch": 0.0,
+      "right_fore_root": 0.0,
+      "right_fore_bend": 0.0,
+      "left_fore_root": 0.0,
+      "left_fore_bend": 0.0,
+      "right_hind_root": 0.0,
+      "right_hind_bend": 0.0,
+      "left_hind_root": 0.0,
+      "left_hind_bend": 0.0
+    }
+  }
+}

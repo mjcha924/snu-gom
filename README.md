@@ -4,7 +4,7 @@ A small teddy-bear robot project inspired by MicroDuck, with short-looking limbs
 
 **[Open the SNU Bear CAD in Onshape](https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301)**
 
-This initial GitHub release contains documentation, V0.6 design parameters, robot-model metadata, and the v0.1 motion-library source. CAD geometry files and simulation meshes are intentionally omitted. Onshape is the shared CAD workspace; the dimensions below record the saved V0.6 baseline and do not automatically track edits to that workspace.
+This repository contains documentation, V0.6 design parameters, an audited URDF, all ten CAD-derived simulation meshes (restored offline from compressed assets), a motion viewer, and the v0.1 motion-library source. STEP/BRep CAD files remain external. Onshape is the shared CAD workspace; the dimensions below record the saved V0.6 baseline and do not automatically track edits to that workspace.
 
 ## Design baseline
 
@@ -34,9 +34,18 @@ The hardware remains a packaging and kinematic candidate. The recorded V0.6 stud
 | --- | --- | --- |
 | Mechanical | Onshape reference, parameters, joint registry, historical feasibility notes | Fit the selected motors/horns and resolve clearances |
 | Electronics | [Architecture and open decisions](docs/ELECTRONICS.md), calibration template | Select actuators, power system, controller and IMU |
-| Simulation | URDF metadata, endpoint definitions, Isaac task code | Supply matching meshes, validate import and contact behavior |
+| Simulation | URDF, restorable meshes, CAD motion playback, experimental PyBullet runner, Isaac task code | Validate collision geometry, motor response and balance |
 | Controls | Policy registry, observation/action contract and runtime interfaces | Train, evaluate and calibrate real hardware |
 | Project | Roadmap, contribution guide, issue/PR templates and CPU CI | Record reproducible results per robot revision |
+
+## Watch the robot move
+
+```bash
+python -m pip install -r requirements-sim.txt
+python scripts/simulate.py --mode replay
+```
+
+Run inside your virtual environment from the repository root. This restores the meshes automatically and plays the recorded CAD shuffle; it is prescribed motion, not proven dynamic walking. See [the simulation guide](docs/SIMULATING_MOTION.md) for pose inspection, gravity-based tests and Isaac Sim/RL setup.
 
 ## Start here
 
@@ -56,10 +65,11 @@ source .venv/bin/activate
 python -m pip install -e ./motion
 snu-bear list --registry motion/policies/registry.json
 snu-bear doctor
+python scripts/restore_meshes.py
 python -m unittest discover -s motion/tests -v
 ```
 
-On Windows, activate with `.venv\Scripts\Activate.ps1` in PowerShell. CPU tooling needs Python 3.10 or newer. Simulator code retains the prior API target of Isaac Lab 2.3.0 / Isaac Sim 5.1.0 / Python 3.11; it has not been integration-tested. The CPU tests explicitly skip the separate mesh test when all omitted meshes are absent. This checkout cannot import the complete robot into a simulator until those assets are supplied.
+On Windows, activate with `.venv\Scripts\Activate.ps1` in PowerShell. CPU tooling needs Python 3.10 or newer. Simulator code retains the prior API target of Isaac Lab 2.3.0 / Isaac Sim 5.1.0 / Python 3.11; it has not been integration-tested. Restore the included meshes before running tests or simulator imports. The separate mesh test then runs rather than skipping.
 
 ## Repository layout
 
@@ -70,3 +80,4 @@ On Windows, activate with `.venv\Scripts\Activate.ps1` in PowerShell. CPU toolin
 | `.github/` | CPU workflow and collaboration templates |
 
 Project code retains the existing [MIT license](LICENSE). Third-party tools retain their own licenses. The project name and markings do not imply university endorsement.
+

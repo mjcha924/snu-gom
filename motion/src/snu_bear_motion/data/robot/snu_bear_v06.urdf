@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<robot name="snu_bear_v06_teddy_motion_study">
+<robot name="snu_bear_v06_x330_inspection">
+  <!--CAD-derived 9-joint inspection model. X330 exact variant unresolved. 18 g motor masses inherited from XL330-sized placeholders. Effort 0.2 Nm, velocity 1 rad/s and +/-pi limits are UNVALIDATED software placeholders, not motor ratings or collision-safe ranges.-->
   <link name="torso">
     <inertial>
       <origin xyz="-0.002127982057894562 -6.787298418522178e-07 0.0038718057697311307" />
@@ -8,12 +9,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/torso.stl" />
+        <mesh filename="meshes_m/torso.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/torso.stl" />
+        <mesh filename="meshes_m/torso.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -25,12 +29,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/head.stl" />
+        <mesh filename="meshes_m/head.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/head.stl" />
+        <mesh filename="meshes_m/head.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -42,12 +49,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/right_fore_upper.stl" />
+        <mesh filename="meshes_m/right_fore_upper.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/right_fore_upper.stl" />
+        <mesh filename="meshes_m/right_fore_upper.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -59,12 +69,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/right_fore_lower.stl" />
+        <mesh filename="meshes_m/right_fore_lower.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/right_fore_lower.stl" />
+        <mesh filename="meshes_m/right_fore_lower.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -76,12 +89,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/left_fore_upper.stl" />
+        <mesh filename="meshes_m/left_fore_upper.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/left_fore_upper.stl" />
+        <mesh filename="meshes_m/left_fore_upper.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -93,12 +109,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/left_fore_lower.stl" />
+        <mesh filename="meshes_m/left_fore_lower.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/left_fore_lower.stl" />
+        <mesh filename="meshes_m/left_fore_lower.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -110,12 +129,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/right_hind_upper.stl" />
+        <mesh filename="meshes_m/right_hind_upper.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/right_hind_upper.stl" />
+        <mesh filename="meshes_m/right_hind_upper.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -127,12 +149,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/right_hind_lower.stl" />
+        <mesh filename="meshes_m/right_hind_lower.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/right_hind_lower.stl" />
+        <mesh filename="meshes_m/right_hind_lower.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -144,12 +169,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/left_hind_upper.stl" />
+        <mesh filename="meshes_m/left_hind_upper.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/left_hind_upper.stl" />
+        <mesh filename="meshes_m/left_hind_upper.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>
@@ -161,12 +189,15 @@
     </inertial>
     <visual>
       <geometry>
-        <mesh filename="meshes_m/left_hind_lower.stl" />
+        <mesh filename="meshes_m/left_hind_lower.stl" scale="1 1 1" />
       </geometry>
+      <material name="cream">
+        <color rgba="0.96 0.94 0.90 1" />
+      </material>
     </visual>
     <collision>
       <geometry>
-        <mesh filename="meshes_m/left_hind_lower.stl" />
+        <mesh filename="meshes_m/left_hind_lower.stl" scale="1 1 1" />
       </geometry>
     </collision>
   </link>

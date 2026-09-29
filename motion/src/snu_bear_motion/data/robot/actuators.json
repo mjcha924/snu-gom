@@ -1,0 +1,91 @@
+{
+  "requested_family": "DYNAMIXEL X330",
+  "exact_model": null,
+  "hardware_ready": false,
+  "existing_mass_assumption": "18 g per motor (XL330), not confirmed",
+  "case_dimensions_manufacturer_WHD_mm": [
+    20,
+    34,
+    26
+  ],
+  "CAD_axis_envelope_xyz_mm": [
+    26,
+    20,
+    34
+  ],
+  "joint_limit_status": "Original illustrative +/-pi ranges retained. Not collision-safe ranges.",
+  "simulation_placeholder": {
+    "effort_Nm": 0.2,
+    "velocity_rad_s": 1.0,
+    "continuous_rating": false
+  },
+  "joints": {
+    "neck_pitch": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "torso",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "right_fore_root": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "torso",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "right_fore_bend": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "right_fore_lower",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "left_fore_root": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "torso",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "left_fore_bend": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "left_fore_lower",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "right_hind_root": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "torso",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "right_hind_bend": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "right_hind_lower",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "left_hind_root": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "torso",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    },
+    "left_hind_bend": {
+      "motor_id": null,
+      "encoder_zero_tick": null,
+      "direction_sign": null,
+      "case_attached_to": "left_hind_lower",
+      "note": "Bend motor case moves with paw; calibrate encoder sign against URDF +Y."
+    }
+  },
+  "references": [
+    "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/",
+    "https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/"
+  ]
+}
