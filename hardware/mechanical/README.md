@@ -1,3 +1,21 @@
+[English](#english) | [한국어](#한국어)
+
+<a id="english"></a>
+
+# M1 mechanical handoff
+
+- Five-axis single-leg and pelvis CAD with manufacturable motor/horn mounts.
+- Frame coordinates, axis offsets, cable paths and joint ranges.
+- Clearly separated estimated/measured link mass and center of mass; Onshape named version.
+- Support shafts/bearings, fastener specifications/quantities, material and print orientation.
+- Update `robot/config.json` and URDF after frame review with M4.
+
+Done means another member can review assembly from the same version and find the interference/load-test plan. Edit in task-specific workspaces when teammates are changing the main assembly.
+
+---
+
+<a id="한국어"></a>
+
 # M1 기구 인수인계
 
 - 5축 한쪽 다리와 골반 CAD, 제조 가능한 모터/혼 장착 구조.

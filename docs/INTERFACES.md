@@ -1,3 +1,32 @@
+[English](#english) | [한국어](#한국어)
+
+<a id="english"></a>
+
+# Shared interface draft
+
+Source: `robot/config.json`, revision `snu-gom-biped-v0.1-proxy`. Right-handed frame: +X forward, +Y left, +Z up. Units: m, rad, s, kg, A and °C. Joint signs follow each URDF local axis; physical motor orientation and zero offsets must be measured separately.
+
+Joint order: left hip_roll, hip_pitch, knee_pitch, ankle_pitch, ankle_roll, followed by the same right-side order. Logical IDs 1–10 are proposed assignments, not IDs already programmed into servos.
+
+### PC ↔ MCU contract
+
+M2/M3 will choose the transport encoding. Initial semantics:
+
+- Command: `schema_version`, `robot_revision`, `sequence`, `positions_rad[10]`. MCU validates length, finite values, angle bounds and revision.
+- Telemetry: `sequence`, `device_time_us`, `positions_rad[10]`, `velocities_rad_s[10]`, `currents_A[10]`, `bus_voltage_V`, `temperature_C[10]`, `imu_accel_m_s2[3]`, `imu_gyro_rad_s[3]`, `faults`.
+- Agree on observation/command rates after bench measurements. Record learning dt and measured latency consistently. Define synchronization between MCU timestamps and the host monotonic clock.
+- Define behavior for dropped packets, stale sequences, sensor errors, low voltage, overheating and command timeout first. Sudden torque-off can topple a standing robot; validate failure behavior in a support fixture.
+
+The repository does not yet implement motor transport for this contract. Temporary URDF limits are not hardware operating limits.
+
+### Model ↔ learning contract
+
+Candidate observations are joint q/dq, torso IMU and the previous command. Actions are ten joint targets. Version normalization, reference pose, action scale and update rate after measurement. Revalidate existing policies whenever model revision or joint order changes.
+
+---
+
+<a id="한국어"></a>
+
 # 공통 인터페이스 초안
 
 현재 기준: `robot/config.json`, revision `snu-gom-biped-v0.1-proxy`. 오른손 좌표계로 +X 전방, +Y 왼쪽, +Z 위쪽. 길이 m, 각도 rad, 시간 s, 질량 kg, 전류 A, 온도 °C. 양쪽 joint axis 부호는 URDF의 로컬 축을 따릅니다. 실제 모터 설치 방향과 영점은 별도 측정값입니다.

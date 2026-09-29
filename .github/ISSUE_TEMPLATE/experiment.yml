@@ -1,25 +1,32 @@
-name: SNU GOM 실험 기록
-description: CPU·시뮬레이션·하드웨어 결과와 실패 사례
-title: "[Experiment] "
+name: SNU GOM experiment / 실험 기록
+description: CPU, simulation and hardware results/failures / 결과와 실패 사례
+title: '[Experiment] '
 body:
-  - type: dropdown
-    id: scope
-    attributes:
-      label: 검증 범위
-      options: [CPU 검사, 도형 또는 import, 물리 시뮬레이션, 정책 학습, 실물 시험]
-    validations:
-      required: true
-  - type: textarea
-    id: setup
-    attributes:
-      label: 버전과 재현 방법
-      description: commit, robot revision, CAD version, 환경, 명령, seed를 포함하세요.
-    validations:
-      required: true
-  - type: textarea
-    id: result
-    attributes:
-      label: 반복 횟수와 결과
-      description: 성공 기준, 실패 횟수, 원본 로그, 전류·온도 등을 기록하세요.
-    validations:
-      required: true
+- type: dropdown
+  id: scope
+  attributes:
+    label: Validation scope / 검증 범위
+    options:
+    - CPU checks / CPU 검사
+    - Geometry or import / 도형 또는 import
+    - Physics simulation / 물리 시뮬레이션
+    - Policy training / 정책 학습
+    - Hardware test / 실물 시험
+  validations:
+    required: true
+- type: textarea
+  id: setup
+  attributes:
+    label: Versions and reproduction / 버전과 재현 방법
+    description: Include commit, robot/CAD revision, environment, commands and seed.
+      / commit, 로봇·CAD 버전, 환경, 명령, seed를 포함하세요.
+  validations:
+    required: true
+- type: textarea
+  id: result
+  attributes:
+    label: Trial counts and results / 반복 횟수와 결과
+    description: Record criteria, failures, raw logs, current and temperature. / 성공
+      기준, 실패 횟수, 원본 로그, 전류·온도 등을 기록하세요.
+  validations:
+    required: true

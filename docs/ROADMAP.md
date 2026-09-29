@@ -1,3 +1,25 @@
+[English](#english) | [한국어](#한국어)
+
+<a id="english"></a>
+
+# Roadmap and initial tasks
+
+| Dates (2026–2027) | Deliverable | Lead | Dependency |
+| --- | --- | --- | --- |
+| Sep 29–Oct 11 | Joint proposal, five roles, lead times and interfaces | Everyone | Accounts and loan equipment confirmed |
+| Oct 12–25 | One-leg load and thermal tests | M1/M2/M3 | Motors available; otherwise prioritize CAD/model |
+| Oct 26–Nov 15 | Manufacturing CAD, power schematic and matching model frames | M1/M2/M4 | Interference, mass and current evidence |
+| Nov 16–30 | Ten-axis integration and supported standing | M3/M5 | Assembly, wiring and fault behavior validated |
+| Dec 1–20 | Baseline walking and learning experiments | M4/M5 | Model/sensor agreement |
+| Dec 21–Jan 10 | Hardware transfer and expressive-motion comparison | Everyone | Repeated physical tests |
+| Jan 11–30 | Final logs, demo and documentation | M5/everyone | Proposed acceptance criteria evaluated |
+
+The official motor store showed a 40-day preparation time when checked on September 29, 2026. Adjust early hardware dates to actual procurement. Track completion in Issues; use area READMEs and the five kickoff issues for acceptance criteria.
+
+---
+
+<a id="한국어"></a>
+
 # 일정과 첫 작업
 
 | 기간 | 결과물 | 주담당 | 의존 조건 |
