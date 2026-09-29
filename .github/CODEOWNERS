@@ -1,11 +1,2 @@
-# Verified repository owner as temporary fallback.
-# After collaborators have write access, replace the relevant lines with actual usernames.
-# Proposed mapping: hardware/mechanical M1; hardware/electronics and bom M2;
-# firmware M3; simulation and tools M4; tests/docs/workflows M5.
-# No fictitious usernames are configured. Ruleset enforcement is not enabled by this file.
+# Repository maintainer / 저장소 관리자
 * @mjcha924
-
-# 임시 기본 담당자는 확인된 저장소 소유자입니다.
-# 팀원에게 write 권한을 부여한 뒤 실제 계정으로 영역별 담당자를 지정합니다.
-# 기구 M1 / 전장·BOM M2 / 펌웨어 M3 / 시뮬레이션·도구 M4 / 시험·문서·워크플로 M5.
-# 이 파일만으로 브랜치 보호 규칙이 활성화되지는 않습니다.

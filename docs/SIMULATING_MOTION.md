@@ -26,7 +26,7 @@ python tools/view_robot.py --mode sweep --headless --seconds 2
 
 ### Isaac Sim and RL next steps
 
-M4 selects GPU, Isaac Sim and Isaac Lab versions and records successful versions in `simulation/ENVIRONMENT.md`. Import the URDF and verify axes, scale, collisions and inertia, starting with a single-leg step response against measurements. Then implement baseline locomotion, learning environment, reward, domain randomization and repeated evaluation. Running the old nine-joint `motion/` task is not the new biped workflow.
+Select GPU, Isaac Sim and Isaac Lab versions and records successful versions in `simulation/ENVIRONMENT.md`. Import the URDF and verify axes, scale, collisions and inertia, starting with a single-leg step response against measurements. Then implement baseline locomotion, learning environment, reward, domain randomization and repeated evaluation. Running the old nine-joint `motion/` task is not the new biped workflow.
 
 For reproducing the old model, follow the [legacy guide](legacy/README.md). `scripts/simulate.py` is exclusively for that nine-joint model.
 
@@ -58,6 +58,6 @@ pose는 중립 자세, sweep는 관절 하나씩 작은 각도 변화를 보여 
 
 ## Isaac Sim과 RL 다음 단계
 
-M4가 GPU 환경과 Isaac Sim/Isaac Lab 버전을 선정하고 `simulation/ENVIRONMENT.md`에 실제 성공한 버전을 기록합니다. URDF를 import해 축·스케일·collision·inertia를 확인하고 single-leg step response부터 실측과 비교합니다. 이후 기준 보행, 학습 환경, reward, domain randomization, 반복 평가를 구현합니다. 초기 작업은 기존 9축 `motion/`을 바로 실행하는 것이 아닙니다.
+GPU 환경과 Isaac Sim/Isaac Lab 버전을 선정하고 `simulation/ENVIRONMENT.md`에 실제 성공한 버전을 기록합니다. URDF를 import해 축·스케일·collision·inertia를 확인하고 single-leg step response부터 실측과 비교합니다. 이후 기준 보행, 학습 환경, reward, domain randomization, 반복 평가를 구현합니다. 초기 작업은 기존 9축 `motion/`을 바로 실행하는 것이 아닙니다.
 
 이전 모델을 재현하려면 [legacy 안내](legacy/README.md)를 따릅니다. `scripts/simulate.py`는 이전 9축 모델 전용입니다.

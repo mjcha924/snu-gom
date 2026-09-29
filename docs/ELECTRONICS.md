@@ -14,7 +14,7 @@ OpenRB-150 lists a 3A DYNAMIXEL current limit. Do not route the full ten-motor l
 
 At 5V, 1.5A stall current per motor gives 15A for ten motors. This is not an average walking-current estimate. Do not assume a candidate 10A UBEC handles every transient: size it from actual current limiting, peaks, voltage sag and heat. Recalculate if adding a neck.
 
-M2 delivers a schematic, connector ratings, power budget, low-voltage monitoring/cutoff, converter settings, purchasing candidates and one-leg load tests. Review communication and power sequencing with M3.
+Record a schematic, connector ratings, power budget, low-voltage monitoring/cutoff, converter settings, purchasing candidates and one-leg load tests. Review communication and power sequencing together.
 
 Manufacturer references: [XL330](https://www.robotis.com/shop/item.php?it_id=902-0163-000), [OpenRB-150](https://www.robotis.com/shop/item.php?it_id=902-0183-000). Pricing and candidates are in the [BOM](../hardware/bom/README.md).
 
@@ -34,6 +34,6 @@ OpenRB-150의 DYNAMIXEL 허용전류는 3A로 표시되어 있습니다. 10축�
 
 5V에서 모터당 스톨 전류 1.5A이므로 10축 합산 스톨 전류는 15A입니다. 이를 보행 평균 전류로 사용하지 않습니다. 10A UBEC 후보가 모든 순간 부하를 감당한다고 가정하지 말고, 실제 전류 제한·피크·전압 강하·발열로 용량을 정합니다. 목 추가 시 다시 산정합니다.
 
-M2 결과물: 배선도, 커넥터별 정격, 전원 예산, 저전압 감시/차단, 변환기 설정, 구매 후보, 단일 다리 부하 시험. M3와 통신·전원 시퀀스를 함께 검토합니다.
+필요한 자료: 배선도, 커넥터별 정격, 전원 예산, 저전압 감시/차단, 변환기 설정, 구매 후보, 단일 다리 부하 시험. 통신·전원 시퀀스를 함께 검토합니다.
 
 제조사 근거: [XL330](https://www.robotis.com/shop/item.php?it_id=902-0163-000), [OpenRB-150](https://www.robotis.com/shop/item.php?it_id=902-0183-000). 가격·후보는 [BOM](../hardware/bom/README.md)을 따릅니다.

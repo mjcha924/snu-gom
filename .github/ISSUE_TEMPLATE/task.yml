@@ -1,24 +1,17 @@
 name: SNU GOM task / 개발 작업
-description: Team task with ownership and acceptance criteria / 담당 영역과 완료 조건
+description: Project task and expected result / 프로젝트 작업과 기대 결과
 title: '[Task] '
 body:
 - type: dropdown
   id: area
   attributes:
-    label: Area / 담당 영역
+    label: Topic / 주제
     options:
-    - M1 Mechanical / 기구
-    - M2 Electronics / 전장
-    - M3 Firmware / 펌웨어
-    - M4 Simulation / 시뮬레이션
-    - M5 Integration / 통합
-  validations:
-    required: true
-- type: input
-  id: people
-  attributes:
-    label: Owner and reviewer / 담당자와 검토자
-    placeholder: GitHub usernames or unassigned / 실제 계정 또는 미배정
+    - Mechanical / 기구
+    - Electronics / 전장
+    - Firmware / 펌웨어
+    - Simulation / 시뮬레이션
+    - Integration / 통합
   validations:
     required: true
 - type: textarea

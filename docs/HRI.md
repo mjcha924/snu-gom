@@ -6,7 +6,7 @@
 
 ## English
 
-**Requirement update, 2026-09-29:** SNU GOM should see, hear and speak, connect to external APIs, and express responses through robot behaviors. The camera lens occupies the bear's nose. Ten XL330-M288-T leg motors remain confirmed; the initial head and arms remain fixed.
+**Requirement update, 2026-09-29:** SNU GOM should see, hear and speak, connect to external APIs, and express responses through robot behaviors. The forward-facing camera lens occupies the bear's nose. Ten XL330-M288-T leg motors remain confirmed; the head gains one XL330 neck-pitch joint and the arms remain fixed (11 motors total).
 
 ### Prototype electronics decision
 
@@ -14,7 +14,7 @@
 | --- | --- | --- |
 | HRI computer | Raspberry Pi 4 Model B, 2GB minimum, Wi-Fi | Proposed; camera/audio/API client and lightweight perception, benchmark required |
 | Motor communications | OpenRB-150 plus external motor power distribution | Retained candidate; HRI does not replace deterministic motor supervision |
-| Camera | Raspberry Pi Camera Module 3 Standard, CSI ribbon | Required camera function; candidate module; lens in nose with adjustable upward tilt |
+| Camera | Raspberry Pi Camera Module 3 Standard, CSI ribbon | Required camera function; candidate module; lens straight ahead in nose; neck pitch controls gaze |
 | Voice input/output | ReSpeaker Lite USB audio, two microphones; compatible small speaker | Required audio; confirm USB firmware, amplifier/speaker impedance and echo-cancellation path |
 | Balance sensing | IMU rigidly mounted near pelvis/torso | Retained; do not mount on speaker or cosmetic shell |
 | Storage/cooling | microSD, heatsink and airflow clearance | Added; verify thermal behavior in the assembled shell |
@@ -49,13 +49,13 @@ These endpoints are a design contract; **there is no running HRI server in the r
 
 ### Camera in the nose
 
-Keep the lens unobstructed and near the outer face of a removable dark bezel. Do not put a painted nose or untested tinted plastic over the optics. Reserve a 25×24×11.5mm module envelope plus ribbon and focus clearance; the CAD carrier uses an initial 18° upward angle, adjustable by changing the carrier. Check the field of view using the exact module and shell. The fixed head cannot actively pan; body orientation or an optional future neck is separate work. A monocular RGB camera is not a validated obstacle-distance sensor.
+Keep the lens unobstructed in a removable dark nose bezel. The camera is mounted **straight ahead relative to the head**, with no built-in upward tilt. One XL330 neck-pitch motor tilts the whole head to look at people; pan/yaw remains a future option. This adds one motor to the ten leg motors. Reserve the 25×24×11.5mm camera envelope plus CSI ribbon slack through the neck. Verify head clearance, cable bending, autofocus and the viewing range with the actual module. A monocular RGB camera is not a validated distance sensor.
 
 ### Packaging and test implications
 
 Put the computer and battery in the torso, close to the pelvis where feasible. Separate speaker vibration from the microphones and IMU. Reserve service covers, cooling space, cable slack and USB/CSI connector access. Added hardware invalidates the old assumption that the fully equipped robot weighs 600g; the URDF's 0.600kg remains a proxy-model assumption until CAD and measured component masses are integrated.
 
-First HRI milestone: while supported or stationary, capture an utterance, obtain an API response, speak it, and record latency and audio quality. Repeat with motors energized to expose noise. Only then combine dialogue with validated motion. M2 owns electronics/power; M3 owns hardware communication; M4 owns perception/policy timing; M5 owns HRI integration and API behavior; M1 owns sensor and acoustic packaging.
+First HRI milestone: while supported or stationary, capture an utterance, obtain an API response, speak it, and record latency and audio quality. Repeat with motors energized to expose noise. Only then combine dialogue with validated motion.
 
 ### Sources and selection basis
 
@@ -72,7 +72,7 @@ Module choice, mounting angle, supply headroom and task split above are project 
 
 ## 한국어
 
-**2026-09-29 요구사항 변경:** SNU GOM은 카메라·마이크·스피커로 사람과 상호작용하고 외부 API에 연결하며 로봇 동작으로 반응합니다. 카메라 렌즈는 곰의 코 위치에 배치합니다. 다리 XL330-M288-T 10개는 유지하며 초기 머리·팔은 고정입니다.
+**2026-09-29 요구사항 변경:** SNU GOM은 카메라·마이크·스피커로 사람과 상호작용하고 외부 API에 연결하며 로봇 동작으로 반응합니다. 카메라 렌즈는 곰의 코 위치에 배치합니다. 다리 XL330-M288-T 10개는 유지하며 목 피치용 XL330 1개로 머리를 위아래로 움직이며 팔은 고정입니다(전체 11개).
 
 ### 프로토타입 전장 결정
 
@@ -80,7 +80,7 @@ Module choice, mounting angle, supply headroom and task split above are project 
 | --- | --- | --- |
 | HRI 컴퓨터 | Raspberry Pi 4 Model B, 최소 2GB, Wi-Fi | 제안; 카메라·오디오·API 클라이언트·가벼운 인식, 성능 실측 필요 |
 | 모터 통신 | OpenRB-150 + 외부 모터 전원 분배 | 후보 유지; HRI 컴퓨터와 모터 감시 역할 분리 |
-| 카메라 | Camera Module 3 Standard, CSI 케이블 | 카메라 기능 필수; 코 안의 렌즈와 조절 가능한 상향 브래킷 |
+| 카메라 | Camera Module 3 Standard, CSI 케이블 | 카메라 기능 필수; 머리 기준 정면 렌즈, 목 피치로 시선 조절 |
 | 음성 입출력 | ReSpeaker Lite USB 2마이크 + 호환 소형 스피커 | 필수; USB 펌웨어·앰프·스피커 임피던스·반향 제거 경로 확인 |
 | 균형 센서 | 골반·몸통 구조에 고정한 IMU | 유지; 스피커나 외장에 장착하지 않음 |
 | 저장장치·냉각 | microSD·방열판·통풍 공간 | 추가; 조립 상태에서 발열 확인 |
@@ -106,13 +106,13 @@ Pi Zero 2 W는 후속 경량화 후보지만 512MB RAM과 USB 구성을 시험�
 
 ### 코 카메라
 
-렌즈를 탈착 가능한 검은 베젤의 바깥 면 가까이에 배치합니다. 렌즈 앞을 도색한 코나 검증하지 않은 착색 플라스틱으로 가리지 않습니다. 25×24×11.5mm 모듈과 케이블·초점 이동 여유를 확보합니다. CAD는 초기 18° 상향이며 캐리어 변경으로 각도를 조절합니다. 실제 모듈·외장으로 화각을 확인합니다. 고정 머리는 능동 pan이 불가능하며 몸 방향 전환이나 선택 목은 별도 작업입니다. 단안 RGB 카메라를 검증된 장애물 거리 센서로 취급하지 않습니다.
+카메라는 검은 코 베젤 안에서 **머리 기준 정면**을 향합니다. 카메라 자체 상향각 없이 목 피치 XL330 1개로 머리 전체를 들어 사람을 봅니다. 다리 10개와 합쳐 전체 11개이며 목 yaw/pan은 후속 선택입니다. 25×24×11.5mm 모듈, 목을 지나는 CSI 케이블 여유, 머리 간섭·자동초점·실제 시야를 확인합니다. 단안 RGB 카메라를 검증된 거리 센서로 취급하지 않습니다.
 
 ### 배치·시험 영향
 
 컴퓨터·배터리는 가능한 골반 가까운 몸통에, 마이크·IMU는 스피커 진동과 분리합니다. 점검 커버·냉각·케이블 여유·커넥터 접근 공간을 확보합니다. 추가 부품 때문에 완성 로봇 600g을 더는 가정할 수 없습니다. URDF의 0.600kg은 CAD·실측 질량을 반영하기 전까지 도형 모델의 가정값입니다.
 
-첫 HRI 목표는 지지/정지 상태에서 발화 입력 → API 응답 → 음성 출력 후 지연·음질을 기록하는 것입니다. 모터를 켠 상태에서도 반복해 잡음을 확인하고 이후 검증된 동작과 결합합니다. M2 전장·전원, M3 하드웨어 통신, M4 인식·정책 주기, M5 HRI·API 통합, M1 센서·음향 배치를 담당합니다.
+첫 HRI 목표는 지지/정지 상태에서 발화 입력 → API 응답 → 음성 출력 후 지연·음질을 기록하는 것입니다. 모터를 켠 상태에서도 반복해 잡음을 확인하고 이후 검증된 동작과 결합합니다.
 
 ### 근거 자료
 

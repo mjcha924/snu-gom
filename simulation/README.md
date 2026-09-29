@@ -2,7 +2,7 @@
 
 <a id="english"></a>
 
-# M4 modeling and RL
+# modeling and RL
 
 The new model is `robot/snu_gom.urdf`. It currently uses primitive geometry and estimated dynamics for joint-layout inspection. Old nine-joint tasks and checkpoint formats under `motion/` are incompatible.
 
@@ -12,7 +12,7 @@ Sequence: frame/unit checks → manufacturing CAD → motor-response/contact ver
 
 <a id="한국어"></a>
 
-# M4 모델과 RL
+# 모델과 RL
 
 새 모델은 `robot/snu_gom.urdf`입니다. 현재 기본 도형·추정 동역학으로 관절 구조를 확인하는 단계입니다. 기존 `motion/`의 9축 task와 checkpoint 형식은 호환되지 않습니다.
 
