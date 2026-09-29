@@ -7,8 +7,8 @@ This model is the original 9-joint bear, not the purple biped concept. A URDF de
 Use Python 3.11 in a virtual environment on a desktop with a display:
 
 ```bash
-git clone https://github.com/mjcha924/snu-bear.git
-cd snu-bear
+git clone https://github.com/mjcha924/snu-gom.git
+cd snu-gom
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-sim.txt

@@ -1,3 +1,27 @@
+[English](#english) | [한국어](#한국어)
+
+<a id="english"></a>
+
+# Validation scope
+
+September 29, 2026; revision `snu-gom-biped-v0.1-proxy`.
+
+| Check | Result |
+| --- | --- |
+| `python tools/check_project.py` | Passed; ten joints, assumed primitive-model mass 0.600 kg |
+| `python -m unittest discover -s tests -v` | Eight tests passed |
+| `python -m compileall -q tools tests` | Passed |
+| Budget recalculation | KRW 834,412; optional and borrowed equipment separated |
+| PyBullet headless joint viewer | Passed in [PR #6 CI](https://github.com/mjcha924/snu-gom/actions/runs/36562738762) |
+| Manufacturing CAD, joint clearance, motor response | Not validated |
+| Isaac import, training, physical standing/walking | Not validated |
+
+0.600 kg is the sum of assumed link masses, not a measurement. Contract checks do not prove motor packaging or walking. Record actual results in `docs/experiments/` with the commit and execution environment.
+
+---
+
+<a id="한국어"></a>
+
 # SNU GOM 검증 범위
 
 2026-09-29, revision `snu-gom-biped-v0.1-proxy`.
@@ -8,6 +32,7 @@
 | `python -m unittest discover -s tests -v` | 8개 통과 |
 | `python -m compileall -q tools tests` | 통과 |
 | 기본 예산 재계산 | 834,412원, 선택·대여 장비 분리 |
+| PyBullet headless 관절 viewer | [PR #6 CI](https://github.com/mjcha924/snu-gom/actions/runs/36562738762) 통과 |
 | 제조 CAD·가동 범위·모터 응답 | 미검증 |
 | Isaac Sim import·학습·실물 기립/보행 | 미검증 |
 

@@ -1,3 +1,29 @@
+[English](#english) | [한국어](#한국어)
+
+<a id="english"></a>
+
+# Project brief
+
+SNU GOM is a small bipedal research platform with a bear's short legs and large paws. It uses five joints per leg and ten XL330-M288-T motors. Develop standing and short walks first, then expressive waddles and body tilts.
+
+The baseline has fixed head/arms, no camera, and uses an IMU plus joint feedback. A two-axis neck, onboard SBC and foot-contact sensors are optional. Human-motion imitation, skating and autonomous recovery are outside the current acceptance criteria.
+
+### Proposed acceptance criteria
+
+- Stand on level ground without external support for 30 seconds in at least 8 of 10 trials.
+- Move forward 0.5 m on level ground within 30 seconds in at least 7 of 10 trials.
+- Record repeated tests of two expressive motions. Trials with human intervention or a tether supporting body weight do not count as independent walking.
+- Compare baseline control and learned policies under the same conditions: success rate, time, torso-angle RMS, current and temperature.
+- Share CAD, BOM, wiring, model, code, test logs and reproduction instructions.
+
+These are proposed targets for team agreement before testing, not achieved results. If learning or hardware transfer fails, document failure conditions and limitations.
+
+Project period: September 15, 2026–January 30, 2027. See [roadmap](ROADMAP.md), [roles](TEAM.md) and [budget](../hardware/bom/README.md). The submission Word document is separate; use repository Markdown as the collaboratively maintained technical plan.
+
+---
+
+<a id="한국어"></a>
+
 # SNU GOM 프로젝트 개요
 
 SNU GOM은 곰처럼 짧은 다리와 큰 발을 가진 소형 이족보행 연구 플랫폼입니다. 다리 5축씩, XL330-M288-T 10개를 사용합니다. 기립·짧은 보행을 먼저 만들고 뒤뚱거림·몸 기울이기 같은 표현 동작을 확장합니다.

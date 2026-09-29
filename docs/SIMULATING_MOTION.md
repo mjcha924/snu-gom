@@ -1,3 +1,39 @@
+[English](#english) | [한국어](#한국어)
+
+<a id="english"></a>
+
+# Running the SNU GOM model
+
+### CPU checks
+
+```bash
+python tools/check_project.py
+python -m unittest discover -s tests -v
+```
+
+Checks cover joint contracts, ten motor IDs, generated-URDF consistency, positive mass/inertia and purchase totals. After editing configuration, regenerate with `python tools/generate_robot.py`.
+
+### Primitive model viewer
+
+```bash
+python -m pip install -r requirements-gom-viewer.txt
+python tools/view_robot.py --mode pose
+python tools/view_robot.py --mode sweep
+python tools/view_robot.py --mode sweep --headless --seconds 2
+```
+
+`pose` shows the neutral pose; `sweep` moves one joint at a time through small angles. Both are fixed-base, zero-gravity kinematic inspections. They do not validate mass, contact or walking. Geometry is primitive and lacks brackets; apparent floating or motion is not evidence of dynamic stability.
+
+### Isaac Sim and RL next steps
+
+M4 selects GPU, Isaac Sim and Isaac Lab versions and records successful versions in `simulation/ENVIRONMENT.md`. Import the URDF and verify axes, scale, collisions and inertia, starting with a single-leg step response against measurements. Then implement baseline locomotion, learning environment, reward, domain randomization and repeated evaluation. Running the old nine-joint `motion/` task is not the new biped workflow.
+
+For reproducing the old model, follow the [legacy guide](legacy/README.md). `scripts/simulate.py` is exclusively for that nine-joint model.
+
+---
+
+<a id="한국어"></a>
+
 # SNU GOM 모델 실행
 
 ## CPU 검사

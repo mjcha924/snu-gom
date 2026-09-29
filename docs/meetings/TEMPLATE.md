@@ -1,13 +1,15 @@
-# YYYY-MM-DD 팀 미팅
+# YYYY-MM-DD Team meeting / 팀 미팅
 
-참석 / 기록자:
+Attendees / 참석자:
+Recorder / 기록자:
 
-| 영역 | 이번 주 증거 링크 | 막힌 점 | 다음 작업 Issue |
+| Area / 영역 | Evidence this week / 이번 주 증거 | Blockers / 막힌 점 | Next issue / 다음 작업 |
 | --- | --- | --- | --- |
-| M1 기구 | | | |
-| M2 전장 | | | |
-| M3 펌웨어 | | | |
-| M4 시뮬레이션 | | | |
-| M5 통합·시험 | | | |
+| M1 Mechanical / 기구 | | | |
+| M2 Electronics / 전장 | | | |
+| M3 Firmware / 펌웨어 | | | |
+| M4 Simulation / 시뮬레이션 | | | |
+| M5 Integration & testing / 통합·시험 | | | |
 
+Update `docs/DECISIONS.md` with decisions and Issues with assignments.
 결정 사항은 `docs/DECISIONS.md`에, 담당 작업은 Issue에 반영합니다.

@@ -1,3 +1,32 @@
+[English](#english) | [한국어](#한국어)
+
+<a id="english"></a>
+
+# Mechanical concept
+
+Ten XL330-M288-T leg motors are confirmed. Hip roll/pitch, knee pitch and ankle pitch/roll form the initial proposal. Manufacturing design and motor mounting are incomplete.
+
+| Item | Target / draft |
+| --- | --- |
+| Overall height | 300–330 mm |
+| Overall width | 145–160 mm |
+| Head envelope | 110 W × 85 D × 80 H mm, excluding ears |
+| Torso envelope | 95 W × 70 D × 70 H mm |
+| Thigh / shin axis spacing | 55 mm each |
+| Foot envelope | 75 L × 55 W mm |
+| Hip spacing | 85–95 mm |
+| Target mass | About 600 g; ten motors alone weigh 180 g |
+
+`robot/config.json` describes a primitive inspection model. Adjacent roll/pitch axes coincide in this idealization; that does not establish that two 20×34×26 mm motors fit there. Finalize brackets, offsets and cable bend clearance in CAD, then update the model. Link masses assume motors are included and need measured allocation.
+
+Build one leg first to measure load, heating and backlash. Check support opposite the horn, floor friction, foot interference, head center of mass and cable tension. Stall torque of 0.52 Nm is not a continuous torque rating. URDF limits of 0.2 Nm and 1 rad/s are temporary simulation values, not hardware ratings.
+
+See [mechanical handoff](../hardware/mechanical/README.md). Treat the old nine-joint Onshape model as [historical material](legacy/README.md).
+
+---
+
+<a id="한국어"></a>
+
 # SNU GOM 기구 초안
 
 확정 부품은 다리용 XL330-M288-T 10개입니다. 고관절 롤/피치, 무릎 피치, 발목 피치/롤은 초기 검토안입니다. 제조용 기구 설계와 모터 체결은 아직 완료되지 않았습니다.
