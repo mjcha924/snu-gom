@@ -1,35 +1,14 @@
-[English](#english) | [한국어](#한국어)
+# Development steps / 개발 순서
 
-<a id="english"></a>
+| Step / 단계 | Result / 결과 | Needed first / 선행 조건 |
+| --- | --- | --- |
+| 1. Joint fit / 관절 체결 | Print one saddle/yoke and verify the real XL330 hardware / 시편과 실물 모터 체결 확인 | Supplied CAD and actual motor / 원본 CAD·실물 |
+| 2. One leg / 한쪽 다리 | Load, current, temperature and cable-clearance records / 하중·전류·온도·배선 기록 | Reliable joint mounting / 관절 체결 |
+| 3. Head and HRI / 머리·HRI | Neck pitch, straight nose camera, microphone and speaker bench test / 목 피치·코 카메라·음성 시험 | Head mass and wiring allowance / 머리 질량·배선 |
+| 4. Complete model / 전체 모델 | Matching CAD, URDF, mass and inertia / CAD·URDF·질량·관성 일치 | Measured dimensions and masses / 실측 |
+| 5. Supported standing / 지지 기립 | Eleven-motor wiring and fault behavior / 11축 배선·오류 대응 | Power and control checks / 전원·제어 |
+| 6. Walking and expression / 보행·표현 | Repeatable baseline, then learning and HRI integration / 반복 가능한 기준 제어 후 학습·HRI | Reliable model and hardware / 모델·실물 검증 |
 
-# Roadmap and initial tasks
+Project period: 2026-09-15 to 2027-01-30. Schedule each step around actual motor delivery and test results. Track concrete tasks in [Issues](https://github.com/mjcha924/snu-gom/issues); use [commit and PR guidelines](../CONTRIBUTING.md) for all changes.
 
-| Dates (2026–2027) | Deliverable | Lead | Dependency |
-| --- | --- | --- | --- |
-| Sep 29–Oct 11 | Joint proposal, five roles, lead times and interfaces | Everyone | Accounts and loan equipment confirmed |
-| Oct 12–25 | One-leg load and thermal tests | M1/M2/M3 | Motors available; otherwise prioritize CAD/model |
-| Oct 26–Nov 15 | Manufacturing CAD, power schematic and matching model frames | M1/M2/M4 | Interference, mass and current evidence |
-| Nov 16–30 | Ten-axis integration and supported standing | M3/M5 | Assembly, wiring and fault behavior validated |
-| Dec 1–20 | Baseline walking and learning experiments | M4/M5 | Model/sensor agreement |
-| Dec 21–Jan 10 | Hardware transfer and expressive-motion comparison | Everyone | Repeated physical tests |
-| Jan 11–30 | Final logs, demo and documentation | M5/everyone | Proposed acceptance criteria evaluated |
-
-The official motor store showed a 40-day preparation time when checked on September 29, 2026. Adjust early hardware dates to actual procurement. Track completion in Issues; use area READMEs and the five kickoff issues for acceptance criteria.
-
----
-
-<a id="한국어"></a>
-
-# 일정과 첫 작업
-
-| 기간 | 결과물 | 주담당 | 의존 조건 |
-| --- | --- | --- | --- |
-| 09.29~10.11 | 관절안·5인 배정·구매 납기·명세 | 전원 | 담당 계정 및 장비 대여 확인 |
-| 10.12~10.25 | 한쪽 다리 하중·발열 시험 | M1/M2/M3 | 모터 확보; 지연 시 CAD·모델 먼저 |
-| 10.26~11.15 | 제조 CAD·전원 회로·동일 좌표의 모델 | M1/M2/M4 | 관절 간섭·질량·전류 근거 |
-| 11.16~11.30 | 10축 통합과 지그 기립 | M3/M5 | 조립·배선·오류 대응 검증 |
-| 12.01~12.20 | 기준 보행·학습 실험 | M4/M5 | 모델 및 센서 일치 |
-| 12.21~01.10 | 실물 전이·표현 동작 비교 | 전원 | 실제 반복 시험 |
-| 01.11~01.30 | 최종 로그·데모·문서 | M5/전원 | 제안 완료 조건 평가 |
-
-공식몰 모터 준비기간 40일 표시(2026-09-29 조회) 때문에 초기 하드웨어 일정은 조달 결과에 따라 조정해야 합니다. 실제 완료 상태는 Issues에서 관리합니다. 첫 다섯 작업의 수락 기준은 각 영역의 README와 팀 kickoff Issues를 사용합니다.
+활동 기간은 2026-09-15~2027-01-30이며 실제 납기와 시험 결과에 맞춰 순서를 진행합니다. 작업은 Issues, 변경 절차는 공통 커밋·PR 안내를 사용합니다.

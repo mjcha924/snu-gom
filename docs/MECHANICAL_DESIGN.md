@@ -1,49 +1,29 @@
-[English](#english) | [한국어](#한국어)
+# Mechanical design / 기구 설계
 
-<a id="english"></a>
+The detailed prototype keeps the original bear face and uses the supplied XL/XC-330 STEP with its output horns, rear idlers, screws and connectors. Each leg has five XL330-M288-T motors; a separate neck-pitch motor raises the head. **11 motors overall; arms fixed.**
 
-# Mechanical concept
+기존 곰 얼굴을 유지하고 제공된 XL/XC-330 STEP의 혼·아이들러·나사·커넥터를 사용합니다. 다리당 XL330-M288-T 5개와 목 피치 1개로 **전체 11개**, 팔은 고정입니다.
 
-Ten XL330-M288-T leg motors are confirmed. Hip roll/pitch, knee pitch and ankle pitch/roll form the initial proposal. Manufacturing design and motor mounting are incomplete.
-
-| Item | Target / draft |
+| Feature / 항목 | Prototype / 시안 |
 | --- | --- |
-| Overall height | 300–330 mm |
-| Overall width | 145–160 mm |
-| Head envelope | 110 W × 85 D × 80 H mm, excluding ears |
-| Torso envelope | 95 W × 70 D × 70 H mm |
-| Thigh / shin axis spacing | 55 mm each |
-| Foot envelope | 75 L × 55 W mm |
-| Hip spacing | 85–95 mm |
-| Target mass | About 600 g; ten motors alone weigh 180 g |
+| Leg chain / 다리 축 순서 | Hip roll → hip pitch → knee pitch → ankle pitch → ankle roll |
+| Hip spacing / 고관절 간격 | 88 mm |
+| Thigh / shin axis spacing / 축간 | 48 / 48 mm |
+| Foot sole / 발판 | 88 × 66 mm, rounded outline / 둥근 외곽 |
+| Torso / 몸통 | 92 × 124 × 102 mm |
+| Camera / 카메라 | Straight ahead in nose; head pitch controls gaze / 정면 코 카메라·목 피치로 시선 변경 |
+| Custom shells / 외장 | About 1.6 mm nominal wall; local details differ / 주요 구간 1.6 mm, 국부 형상은 다름 |
+| Supplied motor case / 제공 케이스 | 20 × 34 × 23 mm measured geometry / 형상 치수 |
+| Horn interface / 혼 인터페이스 | 29 mm between outer mating faces; four holes on Ø12 mm circle / 체결면 간 29 mm·Ø12 원주 4공 |
 
-`robot/config.json` describes a primitive inspection model. Adjacent roll/pitch axes coincide in this idealization; that does not establish that two 20×34×26 mm motors fit there. Finalize brackets, offsets and cable bend clearance in CAD, then update the model. Link masses assume motors are included and need measured allocation.
+The custom saddle and dual-sided yoke use measured hole centres. Case-hole thread/fastener suitability, printed tolerances and load capacity still need physical verification. Electronics other than the supplied motors are packaging envelopes. The first full-body assembly is for fit review; neck travel, cable slack, service-cover retention and actual head load remain development tasks.
 
-Build one leg first to measure load, heating and backlash. Check support opposite the horn, floor friction, foot interference, head center of mass and cable tension. Stall torque of 0.52 Nm is not a continuous torque rating. URDF limits of 0.2 Nm and 1 rad/s are temporary simulation values, not hardware ratings.
+자체 새들·양면 요크는 실측 구멍 중심을 사용하지만 케이스 체결부의 나사·사용 가능 여부, 출력 공차·하중은 실물 검증이 필요합니다. 모터 외 전자부품은 공간 배치 형상입니다. 전체 조립체는 검토용이며 목 가동 범위·배선 여유·커버 고정·머리 하중을 검증해야 합니다.
 
-See [mechanical handoff](../hardware/mechanical/README.md). Treat the old nine-joint Onshape model as [historical material](legacy/README.md).
+Print one joint fit specimen before building a leg. Measure current, heating and deflection under representative load. The previous 0.600 kg assumption is not a current complete-robot mass estimate. Material volume, purchased components and measured prints must be combined into a new mass budget.
 
----
+한 관절 시편을 먼저 출력하고 한쪽 다리에서 대표 하중의 전류·발열·변형을 측정합니다. 기존 0.600 kg은 현재 완성 로봇의 질량이 아닙니다. CAD 체적·구입 부품·출력 실측값으로 질량을 갱신합니다.
 
-<a id="한국어"></a>
+**Simulation mismatch / 모델 차이:** `robot/config.json` and its URDF are still an earlier ten-leg-joint primitive model. They do not yet contain this detailed geometry, offset axes or neck joint. Update frames, collision geometry, masses and inertia before using the new CAD for learning. / 기존 도형 URDF는 상세 형상·오프셋·목 관절을 아직 반영하지 않았습니다.
 
-# SNU GOM 기구 초안
-
-확정 부품은 다리용 XL330-M288-T 10개입니다. 고관절 롤/피치, 무릎 피치, 발목 피치/롤은 초기 검토안입니다. 제조용 기구 설계와 모터 체결은 아직 완료되지 않았습니다.
-
-| 항목 | 목표 / 초안 |
-| --- | --- |
-| 전체 높이 | 300~330 mm |
-| 전체 폭 | 145~160 mm |
-| 머리 외곽 | 폭 110 × 깊이 85 × 높이 80 mm, 귀 제외 |
-| 몸통 외곽 | 폭 95 × 깊이 70 × 높이 70 mm |
-| 허벅지 / 종아리 축간 | 각각 55 mm |
-| 발 외곽 | 길이 75 × 폭 55 mm |
-| 고관절 간격 | 85~95 mm |
-| 질량 목표 | 약 600 g, 10개 모터만 180 g |
-
-`robot/config.json`의 값은 기본 도형 검토 모델입니다. 인접 roll/pitch 축을 같은 위치에 놓은 이상화 모델이므로 실제 20×34×26 mm 모터 2개를 그 위치에 넣을 수 있다는 뜻이 아닙니다. 모터 브래킷·축 오프셋·배선 굽힘 공간을 CAD로 확정한 뒤 모델을 바꿉니다. 링크 질량에는 모터를 포함한다고 가정하며 실측 분배가 필요합니다.
-
-한쪽 다리부터 조립해 하중·발열·기어 유격을 측정합니다. 혼 반대쪽 지지, 바닥 마찰, 발 사이 간섭, 머리 무게중심과 케이블 장력을 확인합니다. 스톨 토크 0.52 Nm는 연속 허용 토크가 아닙니다. URDF의 0.2 Nm와 1 rad/s는 시뮬레이션용 임시 제한이며 하드웨어 정격이 아닙니다.
-
-기구 인수인계 항목은 [hardware/mechanical/README.md](../hardware/mechanical/README.md)에 있습니다. 이전 9축 Onshape는 [역사 자료](legacy/README.md)로만 취급합니다.
+[CAD handoff](../hardware/mechanical/README.md) · [HRI](HRI.md) · [Simulation](SIMULATING_MOTION.md)

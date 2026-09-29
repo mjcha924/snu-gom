@@ -10,7 +10,7 @@ Joint order: left hip_roll, hip_pitch, knee_pitch, ankle_pitch, ankle_roll, foll
 
 ### PC ↔ MCU contract
 
-M2/M3 will choose the transport encoding. Initial semantics:
+Choose the transport encoding after bench tests. Initial semantics:
 
 - Command: `schema_version`, `robot_revision`, `sequence`, `positions_rad[10]`. MCU validates length, finite values, angle bounds and revision.
 - Telemetry: `sequence`, `device_time_us`, `positions_rad[10]`, `velocities_rad_s[10]`, `currents_A[10]`, `bus_voltage_V`, `temperature_C[10]`, `imu_accel_m_s2[3]`, `imu_gyro_rad_s[3]`, `faults`.
@@ -35,7 +35,7 @@ Candidate observations are joint q/dq, torso IMU and the previous command. Actio
 
 ## PC ↔ MCU 계약
 
-전송 인코딩은 M2/M3가 선정합니다. 초기 의미 계약은 아래를 따릅니다.
+전송 인코딩은 벤치 시험 후 선정합니다. 초기 의미 계약은 아래를 따릅니다.
 
 - Command: `schema_version`, `robot_revision`, `sequence`, `positions_rad[10]`. MCU는 길이·유한값·각도 범위와 revision을 검사합니다.
 - Telemetry: `sequence`, `device_time_us`, `positions_rad[10]`, `velocities_rad_s[10]`, `currents_A[10]`, `bus_voltage_V`, `temperature_C[10]`, `imu_accel_m_s2[3]`, `imu_gyro_rad_s[3]`, `faults`.
@@ -47,3 +47,14 @@ Candidate observations are joint q/dq, torso IMU and the previous command. Actio
 ## 모델 ↔ 학습 계약
 
 관측은 관절 q/dq, 몸통 IMU와 이전 명령을 후보로 합니다. 행동은 10축 관절 목표값입니다. 정규화, 기준 자세, 행동 스케일, 주기는 실측 후 별도 버전으로 고정합니다. 모델 revision 또는 관절 순서가 바뀌면 기존 정책은 재검증 전 사용하지 않습니다.
+
+## HRI boundary / HRI 경계
+
+[HRI.md](HRI.md) defines high-level behavior/API requests. Dialogue and cloud responses never directly populate `positions_rad[10]`; a validated local controller owns that conversion.
+[HRI.md](HRI.md)의 행동·API 요청은 상위 의도이며 대화·클라우드 응답이 `positions_rad[10]`을 직접 채우지 않습니다. 검증된 로컬 제어기가 변환합니다.
+
+## Neck update / 목 피치 추가
+
+The existing configuration above remains the ten-leg-joint proxy contract. The detailed CAD now adds `neck_pitch` (proposed logical ID 11). A future versioned full-body command may append this joint, while the locomotion policy may retain ten leg actions with neck control handled separately. Do not silently send eleven values to the current ten-value interface.
+
+위 기존 설정은 다리 10축 도형 모델 계약입니다. 상세 CAD는 `neck_pitch`(논리 ID 11 제안)를 추가합니다. 전신 명령은 버전을 올려 11축으로 확장하고 보행 정책은 다리 10축과 별도 목 제어로 구성할 수 있습니다. 현재 10개 배열 인터페이스에 11개 값을 임의로 보내지 않습니다.

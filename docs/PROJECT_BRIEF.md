@@ -4,9 +4,9 @@
 
 # Project brief
 
-SNU GOM is a small bipedal research platform with a bear's short legs and large paws. It uses five joints per leg and ten XL330-M288-T motors. Develop standing and short walks first, then expressive waddles and body tilts.
+SNU GOM is a small bipedal research platform with a bear's short legs and large paws. It uses five joints per leg and ten XL330-M288-T leg motors, plus one neck-pitch motor. Develop standing and short walks first, then expressive waddles and body tilts.
 
-The baseline has fixed head/arms, no camera, and uses an IMU plus joint feedback. A two-axis neck, onboard SBC and foot-contact sensors are optional. Human-motion imitation, skating and autonomous recovery are outside the current acceptance criteria.
+The baseline has fixed arms and a pitching head, an IMU and joint feedback, plus a required nose camera, microphone, speaker and onboard HRI computer. See [HRI](HRI.md). Neck yaw and foot-contact sensors remain optional. Human-motion imitation, skating and autonomous recovery are outside the current acceptance criteria.
 
 ### Proposed acceptance criteria
 
@@ -18,7 +18,7 @@ The baseline has fixed head/arms, no camera, and uses an IMU plus joint feedback
 
 These are proposed targets for team agreement before testing, not achieved results. If learning or hardware transfer fails, document failure conditions and limitations.
 
-Project period: September 15, 2026–January 30, 2027. See [roadmap](ROADMAP.md), [roles](TEAM.md) and [budget](../hardware/bom/README.md). The submission Word document is separate; use repository Markdown as the collaboratively maintained technical plan.
+Project period: September 15, 2026–January 30, 2027. See [roadmap](ROADMAP.md), [budget](../hardware/bom/README.md). The submission Word document is separate; use repository Markdown as the collaboratively maintained technical plan.
 
 ---
 
@@ -26,9 +26,9 @@ Project period: September 15, 2026–January 30, 2027. See [roadmap](ROADMAP.md)
 
 # SNU GOM 프로젝트 개요
 
-SNU GOM은 곰처럼 짧은 다리와 큰 발을 가진 소형 이족보행 연구 플랫폼입니다. 다리 5축씩, XL330-M288-T 10개를 사용합니다. 기립·짧은 보행을 먼저 만들고 뒤뚱거림·몸 기울이기 같은 표현 동작을 확장합니다.
+SNU GOM은 곰처럼 짧은 다리와 큰 발을 가진 소형 이족보행 연구 플랫폼입니다. 다리 5축씩, 다리용 XL330-M288-T 10개와 목 피치용 1개를 사용합니다. 기립·짧은 보행을 먼저 만들고 뒤뚱거림·몸 기울이기 같은 표현 동작을 확장합니다.
 
-기본안은 고정 머리·팔, 카메라 없이 IMU 및 관절 피드백을 사용합니다. 목 2축·온보드 SBC·발 접촉 센서는 선택입니다. 사람 동작 모방, 스케이팅, 자율 회복은 현 단계의 완료 조건이 아닙니다.
+기본안은 고정 팔·피치 머리, IMU·관절 피드백에 필수 코 카메라·마이크·스피커·온보드 HRI 컴퓨터를 추가합니다. [HRI](HRI.md)를 참고하세요. 목 yaw·발 접촉 센서는 후속 선택입니다. 사람 동작 모방, 스케이팅, 자율 회복은 현 단계의 완료 조건이 아닙니다.
 
 ## 제안 완료 기준
 
@@ -40,4 +40,4 @@ SNU GOM은 곰처럼 짧은 다리와 큰 발을 가진 소형 이족보행 연�
 
 목표는 팀이 시험 전 확정할 제안값이며 달성 실적이 아닙니다. 학습 성공 또는 실물 전이가 불가능하면 실패 조건과 한계 분석을 남깁니다.
 
-활동 기간: 2026.09.15~2027.01.30. [상세 일정](ROADMAP.md), [5인 역할](TEAM.md), [예산](../hardware/bom/README.md)을 참고하세요. 제출용 Word 문서는 별도 작성되어 있으며 본 저장소 Markdown을 팀이 함께 갱신할 기술 계획의 기준으로 사용합니다.
+활동 기간: 2026.09.15~2027.01.30. [상세 일정](ROADMAP.md), [예산](../hardware/bom/README.md)을 참고하세요. 제출용 Word 문서는 별도 작성되어 있으며 본 저장소 Markdown을 팀이 함께 갱신할 기술 계획의 기준으로 사용합니다.

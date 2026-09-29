@@ -1,27 +1,18 @@
-[English](#english) | [한국어](#한국어)
+# CAD files and status / CAD 파일과 상태
 
-<a id="english"></a>
+The prototype CAD package contains a full STEP assembly, an internal assembly, a five-joint left leg, separate custom STEP/STL parts and small joint fit specimens. It uses the user-supplied XL/XC-330 motor geometry including horns. The bear nose holds a forward-facing camera; a separate XL330 tilts the head.
 
-# M1 mechanical handoff
+프로토타입 CAD 패키지는 전체·내부·한쪽 다리 STEP, 개별 STEP/STL와 관절 시편으로 구성합니다. 제공받은 XL/XC-330 모터·혼 형상을 사용하고 정면 코 카메라와 별도 목 피치를 포함합니다.
 
-- Five-axis single-leg and pelvis CAD with manufacturable motor/horn mounts.
-- Frame coordinates, axis offsets, cable paths and joint ranges.
-- Clearly separated estimated/measured link mass and center of mass; Onshape named version.
-- Support shafts/bearings, fastener specifications/quantities, material and print orientation.
-- Update `robot/config.json` and URDF after frame review with M4.
+Current deliverable: `SNU_GOM_XL330_Prototype.zip`, shared with the project owner. Detailed CAD binaries are not committed here. Before publishing a permanent CAD link, record its named version, units and file checksum in `cad_manifest.json`; no new Onshape document has been created by this update.
 
-Done means another member can review assembly from the same version and find the interference/load-test plan. Edit in task-specific workspaces when teammates are changing the main assembly.
+현재 결과물은 프로젝트 소유자에게 전달하는 `SNU_GOM_XL330_Prototype.zip`이며 대용량 CAD는 저장소에 추가하지 않습니다. 영구 CAD 링크를 등록할 때 `cad_manifest.json`에 버전·단위·체크섬을 기록합니다. 이번 변경으로 새 Onshape 문서를 만들지는 않았습니다.
 
----
+## Before fabrication / 제작 전
 
-<a id="한국어"></a>
+- Verify saddle fastening, horn screw engagement and access with one physical motor. / 실물 모터로 새들·혼·나사 체결 확인.
+- Check full motion, cables, neck load and shell retention. / 전체 가동 범위·배선·목 하중·외장 고정 확인.
+- Record estimated and measured masses separately. / 질량 추정·실측 구분.
+- Update the existing proxy URDF to match the chosen CAD revision. / 선택 CAD 버전에 맞춰 도형 URDF 갱신.
 
-# M1 기구 인수인계
-
-- 5축 한쪽 다리와 골반 CAD, 제조 가능한 모터/혼 장착 구조.
-- 프레임 좌표·축 오프셋·케이블 통과 공간·관절 가동 범위.
-- 링크 질량 및 CoM 추정과 실측 구분, Onshape named version.
-- 지지축/베어링과 나사 규격·수량, 재료와 출력 방향.
-- M4와 좌표 검토 후 `robot/config.json`과 URDF 갱신.
-
-완료: 타인이 같은 버전으로 조립 검토할 수 있고, 간섭·하중 시험 계획이 기록됨. 다른 팀원이 메인 어셈블리를 바꾸는 동안에는 작업별 workspace에서 수정합니다.
+See [mechanical design](../../docs/MECHANICAL_DESIGN.md), [HRI](../../docs/HRI.md) and [change guidelines](../../CONTRIBUTING.md).
