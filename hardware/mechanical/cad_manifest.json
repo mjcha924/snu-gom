@@ -1,6 +1,26 @@
 {
-  "robot_revision": "snu-gom-biped-v0.1-proxy",
+  "robot_revision": "snu-gom-cad-v0.2-paws-leg-shells",
   "biped_named_version_url": null,
-  "status": "awaiting_biped_cad",
+  "status": "fit_prototype_delivered",
+  "package_file": "SNU_GOM_XL330_Prototype_v02.zip",
+  "package_download_url": null,
+  "distribution": "Shared with project owner; binary CAD is not committed to this repository.",
+  "units": "mm",
+  "date": "2026-09-29",
+  "package_sha256": "c15b724d6812fc0053e4948cb96bddfeec52fb0a1c8578d54a65139ebb6dddd9",
+  "full_step_sha256": "d14b9de22436985524ef3d57ab098098a7df81f94053825f36cdecbe5a51f89e",
+  "supplier_step_sha256": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
+  "motor_count": 11,
+  "leg_dof_per_side": 5,
+  "camera_tilt_deg": 0,
+  "overall_xyz_mm": [
+    124.8,
+    223.3,
+    364.3
+  ],
+  "planning_mass_g": 1049.6,
+  "simulation_synchronized": false,
+  "geometry_guide": "../../docs/CAD_GEOMETRY.md",
+  "verification_guide": "../../docs/CAD_VERIFICATION.md",
   "legacy_reference_url": "https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301"
 }

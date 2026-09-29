@@ -26,7 +26,7 @@ Walking, waddling and expressive responses are development goals. They have not 
 | I want to… | Open |
 | --- | --- |
 | Understand the robot | [Project overview](docs/PROJECT_BRIEF.md) |
-| See the mechanical layout | [Mechanical design](docs/MECHANICAL_DESIGN.md) · [CAD files and status](hardware/mechanical/README.md) |
+| See the mechanical layout | [CAD geometry and layout](docs/CAD_GEOMETRY.md) · [CAD files and status](hardware/mechanical/README.md) |
 | Understand camera, voice and APIs | [HRI design](docs/HRI.md) |
 | Check wiring and parts | [Electronics](docs/ELECTRONICS.md) · [BOM and costs](hardware/bom/README.md) |
 | Run the existing model | [Simulation guide](docs/SIMULATING_MOTION.md) |
@@ -78,7 +78,7 @@ Detailed motor/horn CAD, the straight nose camera and neck-pitch mechanism are b
 | 궁금한 내용 | 문서 |
 | --- | --- |
 | 로봇의 목표와 구성 | [프로젝트 개요](docs/PROJECT_BRIEF.md) |
-| 기구와 CAD | [기구 설계](docs/MECHANICAL_DESIGN.md) · [CAD 상태](hardware/mechanical/README.md) |
+| 기구와 CAD | [CAD 형상·기구 배치](docs/CAD_GEOMETRY.md) · [CAD 상태](hardware/mechanical/README.md) |
 | 카메라·음성·API | [HRI 설계](docs/HRI.md) |
 | 전장·구매·가격 | [전장](docs/ELECTRONICS.md) · [BOM과 예산](hardware/bom/README.md) |
 | 모델 실행 | [시뮬레이션 안내](docs/SIMULATING_MOTION.md) |

@@ -1,5 +1,7 @@
 # Mechanical design / 기구 설계
 
+**[Detailed CAD geometry and layout / CAD 형상·조립 상세 안내](CAD_GEOMETRY.md)** — joint coordinates, motor interfaces, paws, removable leg covers and wiring. / 관절 좌표·모터 체결·발·분리형 다리 외장·배선 설명.
+
 The detailed prototype keeps the original bear face and uses the supplied XL/XC-330 STEP with its output horns, rear idlers, screws and connectors. Each leg has five XL330-M288-T motors; a separate neck-pitch motor raises the head. **11 motors overall; arms fixed.**
 
 기존 곰 얼굴을 유지하고 제공된 XL/XC-330 STEP의 혼·아이들러·나사·커넥터를 사용합니다. 다리당 XL330-M288-T 5개와 목 피치 1개로 **전체 11개**, 팔은 고정입니다.

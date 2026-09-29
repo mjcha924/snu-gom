@@ -4,9 +4,15 @@ The prototype CAD package contains a full STEP assembly, an internal assembly, a
 
 프로토타입 CAD 패키지는 전체·내부·한쪽 다리 STEP, 개별 STEP/STL와 관절 시편으로 구성합니다. 제공받은 XL/XC-330 모터·혼 형상을 사용하고 정면 코 카메라와 별도 목 피치를 포함합니다.
 
-Current deliverable: `SNU_GOM_XL330_Prototype.zip`, shared with the project owner. Detailed CAD binaries are not committed here. Before publishing a permanent CAD link, record its named version, units and file checksum in `cad_manifest.json`; no new Onshape document has been created by this update.
+Current deliverable: `SNU_GOM_XL330_Prototype_v02.zip`, shared with the project owner. Detailed CAD binaries are not committed here. The version, units and file checksum are recorded in `cad_manifest.json`; a permanent download URL is not yet assigned; no new Onshape document has been created by this update.
 
-현재 결과물은 프로젝트 소유자에게 전달하는 `SNU_GOM_XL330_Prototype.zip`이며 대용량 CAD는 저장소에 추가하지 않습니다. 영구 CAD 링크를 등록할 때 `cad_manifest.json`에 버전·단위·체크섬을 기록합니다. 이번 변경으로 새 Onshape 문서를 만들지는 않았습니다.
+현재 결과물은 프로젝트 소유자에게 전달하는 `SNU_GOM_XL330_Prototype_v02.zip`이며 대용량 CAD는 저장소에 추가하지 않습니다. `cad_manifest.json`에 버전·단위·체크섬을 기록했으며 영구 다운로드 URL은 아직 없습니다. 이번 변경으로 새 Onshape 문서를 만들지는 않았습니다.
+
+## v0.2 covers / v0.2 외장
+
+Rounded paw covers, curved hand inlays, removable front/rear leg panels, rear wiring troughs and soft joint sleeves now surround the mechanism. The sleeves are neutral envelopes; they need physical material and cable-motion development. / 둥근 발·곡면 손 패드·분리형 다리 패널·후면 배선 홈·유연 관절 커버를 추가했습니다. 유연 커버는 중립 외곽이며 소재·배선 동작 검증이 필요합니다.
+
+Read [CAD geometry and assembly](../../docs/CAD_GEOMETRY.md) and [revision verification](../../docs/CAD_VERIFICATION.md). / 형상·조립 구조와 버전별 검사 결과는 링크를 참고하세요.
 
 ## Before fabrication / 제작 전
 
