@@ -1,19 +1,7 @@
-# SNU Bear CAD workspace
+# CAD 협업
 
-**[Open the shared SNU Bear Onshape document](https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301)**
+기존 [Onshape 문서](https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301)는 이전 9축 설계의 참고 링크입니다. 최신 SNU GOM 제조 CAD로 검증된 링크가 아닙니다.
 
-Use this document for CAD inspection and team refinement. Access follows the document's existing sharing settings. The supplied URL points to a mutable workspace, not a frozen version; no changes to the Onshape document were made during this GitHub upload.
+M1은 별도 biped workspace를 만들고 named version 링크를 `hardware/mechanical/cad_manifest.json`에 등록합니다. 팀별 부품 인터페이스를 정한 뒤 좌우 다리, 골반, 외장으로 작업을 나눕니다. PR에는 변경 전후 그림, named version, 단위, 축 위치, 질량, 체결 규격, 충돌 범위를 기록합니다. M4가 시뮬레이션 좌표를 확인한 후 main에 문서와 모델을 반영합니다.
 
-STEP, STL, BREP and other geometry files are omitted from this repository. The saved V0.6 [dimensions](MECHANICAL_DESIGN.md) and [joint registry](../motion/src/snu_bear_motion/data/robot/joint_registry.json) are reference metadata, not a verification of the current Onshape workspace.
-
-## Assembly relationships
-
-1. Ground the torso. Root motor cases, battery and torso-mounted electronics belong to that rigid group.
-2. Each upper carrier is a separate moving link.
-3. Each paw, pads and elbow/knee motor case form one lower moving link.
-4. Use eight limb revolute mates and one neck pitch mate. A positioned STEP import does not provide these mates automatically.
-5. Use the joint registry to inspect axis locations and neutral-frame offsets. Physical motor zeros and allowable travel must come from hardware calibration.
-
-Work in millimeters for mechanical design, with +X forward, +Y left and +Z up. Simulation uses meters and link-local mesh frames.
-
-For each mechanical revision, create an Onshape version, record its link in the related PR, and explain which dimensions, masses, joint frames and motion assumptions changed. Check swept motion and ground contact before declaring a new revision feasible. Coordinate any later geometry upload separately; this release uses the Onshape link in place of CAD files.
+Onshape는 mm로 설계해도 URDF에는 m를 사용합니다. 링크 로컬 프레임 기준으로 내보내며, 눈으로만 크기를 맞추지 않습니다. 생성된 기본 도형 URDF는 제조용 CAD를 대체하지 않습니다.

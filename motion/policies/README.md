@@ -1,3 +1,5 @@
+> **Legacy V0.6 / 9 joints.** This file describes the previous crawling bear. For the SNU GOM biped start at the root README and `robot/config.json`.
+
 # Policy storage
 
 All registry entries are untrained. There are no bundled `.onnx`, `.pt` or fake checkpoint files.

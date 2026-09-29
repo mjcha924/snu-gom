@@ -1,37 +1,13 @@
-# Development roadmap
+# 일정과 첫 작업
 
-## 1. Establish the hardware baseline
+| 기간 | 결과물 | 주담당 | 의존 조건 |
+| --- | --- | --- | --- |
+| 09.29~10.11 | 관절안·5인 배정·구매 납기·명세 | 전원 | 담당 계정 및 장비 대여 확인 |
+| 10.12~10.25 | 한쪽 다리 하중·발열 시험 | M1/M2/M3 | 모터 확보; 지연 시 CAD·모델 먼저 |
+| 10.26~11.15 | 제조 CAD·전원 회로·동일 좌표의 모델 | M1/M2/M4 | 관절 간섭·질량·전류 근거 |
+| 11.16~11.30 | 10축 통합과 지그 기립 | M3/M5 | 조립·배선·오류 대응 검증 |
+| 12.01~12.20 | 기준 보행·학습 실험 | M4/M5 | 모델 및 센서 일치 |
+| 12.21~01.10 | 실물 전이·표현 동작 비교 | 전원 | 실제 반복 시험 |
+| 01.11~01.30 | 최종 로그·데모·문서 | M5/전원 | 제안 완료 조건 평가 |
 
-- Select the exact Dynamixel models and obtain their current mechanical drawings.
-- Detail paw-mounted bend-motor retention, upper carriers, horns and bearings.
-- Resolve tight neck/paw clearances and define manufacturing tolerances.
-- Detail the battery, power distribution, controller, IMU and cable routing.
-- Measure or update mass, center of mass, inertia, travel and motor direction.
-
-Deliverable: an assembled and serviceable mechanical revision with a matching simulation model.
-
-## 2. Validate the simulator model
-
-- Install the targeted Isaac Lab / Isaac Sim environment.
-- Import the URDF and inspect collision shapes, inertia, contact and joint axes.
-- Run both hold-skill smoke checks.
-- Compare simulated motor response with measured servo behavior.
-
-Deliverable: reproducible import and physics checks with recorded software versions.
-
-## 3. Train and evaluate the five initial skills
-
-Train hold sitting, hold low, sit to low, low to sit and crawl forward. Record success rates, falls, contact behavior, tracking, torque/speed limits and robustness to parameter variation. Establish whether the current nine-joint hardware supports each goal before assuming an additional motor is needed or unnecessary.
-
-Deliverable: actual trained checkpoints and evaluation records tied to a robot revision.
-
-## 4. Integrate the robot
-
-- Implement the transport for the selected servos.
-- Fill the calibration template from measurements.
-- Validate observation timing, coordinate conventions and policy outputs.
-- Evaluate individual skills and then skill handoffs on the assembled robot.
-
-Deliverable: repeatable demonstrations and an updated policy registry.
-
-Turning, recovery, expressive gestures and broader autonomous behavior follow the initial five-skill baseline.
+공식몰 모터 준비기간 40일 표시(2026-09-29 조회) 때문에 초기 하드웨어 일정은 조달 결과에 따라 조정해야 합니다. 실제 완료 상태는 Issues에서 관리합니다. 첫 다섯 작업의 수락 기준은 각 영역의 README와 팀 kickoff Issues를 사용합니다.

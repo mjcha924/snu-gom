@@ -1,3 +1,5 @@
+> **Legacy V0.6 / 9 joints.** This file describes the previous crawling bear. For the SNU GOM biped start at the root README and `robot/config.json`.
+
 > Update 2026-09-29: meshes are now included as lossless restorable assets. Run `python scripts/restore_meshes.py` from the repository root. For CAD playback and experimental physics, see [Simulating motion](../docs/SIMULATING_MOTION.md). Earlier asset-omission notes below describe the initial release.
 
 # SNU Bear motion library · v0.1
@@ -79,4 +81,3 @@ The exact Dynamixel model, motor IDs, zero offsets, directions, allowable travel
 The CAD model also has very small clearances: the earlier kinematic study found about 0.107 mm at the neck and 0.349 mm between approaching paws. Convex decomposition may change those gaps. The earlier static support margin also became negative under some ±20% mass combinations. Passing those earlier geometry checks does not establish reliable dynamics or successful training.
 
 After obtaining policies that work in physics, calibrate the real robot and evaluate skill handoffs before deploying them. [DEPLOYMENT.md](docs/DEPLOYMENT.md) defines the exact interface and what remains to implement for your selected motors.
-

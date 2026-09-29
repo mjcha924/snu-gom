@@ -1,0 +1,131 @@
+{
+  "revision": "snu-gom-biped-v0.1-proxy",
+  "status": "unvalidated_geometry_proxy",
+  "motor": "XL330-M288-T",
+  "frame": "x_forward_y_left_z_up",
+  "dimensions_m": {
+    "hip_spacing": 0.09,
+    "thigh": 0.055,
+    "shin": 0.055,
+    "foot_length": 0.075,
+    "foot_width": 0.055,
+    "foot_height": 0.02
+  },
+  "base_height_m": 0.135,
+  "simulation_only": {
+    "effort_Nm": 0.2,
+    "velocity_rad_s": 1.0
+  },
+  "joints": [
+    {
+      "name": "left_hip_roll",
+      "logical_motor_id": 1,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "lower_rad": -0.35,
+      "upper_rad": 0.35
+    },
+    {
+      "name": "left_hip_pitch",
+      "logical_motor_id": 2,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "lower_rad": -0.8,
+      "upper_rad": 0.6
+    },
+    {
+      "name": "left_knee_pitch",
+      "logical_motor_id": 3,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "lower_rad": 0,
+      "upper_rad": 1.4
+    },
+    {
+      "name": "left_ankle_pitch",
+      "logical_motor_id": 4,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "lower_rad": -0.7,
+      "upper_rad": 0.7
+    },
+    {
+      "name": "left_ankle_roll",
+      "logical_motor_id": 5,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "lower_rad": -0.35,
+      "upper_rad": 0.35
+    },
+    {
+      "name": "right_hip_roll",
+      "logical_motor_id": 6,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "lower_rad": -0.35,
+      "upper_rad": 0.35
+    },
+    {
+      "name": "right_hip_pitch",
+      "logical_motor_id": 7,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "lower_rad": -0.8,
+      "upper_rad": 0.6
+    },
+    {
+      "name": "right_knee_pitch",
+      "logical_motor_id": 8,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "lower_rad": 0,
+      "upper_rad": 1.4
+    },
+    {
+      "name": "right_ankle_pitch",
+      "logical_motor_id": 9,
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "lower_rad": -0.7,
+      "upper_rad": 0.7
+    },
+    {
+      "name": "right_ankle_roll",
+      "logical_motor_id": 10,
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "lower_rad": -0.35,
+      "upper_rad": 0.35
+    }
+  ]
+}

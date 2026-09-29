@@ -1,6 +1,4 @@
-# Historical GitHub release checks
-
-> This record applies to the previous 9-axis robot. Current biped results are in [GOM_VALIDATION.md](GOM_VALIDATION.md).
+# GitHub release checks
 
 Date: 2026-09-22. Scope: text-only project upload with external CAD in Onshape.
 

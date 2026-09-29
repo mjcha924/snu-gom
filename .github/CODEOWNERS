@@ -1,0 +1,6 @@
+# Verified repository owner as temporary fallback.
+# After collaborators have write access, replace the relevant lines with actual usernames.
+# Proposed mapping: hardware/mechanical M1; hardware/electronics and bom M2;
+# firmware M3; simulation and tools M4; tests/docs/workflows M5.
+# No fictitious usernames are configured. Ruleset enforcement is not enabled by this file.
+* @mjcha924
