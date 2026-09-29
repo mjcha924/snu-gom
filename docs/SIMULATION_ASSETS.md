@@ -1,3 +1,5 @@
+> **Legacy V0.6 / 9 joints.** This file describes the previous crawling bear. For the SNU GOM biped start at the root README and `robot/config.json`.
+
 # Simulation assets
 
 The repository includes the audited V0.6 URDF and all ten original CAD-derived meshes. STEP/BRep manufacturing files remain in the shared Onshape/CAD workspace.

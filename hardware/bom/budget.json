@@ -1,0 +1,13 @@
+{
+  "as_of": "2026-09-29",
+  "shipping_krw": 20000,
+  "contingency_rate": 0.15,
+  "round_up_krw": 1000,
+  "bench_purchase_ids": [
+    2,
+    3,
+    4,
+    7
+  ],
+  "note": "Other mandatory bench equipment is assumed borrowed; confirm availability."
+}
