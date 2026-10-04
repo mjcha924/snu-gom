@@ -9,15 +9,19 @@ Original resource list checked / 기존 목록 확인: **2026-09-29**. BD-X/Olaf
 
 ## English
 
-### BD-X and Olaf follow-up / 추가 검토
+### Core character-biped papers / 캐릭터 이족 로봇 핵심 논문
 
-Read [the paper-to-design mapping](PAPER_DESIGN.md) for the implemented CAD v0.3 changes, topology comparison, training objectives and remaining tests. **R15 / First:** [Müller et al., Olaf, arXiv v2](https://arxiv.org/abs/2512.16705v2) — foam/costume packaging, impact-aware motion and motor temperature. Start at p. 3, then pp. 5–7.
+**R8 / First — [Grandia et al., BD-X, RSS 2024](https://www.roboticsproceedings.org/rss20/p103.html)** · [official video](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/). A new robot character; co-designs mechanics and animation, then tracks authored motion while balancing. Read pp. 3–6 and the walking ablation on p. 8. / 새 캐릭터의 기구·애니메이션·RL 제어를 함께 설계합니다. 3–6쪽과 8쪽 보행 비교를 먼저 봅니다.
+
+**R15 / First — [Müller et al., Olaf, arXiv v2](https://arxiv.org/abs/2512.16705v2)** · [HTML](https://arxiv.org/html/2512.16705v2). Rebuilds an existing animated character using asymmetric legs, a foam skirt and stretch costume; adds impact-aware and temperature-aware control. Read pp. 2–5 and results on pp. 6–7. / 기존 캐릭터를 비대칭 다리·폼 스커트·신축성 의상으로 구현하고 착지 충격·모터 온도를 제어에 반영합니다. 2–5쪽, 실험 결과 6–7쪽을 봅니다.
+
+Use [the detailed paper guide](PAPER_NOTES_BD-X_OLAF.md) for a section-by-section explanation, comparison, key experiments, limits and SNU GOM takeaways. The [CAD v0.3 rationale](PAPER_DESIGN.md) lists the changes already applied. / 상세 해설 페이지에는 구조·학습·실험·한계와 SNU GOM 적용점을 정리했습니다. [CAD v0.3 설계 반영](PAPER_DESIGN.md)에서 실제 변경을 확인하세요.
 
 ### Start with these three
 
 1. **XL330 manual (R4)** — establish the physical mounting and motor-control constraints before finalizing a leg.
 2. **Microduck RL (R2)** — inspect the observation/action/reward and actuator-model design before creating our learning task.
-3. **Everyone: Disney biped paper/video (R8)** — discuss how movement can express a bear character while maintaining balance.
+3. **Discuss BD-X and Olaf (R8, R15)** — compare expressive gait design with leg-cover, impact and thermal lessons for SNU GOM.
 
 ### Hardware and working robot references
 
@@ -35,7 +39,8 @@ Read [the paper-to-design mapping](PAPER_DESIGN.md) for the implemented CAD v0.3
 | ID / priority | Resource | Why it matters to SNU GOM | Next task and limitation |
 | --- | --- | --- | --- |
 | R7 / First | [Isaac Lab: importing an asset](https://isaac-sim.github.io/IsaacLab/main/source/how-to/import_new_asset.html) · [official repository](https://github.com/isaac-sim/IsaacLab) | Official starting point for bringing the URDF into the learning stack. | pin a compatible release, import the model and check axes, units, collisions and actuator settings. The linked main docs can change; installation/import is not yet verified for our robot. |
-| R8 / First | [Grandia et al., Design and Control of a Bipedal Robotic Character — RSS 2024; paper and official video](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/) | Combines character-oriented mechanics, expressive motion and RL control. | propose a small torso-sway or bowing reference while retaining a balance objective. Different morphology and hardware mean no direct controller transfer. |
+| R8 / First | [Grandia et al., Design and Control of a Bipedal Robotic Character — RSS 2024 paper](https://www.roboticsproceedings.org/rss20/p103.html) · [official video](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/) | Shows how to co-design a new robot character, expressive motion references and balance-aware RL. | Compare the walking ablation, then draft a small torso-sway or bow reference with a balance objective. BD-X has different joint geometry and actuators; its controller does not transfer directly. |
+| R15 / First | [Müller et al., Olaf: Bringing an Animated Character to Life in the Physical World — arXiv v2](https://arxiv.org/abs/2512.16705v2) · [HTML](https://arxiv.org/html/2512.16705v2) | Practical reference for asymmetric leg packaging, compliant shells/costumes, foot-impact reduction and thermal-aware control. | Inspect its leg-clearance and thermal/impact experiments; propose a removable SNU GOM leg cover and measure cable drag, temperature and touchdown sound. Olaf's six-DoF legs, foam and thermal thresholds are not XL330 specifications. See the [detailed guide](PAPER_NOTES_BD-X_OLAF.md). |
 | R9 / Next | [Rudin et al., Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning — CoRL / PMLR 2022](https://proceedings.mlr.press/v164/rudin22a.html) | Parallel training and curriculum design for legged locomotion. | extract one curriculum idea and one evaluation protocol for flat-ground standing/walking. Results are on ANYmal; the title does not promise our robot will train in minutes. |
 | R10 / Later | [Peng et al., DeepMimic — SIGGRAPH 2018; paper, code and videos](https://xbpeng.github.io/projects/DeepMimic/index.html) | Example-guided imitation and task objectives address the idea of learning human-like or authored motions. | author a low-amplitude ten-joint sway reference before trying human-motion retargeting. Simulated character skills are not evidence of physical XL330 feasibility. |
 | R11 / Next | [MIT Underactuated Robotics — Russ Tedrake](https://underactuated.mit.edu/) | Dynamics, contact and walking foundations for interpreting controller failures. | sketch support/contact changes and center-of-mass motion during one proposed step. Use this to explain a failure case in the experiment log. |
@@ -67,15 +72,15 @@ See [HRI architecture](HRI.md) for the proposed API boundary and stationary inte
 
 ## 한국어
 
-### BD-X·Olaf 추가 검토
+### 캐릭터 이족 로봇 핵심 논문
 
-[논문 → 설계 변경표](PAPER_DESIGN.md)에 v0.3 CAD·축 구성 비교·학습 목표·남은 시험을 정리했습니다. **R15 / 먼저:** [Müller 외, Olaf, arXiv v2](https://arxiv.org/abs/2512.16705v2) — 폼·의상 배치와 충격·온도 반영 제어. 3쪽 후 5–7쪽을 읽습니다.
+위의 R8·R15는 각각 **새 캐릭터의 표현 보행**과 **기존 캐릭터의 외피·충격·발열 문제**를 다룹니다. [상세 논문 해설](PAPER_NOTES_BD-X_OLAF.md)과 [CAD v0.3 반영](PAPER_DESIGN.md)을 함께 보세요. 논문 수치·정책은 저자 로봇 결과이지 SNU GOM XL330 성능 보장이 아닙니다.
 
 ### 먼저 볼 자료 세 가지
 
 1. **XL330 매뉴얼(R4)** — 다리를 확정하기 전에 모터 체결·제어 제약을 정리합니다.
 2. **Microduck RL(R2)** — 학습 환경을 만들기 전에 관측·행동·보상·모터 모델 구성을 확인합니다.
-3. **전원: Disney 이족 로봇 논문·영상(R8)** — 균형을 유지하면서 곰 캐릭터를 동작으로 표현하는 방법을 논의합니다.
+3. **함께 보기: BD-X와 Olaf (R8, R15)** — 표현 보행 설계와 다리 외피·충격·발열 교훈을 SNU GOM에 어떻게 적용할지 비교합니다.
 
 ### 하드웨어와 실제 로봇 참고 자료
 
@@ -93,7 +98,8 @@ See [HRI architecture](HRI.md) for the proposed API boundary and stationary inte
 | ID / 우선순위 | 자료 | SNU GOM에 도움이 되는 점 | 다음 작업과 한계 |
 | --- | --- | --- | --- |
 | R7 / 먼저 | [Isaac Lab asset import 문서](https://isaac-sim.github.io/IsaacLab/main/source/how-to/import_new_asset.html) · [공식 저장소](https://github.com/isaac-sim/IsaacLab) | URDF를 학습 환경으로 가져오는 공식 출발점입니다. | 호환 버전을 고정하고 축·단위·충돌·actuator 설정을 검사합니다. main 문서는 바뀔 수 있으며 우리 로봇의 설치·import는 아직 미검증입니다. |
-| R8 / 먼저 | [Grandia 외, Design and Control of a Bipedal Robotic Character — RSS 2024; 논문·공식 영상](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/) | 캐릭터를 위한 기구·표현 동작·RL 제어를 함께 다룹니다. | 균형 목표를 유지하는 작은 몸통 흔들기·인사 참조 동작을 제안합니다. 형태와 하드웨어가 달라 제어기를 바로 옮길 수는 없습니다. |
+| R8 / 먼저 | [Grandia 외, Design and Control of a Bipedal Robotic Character — RSS 2024 논문](https://www.roboticsproceedings.org/rss20/p103.html) · [공식 영상](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/) | 새 로봇 캐릭터의 기구·표현 동작 참조·균형 RL을 함께 설계하는 방법을 보여줍니다. | 보행 비교 실험을 보고 균형 목표를 유지하는 작은 몸통 흔들기나 인사 참조 동작을 만듭니다. 관절 형태와 액추에이터가 달라 BD-X 제어기를 그대로 옮길 수 없습니다. |
+| R15 / 먼저 | [Müller 외, Olaf: Bringing an Animated Character to Life in the Physical World — arXiv v2](https://arxiv.org/abs/2512.16705v2) · [HTML](https://arxiv.org/html/2512.16705v2) | 비대칭 다리 배치, 변형되는 외피·의상, 발 충격 저감, 온도 인지 제어를 참고할 수 있습니다. | 다리 간섭과 발열·충격 실험을 살펴보고, 분리 가능한 SNU GOM 다리 커버를 설계해 케이블 당김·온도·착지 소리를 측정합니다. Olaf의 6축 다리·폼·온도 한계는 XL330 사양이 아닙니다. [상세 해설](PAPER_NOTES_BD-X_OLAF.md)을 참고하세요. |
 | R9 / 다음 | [Rudin 외, Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning — CoRL / PMLR 2022](https://proceedings.mlr.press/v164/rudin22a.html) | 다리 로봇의 병렬 학습과 커리큘럼 설계 참고 자료입니다. | 평지 기립·보행에 적용할 커리큘럼과 평가 방법을 하나씩 추출합니다. ANYmal 결과이며 우리 로봇도 몇 분 만에 학습된다는 뜻은 아닙니다. |
 | R10 / 나중 | [Peng 외, DeepMimic — SIGGRAPH 2018; 논문·코드·영상](https://xbpeng.github.io/projects/DeepMimic/index.html) | 사람처럼 움직이거나 직접 만든 동작을 배우는 아이디어에 관련된 모방·과제 목표입니다. | 사람 모션을 옮기기 전에 작은 진폭의 10축 흔들기 참조를 만듭니다. 시뮬레이션 캐릭터의 기술이 실물 XL330의 가능성을 입증하지는 않습니다. |
 | R11 / 다음 | [MIT Underactuated Robotics — Russ Tedrake](https://underactuated.mit.edu/) | 제어 실패를 이해하기 위한 동역학·접촉·보행 기초입니다. | 한 걸음의 접촉 변화와 무게중심 이동을 그려 실험 실패 사례를 설명합니다. |
