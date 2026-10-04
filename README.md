@@ -30,7 +30,7 @@ Walking, waddling and expressive responses are development goals. They have not 
 | Understand camera, voice and APIs | [HRI design](docs/HRI.md) |
 | Check wiring and parts | [Electronics](docs/ELECTRONICS.md) · [BOM and costs](hardware/bom/README.md) |
 | Run the existing model | [Simulation guide](docs/SIMULATING_MOTION.md) |
-| Find papers and videos | [Research](docs/RESEARCH.md) |
+| Find papers and videos | [Research](docs/RESEARCH.md) · [BD-X / Olaf design changes](docs/PAPER_DESIGN.md) |
 | Make a change | [Branch, commit and PR guide](CONTRIBUTING.md) |
 | See what comes next | [Roadmap](docs/ROADMAP.md) · [Open tasks](https://github.com/mjcha924/snu-gom/issues) |
 
@@ -50,6 +50,8 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Python 3.11 i
 
 ### Current work
 
+**CAD v0.3:** lighter shells, rear vents and replaceable sole pads, informed by the BD-X and Olaf papers. [Design changes and limits](docs/PAPER_DESIGN.md).
+
 Detailed motor/horn CAD, the straight nose camera and neck-pitch mechanism are being developed as fit prototypes. Next: verify one joint, test one leg under load, complete wiring, update the simulation model and bench-test conversation. The HRI API design exists; an HRI runtime is not implemented yet.
 
 ---
@@ -57,6 +59,8 @@ Detailed motor/horn CAD, the straight nose camera and neck-pitch mechanism are b
 <a id="한국어"></a>
 
 ## 한국어
+
+**CAD v0.3:** BD-X·Olaf 논문을 반영해 외장 경량화·후면 통풍·교체형 발바닥 패드를 적용했습니다. [변경 근거와 한계](docs/PAPER_DESIGN.md).
 
 **걷고, 사람을 바라보고, 말과 동작으로 반응하는 작은 곰 모양 이족보행 로봇입니다.** 다리 10축에 위아래로 움직이는 머리, 코 카메라, 마이크와 스피커를 결합합니다.
 

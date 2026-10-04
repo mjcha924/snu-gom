@@ -1,13 +1,17 @@
 # Research / 자료조사
 
-[English](#english) | [한국어](#한국어) · [Home / 홈](../README.md) · [Team / 팀](TEAM.md)
+[English](#english) | [한국어](#한국어) · [Home / 홈](../README.md) · [Design application / 설계 반영](PAPER_DESIGN.md)
 
-Checked / 확인일: **2026-09-29**. Primary sources are linked below. Priority and suggested experiments are our project recommendations, not claims made by the authors. Links were inspected; external code, CAD and policies have not been validated on SNU GOM.
+Original resource list checked / 기존 목록 확인: **2026-09-29**. BD-X/Olaf/XL330 follow-up / 추가 검토: **2026-10-04**. Primary sources are linked below. Priority and suggested experiments are our project recommendations, not claims made by the authors. Links were inspected; external code, CAD and policies have not been validated on SNU GOM.
 공식·원저자 자료를 아래에 연결합니다. 우선순위와 제안 실험은 우리 프로젝트에 대한 추천이며 원저자의 주장이 아닙니다. 링크는 확인했지만 외부 코드·CAD·정책을 SNU GOM에서 실행·검증하지는 않았습니다.
 
 <a id="english"></a>
 
 ## English
+
+### BD-X and Olaf follow-up / 추가 검토
+
+Read [the paper-to-design mapping](PAPER_DESIGN.md) for the implemented CAD v0.3 changes, topology comparison, training objectives and remaining tests. **R15 / First:** [Müller et al., Olaf, arXiv v2](https://arxiv.org/abs/2512.16705v2) — foam/costume packaging, impact-aware motion and motor temperature. Start at p. 3, then pp. 5–7.
 
 ### Start with these three
 
@@ -62,6 +66,10 @@ See [HRI architecture](HRI.md) for the proposed API boundary and stationary inte
 <a id="한국어"></a>
 
 ## 한국어
+
+### BD-X·Olaf 추가 검토
+
+[논문 → 설계 변경표](PAPER_DESIGN.md)에 v0.3 CAD·축 구성 비교·학습 목표·남은 시험을 정리했습니다. **R15 / 먼저:** [Müller 외, Olaf, arXiv v2](https://arxiv.org/abs/2512.16705v2) — 폼·의상 배치와 충격·온도 반영 제어. 3쪽 후 5–7쪽을 읽습니다.
 
 ### 먼저 볼 자료 세 가지
 

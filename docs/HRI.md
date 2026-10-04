@@ -32,7 +32,7 @@ flowchart TD
     P --> O["Speaker + status indicator"]
     P --> B["Behavior supervisor"]
     B --> C["Local policy / motion controller"]
-    C --> M["MCU + ten XL330 motors"]
+    C --> M["MCU + eleven XL330 motors"]
     I["IMU + joint feedback"] --> C
 ```
 
@@ -117,3 +117,9 @@ Pi Zero 2 W는 후속 경량화 후보지만 512MB RAM과 USB 구성을 시험�
 ### 근거 자료
 
 위 Sources의 Raspberry Pi·Camera Module 3·ReSpeaker 공식 문서와 Meta Muse Charm 소개를 참고했습니다. 부품 선택·장착각·전원 여유·역할은 프로젝트 제안이며 제조사 보증이 아닙니다. 확인일 2026-09-29.
+
+## 2026-10-04 paper-informed update / 논문 반영
+
+[Motion design specification](../motion/design/character_motion_spec.json) separates perpetual stand/look, periodic waddle and episodic greeting. It is not loaded by the runtime. Perception/dialogue requests available intents; local motion owns balance, thermal/current supervision and completion. The papers demonstrate puppeteered characters, not an autonomous conversation implementation. / 설계 명세는 기립·시선, 주기 보행, 일회성 인사를 구분하며 실행 코드에 연결된 설정은 아닙니다. 대화는 행동을 요청하고 로컬 제어가 균형·전류·온도·완료를 담당합니다. 두 논문의 조종자 기반 시연을 자율 대화 구현으로 해석하지 않습니다.
+
+The new head/body vents are candidate airflow paths; keep the Pi/audio/controller baseline until measured performance or thermal results justify changing boards. / 새 통풍구는 후보 공기 경로입니다. 성능·발열 실측으로 필요성이 확인되기 전에는 Pi·오디오·제어기 구성을 유지합니다.
