@@ -7,7 +7,7 @@
   "distribution": "Shared with project owner; binary CAD is not committed to this repository.",
   "units": "mm",
   "date": "2026-10-04",
-  "package_sha256": "8927cce0f878f5fe995507fd6830132c61411206ba813e0e4d48c2d02267406c",
+  "package_sha256": "ce87c979bc79be5e6bedf3a78d64eaaf3af405351cf9f8e98349d81e86baecb8",
   "full_step_sha256": "0d6070aa49ce986277189ff7b7487744d36ce8d0fffbc601ccabe5f33ebab2ce",
   "supplier_step_sha256": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
   "motor_count": 11,
