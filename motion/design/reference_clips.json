@@ -1,0 +1,89 @@
+{
+  "status": "kinematic_visual_references_only",
+  "hardware_enabled": false,
+  "units": "degrees",
+  "interpolation": "half-cosine ease per segment; all omitted joints stay at zero",
+  "clips": {
+    "curious_look": {
+      "label_ko": "호기심 있게 올려다보기",
+      "keyframes": [
+        {
+          "phase": 0,
+          "joints": {}
+        },
+        {
+          "phase": 0.35,
+          "joints": {
+            "neck_pitch": -20
+          }
+        },
+        {
+          "phase": 0.65,
+          "joints": {
+            "neck_pitch": -20
+          }
+        },
+        {
+          "phase": 1,
+          "joints": {}
+        }
+      ]
+    },
+    "gentle_sway": {
+      "label_ko": "작은 좌우 흔들림",
+      "keyframes": [
+        {
+          "phase": 0,
+          "joints": {}
+        },
+        {
+          "phase": 0.25,
+          "joints": {
+            "left_hip_roll": 4,
+            "right_hip_roll": 4,
+            "left_ankle_roll": -4,
+            "right_ankle_roll": -4
+          }
+        },
+        {
+          "phase": 0.75,
+          "joints": {
+            "left_hip_roll": -4,
+            "right_hip_roll": -4,
+            "left_ankle_roll": 4,
+            "right_ankle_roll": 4
+          }
+        },
+        {
+          "phase": 1,
+          "joints": {}
+        }
+      ]
+    },
+    "greeting_dip_study": {
+      "label_ko": "작은 인사 낮춤 자세 연구",
+      "geometry_status": "intermediate pose and continuous path not collision-checked",
+      "keyframes": [
+        {
+          "phase": 0,
+          "joints": {}
+        },
+        {
+          "phase": 0.5,
+          "joints": {
+            "left_hip_pitch": -8,
+            "left_knee_pitch": 16,
+            "left_ankle_pitch": -8,
+            "right_hip_pitch": -8,
+            "right_knee_pitch": 16,
+            "right_ankle_pitch": -8
+          }
+        },
+        {
+          "phase": 1,
+          "joints": {}
+        }
+      ]
+    }
+  }
+}

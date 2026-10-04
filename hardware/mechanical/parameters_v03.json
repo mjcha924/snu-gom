@@ -1,0 +1,66 @@
+{
+  "hip_spacing_mm": 88,
+  "hip_roll_z_mm": 172,
+  "hip_pitch_z_mm": 124,
+  "knee_z_mm": 76,
+  "ankle_pitch_z_mm": 28,
+  "ankle_roll_xyz_mm": [
+    40,
+    0,
+    22
+  ],
+  "body_xyz_mm": [
+    92,
+    124,
+    102
+  ],
+  "body_center_z_mm": 179,
+  "head_base_z_mm": 243,
+  "neck_pitch_origin_mm": [
+    0,
+    0,
+    247
+  ],
+  "camera_mount_tilt_deg": 0,
+  "foot_xyz_mm": [
+    88,
+    66,
+    55
+  ],
+  "foot_center_x_mm": 20,
+  "cosmetic_wall_nominal_mm": 1.6,
+  "plate_mm": 3,
+  "horn_mating_span_mm": 29,
+  "horn_bolt_circle_mm": 12,
+  "horn_clearance_hole_mm": 2.2,
+  "case_clearance_mm": 0.35,
+  "revision": "v0.3-paper-informed",
+  "foot_cover_xyz_mm": [
+    94,
+    70,
+    56
+  ],
+  "leg_shell_xy_mm": [
+    42,
+    46
+  ],
+  "rigid_shell_wall_mm": 1.6,
+  "flex_sleeve_wall_mm": 0.8,
+  "rear_cable_trough_width_mm": 6,
+  "OpenRB_center_mm": [
+    -27.3,
+    22,
+    167
+  ],
+  "IMU_center_mm": [
+    13,
+    0,
+    166
+  ],
+  "exterior_baseline": "segmented_rigid_panels_with_open_joint_seams",
+  "soft_cover_option": "design_studies/soft_joint_covers_NEUTRAL_ONLY.step",
+  "lightened_skin_nominal_mm": 1.2,
+  "sole_pad_thickness_mm": 2,
+  "sole_pad_density_planning_g_cm3": 0.3,
+  "ground_plane_z_mm": -2
+}

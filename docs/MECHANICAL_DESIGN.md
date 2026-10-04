@@ -14,7 +14,7 @@ The detailed prototype keeps the original bear face and uses the supplied XL/XC-
 | Foot sole / 발판 | 88 × 66 mm, rounded outline / 둥근 외곽 |
 | Torso / 몸통 | 92 × 124 × 102 mm |
 | Camera / 카메라 | Straight ahead in nose; head pitch controls gaze / 정면 코 카메라·목 피치로 시선 변경 |
-| Custom shells / 외장 | About 1.6 mm nominal wall; local details differ / 주요 구간 1.6 mm, 국부 형상은 다름 |
+| Custom shells / 외장 | 1.2 mm lightened zones, 1.6 mm end bands; mounts retained / 경량 구간 1.2·끝단 1.6·고정부 유지 |
 | Supplied motor case / 제공 케이스 | 20 × 34 × 23 mm measured geometry / 형상 치수 |
 | Horn interface / 혼 인터페이스 | 29 mm between outer mating faces; four holes on Ø12 mm circle / 체결면 간 29 mm·Ø12 원주 4공 |
 
@@ -29,3 +29,5 @@ Print one joint fit specimen before building a leg. Measure current, heating and
 **Simulation mismatch / 모델 차이:** `robot/config.json` and its URDF are still an earlier ten-leg-joint primitive model. They do not yet contain this detailed geometry, offset axes or neck joint. Update frames, collision geometry, masses and inertia before using the new CAD for learning. / 기존 도형 URDF는 상세 형상·오프셋·목 관절을 아직 반영하지 않았습니다.
 
 [CAD handoff](../hardware/mechanical/README.md) · [HRI](HRI.md) · [Simulation](SIMULATING_MOTION.md)
+
+**v0.3 paper-informed changes / 논문 반영:** lighter shells, rear vents, replaceable 2 mm sole pads, and separate soft-cover study. See [design rationale](PAPER_DESIGN.md) and [bilateral collision findings](CAD_VERIFICATION.md). / 경량 외장·후면 통풍·교체형 패드·유연 외피 비교안과 양발 충돌 결과를 반영했습니다.

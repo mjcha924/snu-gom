@@ -1,12 +1,14 @@
 # CAD geometry and assembly / CAD 형상과 조립 구조
 
-**Revision / 버전: v0.2 — rounded paws and covered legs / 둥근 발과 다리 외장**
+**Revision / 버전: v0.3 — lighter shells, ventilation and sole pads / 경량 외장·통풍·발바닥 패드**
 
-This page explains how the detailed CAD fits together. Start with the full STEP to see the appearance, then hide the cosmetic and flexible parts to inspect the mechanism. All dimensions below are in **millimetres**.
+[Why the papers changed this design / 논문 반영 근거](PAPER_DESIGN.md)
 
-상세 CAD를 이해하기 위한 안내입니다. 전체 STEP에서 외형을 확인한 뒤 외장과 유연 커버를 숨기면 내부 기구를 볼 수 있습니다. 아래 치수는 모두 **mm**입니다.
+This page explains how the detailed CAD fits together. Start with the full STEP to see the appearance, then hide the cosmetic parts and contact pads to inspect the mechanism. All dimensions below are in **millimetres**.
 
-![SNU GOM CAD with covered legs / 다리 외장을 적용한 CAD](images/cad-v02.png)
+상세 CAD를 이해하기 위한 안내입니다. 전체 STEP에서 외형을 확인한 뒤 외장과 접촉 패드를 숨기면 내부 기구를 볼 수 있습니다. 아래 치수는 모두 **mm**입니다.
+
+![SNU GOM CAD with covered legs / 다리 외장을 적용한 CAD](images/cad-v03.png)
 
 ## 1. What moves / 움직이는 부분
 
@@ -29,9 +31,9 @@ The ankle-pitch and ankle-roll axes are offset rather than intersecting. A dogle
 
 ## 2. Coordinate system and dimensions / 좌표와 치수
 
-**+X = front, +Y = robot's left, +Z = up.** The sole bottom is Z=0 in the neutral assembly. `+44 / −44` means left/right leg, respectively. CAD joint angles are not calibrated servo commands.
+**+X = front, +Y = robot's left, +Z = up.** The structural sole bottom is Z=0; the new 2 mm contact pad extends to Z=−2 in the neutral assembly. `+44 / −44` means left/right leg, respectively. CAD joint angles are not calibrated servo commands.
 
-**+X 전방, +Y 로봇의 왼쪽, +Z 위쪽**입니다. 중립 자세 발바닥이 Z=0이고 `+44 / −44`는 왼쪽/오른쪽 다리입니다. CAD 각도는 실물 모터의 교정된 명령값이 아닙니다.
+**+X 전방, +Y 로봇의 왼쪽, +Z 위쪽**입니다. 중립 자세 구조 발판 바닥은 Z=0, 새 접촉 패드 바닥은 Z=−2이고 `+44 / −44`는 왼쪽/오른쪽 다리입니다. CAD 각도는 실물 모터의 교정된 명령값이 아닙니다.
 
 | Joint / 관절 | Origin XYZ / 축 원점 | Axis / 축 | Motor IDs / ID |
 | --- | --- | --- | --- |
@@ -52,11 +54,12 @@ Positive neck pitch in this CAD looks downward; negative pitch looks upward. Ver
 | Paw cover outside / 발 외장 | 94 × 70 footprint; top Z≈59.4 before inlays / 인레이 제외 |
 | Torso envelope / 몸통 외곽 | 92 × 124 × 102; centre Z=179 |
 | Leg rigid cover section / 다리 경질 외장 단면 | 42 × 46 |
-| Typical cosmetic wall / 주요 외장 두께 | 1.6; local features differ / 국부 치수는 다름 |
+| Cosmetic skin / 외장 두께 | 1.2 in lightened zones; 1.6 end bands and preserved mounts / 경량 구간 1.2·끝단 1.6·고정부 유지 |
+| Replaceable contact pad / 교체형 접촉 패드 | 2 thick, 88 × 66 outline; material pending / 두께 2·재질 미정 |
 | Rear cable trough / 후면 배선 홈 | 6 clear width / 내부 폭 |
 | Main joint plate / 주요 관절 판 | 3 |
 
-See [joint coordinates](../hardware/mechanical/joint_frames_v02.json), [design parameters](../hardware/mechanical/parameters_v02.json) and `parts_manifest.json` inside the CAD package for machine-readable coordinates and per-part bounds. / 정확한 좌표와 부품별 외곽은 CAD 패키지의 JSON 파일을 기준으로 합니다.
+See [joint coordinates](../hardware/mechanical/joint_frames_v03.json), [design parameters](../hardware/mechanical/parameters_v03.json) and `parts_manifest.json` inside the CAD package for machine-readable coordinates and per-part bounds. / 정확한 좌표와 부품별 외곽은 CAD 패키지의 JSON 파일을 기준으로 합니다.
 
 ## 3. Real motors and custom brackets / 실제 모터와 자체 브래킷
 
@@ -78,16 +81,17 @@ The intended load path is **sole → ankle yoke/adapter → shin → thigh → h
 
 ## 4. Paws, leg covers and hidden wiring / 발·다리 외장과 배선
 
-The v0.2 feet use a continuous rounded toe box, low toe inlays, a separate dark bumper and mounting bosses accessed from the sole. The large rear ankle opening is concealed by the leg cover and soft sleeve. Hand pads follow the curved arm surface and use four small toe beans above an oval palm. The fixed arms move 9 mm outward and 8 mm upward to clear the hip covers.
+The v0.3 feet retain a continuous rounded toe box, low toe inlays, a separate dark bumper and mounting bosses accessed from the sole. The rear ankle opening and joint gaps remain open in the rigid-panel baseline; optional soft concealment is a separate study. Hand pads follow the curved arm surface and use four small toe beans above an oval palm. The fixed arms move 9 mm outward and 8 mm upward to clear the hip covers.
 
-v0.2 발은 하나로 이어진 둥근 앞부분, 낮은 발가락 인레이, 분리형 어두운 테두리와 발판 쪽에서 접근하는 고정부로 구성합니다. 뒤쪽 발목 개구는 다리 커버와 유연 슬리브로 가립니다. 손바닥 패드는 팔 곡면을 따라가며 타원형 중심 패드 위에 작은 발가락 패드 4개를 배치합니다. 고관절 외장 간섭을 줄이기 위해 고정 팔을 바깥쪽 9 mm, 위쪽 8 mm 이동했습니다.
+v0.3 발은 하나로 이어진 둥근 앞부분, 낮은 발가락 인레이, 분리형 어두운 테두리와 발판 쪽에서 접근하는 고정부로 구성합니다. 기본 경질 외장안의 뒤쪽 발목 개구와 관절 틈은 열려 있으며 유연 은폐 외피는 별도 비교안입니다. 손바닥 패드는 팔 곡면을 따라가며 타원형 중심 패드 위에 작은 발가락 패드 4개를 배치합니다. 고관절 외장 간섭을 줄이기 위해 고정 팔을 바깥쪽 9 mm, 위쪽 8 mm 이동했습니다.
 
 | Part family / 부품군 | Attachment and service / 고정·정비 |
 | --- | --- |
 | `hip_shell_front/rear` | Follows hip-roll link; encloses hip-pitch motor region / 고관절 롤 링크에 부착해 피치 모터 주변을 덮음 |
 | `thigh_shell_front/rear` | Follows hip-pitch link / 고관절 피치 링크와 함께 움직임 |
 | `shin_shell_front/rear` | Follows knee-pitch link / 무릎 피치 링크와 함께 움직임 |
-| `*_flex_gaiter` | Soft joint sleeve; neutral envelope only / 관절 틈을 가리는 유연 슬리브, 중립 형상만 표현 |
+| `*_sole_pad` | Separate foam/elastomer contact sample, adhesive trial; 4 access holes / 분리형 폼·탄성체 접촉 시편·접착 시험·접근공 4개 |
+| `design_studies/*_flex_gaiter` | Optional neutral soft sleeve; absent from baseline / 기본 조립체에서 제외한 유연 외피 중립 비교안 |
 | `paw_cover` | Follows ankle-roll output/sole / 발목 롤 출력·발판과 함께 움직임 |
 
 Each rigid cover separates into front and rear panels with a **0.4 mm seam**. Prototype seam lugs have a rear Ø2.2 clearance hole and front Ø1.6 pilot for a trial M2 fastening scheme. Rear tie slots allow retention to the custom link; the strap path and retention strength need a fit build. The inner rear trough reserves 6 mm width for the motor harness; the hip guide is shallower and shifted toward the outer side to clear the roll yoke. The shin front panel has a lower clearance notch for the ankle adapter.
@@ -98,11 +102,15 @@ Route the motor harness down the rear channel, leave a service loop at each rota
 
 모터 배선은 후면 홈을 따라 내려가고 각 회전 관절에 여유 루프를 둡니다. 혼·요크를 피해 양쪽 링크에 케이블을 고정하며, 모터를 분해하지 않고 후면 커버를 열 수 있게 합니다. 케이블 길이·커넥터 통과·최소 굽힘 반경은 아직 확정하지 않았습니다.
 
-**The joint sleeves are soft-part design envelopes.** Their neutral STEP shapes cannot be treated as rigid parts during motion. Fabric or a soft elastomer sleeve must be patterned and tested for folding, snagging and ventilation. Ordinary rigid filament would bridge the joints and restrict motion. Hide these envelopes when posing the rigid mechanism.
+**The optional joint sleeves are soft-part design envelopes under `design_studies/`, excluded from the baseline STEP.** Their neutral STEP shapes cannot be treated as rigid parts during motion. Fabric or a soft elastomer sleeve must be patterned and tested for folding, snagging and ventilation. Ordinary rigid filament would bridge the joints and restrict motion. Hide these envelopes when posing the rigid mechanism.
 
-**관절 슬리브는 유연 부품 설계용 외곽입니다.** 중립 STEP 형상을 경질 부품처럼 회전시키면 안 됩니다. 천 또는 부드러운 탄성체로 접힘·끼임·통풍을 시험해야 합니다. 일반 경질 필라멘트로 그대로 출력하면 관절 움직임을 제한합니다. 강체 자세를 확인할 때는 이 부품을 숨깁니다.
+**관절 슬리브는 `design_studies/`에 있는 유연 부품 비교 외곽이며 기본 STEP에서 제외합니다.** 중립 STEP 형상을 경질 부품처럼 회전시키면 안 됩니다. 천 또는 부드러운 탄성체로 접힘·끼임·통풍을 시험해야 합니다. 일반 경질 필라멘트로 그대로 출력하면 관절 움직임을 제한합니다. 강체 자세를 확인할 때는 이 부품을 숨깁니다.
 
-![Removable cover panels / 분리형 외장 패널](images/cad-panels-v02.png)
+![Removable cover panels / 분리형 외장 패널](images/cad-panels-v03.png)
+
+The v0.3 head back has four vent slots, the torso back five, and each rear leg panel one. These are geometric airflow openings, not a proven cooling solution. The lightened skins require print/stiffness checks. / v0.3은 머리 뒤 4개·몸통 뒤 5개·각 다리 후면 패널 1개 통풍 슬롯을 추가합니다. 방열 효과와 얇아진 외장 강성은 실측 대상입니다.
+
+![Rear vents / 후면 통풍](images/cad-rear-v03.png)
 
 ## 5. Head and torso packaging / 머리와 몸통 배치
 
@@ -122,7 +130,7 @@ The OpenRB envelope moves to X=−27.3, Y=22, Z=167, and the IMU to (13,0,166) f
 1. Import `SNU_GOM_full_assembly.step` in millimetres. Use the internal assembly to inspect brackets and motor geometry. / 전체 STEP를 mm로 가져오고 내부 조립체에서 골격을 확인합니다.
 2. Identify parts by name; left/right and front/rear panels export separately under `parts/`. / 이름으로 부품을 구분하며 좌우·앞뒤 패널은 개별 파일입니다.
 3. Recreate revolute mates from `joint_frames.json`. STEP contains shape placement, not an actuated mechanism. / 관절 JSON으로 회전 구속을 구성합니다. STEP만으로 관절이 구동되지는 않습니다.
-4. For source edits, install `requirements-cad.txt`, edit `source/build.py` and `source/refine_shells.py`, then run the package's rebuild commands. / 소스 수정은 두 Python 생성 파일에서 진행합니다.
+4. For source edits, install `requirements-cad.txt`, edit `source/build.py`, `source/refine_shells.py` and `source/refine_papers.py`, then run the package's rebuild commands. / 소스 수정은 세 Python 생성 파일에서 진행합니다.
 5. Print the joint coupon, then one cover pair and one foot before making the whole robot. / 관절 시편 → 커버 한 쌍·발 하나 순서로 먼저 검증합니다.
 
 See [CAD files and status](../hardware/mechanical/README.md) for the package and [verification notes](CAD_VERIFICATION.md) for the actual checks. The repository's existing URDF is still the earlier ten-leg-joint proxy and **does not match this CAD revision**. / 패키지와 검증 결과는 링크를 참고하세요. 저장소의 기존 10축 도형 URDF는 **현재 CAD와 일치하지 않습니다**.

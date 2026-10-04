@@ -1,0 +1,110 @@
+{
+  "revision": "snu-gom-cad-v0.3",
+  "status": "authoring_and_training_specification_only",
+  "hardware_enabled": false,
+  "runtime_integrated": false,
+  "joint_order": [
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_knee_pitch",
+    "left_ankle_pitch",
+    "left_ankle_roll",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_knee_pitch",
+    "right_ankle_pitch",
+    "right_ankle_roll",
+    "neck_pitch"
+  ],
+  "control_design": {
+    "balance_and_locomotion": "local controller, independent of API timing",
+    "dialogue_output": "bounded behavior intents",
+    "show_functions": [
+      "speech",
+      "listening indication"
+    ],
+    "policy_action_candidate": "bounded joint position targets with identified actuator dynamics",
+    "policy_rate_hz": null,
+    "motor_bus_rate_hz": null,
+    "rate_selection": "measure 11-motor bus latency before selecting rates; do not copy 50/600 Hz blindly"
+  },
+  "behavior_families": {
+    "stand_and_look": {
+      "type": "perpetual",
+      "goal_en": "Keep feet planted, balance and pitch the head toward a person",
+      "goal_ko": "발을 고정하고 균형을 유지하며 사람 쪽으로 머리 피치 조절"
+    },
+    "small_waddle": {
+      "type": "periodic",
+      "goal_en": "Short steps with deliberate weight shift and gentle touchdown",
+      "goal_ko": "체중 이동과 부드러운 착지를 포함하는 짧은 보폭"
+    },
+    "greet_bow": {
+      "type": "episodic",
+      "goal_en": "Small coordinated bow, return to neutral standing",
+      "goal_ko": "작은 전신 인사 후 중립 기립 복귀"
+    }
+  },
+  "training_objectives": {
+    "style": [
+      "bear-specific reference pose/velocity tracking",
+      "torso orientation tracking",
+      "gait phase and expected foot-contact tracking"
+    ],
+    "stability": [
+      "balance and survival",
+      "foot clearance",
+      "foot-foot collision avoidance",
+      "joint position/velocity constraints"
+    ],
+    "regularization": [
+      "torque/current effort",
+      "action rate and acceleration",
+      "touchdown impact"
+    ],
+    "thermal": [
+      "per-motor temperature observations",
+      "identified heating/cooling model",
+      "temperature penalty below a calibrated threshold; independent local supervision required"
+    ]
+  },
+  "calibration_required": {
+    "continuous_torque_nm": null,
+    "current_limit_ma": null,
+    "temperature_warning_c": null,
+    "temperature_stop_c": null,
+    "friction": null,
+    "latency_s": null,
+    "motor_gains": null,
+    "foam_contact_parameters": null
+  },
+  "xl330_reference_only": {
+    "voltage_v": 5,
+    "stall_torque_nm": 0.52,
+    "default_temperature_limit_c": 70,
+    "apply_as_motor_configuration": false,
+    "source": "https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/"
+  },
+  "invalid_pose_examples": [
+    {
+      "left_hip_roll": -8
+    },
+    {
+      "right_hip_roll": 8
+    }
+  ],
+  "invalid_pose_context": "All other joints neutral: bilateral CAD screen finds foot-foot intersections. These examples are not global joint limits.",
+  "simulation_model_ready": false,
+  "release_gates": [
+    "match CAD frames and 11 joints in URDF",
+    "weigh printed and purchased parts",
+    "identify XL330 response, current and heating",
+    "fit/test pads and optional soft cover",
+    "validate standing before waddle",
+    "keep gait transitions inside double-support where feasible"
+  ],
+  "sources": [
+    "https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/",
+    "https://arxiv.org/abs/2512.16705v2"
+  ]
+}

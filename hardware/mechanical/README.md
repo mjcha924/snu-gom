@@ -1,24 +1,18 @@
-# CAD files and status / CAD 파일과 상태
+# Mechanical CAD / 기구 CAD
 
-The prototype CAD package contains a full STEP assembly, an internal assembly, a five-joint left leg, separate custom STEP/STL parts and small joint fit specimens. It uses the user-supplied XL/XC-330 motor geometry including horns. The bear nose holds a forward-facing camera; a separate XL330 tilts the head.
+**Current package / 현재 패키지: `SNU_GOM_XL330_Prototype_v03.zip` · 2026-10-04**
 
-프로토타입 CAD 패키지는 전체·내부·한쪽 다리 STEP, 개별 STEP/STL와 관절 시편으로 구성합니다. 제공받은 XL/XC-330 모터·혼 형상을 사용하고 정면 코 카메라와 별도 목 피치를 포함합니다.
+The owner has the STEP/STL/source package. Binary CAD remains outside Git; this directory records revision, checksums, parameters, joint frames and verification summaries. No permanent public download URL or new Onshape document has been created. / 프로젝트 소유자에게 STEP·STL·소스 패키지를 전달합니다. CAD 바이너리는 Git 외부에 두고 이 폴더에는 버전·체크섬·치수·관절·검사 결과를 기록합니다. 영구 공개 다운로드 URL·새 Onshape 문서는 아직 없습니다.
 
-Current deliverable: `SNU_GOM_XL330_Prototype_v02.zip`, shared with the project owner. Detailed CAD binaries are not committed here. The version, units and file checksum are recorded in `cad_manifest.json`; a permanent download URL is not yet assigned; no new Onshape document has been created by this update.
+## What changed / 변경 내용
 
-현재 결과물은 프로젝트 소유자에게 전달하는 `SNU_GOM_XL330_Prototype_v02.zip`이며 대용량 CAD는 저장소에 추가하지 않습니다. `cad_manifest.json`에 버전·단위·체크섬을 기록했으며 영구 다운로드 URL은 아직 없습니다. 이번 변경으로 새 Onshape 문서를 만들지는 않았습니다.
+BD-X and Olaf informed lighter segmented skins, rear ventilation and replaceable 2 mm sole pads. The baseline leaves joint gaps open; the more concealed soft-sleeve option is a separate neutral study. Five XL330-M288-T motors per leg, neck pitch, straight nose camera, supplied motor/horn geometry and structural brackets are retained.
 
-## v0.2 covers / v0.2 외장
+BD-X·Olaf를 반영해 분절형 외장을 경량화하고 후면 통풍·교체형 2 mm 패드를 추가했습니다. 기본안의 관절 틈은 열려 있으며 은폐형 유연 슬리브는 중립 비교안으로 분리합니다. 다리당 XL330-M288-T 5개·목 피치·정면 코 카메라·제공 모터/혼·구조 브래킷은 유지합니다.
 
-Rounded paw covers, curved hand inlays, removable front/rear leg panels, rear wiring troughs and soft joint sleeves now surround the mechanism. The sleeves are neutral envelopes; they need physical material and cable-motion development. / 둥근 발·곡면 손 패드·분리형 다리 패널·후면 배선 홈·유연 관절 커버를 추가했습니다. 유연 커버는 중립 외곽이며 소재·배선 동작 검증이 필요합니다.
+- [Paper-to-design rationale / 논문 반영](../../docs/PAPER_DESIGN.md)
+- [Geometry and assembly / 형상·조립](../../docs/CAD_GEOMETRY.md)
+- [Verification and foot-collision findings / 검사·양발 간섭](../../docs/CAD_VERIFICATION.md)
+- [Motion authoring specification / 동작 설계 입력](../../motion/design/README.md)
 
-Read [CAD geometry and assembly](../../docs/CAD_GEOMETRY.md) and [revision verification](../../docs/CAD_VERIFICATION.md). / 형상·조립 구조와 버전별 검사 결과는 링크를 참고하세요.
-
-## Before fabrication / 제작 전
-
-- Verify saddle fastening, horn screw engagement and access with one physical motor. / 실물 모터로 새들·혼·나사 체결 확인.
-- Check full motion, cables, neck load and shell retention. / 전체 가동 범위·배선·목 하중·외장 고정 확인.
-- Record estimated and measured masses separately. / 질량 추정·실측 구분.
-- Update the existing proxy URDF to match the chosen CAD revision. / 선택 CAD 버전에 맞춰 도형 URDF 갱신.
-
-See [mechanical design](../../docs/MECHANICAL_DESIGN.md), [HRI](../../docs/HRI.md) and [change guidelines](../../CONTRIBUTING.md).
+**Prototype limits:** the CAD is not fabrication-qualified or a trained walking robot. Two inward hip-roll samples cause opposite-foot interference; thin skins, pad material, screw retention, head torque, cables and cooling need physical tests. Existing ten-joint URDF remains a proxy. / 제작 확정본이나 학습된 보행 로봇이 아닙니다. 두 내측 고관절 롤 표본에서 반대 발 간섭이 있으며 얇은 외장·패드·나사·목 토크·배선·방열 검증과 URDF 갱신이 필요합니다.

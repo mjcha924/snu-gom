@@ -1,0 +1,136 @@
+{
+  "revision": "SNU_GOM_XL330_v0.3_paper_informed",
+  "units": "mm",
+  "motor_count": 11,
+  "camera_mount_angle_deg": 0,
+  "head_joint": "neck_pitch",
+  "overall_xyz_mm": [
+    124.8,
+    223.3,
+    366.3
+  ],
+  "bounds_mm": [
+    -57.23262522125848,
+    67.53467493567267,
+    -111.66540908183377,
+    111.66540908183376,
+    -2.0118881185972377,
+    364.29906100167307
+  ],
+  "rigid_custom_volume_cm3": 405.43,
+  "rigid_custom_mass_g_at_1_24_density": 502.7,
+  "contact_pad_volume_cm3": 21.85,
+  "contact_pad_density_assumption_g_cm3": 0.3,
+  "contact_pad_mass_planning_g": 6.6,
+  "contact_pad_mass_g_at_density_0_1_to_1_2": [
+    2.2,
+    26.2
+  ],
+  "head_custom_mass_g_at_1_24_density": 109.5,
+  "component_mass_allowances_g": {
+    "motors": 198,
+    "Pi_and_SD_heatsink": 55,
+    "camera_and_ribbon": 8,
+    "USB_audio_board": 25,
+    "speaker": 20,
+    "battery": 55,
+    "controller_IMU": 20,
+    "power_converters": 30,
+    "wires_fasteners_controls": 60
+  },
+  "total_mass_planning_g": 980.3,
+  "previous_total_mass_planning_g": 1049.6,
+  "planning_mass_reduction_g": 69.3,
+  "mass_method": "Rigid custom geometry at 1.24 g/cm3; pads at assumed foam density 0.30 g/cm3. Component allowances unchanged. v0.2 included the optional sleeve volumes at 1.24 g/cm3; v0.3 excludes sleeves. Not weighed mass, slicer output or measured material density.",
+  "single_solid_custom_parts": true,
+  "neutral_overlap_findings": [],
+  "motion_sample_count": 26,
+  "motion_samples_with_findings": [
+    {
+      "sample": "left_hip_roll_-8",
+      "angles_deg": {
+        "left_hip_roll": -8
+      },
+      "findings": [
+        {
+          "a": "left_foot_yoke_sole",
+          "b": "right_paw_cover",
+          "overlap_mm3": 350.072,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_paw_cover",
+          "overlap_mm3": 774.556,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_bumper",
+          "b": "right_paw_cover",
+          "overlap_mm3": 12.748,
+          "conservative_case_box": false
+        },
+        {
+          "a": "right_paw_cover",
+          "b": "left_sole_pad",
+          "overlap_mm3": 51.064,
+          "conservative_case_box": false
+        },
+        {
+          "a": "right_paw_bumper",
+          "b": "left_sole_pad",
+          "overlap_mm3": 168.948,
+          "conservative_case_box": false
+        }
+      ]
+    },
+    {
+      "sample": "right_hip_roll_8",
+      "angles_deg": {
+        "right_hip_roll": 8
+      },
+      "findings": [
+        {
+          "a": "right_foot_yoke_sole",
+          "b": "left_paw_cover",
+          "overlap_mm3": 350.072,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_paw_cover",
+          "overlap_mm3": 774.556,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_paw_bumper",
+          "overlap_mm3": 12.748,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_sole_pad",
+          "overlap_mm3": 51.064,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_bumper",
+          "b": "right_sole_pad",
+          "overlap_mm3": 168.948,
+          "conservative_case_box": false
+        }
+      ]
+    }
+  ],
+  "unvalidated": [
+    "screw suitability and engagement",
+    "continuous joint ranges",
+    "head cable and horn clearance",
+    "skin stiffness and load-bearing capacity",
+    "pad friction and damping",
+    "electronic thermal behavior",
+    "walking",
+    "matching URDF and inertia"
+  ]
+}

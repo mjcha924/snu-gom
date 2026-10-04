@@ -1,0 +1,398 @@
+[
+  {
+    "name": "left_hip_roll",
+    "parent": "base",
+    "child": "left_hip_roll_link",
+    "id": 1,
+    "origin_mm": [
+      0.0,
+      44.0,
+      172.0
+    ],
+    "axis_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "left_hip_pitch",
+    "parent": "left_hip_roll_link",
+    "child": "left_hip_pitch_link",
+    "id": 2,
+    "origin_mm": [
+      0.0,
+      44.0,
+      124.0
+    ],
+    "axis_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "left_knee_pitch",
+    "parent": "left_hip_pitch_link",
+    "child": "left_knee_pitch_link",
+    "id": 3,
+    "origin_mm": [
+      0.0,
+      44.0,
+      76.0
+    ],
+    "axis_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "left_ankle_pitch",
+    "parent": "left_knee_pitch_link",
+    "child": "left_ankle_pitch_link",
+    "id": 4,
+    "origin_mm": [
+      0.0,
+      44.0,
+      28.0
+    ],
+    "axis_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "left_ankle_roll",
+    "parent": "left_ankle_pitch_link",
+    "child": "left_ankle_roll_link",
+    "id": 5,
+    "origin_mm": [
+      40.0,
+      44.0,
+      22.0
+    ],
+    "axis_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "right_hip_roll",
+    "parent": "base",
+    "child": "right_hip_roll_link",
+    "id": 6,
+    "origin_mm": [
+      0.0,
+      -44.0,
+      172.0
+    ],
+    "axis_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "right_hip_pitch",
+    "parent": "right_hip_roll_link",
+    "child": "right_hip_pitch_link",
+    "id": 7,
+    "origin_mm": [
+      0.0,
+      -44.0,
+      124.0
+    ],
+    "axis_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "right_knee_pitch",
+    "parent": "right_hip_pitch_link",
+    "child": "right_knee_pitch_link",
+    "id": 8,
+    "origin_mm": [
+      0.0,
+      -44.0,
+      76.0
+    ],
+    "axis_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "right_ankle_pitch",
+    "parent": "right_knee_pitch_link",
+    "child": "right_ankle_pitch_link",
+    "id": 9,
+    "origin_mm": [
+      0.0,
+      -44.0,
+      28.0
+    ],
+    "axis_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "right_ankle_roll",
+    "parent": "right_ankle_pitch_link",
+    "child": "right_ankle_roll_link",
+    "id": 10,
+    "origin_mm": [
+      40.0,
+      -44.0,
+      22.0
+    ],
+    "axis_xyz": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  },
+  {
+    "name": "neck_pitch",
+    "parent": "base",
+    "child": "head_link",
+    "id": 11,
+    "origin_mm": [
+      0.0,
+      0.0,
+      247.0
+    ],
+    "axis_xyz": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "case_frame_columns": [
+      [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        1.0,
+        0.0
+      ]
+    ],
+    "motor": "XL330-M288-T",
+    "horn_face_mm": 14.5,
+    "idler_face_mm": -14.5
+  }
+]

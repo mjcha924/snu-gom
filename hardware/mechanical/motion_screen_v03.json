@@ -1,0 +1,259 @@
+{
+  "method": "Discrete bilateral-leg and neck screen; exact selected custom shapes including sole pads; conservative solid 20x34x23 mm case boxes. Tests cross-leg interference. Moving horn details, electronics, cables, flexible deformation and dynamics omitted.",
+  "scope": "26 discrete poses, including bilateral crouch and two sway poses; not approved joint limits or exhaustive sweeps",
+  "samples": [
+    {
+      "sample": "neutral",
+      "angles_deg": {},
+      "findings": []
+    },
+    {
+      "sample": "left_hip_roll_-8",
+      "angles_deg": {
+        "left_hip_roll": -8
+      },
+      "findings": [
+        {
+          "a": "left_foot_yoke_sole",
+          "b": "right_paw_cover",
+          "overlap_mm3": 350.072,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_paw_cover",
+          "overlap_mm3": 774.556,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_bumper",
+          "b": "right_paw_cover",
+          "overlap_mm3": 12.748,
+          "conservative_case_box": false
+        },
+        {
+          "a": "right_paw_cover",
+          "b": "left_sole_pad",
+          "overlap_mm3": 51.064,
+          "conservative_case_box": false
+        },
+        {
+          "a": "right_paw_bumper",
+          "b": "left_sole_pad",
+          "overlap_mm3": 168.948,
+          "conservative_case_box": false
+        }
+      ]
+    },
+    {
+      "sample": "left_hip_roll_8",
+      "angles_deg": {
+        "left_hip_roll": 8
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_hip_pitch_-15",
+      "angles_deg": {
+        "left_hip_pitch": -15
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_hip_pitch_15",
+      "angles_deg": {
+        "left_hip_pitch": 15
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_knee_pitch_-25",
+      "angles_deg": {
+        "left_knee_pitch": -25
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_knee_pitch_25",
+      "angles_deg": {
+        "left_knee_pitch": 25
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_ankle_pitch_-15",
+      "angles_deg": {
+        "left_ankle_pitch": -15
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_ankle_pitch_15",
+      "angles_deg": {
+        "left_ankle_pitch": 15
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_ankle_roll_-8",
+      "angles_deg": {
+        "left_ankle_roll": -8
+      },
+      "findings": []
+    },
+    {
+      "sample": "left_ankle_roll_8",
+      "angles_deg": {
+        "left_ankle_roll": 8
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_hip_roll_-8",
+      "angles_deg": {
+        "right_hip_roll": -8
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_hip_roll_8",
+      "angles_deg": {
+        "right_hip_roll": 8
+      },
+      "findings": [
+        {
+          "a": "right_foot_yoke_sole",
+          "b": "left_paw_cover",
+          "overlap_mm3": 350.072,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_paw_cover",
+          "overlap_mm3": 774.556,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_paw_bumper",
+          "overlap_mm3": 12.748,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_cover",
+          "b": "right_sole_pad",
+          "overlap_mm3": 51.064,
+          "conservative_case_box": false
+        },
+        {
+          "a": "left_paw_bumper",
+          "b": "right_sole_pad",
+          "overlap_mm3": 168.948,
+          "conservative_case_box": false
+        }
+      ]
+    },
+    {
+      "sample": "right_hip_pitch_-15",
+      "angles_deg": {
+        "right_hip_pitch": -15
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_hip_pitch_15",
+      "angles_deg": {
+        "right_hip_pitch": 15
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_knee_pitch_-25",
+      "angles_deg": {
+        "right_knee_pitch": -25
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_knee_pitch_25",
+      "angles_deg": {
+        "right_knee_pitch": 25
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_ankle_pitch_-15",
+      "angles_deg": {
+        "right_ankle_pitch": -15
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_ankle_pitch_15",
+      "angles_deg": {
+        "right_ankle_pitch": 15
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_ankle_roll_-8",
+      "angles_deg": {
+        "right_ankle_roll": -8
+      },
+      "findings": []
+    },
+    {
+      "sample": "right_ankle_roll_8",
+      "angles_deg": {
+        "right_ankle_roll": 8
+      },
+      "findings": []
+    },
+    {
+      "sample": "bilateral_crouch",
+      "angles_deg": {
+        "left_hip_pitch": -15,
+        "left_knee_pitch": 30,
+        "left_ankle_pitch": -15,
+        "right_hip_pitch": -15,
+        "right_knee_pitch": 30,
+        "right_ankle_pitch": -15
+      },
+      "findings": []
+    },
+    {
+      "sample": "sway_-4",
+      "angles_deg": {
+        "left_hip_roll": -4,
+        "right_hip_roll": -4,
+        "left_ankle_roll": 4,
+        "right_ankle_roll": 4
+      },
+      "findings": []
+    },
+    {
+      "sample": "sway_4",
+      "angles_deg": {
+        "left_hip_roll": 4,
+        "right_hip_roll": 4,
+        "left_ankle_roll": -4,
+        "right_ankle_roll": -4
+      },
+      "findings": []
+    },
+    {
+      "sample": "neck_up_20",
+      "angles_deg": {
+        "neck_pitch": -20
+      },
+      "findings": []
+    },
+    {
+      "sample": "neck_up_35",
+      "angles_deg": {
+        "neck_pitch": -35
+      },
+      "findings": []
+    }
+  ]
+}

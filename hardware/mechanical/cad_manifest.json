@@ -1,14 +1,14 @@
 {
-  "robot_revision": "snu-gom-cad-v0.2-paws-leg-shells",
+  "robot_revision": "snu-gom-cad-v0.3-paper-informed",
   "biped_named_version_url": null,
-  "status": "fit_prototype_delivered",
-  "package_file": "SNU_GOM_XL330_Prototype_v02.zip",
+  "status": "fit_prototype_with_documented_motion_interference",
+  "package_file": "SNU_GOM_XL330_Prototype_v03.zip",
   "package_download_url": null,
   "distribution": "Shared with project owner; binary CAD is not committed to this repository.",
   "units": "mm",
-  "date": "2026-09-29",
-  "package_sha256": "c15b724d6812fc0053e4948cb96bddfeec52fb0a1c8578d54a65139ebb6dddd9",
-  "full_step_sha256": "d14b9de22436985524ef3d57ab098098a7df81f94053825f36cdecbe5a51f89e",
+  "date": "2026-10-04",
+  "package_sha256": "ce87c979bc79be5e6bedf3a78d64eaaf3af405351cf9f8e98349d81e86baecb8",
+  "full_step_sha256": "0d6070aa49ce986277189ff7b7487744d36ce8d0fffbc601ccabe5f33ebab2ce",
   "supplier_step_sha256": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
   "motor_count": 11,
   "leg_dof_per_side": 5,
@@ -16,11 +16,17 @@
   "overall_xyz_mm": [
     124.8,
     223.3,
-    364.3
+    366.3
   ],
-  "planning_mass_g": 1049.6,
+  "planning_mass_g": 980.3,
   "simulation_synchronized": false,
   "geometry_guide": "../../docs/CAD_GEOMETRY.md",
   "verification_guide": "../../docs/CAD_VERIFICATION.md",
-  "legacy_reference_url": "https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301"
+  "legacy_reference_url": "https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301",
+  "paper_design_guide": "../../docs/PAPER_DESIGN.md",
+  "motion_screen": {
+    "samples": 26,
+    "samples_with_intersections": 2
+  },
+  "soft_cover_option": "separate neutral study, not in baseline STEP"
 }

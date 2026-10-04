@@ -39,3 +39,9 @@ Add each new decision with its issue, rationale, rejected alternatives, affected
 Confirmed user requirements: human interaction, API connectivity, camera, microphone and speaker; lens at the bear nose. Proposed implementation: Pi 4 + retained OpenRB-150 + separate logic power. See [HRI.md](HRI.md). Latest update: the user requested head tilt; one neck-pitch motor is included, keeping five motors per leg.
 
 사용자 확정 요구: HRI·API·카메라·마이크·스피커, 렌즈는 곰 코 위치. 구현 제안은 Pi 4 + OpenRB-150 유지 + 별도 로직 전원이며 [HRI.md](HRI.md)에 기록합니다. 최신 변경은 머리 틸트이며 목 피치 1개를 추가하고 다리당 5개를 유지합니다.
+
+## 2026-10-04 · Apply BD-X and Olaf / 논문 반영
+
+User requested implementation of the paper findings. **Prototype baseline:** lighten cosmetic skins while retaining structural parts and the existing five-joint legs; add rear vents and 2 mm pad samples; separate soft joint covers into an optional study. **Deferred:** hip-yaw topology, asymmetric legs, neck yaw, thermal thresholds and trained policies. [Rationale, alternatives and evidence](PAPER_DESIGN.md) · [CAD checks](CAD_VERIFICATION.md).
+
+사용자 요청에 따라 논문 결과를 적용했습니다. **시제품 기본안:** 구조부·기존 다리 5축 유지, 외장 경량화, 후면 통풍, 2 mm 패드, 유연 관절 외피 비교안 분리. **추후 판단:** 고관절 요·비대칭 다리·목 요·온도 임계값·학습 정책. 근거와 대안·검사 결과는 위 링크에 기록합니다.
