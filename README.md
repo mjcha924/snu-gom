@@ -52,6 +52,14 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Python 3.11 i
 
 **CAD v0.3:** shell-on and skeleton STEP prototypes are available for the full robot and leg pair; the bilateral variants use five XL330 joints per leg. [Design and limits](docs/PAPER_DESIGN.md) · [Onshape import and joint setup](docs/ONSHAPE.md).
 
+#### CAD previews
+
+| Shell exterior | Skeleton and leg joint layout |
+| --- | --- |
+| ![SNU GOM v0.3 shell exterior](docs/images/cad-v03/15_full_shell.jpg) | ![SNU GOM v0.3 leg shell and skeleton comparison](docs/images/cad-v03/21_leg_shell_and_skeleton.jpg) |
+
+See the [full shell/skeleton comparison](docs/images/cad-v03/20_shell_and_skeleton_comparison.jpg) and [leg close-up](docs/images/cad-v03/03_leg_detail.jpg). These are design previews; they are not manufacturing drawings.
+
 The fit-prototype archive and exact supplier motor/horn geometry have been shared with the project owner. The repository keeps the CAD manifest and import instructions; a new Onshape document and fabrication-qualified CAD have not been created. Next: verify one joint, test one leg under load, complete wiring, update the simulation model and bench-test conversation. The HRI API design exists; an HRI runtime is not implemented yet.
 
 ---

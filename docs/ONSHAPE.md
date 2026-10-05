@@ -15,6 +15,12 @@ Use the v0.3 CAD package from this project conversation. It contains four useful
 
 The package also includes one-leg close-ups and separate custom leg-part STEP/STL files. STEP is an exchange format: it carries positioned geometry, not the original feature history or working joints. These are fit prototypes, not manufacturing-qualified parts.
 
+### Visual guide
+
+![Shell-on leg and exposed skeleton comparison](images/cad-v03/21_leg_shell_and_skeleton.jpg)
+
+The bilateral leg STEP files show the same five-axis chain in two presentation styles. The motor cases and link brackets remain the structural parts; the outer shells are separate panels. For a closer look at link and foot details, see the [leg detail view](images/cad-v03/03_leg_detail.jpg). / 양쪽 다리의 5축 구조를 외장형과 골격형으로 비교한 그림입니다. [다리 상세 보기](images/cad-v03/03_leg_detail.jpg)
+
 ## 1. Import the STEP file
 
 1. Download and unzip `SNU_GOM_CAD_Shell_Skeleton_v03.zip` from the project conversation.
