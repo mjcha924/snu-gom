@@ -28,7 +28,6 @@
   "planning_mass_note": "Estimated planning value; not measured and not a verified mass for the neutral sleeve material.",
   "simulation_synchronized": false,
   "geometry_guide": "../../docs/CAD_GEOMETRY.md",
-  "onshape_guide": "../../docs/ONSHAPE.md",
   "verification_guide": "../../docs/CAD_VERIFICATION.md",
   "legacy_reference_url": "https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301",
   "paper_design_guide": "../../docs/PAPER_DESIGN.md",

@@ -4,7 +4,7 @@
 
 [Why the papers changed this design / 논문 반영 근거](PAPER_DESIGN.md)
 
-This page explains how the detailed CAD fits together. The v0.3 package has full shell-on and exposed-skeleton STEP assemblies, plus paired-leg and single-leg close-ups. Use the [Onshape guide](ONSHAPE.md) to import and mate them. All dimensions below are in **millimetres**.
+This page explains how the detailed CAD fits together. The v0.3 package has full shell-on and exposed-skeleton STEP assemblies, plus paired-leg and single-leg close-ups. All dimensions below are in **millimetres**.
 
 상세 CAD를 이해하기 위한 안내입니다. 전체 STEP에서 외형을 확인한 뒤 외장과 접촉 패드를 숨기면 내부 기구를 볼 수 있습니다. 아래 치수는 모두 **mm**입니다.
 

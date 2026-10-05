@@ -2,13 +2,12 @@
 
 **v0.3 · paper-informed shell and skeleton prototypes · units mm**
 
-The full CAD delivery archive is `SNU_GOM_CAD_Shell_Skeleton_v03.zip` (SHA-256 recorded in [`cad_manifest.json`](cad_manifest.json)). It was shared with the project owner in the project conversation; this public repository currently contains the design documentation and kinematic frames, not the large binary STEP archive. The Onshape guide explains which STEP to use and how to rebuild its joints.
+The full CAD delivery archive is `SNU_GOM_CAD_Shell_Skeleton_v03.zip` (SHA-256 recorded in [`cad_manifest.json`](cad_manifest.json)). It was shared with the project owner in the project conversation; this public repository currently contains the design documentation and kinematic frames, not the large binary STEP archive.
 
 ## Start here / 먼저 볼 파일
 
 | Need / 목적 | File / 파일 |
 | --- | --- |
-| Import a model and create Onshape mates / Onshape 가져오기·관절 구성 | [Onshape guide / Onshape 안내](../../docs/ONSHAPE.md) |
 | Understand the joints and geometry / 축·기구 이해 | [CAD geometry / CAD 형상](../../docs/CAD_GEOMETRY.md) |
 | Compare shell and skeleton / 외장형·골격형 비교 | [Paper-informed design / 논문 반영](../../docs/PAPER_DESIGN.md) |
 | Check STEP round-trip and collisions / STEP·간섭 검사 | [CAD verification / CAD 검사](../../docs/CAD_VERIFICATION.md) |
@@ -31,4 +30,4 @@ The geometry follows lessons from BD-X (design character motion and mechanics to
 
 **Checks:** all six exported STEP files re-imported with valid solids. The 26-pose bilateral screen identified two isolated inward hip-roll samples with foot intersections. Planning mass is estimated, not weighed. See the verification note before using any pose or load estimate.
 
-**Current constraints:** The existing URDF is still an earlier ten-leg-joint proxy and is not synchronized with this eleven-motor CAD. Use the Onshape guide for the correct revolute axes and do not infer servo limits or command directions from STEP geometry.
+**Current constraints:** The existing URDF is still an earlier ten-leg-joint proxy and is not synchronized with this eleven-motor CAD. Do not infer servo limits or command directions from STEP geometry.

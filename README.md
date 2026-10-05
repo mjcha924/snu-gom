@@ -26,7 +26,7 @@ Walking, waddling and expressive responses are development goals. They have not 
 | I want to… | Open |
 | --- | --- |
 | Understand the robot | [Project overview](docs/PROJECT_BRIEF.md) |
-| See or import the mechanical CAD | [CAD geometry and layout](docs/CAD_GEOMETRY.md) · [CAD files and status](hardware/mechanical/README.md) · [Onshape import and joint setup](docs/ONSHAPE.md) |
+| See the mechanical CAD design | [CAD geometry and layout](docs/CAD_GEOMETRY.md) · [CAD files and status](hardware/mechanical/README.md) |
 | Understand camera, voice and APIs | [HRI design](docs/HRI.md) |
 | Check wiring and parts | [Electronics](docs/ELECTRONICS.md) · [BOM and costs](hardware/bom/README.md) |
 | Run the existing model | [Simulation guide](docs/SIMULATING_MOTION.md) |
@@ -50,7 +50,7 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Python 3.11 i
 
 ### Current work
 
-**CAD v0.3:** shell-on and skeleton STEP prototypes are available for the full robot and leg pair; the bilateral variants use five XL330 joints per leg. [Design and limits](docs/PAPER_DESIGN.md) · [Onshape import and joint setup](docs/ONSHAPE.md).
+**CAD v0.3:** shell-on and skeleton STEP prototypes are available for the full robot and leg pair; the bilateral variants use five XL330 joints per leg. [Design and limits](docs/PAPER_DESIGN.md).
 
 #### CAD previews
 
@@ -60,7 +60,7 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Python 3.11 i
 
 See the [full shell/skeleton comparison](docs/images/cad-v03/20_shell_and_skeleton_comparison.jpg) and [leg close-up](docs/images/cad-v03/03_leg_detail.jpg). These are design previews; they are not manufacturing drawings.
 
-The fit-prototype archive and exact supplier motor/horn geometry have been shared with the project owner. The repository keeps the CAD manifest and import instructions; a new Onshape document and fabrication-qualified CAD have not been created. Next: verify one joint, test one leg under load, complete wiring, update the simulation model and bench-test conversation. The HRI API design exists; an HRI runtime is not implemented yet.
+The fit-prototype archive and exact supplier motor/horn geometry have been shared with the project owner. The repository keeps the CAD manifest and design notes; a new Onshape document and fabrication-qualified CAD have not been created. Next: verify one joint, test one leg under load, complete wiring, update the simulation model and bench-test conversation. The HRI API design exists; an HRI runtime is not implemented yet.
 
 ---
 
@@ -68,7 +68,7 @@ The fit-prototype archive and exact supplier motor/horn geometry have been share
 
 ## 한국어
 
-**CAD v0.3:** 전체 로봇과 양쪽 다리의 외장형·골격형 STEP 시제품을 준비했습니다. 양쪽 다리는 XL330 5개씩 사용합니다. [설계·한계](docs/PAPER_DESIGN.md) · [Onshape 가져오기와 관절 설정](docs/ONSHAPE.md).
+**CAD v0.3:** 전체 로봇과 양쪽 다리의 외장형·골격형 STEP 시제품을 준비했습니다. 양쪽 다리는 XL330 5개씩 사용합니다. [설계·한계](docs/PAPER_DESIGN.md).
 
 **걷고, 사람을 바라보고, 말과 동작으로 반응하는 작은 곰 모양 이족보행 로봇입니다.** 다리 10축에 위아래로 움직이는 머리, 코 카메라, 마이크와 스피커를 결합합니다.
 
@@ -90,7 +90,7 @@ The fit-prototype archive and exact supplier motor/horn geometry have been share
 | 궁금한 내용 | 문서 |
 | --- | --- |
 | 로봇의 목표와 구성 | [프로젝트 개요](docs/PROJECT_BRIEF.md) |
-| 기구 CAD 가져오기 | [CAD 형상·기구 배치](docs/CAD_GEOMETRY.md) · [CAD 상태](hardware/mechanical/README.md) · [Onshape 가져오기와 관절 설정](docs/ONSHAPE.md) |
+| 기구 CAD 설계 | [CAD 형상·기구 배치](docs/CAD_GEOMETRY.md) · [CAD 상태](hardware/mechanical/README.md) |
 | 카메라·음성·API | [HRI 설계](docs/HRI.md) |
 | 전장·구매·가격 | [전장](docs/ELECTRONICS.md) · [BOM과 예산](hardware/bom/README.md) |
 | 모델 실행 | [시뮬레이션 안내](docs/SIMULATING_MOTION.md) |
@@ -100,7 +100,7 @@ The fit-prototype archive and exact supplier motor/horn geometry have been share
 
 위 실행 명령은 기존 다리 10축 도형 모델을 보여줍니다. 상세 CAD·목 피치는 아직 반영하지 않았으며 고정 베이스의 관절 확인용입니다. 보행 검증은 아닙니다. [검증 상태](docs/GOM_VALIDATION.md)를 확인하세요.
 
-시제품 STEP 패키지와 제공 모터/혼 형상을 프로젝트 소유자에게 전달했습니다. 저장소에는 CAD manifest와 Onshape 안내를 기록했으며 새 Onshape 문서나 제작 검증 CAD는 아직 없습니다. 다음은 관절 시편 → 한쪽 다리 하중 시험 → 배선 → 모델 갱신 → 정지 상태 대화 시험입니다. HRI API 설계는 있지만 실행 서버는 아직 없습니다.
+시제품 STEP 패키지와 제공 모터/혼 형상을 프로젝트 소유자에게 전달했습니다. 저장소에는 CAD manifest와 설계 설명을 기록했으며 새 Onshape 문서나 제작 검증 CAD는 아직 없습니다. 다음은 관절 시편 → 한쪽 다리 하중 시험 → 배선 → 모델 갱신 → 정지 상태 대화 시험입니다. HRI API 설계는 있지만 실행 서버는 아직 없습니다.
 
 ---
 
