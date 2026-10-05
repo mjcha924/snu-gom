@@ -1,26 +1,34 @@
 {
-  "robot_revision": "snu-gom-cad-v0.3-paper-informed",
-  "biped_named_version_url": null,
-  "status": "fit_prototype_with_documented_motion_interference",
-  "package_file": "SNU_GOM_XL330_Prototype_v03.zip",
+  "robot_revision": "snu-gom-cad-v0.3-paper-informed-shell-skeleton",
+  "status": "fit_prototype_step_roundtrip_validated_motion_interference_documented",
+  "package_file": "SNU_GOM_CAD_Shell_Skeleton_v03.zip",
   "package_download_url": null,
-  "distribution": "Shared with project owner; binary CAD is not committed to this repository.",
+  "distribution": "Full binary STEP archive shared with the project owner in the project conversation; this repository records metadata, frames, and setup instructions.",
   "units": "mm",
-  "date": "2026-10-04",
-  "package_sha256": "ce87c979bc79be5e6bedf3a78d64eaaf3af405351cf9f8e98349d81e86baecb8",
-  "full_step_sha256": "0d6070aa49ce986277189ff7b7487744d36ce8d0fffbc601ccabe5f33ebab2ce",
+  "date": "2026-10-05",
+  "package_sha256": "d019d491f4968db5c5afa3c76c3bd92ad1c88dcc9a67eb8aee50e6c9e3579edd",
   "supplier_step_sha256": "e2f7b060801a1d6a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6",
+  "motor": "XL330-M288-T",
   "motor_count": 11,
   "leg_dof_per_side": 5,
+  "leg_chain": [
+    "hip_roll",
+    "hip_pitch",
+    "knee_pitch",
+    "ankle_pitch",
+    "ankle_roll"
+  ],
   "camera_tilt_deg": 0,
-  "overall_xyz_mm": [
-    124.8,
-    223.3,
-    366.3
+  "full_shell_bounds_xyz_mm": [
+    123.346,
+    222.0,
+    366.0
   ],
   "planning_mass_g": 980.3,
+  "planning_mass_note": "Estimated planning value; not measured and not a verified mass for the neutral sleeve material.",
   "simulation_synchronized": false,
   "geometry_guide": "../../docs/CAD_GEOMETRY.md",
+  "onshape_guide": "../../docs/ONSHAPE.md",
   "verification_guide": "../../docs/CAD_VERIFICATION.md",
   "legacy_reference_url": "https://cad.onshape.com/documents/70e60901c3f0fdac6b9cd14a/w/8da76927eccdd278710924b6/e/0a419943727577ede2a57301",
   "paper_design_guide": "../../docs/PAPER_DESIGN.md",
@@ -28,5 +36,74 @@
     "samples": 26,
     "samples_with_intersections": 2
   },
-  "soft_cover_option": "separate neutral study, not in baseline STEP"
+  "soft_cover_option": "Neutral sleeve envelopes are included in shell-on exports; they are not validated flexible parts.",
+  "actual_wire_harness_modeled": false,
+  "step_exports": [
+    {
+      "file": "SNU_GOM_full_shell_assembly.step",
+      "sha256": "81c443880aa413ac7cf648c1ca66ec85efbec247aca5c692d47004d98def6b3c",
+      "valid_solids": 249,
+      "all_solids_valid": true,
+      "bounds_xyz_mm": [
+        123.346,
+        222.0,
+        366.0
+      ]
+    },
+    {
+      "file": "SNU_GOM_leg_pair_shell.step",
+      "sha256": "2982c609786d79f1faa50ea585f47d62d0858e59a277846087b4400d18a52425",
+      "valid_solids": 193,
+      "all_solids_valid": true,
+      "bounds_xyz_mm": [
+        94.0,
+        158.0,
+        204.85
+      ]
+    },
+    {
+      "file": "SNU_GOM_leg_pair_skeleton.step",
+      "sha256": "e0669d051a755873e31c42a8c2ecb96f316c0b43def37174f723f6f67b322f96",
+      "valid_solids": 161,
+      "all_solids_valid": true,
+      "bounds_xyz_mm": [
+        88.0,
+        154.0,
+        202.85
+      ]
+    },
+    {
+      "file": "SNU_GOM_left_leg_5DOF_shell.step",
+      "sha256": "f497be26427cbdc92f2b7afc4da39147935067a01400b20e0ca5cb6b38f05cf3",
+      "valid_solids": 96,
+      "all_solids_valid": true,
+      "bounds_xyz_mm": [
+        94.0,
+        70.0,
+        198.5
+      ]
+    },
+    {
+      "file": "SNU_GOM_left_leg_5DOF_skeleton.step",
+      "sha256": "8c54036b979d60e8a2946e4f7f91d56e93336d342e02a795fab77349671061fa",
+      "valid_solids": 80,
+      "all_solids_valid": true,
+      "bounds_xyz_mm": [
+        88.0,
+        66.0,
+        196.5
+      ]
+    },
+    {
+      "file": "SNU_GOM_skeleton_assembly.step",
+      "sha256": "0b65e91d2b2820346ae511142447d584cf69d30a7b1b58645ca7faac2cc86190",
+      "valid_solids": 183,
+      "all_solids_valid": true,
+      "bounds_xyz_mm": [
+        107.0,
+        154.0,
+        309.5
+      ]
+    }
+  ]
 }

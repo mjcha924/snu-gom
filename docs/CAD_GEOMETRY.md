@@ -4,7 +4,7 @@
 
 [Why the papers changed this design / 논문 반영 근거](PAPER_DESIGN.md)
 
-This page explains how the detailed CAD fits together. Start with the full STEP to see the appearance, then hide the cosmetic parts and contact pads to inspect the mechanism. All dimensions below are in **millimetres**.
+This page explains how the detailed CAD fits together. The v0.3 package has full shell-on and exposed-skeleton STEP assemblies, plus paired-leg and single-leg close-ups. Use the [Onshape guide](ONSHAPE.md) to import and mate them. All dimensions below are in **millimetres**.
 
 상세 CAD를 이해하기 위한 안내입니다. 전체 STEP에서 외형을 확인한 뒤 외장과 접촉 패드를 숨기면 내부 기구를 볼 수 있습니다. 아래 치수는 모두 **mm**입니다.
 
@@ -81,7 +81,7 @@ The intended load path is **sole → ankle yoke/adapter → shin → thigh → h
 
 ## 4. Paws, leg covers and hidden wiring / 발·다리 외장과 배선
 
-The v0.3 feet retain a continuous rounded toe box, low toe inlays, a separate dark bumper and mounting bosses accessed from the sole. The rear ankle opening and joint gaps remain open in the rigid-panel baseline; optional soft concealment is a separate study. Hand pads follow the curved arm surface and use four small toe beans above an oval palm. The fixed arms move 9 mm outward and 8 mm upward to clear the hip covers.
+The v0.3 feet retain a continuous rounded toe box, low toe inlays, a separate dark bumper and mounting bosses accessed from the sole. The rigid-panel baseline leaves the rear ankle opening and joint gaps open; the explicit shell-on STEP pairs link panels with neutral sleeve envelopes across the gaps, while the skeleton STEP exposes the load path. Hand pads follow the curved arm surface and use four small toe beans above an oval palm. The fixed arms move 9 mm outward and 8 mm upward to clear the hip covers.
 
 v0.3 발은 하나로 이어진 둥근 앞부분, 낮은 발가락 인레이, 분리형 어두운 테두리와 발판 쪽에서 접근하는 고정부로 구성합니다. 기본 경질 외장안의 뒤쪽 발목 개구와 관절 틈은 열려 있으며 유연 은폐 외피는 별도 비교안입니다. 손바닥 패드는 팔 곡면을 따라가며 타원형 중심 패드 위에 작은 발가락 패드 4개를 배치합니다. 고관절 외장 간섭을 줄이기 위해 고정 팔을 바깥쪽 9 mm, 위쪽 8 mm 이동했습니다.
 
@@ -91,7 +91,7 @@ v0.3 발은 하나로 이어진 둥근 앞부분, 낮은 발가락 인레이, �
 | `thigh_shell_front/rear` | Follows hip-pitch link / 고관절 피치 링크와 함께 움직임 |
 | `shin_shell_front/rear` | Follows knee-pitch link / 무릎 피치 링크와 함께 움직임 |
 | `*_sole_pad` | Separate foam/elastomer contact sample, adhesive trial; 4 access holes / 분리형 폼·탄성체 접촉 시편·접착 시험·접근공 4개 |
-| `design_studies/*_flex_gaiter` | Optional neutral soft sleeve; absent from baseline / 기본 조립체에서 제외한 유연 외피 중립 비교안 |
+| `design_studies/*_flex_gaiter` | Neutral soft-sleeve envelope; included in `*_shell.step`, omitted from rigid-panel baseline and skeleton / 중립 유연 커버 외곽. `*_shell.step`에 포함하며 경질 패널 기준안·골격형에서는 제외 |
 | `paw_cover` | Follows ankle-roll output/sole / 발목 롤 출력·발판과 함께 움직임 |
 
 Each rigid cover separates into front and rear panels with a **0.4 mm seam**. Prototype seam lugs have a rear Ø2.2 clearance hole and front Ø1.6 pilot for a trial M2 fastening scheme. Rear tie slots allow retention to the custom link; the strap path and retention strength need a fit build. The inner rear trough reserves 6 mm width for the motor harness; the hip guide is shallower and shifted toward the outer side to clear the roll yoke. The shin front panel has a lower clearance notch for the ankle adapter.
@@ -102,9 +102,9 @@ Route the motor harness down the rear channel, leave a service loop at each rota
 
 모터 배선은 후면 홈을 따라 내려가고 각 회전 관절에 여유 루프를 둡니다. 혼·요크를 피해 양쪽 링크에 케이블을 고정하며, 모터를 분해하지 않고 후면 커버를 열 수 있게 합니다. 케이블 길이·커넥터 통과·최소 굽힘 반경은 아직 확정하지 않았습니다.
 
-**The optional joint sleeves are soft-part design envelopes under `design_studies/`, excluded from the baseline STEP.** Their neutral STEP shapes cannot be treated as rigid parts during motion. Fabric or a soft elastomer sleeve must be patterned and tested for folding, snagging and ventilation. Ordinary rigid filament would bridge the joints and restrict motion. Hide these envelopes when posing the rigid mechanism.
+**The joint sleeves are neutral soft-part design envelopes under `design_studies/`; they are included in the shell-on STEP and excluded from the rigid-panel baseline and skeleton.** Their neutral STEP shapes cannot be treated as rigid parts during motion. Fabric or a soft elastomer sleeve must be patterned and tested for folding, snagging and ventilation. Ordinary rigid filament would bridge the joints and restrict motion. Hide these envelopes when posing the rigid mechanism.
 
-**관절 슬리브는 `design_studies/`에 있는 유연 부품 비교 외곽이며 기본 STEP에서 제외합니다.** 중립 STEP 형상을 경질 부품처럼 회전시키면 안 됩니다. 천 또는 부드러운 탄성체로 접힘·끼임·통풍을 시험해야 합니다. 일반 경질 필라멘트로 그대로 출력하면 관절 움직임을 제한합니다. 강체 자세를 확인할 때는 이 부품을 숨깁니다.
+**관절 슬리브는 `design_studies/`의 중립 유연 부품 외곽입니다. 외장형 STEP에는 포함하고 경질 패널 기준안·골격형에서는 제외합니다.** 중립 STEP 형상을 경질 부품처럼 회전시키면 안 됩니다. 천 또는 부드러운 탄성체로 접힘·끼임·통풍을 시험해야 합니다. 일반 경질 필라멘트로 그대로 출력하면 관절 움직임을 제한합니다. 강체 자세를 확인할 때는 이 부품을 숨깁니다.
 
 ![Removable cover panels / 분리형 외장 패널](images/cad-panels-v03.png)
 
@@ -127,10 +127,10 @@ The OpenRB envelope moves to X=−27.3, Y=22, Z=167, and the IMU to (13,0,166) f
 
 ## 6. Open and edit the CAD / CAD 열기와 수정
 
-1. Import `SNU_GOM_full_assembly.step` in millimetres. Use the internal assembly to inspect brackets and motor geometry. / 전체 STEP를 mm로 가져오고 내부 조립체에서 골격을 확인합니다.
+1. Start with `SNU_GOM_leg_pair_shell.step` or `SNU_GOM_leg_pair_skeleton.step`; use the matching full-robot STEP for exterior review. / 양쪽 다리 STEP를 먼저 열고 전체 STEP는 외형 확인에 사용합니다.
 2. Identify parts by name; left/right and front/rear panels export separately under `parts/`. / 이름으로 부품을 구분하며 좌우·앞뒤 패널은 개별 파일입니다.
 3. Recreate revolute mates from `joint_frames.json`. STEP contains shape placement, not an actuated mechanism. / 관절 JSON으로 회전 구속을 구성합니다. STEP만으로 관절이 구동되지는 않습니다.
 4. For source edits, install `requirements-cad.txt`, edit `source/build.py`, `source/refine_shells.py` and `source/refine_papers.py`, then run the package's rebuild commands. / 소스 수정은 세 Python 생성 파일에서 진행합니다.
 5. Print the joint coupon, then one cover pair and one foot before making the whole robot. / 관절 시편 → 커버 한 쌍·발 하나 순서로 먼저 검증합니다.
 
-See [CAD files and status](../hardware/mechanical/README.md) for the package and [verification notes](CAD_VERIFICATION.md) for the actual checks. The repository's existing URDF is still the earlier ten-leg-joint proxy and **does not match this CAD revision**. / 패키지와 검증 결과는 링크를 참고하세요. 저장소의 기존 10축 도형 URDF는 **현재 CAD와 일치하지 않습니다**.
+See [CAD files and status](../hardware/mechanical/README.md) for package contents and [verification notes](CAD_VERIFICATION.md) for STEP checks. The repository's existing URDF is still the earlier ten-leg-joint proxy and **does not match this CAD revision**. / 패키지 구성과 STEP 검사 결과는 링크를 참고하세요. 기존 10축 도형 URDF는 **현재 CAD와 일치하지 않습니다**.

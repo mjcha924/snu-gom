@@ -8,14 +8,14 @@
 
 ## English
 
-SNU GOM keeps its cream bear face, large paws, straight nose camera, fixed arms and eleven XL330-M288-T motors. The baseline now uses lighter segmented covers with open joint gaps. A separate neutral soft-cover study retains the more concealed appearance for comparison. The shell style remains a prototype choice: neither paper establishes which exterior people prefer in a controlled comparison.
+SNU GOM keeps its cream bear face, large paws, straight nose camera, fixed arms and eleven XL330-M288-T motors. The rigid-panel baseline uses lighter link covers with open joint gaps; the v0.3 shell-on STEP pairs those panels with neutral flexible sleeves. Matching shell and skeleton STEP assemblies are available for the full robot and the paired legs. The shell style remains a prototype choice: neither paper establishes which exterior people prefer in a controlled comparison.
 
 ### What the papers changed
 
 | Evidence | SNU GOM change | What remains to establish |
 | --- | --- | --- |
 | **BD-X, pp. 3–4:** develop character motion, proportions and mechanisms together; its robot also has shells. | Keep each rigid panel on one moving link. Preserve the bear silhouette and author small look/sway/bow references before designing a walking style. | Kinematic references do not establish balance. Long leg proportions still need further packaging work if a shorter teddy silhouette is required. |
-| **Olaf, p. 3:** a deformable foam skirt and stretch costume conceal the mechanism. | Remove the eight rigid-looking accordion sleeve envelopes from the baseline assembly; retain them under `design_studies/` as a neutral concealment option. | Fabric pattern, fastening, fold allowance, snagging, current and cooling tests. The STEP is not a printable, validated flexible joint. |
+| **Olaf, p. 3:** a deformable foam skirt and stretch costume conceal the mechanism. | Keep the eight neutral sleeve envelopes out of the rigid-panel baseline, then pair them with link-mounted panels in the shell-on full-body and paired-leg exports. | Fabric pattern, fastening, fold allowance, snagging, current and cooling tests. The STEP is not a printable, validated flexible joint. |
 | **Olaf, pp. 5–7:** the large head and costume make thermal behavior part of motion design. | Lighten upper head and body skins, retain mounting bands, add rear head/body vents and small rear leg-panel slots. | Shell stiffness and actual cooling. The same electronics and one neck-pitch motor remain provisional. |
 | **BD-X, p. 3; Olaf, pp. 3, 5, 7:** compliant feet and impact-aware control matter. | Add replaceable 2 mm sole-pad samples with underside screw access. Preserve the flat structural sole and active ankle roll. | Choose foam/elastomer after measuring friction, compression, wear and sound. A soft pad alone does not guarantee quiet walking. |
 | **BD-X, pp. 5–8:** animation references help define gait style; velocity-only walking can shuffle. | Specify standing/look, periodic short waddle and episodic greeting families, with reference tracking, contact timing and regularization objectives. | Train only after the CAD, masses, actuator model and simulator agree. No policy was trained in this revision. |
@@ -28,7 +28,7 @@ These are engineering applications of the papers, not dimensions or material pre
 - **Mass:** planning estimate falls from 1,049.6 g to **980.3 g**. Rigid custom geometry is 502.7 g at a reference density of 1.24 g/cm³; two pads add 6.6 g at an assumed 0.30 g/cm³; component allowances total 471 g. The previous total included optional sleeve geometry at the rigid reference density. The comparison combines shell lightening and removal of that option, not measured weight savings.
 - **Head:** custom head parts fall from approximately 125.6 g to **109.5 g**, before camera/audio/wiring allowances. The lower head attachment band remains. No claim that one XL330 can carry the complete head continuously is made.
 - **Mounts:** structural brackets, motor placement, output horns, rear idlers, fasteners and all eleven joint frames are unchanged. Only cosmetic skins lose material; the two pads introduce new baseline parts.
-- **Concealment:** rigid panels conceal portions of the mechanism and guide rear wiring. Joint mechanisms remain visible through gaps. Fully concealing them requires the separate soft-cover development; the baseline is not described as fully enclosed.
+- **Concealment:** rigid panels conceal portions of the mechanism and guide rear wiring. The rigid-panel baseline leaves joint gaps open; the shell-on STEP adds neutral sleeve envelopes over those gaps. The envelopes are packaging studies, not validated moving fabric covers. Neither model contains the actual wire harness.
 
 ### Five joints do not imply the same leg
 
@@ -58,14 +58,14 @@ The bilateral CAD screen already rejects isolated inward hip roll at −8° left
 
 ## 한국어
 
-크림색 곰 얼굴·큰 발·정면 코 카메라·고정 팔·XL330-M288-T 11개를 유지합니다. 기본안은 **가벼운 분절형 외장과 열린 관절 틈**, 비교안은 **관절을 가리는 유연 외피**입니다. 두 논문 모두 어떤 외형이 사람에게 더 선호되는지 대조 실험으로 결론 내리지는 않았습니다.
+크림색 곰 얼굴·큰 발·정면 코 카메라·고정 팔·XL330-M288-T 11개를 유지합니다. 경질 패널 기준안은 **가벼운 분절형 외장과 열린 관절 틈**이며, v0.3 외장형 STEP은 패널에 **중립 유연 슬리브 외곽**을 더합니다. 전체 로봇과 양쪽 다리의 외장형·골격형 STEP을 제공하며, 두 논문은 외형 선호를 통제 실험으로 결론 내리지는 않았습니다.
 
 ### 실제 반영 내용
 
 | 논문 근거 | SNU GOM 변경 | 남은 검증 |
 | --- | --- | --- |
 | **BD-X 3–4쪽:** 캐릭터 동작·비율·기구를 함께 설계하며 이 로봇도 외장이 있음 | 경질 패널은 하나의 링크에만 부착. 올려다보기·흔들림·인사 참조부터 정의 | 참조 자세의 균형과 보행은 미검증. 더 짧은 곰 다리 비율은 추가 배치 설계가 필요 |
-| **Olaf 3쪽:** 폼 스커트와 신축성 의상으로 관절을 감춤 | 주름 슬리브 8개를 기본 조립체에서 분리해 `design_studies/` 비교안으로 보관 | 원단 패턴·고정·접힘 여유·끼임·전류·통풍. STEP는 검증된 유연 출력물이 아님 |
+| **Olaf 3쪽:** 폼 스커트와 신축성 의상으로 관절을 감춤 | 중립 슬리브 8개를 경질 패널 기준안에서는 분리하고, 외장형 전체·양쪽 다리 STEP에서는 링크별 패널과 결합 | 원단 패턴·고정·접힘 여유·끼임·전류·통풍. STEP는 검증된 유연 출력물이 아님 |
 | **Olaf 5–7쪽:** 큰 머리와 의상 때문에 온도를 동작 설계에 반영 | 머리·몸통 상부/중앙 외장을 경량화하고 고정부 유지. 머리·몸통·다리 뒤 통풍 슬롯 추가 | 외장 강성과 실측 방열. 전장 후보 및 목 피치 1개 구성의 하중 검증 |
 | **BD-X 3쪽, Olaf 3·5·7쪽:** 유연 발과 충격 저감 제어 | 교체형 2 mm 발바닥 패드와 하부 나사 접근공 추가. 평평한 구조 발판·능동 발목 롤 유지 | 마찰·압축·마모·소음 시험으로 재질 결정 |
 | **BD-X 5–8쪽:** 애니메이션 참조가 보행 스타일에 기여 | 기립/시선, 주기적 짧은 뒤뚱걸음, 일회성 인사와 참조·접촉·정규화 목표 명시 | CAD·질량·모터 모델·시뮬레이터 일치 후 학습. 이번에 학습한 정책은 없음 |
@@ -77,7 +77,7 @@ The bilateral CAD screen already rejects isolated inward hip roll at −8° left
 
 전체 계획 질량은 **1,049.6 → 980.3 g**, 머리 자체 제작 부품은 약 **125.6 → 109.5 g**입니다. 경질 부품은 기준 밀도 1.24 g/cm³에서 502.7 g, 패드는 가정한 폼 밀도 0.30 g/cm³에서 6.6 g, 구입 부품·배선 등 여유값은 471 g입니다. 이전 값에는 유연 슬리브도 경질 기준 밀도로 포함되어 있었습니다. 따라서 경량화와 비교안 제외가 함께 반영된 추정값이며 실측 감량이 아닙니다.
 
-하중을 받는 브래킷·모터 배치·제공된 혼/아이들러/나사·11개 관절 좌표는 유지합니다. 경질 외장은 내부 일부와 후면 배선을 가리고 관절 틈에는 기구가 보입니다. 완전 은폐는 별도 유연 외피 개발 항목입니다.
+하중을 받는 브래킷·모터 배치·제공된 혼/아이들러/나사·11개 관절 좌표는 유지합니다. 경질 패널 기준안은 관절 틈을 열어 두고, 외장형 STEP은 중립 슬리브 외곽으로 틈을 덮습니다. 슬리브는 움직이는 원단으로 검증되지 않았으며 두 모델 모두 실제 하네스 솔리드를 포함하지 않습니다.
 
 현재 다리는 **고관절 롤·피치 / 무릎 피치 / 발목 피치·롤**, BD-X는 **고관절 요·롤·피치 / 무릎 피치 / 발목 피치**입니다. BD-X의 둥근 발은 수동 롤을 허용합니다. 우선 현재안을 유지하고 같은 질량·모터 조건에서 기립·짧은 전진·좌우 이동·작은 회전을 비교한 뒤 축 구성을 바꿉니다. Olaf의 비대칭 6축은 채택하지 않았습니다.
 

@@ -6,12 +6,27 @@
 
 | Check | Result | Scope |
 | --- | --- | --- |
-| Full STEP re-import | **244 valid solids** | Every component is a single valid solid; not a strength or fit certification. |
+| Rigid-panel baseline re-import | **244 valid solids** | Every component is a single valid solid; not a strength or fit certification. |
 | Supplier geometry | **165 supplier solids, 11 motors** | Original motor/horn STEP and joint frames preserved. |
 | Neutral assembly | No overlap findings in the inherited/delta check | v0.2 baseline plus 35 material-removal operations and two exact new-pad candidate pair checks. This is not a newly repeated all-pairs inspection. |
 | Bilateral motion samples | **24 clear; 2 with intersections, out of 26** | Actual selected custom shapes and sole pads, plus conservative 20×34×23 mm motor-case boxes. Both legs and selected torso/head components included. |
 | Planning mass | **980.3 g** | Rigid CAD at 1.24 g/cm³, pads at assumed 0.30 g/cm³, and 471 g component allowances. Not measured. |
-| Overall bounds | **124.8 × 223.3 × 366.3 mm (X/Y/Z)** | CAD bounding boxes; new pads extend 2 mm below the old sole. |
+| Rigid-panel baseline bounds | **124.8 × 223.3 × 366.3 mm (X/Y/Z)** | CAD bounding boxes; new pads extend 2 mm below the old sole. |
+
+### Shell and skeleton export checks
+
+The v0.3 delivery also contains six variant STEP exports. Each was re-imported and all solids were valid. The paired-leg models each contain ten XL330 instances; each one-leg close-up contains five. These checks establish STEP B-rep integrity only, not assembly strength or actuator performance.
+
+| Variant | Valid solids | Neutral bounds X × Y × Z (mm) |
+| --- | ---: | ---: |
+| Full shell | 249 | 123.346 × 222 × 366 |
+| Full skeleton | 183 | 107 × 154 × 309.5 |
+| Leg pair shell | 193 | 94 × 158 × 204.85 |
+| Leg pair skeleton | 161 | 88 × 154 × 202.85 |
+| Single leg shell | 96 | 94 × 70 × 198.5 |
+| Single leg skeleton | 80 | 88 × 66 × 196.5 |
+
+The shell-on exports include neutral soft-sleeve envelopes across motor gaps. They are not included in the rigid motion screen and do not represent validated flexible covers. The harness and moving service loops are also not modeled. / 외장형 STEP에는 모터 틈을 덮는 중립 유연 슬리브 외곽이 들어갑니다. 강체 동작 검사에는 포함하지 않았고 실제 배선·움직임 여유 루프도 모델링하지 않았습니다.
 
 ### Detected interference
 
@@ -35,12 +50,27 @@ The coordinated ±4° sway samples, bilateral −15°/+30°/−15° crouch, indi
 
 | 검사 | 결과 | 범위 |
 | --- | --- | --- |
-| 전체 STEP 재가져오기 | **유효한 단일 솔리드 244개** | 위상 형상 검사이며 강도·조립 인증이 아님 |
+| 경질 패널 기준안 재가져오기 | **유효 솔리드 244개** | 위상 형상 검사이며 강도·조립 인증이 아님 |
 | 제공 모터 형상 | **11모터·공급 솔리드 165개 유지** | 원본 혼 포함 STEP·관절 좌표 유지 |
 | 중립 조립체 | 계승/변경분 검사에서 간섭 없음 | v0.2 기준 + 재료 제거 35회 + 새 패드 후보 쌍 정밀 검사 2회. 전체 쌍을 새로 반복한 검사가 아님 |
 | 양쪽 다리 자세 | **26개 중 24개 간섭 없음, 2개 간섭** | 실제 선택된 자체 부품·패드와 보수적인 모터 케이스 박스 사용 |
 | 계획 질량 | **980.3 g** | 경질 기준 밀도·가정한 폼 밀도·부품 여유값으로 계산, 실측 아님 |
-| 전체 외곽 | **X/Y/Z 124.8 × 223.3 × 366.3 mm** | 기존 발판 아래 2 mm 패드 포함 |
+| 경질 패널 기준안 외곽 | **X/Y/Z 124.8 × 223.3 × 366.3 mm** | 기존 발판 아래 2 mm 패드 포함 |
+
+### 외장형·골격형 STEP 검사
+
+v0.3 패키지에는 여섯 개 비교 STEP도 포함합니다. 재가져오기 후 모든 솔리드가 유효했습니다. 양쪽 다리 모델에는 XL330 10개, 한쪽 다리 확대 모델에는 5개가 들어갑니다. 이 검사는 STEP B-rep 형상만 확인하며 조립 강도나 모터 성능을 보장하지 않습니다.
+
+| 모델 | 유효 솔리드 | 중립 외곽 X × Y × Z (mm) |
+| --- | ---: | ---: |
+| 전체 외장형 | 249 | 123.346 × 222 × 366 |
+| 전체 골격형 | 183 | 107 × 154 × 309.5 |
+| 양쪽 다리 외장형 | 193 | 94 × 158 × 204.85 |
+| 양쪽 다리 골격형 | 161 | 88 × 154 × 202.85 |
+| 한쪽 다리 외장형 | 96 | 94 × 70 × 198.5 |
+| 한쪽 다리 골격형 | 80 | 88 × 66 × 196.5 |
+
+외장형에는 모터 틈을 덮는 중립 유연 슬리브 외곽이 들어갑니다. 강체 동작 검사에는 이 커버를 포함하지 않았으며 검증된 유연 외장도 아닙니다. 실제 하네스와 움직임 여유 루프는 모델링하지 않았습니다.
 
 다른 축이 모두 중립일 때 **왼쪽 고관절 롤 −8° 또는 오른쪽 +8°**에서 발이 반대쪽 발을 침범합니다. 각 경우 외장·발판·테두리·패드 관련 5쌍이 겹칩니다. 보수적 모터 박스로 인한 오검출이 아니라 실제 자체 부품 간섭입니다.
 
