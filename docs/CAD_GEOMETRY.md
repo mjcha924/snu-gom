@@ -8,7 +8,7 @@ The full shell measures **124.75 × 220 × 403 mm (X × Y × Z)**, so its curren
 
 ### v0.6 models
 
-See the [mechanical CAD index](../hardware/mechanical/README.md) and [`hardware/mechanical/cad/v0.6/`](../hardware/mechanical/cad/v0.6/) for shell-on, skeleton, paired-leg and single-leg STEP models, source parameters, joint frames, exact supplied motor/horn reference STEP and hashes.
+The v0.6 review package includes shell-on, skeleton, paired-leg and single-leg STEP variants, source parameters, joint frames, the supplied motor/horn reference STEP and file hashes.
 
 ### Leg kinematics and hip packaging
 
