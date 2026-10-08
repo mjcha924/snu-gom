@@ -11,7 +11,7 @@ September 29, 2026; revision `snu-gom-biped-v0.1-proxy`.
 | `python tools/check_project.py` | Passed; ten joints, assumed primitive-model mass 0.600 kg |
 | `python -m unittest discover -s tests -v` | Eight tests passed |
 | `python -m compileall -q tools tests` | Passed |
-| Budget recalculation | KRW 1,179,212 with proposed HRI hardware; optional and borrowed equipment separated |
+| Budget recalculation | KRW 1,502,812 with proposed HRI hardware; optional and borrowed equipment separated |
 | PyBullet headless joint viewer | Passed in [PR #6 CI](https://github.com/mjcha924/snu-gom/actions/runs/36562738762) |
 | Manufacturing CAD, joint clearance, motor response | Not validated |
 | Isaac import, training, physical standing/walking | Not validated |
@@ -33,7 +33,7 @@ The HRI hardware and detailed CAD are a newer design proposal; the existing URDF
 | `python tools/check_project.py` | 통과, 관절 10개, 도형 모델 질량 합계 0.600 kg |
 | `python -m unittest discover -s tests -v` | 8개 통과 |
 | `python -m compileall -q tools tests` | 통과 |
-| 기본 예산 재계산 | HRI 후보 포함 1,179,212원, 선택·대여 장비 분리 |
+| 기본 예산 재계산 | HRI 후보 포함 1,502,812원, 선택·대여 장비 분리 |
 | PyBullet headless 관절 viewer | [PR #6 CI](https://github.com/mjcha924/snu-gom/actions/runs/36562738762) 통과 |
 | 제조 CAD·가동 범위·모터 응답 | 미검증 |
 | Isaac Sim import·학습·실물 기립/보행 | 미검증 |
