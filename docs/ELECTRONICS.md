@@ -4,36 +4,34 @@
 
 # Electronics and power draft
 
-**HRI update:** add a Raspberry Pi 4, nose camera and USB microphone/speaker audio. Use a separate regulated logic rail and review USB backfeeding. Full wiring, API and packaging plan: [HRI.md](HRI.md).
+**HRI:** Raspberry Pi 4, nose camera, USB microphone/speaker audio, separate regulated logic rail and USB backfeed review. Full wiring, API and packaging plan: [HRI.md](HRI.md).
 
-XL330-M288-T uses half-duplex TTL communication and an internal driver. Recommended voltage is 5V; allowed range is 3.7–6V. Do not connect a 2S pack directly to the motors.
+## Motor interface and power
 
-Candidate path: 2S battery → disconnect switch/fuse → 5V motor converter → external distribution harness → left/right motor branches. Review logic power for the controller and IMU, and connect common GND and communication DATA. Do not parallel outputs from different regulators.
+The 11 actuators are four XC330-M288-T (both leg hip-pitch and knee-pitch joints) and seven XL330-M288-T (the other six leg joints plus neck pitch). Both models use TTL half-duplex DYNAMIXEL communication and operate at 3.7–6.0 V, recommended 5 V. The actuator protocol/controller does not need to change just because two per leg are XC330. Do not connect a 2S pack directly to the motors. [XC330 manufacturer specs](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/) · [XL330 manufacturer specs](https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/).
 
-OpenRB-150 lists a 3A DYNAMIXEL current limit. Do not route the full ten-motor load through the board or one servo cable. Review external power injection, separated power wiring and DATA/GND paths in a schematic. Check backfeeding between USB and external supplies.
+At 5 V the listed stall currents are 1.80 A per XC330 and 1.47 A per XL330. For 4 XC + 7 XL, the simultaneous-stall sum is 17.49 A. This is a theoretical upper bound, not the expected walking draw, but the current 10/11 A regulator candidates cannot be assumed to supply that bound or its transients. Measure bus current and voltage sag during supported single-leg tests; choose the rail, fuse, wiring, connectors and distribution from measured gait peaks and a safe current-limit strategy.
 
-At 5V, 1.5A stall current per motor gives 15A for ten motors. This is not an average walking-current estimate. Do not assume a candidate 10A UBEC handles every transient: size it from actual current limiting, peaks, voltage sag and heat. Recalculate if adding a neck.
+Candidate power path: 2S battery → disconnect/fuse → regulated motor rail → external distribution harness → left/right branches. Keep logic power separate and tie common ground/data appropriately. OpenRB-150 lists a 3 A DYNAMIXEL current limit; do not route motor power through the controller or one servo lead. Check voltage/current ratings, heat, transient response, USB backfeeding, and low-voltage cutoff. Do not parallel outputs from different regulators.
 
-Record a schematic, connector ratings, power budget, low-voltage monitoring/cutoff, converter settings, purchasing candidates and one-leg load tests. Review communication and power sequencing together.
+The XC motors also increase nominal motor mass: 4×23 g + 7×18 g = 218 g total, 20 g above an eleven-XL configuration. Update the weighed payload and hip-pitch/knee-pitch torque calculations once the final hardware and battery are selected. Stall torque is not a continuous walking rating.
 
-Manufacturer references: [XL330](https://www.robotis.com/shop/item.php?it_id=902-0163-000), [OpenRB-150](https://www.robotis.com/shop/item.php?it_id=902-0183-000). Pricing and candidates are in the [BOM](../hardware/bom/README.md).
-
----
+Record a schematic, connector ratings, power budget, converter settings, purchase candidates and one-leg load tests. Review communication and power sequencing together. The proposed controller can remain, but its external power path needs validation.
 
 <a id="한국어"></a>
 
 # 전장과 전원 초안
 
-**HRI 변경:** Raspberry Pi 4, 코 카메라, USB 마이크·스피커를 추가하고 별도 로직 전원과 USB 역급전을 검토합니다. 배선·API·배치 계획은 [HRI.md](HRI.md)를 따릅니다.
+**HRI:** Raspberry Pi 4, 코 카메라, USB 마이크/스피커, 별도 조정 로직 전원 및 USB 역급전을 검토합니다. 배선·API·배치 계획은 [HRI.md](HRI.md)를 따릅니다.
 
-XL330-M288-T는 TTL 반이중 통신과 내장 드라이버를 사용합니다. 권장 5V, 허용 3.7~6V입니다. 2S 팩을 모터에 직접 연결하지 않습니다.
+## 모터 통신과 전원
 
-후보 연결: 2S 배터리 → 차단 스위치·퓨즈 → 5V 모터 변환기 → 외부 분배 하네스 → 좌우 모터 분기. 제어기·IMU는 로직 전원을 검토하고 공통 GND 및 통신 DATA를 연결합니다. 서로 다른 레귤레이터의 출력을 병렬로 연결하지 않습니다.
+모터 11개는 XC330-M288-T 4개(양쪽 다리 고관절 피치·무릎 피치)와 XL330-M288-T 7개(나머지 다리 6축과 목 피치)입니다. 두 모델 모두 TTL 반이중 DYNAMIXEL 통신, 3.7~6.0 V 입력, 권장 5 V를 사용합니다. 다리 모터 중 2개를 XC330으로 바꾸더라도 통신 프로토콜/제어기를 바꿀 필요는 없습니다. 2S 배터리를 모터에 직접 연결하지 않습니다. [XC330 공식 사양](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/) · [XL330 공식 사양](https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/).
 
-OpenRB-150의 DYNAMIXEL 허용전류는 3A로 표시되어 있습니다. 10축의 전류를 보드나 한 개 서보 케이블로 모두 통과시키는 연결은 채택하지 않습니다. 외부 전원 주입, 전원선 분리, DATA/GND 연결 방식은 회로도로 검토합니다. USB 전원과 외부 전원의 역급전도 확인합니다.
+5 V에서 표시된 정지 전류는 XC330당 1.80 A, XL330당 1.47 A입니다. XC 4개와 XL 7개 모두가 동시에 정지할 때 합계는 17.49 A입니다. 이는 보행 평균 소비가 아니라 이론적 상한이지만 현재 후보인 10/11 A 레귤레이터가 이 상한이나 과도전류를 공급한다고 볼 수 없습니다. 지지대를 사용한 한쪽 다리 시험에서 전류와 전압 강하를 측정하고, 실제 보행 피크와 안전한 전류 제한을 기준으로 전원·퓨즈·배선·커넥터·분배를 정하세요.
 
-5V에서 모터당 스톨 전류 1.5A이므로 10축 합산 스톨 전류는 15A입니다. 이를 보행 평균 전류로 사용하지 않습니다. 10A UBEC 후보가 모든 순간 부하를 감당한다고 가정하지 말고, 실제 전류 제한·피크·전압 강하·발열로 용량을 정합니다. 목 추가 시 다시 산정합니다.
+전원 경로 후보: 2S 배터리 → 차단/퓨즈 → 조정 모터 전원 → 외부 분배 하네스 → 좌우 분기. 로직 전원은 분리하고 공통 접지/통신 DATA를 적절히 연결합니다. OpenRB-150의 DYNAMIXEL 전류 제한은 3 A로 표시되어 있으므로 모터 전원을 제어기나 서보 케이블 한 가닥으로 보내지 않습니다. 전압/전류 정격, 발열, 과도응답, USB 역급전, 저전압 차단을 확인합니다. 서로 다른 레귤레이터 출력을 병렬 연결하지 않습니다.
 
-필요한 자료: 배선도, 커넥터별 정격, 전원 예산, 저전압 감시/차단, 변환기 설정, 구매 후보, 단일 다리 부하 시험. 통신·전원 시퀀스를 함께 검토합니다.
+XC 모터는 명목 질량도 늘립니다. 4×23 g + 7×18 g = 총 218 g으로, XL 11개 구성보다 20 g 증가합니다. 하드웨어/배터리를 확정해 무게를 잰 뒤 고관절 피치와 무릎 피치 토크 계산에 반영하세요. 정지 토크는 지속 보행 토크가 아닙니다.
 
-제조사 근거: [XL330](https://www.robotis.com/shop/item.php?it_id=902-0163-000), [OpenRB-150](https://www.robotis.com/shop/item.php?it_id=902-0183-000). 가격·후보는 [BOM](../hardware/bom/README.md)을 따릅니다.
+회로도, 커넥터 정격, 전원 예산, 변환기 설정, 구매 후보 및 한쪽 다리 하중 시험을 기록하세요. 통신과 전원 시퀀스를 함께 검토합니다. 제어기는 그대로 사용할 수 있지만 외부 모터 전원 경로는 검증해야 합니다.

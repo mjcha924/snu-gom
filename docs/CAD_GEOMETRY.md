@@ -1,77 +1,52 @@
 # CAD geometry and mechanical layout / CAD 형상 및 기구 배치
 
-## Current prototype: v0.6 taller body / 최신 시제품: v0.6 높인 몸통
+## Current prototype: v0.7 / 최신 시제품: v0.7
 
-The full shell measures **124.75 × 220 × 403 mm (X × Y × Z)**, so its current modeled height is **40.3 cm**. The internal skeleton measures 107 × 174 × 348.5 mm. Relative to v0.5, the torso, shoulder/arm and head packaging moved upward by 35 mm to enclose the upper hip motors at shoulder level. XL330 motor geometry was not scaled. The wider torso cavity gives additional clearance around those motors. This is a packaging-level prototype; dimensions may change after real part, fastener, wiring and print-fit checks.
+The shell-covered prototype is **124.75 × 220 × 403 mm (X × Y × Z)**, or **40.3 cm tall**. The internal skeleton is 107 × 174 × 348.5 mm. Relative to v0.5, the torso, shoulder/arm and head package moved up by 35 mm so the proximal leg motors fit up to shoulder level. The XL/XC motor geometry was not scaled.
 
-전체 외장형 크기는 **124.75 × 220 × 403 mm(X × Y × Z)**이며 현재 모델의 높이는 **40.3 cm**입니다. 내부 골격은 107 × 174 × 348.5 mm입니다. v0.5보다 몸통·어깨/팔·머리 배치를 35 mm 위로 옮겨 상부 고관절 모터가 어깨 높이까지 올라오는 구성을 수용했습니다. XL330 모터 형상은 확대하지 않았으며 모터 주변 몸통 내부 공간을 넓혔습니다. 실제 부품·체결재·배선·출력 시험 전의 패키징 시제품입니다.
+외장형 시제품은 **124.75 × 220 × 403 mm(X × Y × Z)**이며 높이는 **40.3 cm**입니다. 내부 골격은 107 × 174 × 348.5 mm입니다. v0.5보다 몸통·어깨/팔·머리 배치를 35 mm 높여 다리 근위부 모터를 어깨 높이까지 배치했습니다. XL/XC 모터 형상은 확대하지 않았습니다.
 
-### v0.6 models
+## Joint layout / 관절 배치
 
-The v0.6 review package includes shell-on, skeleton, paired-leg and single-leg STEP variants, source parameters, joint frames, the supplied motor/horn reference STEP and file hashes.
+Each leg has five serial joints: **XC330 hip pitch → XL330 hip roll → XL330 hip yaw → XC330 knee pitch → XL330 ankle pitch**. One XL330 neck-pitch joint raises the head. Total: **4 XC330 + 7 XL330 = 11 motors**. There is no ankle-roll motor. The right leg mirrors the left across the center plane, including case and connector offsets.
 
-### Leg kinematics and hip packaging
+다리마다 직렬 관절 5개를 사용합니다: **XC330 고관절 피치 → XL330 고관절 롤 → XL330 고관절 요 → XC330 무릎 피치 → XL330 발목 피치**. 목 피치 XL330 1개가 머리를 움직입니다. 전체 **XC330 4개 + XL330 7개 = 11개**입니다. 발목 롤 모터는 없습니다. 오른쪽 다리는 모터 케이스와 커넥터 편심까지 왼쪽을 중앙면 기준으로 대칭 배치했습니다.
 
-Each leg uses five serial XL330-M288-T joints: **hip pitch → hip roll → hip yaw → knee pitch → ankle pitch**. No ankle-roll motor is included. P-R-Y are arranged as a compact triangle: hip roll is rearward, while pitch and yaw stay near the frontal/central plane. Thigh and shin pitch-axis spacing are 65 mm. The right side mirrors the left side across the robot center plane, including case and connector offsets. A separate neck-pitch XL330 adds one degree of freedom (11 motors total).
+| Axis / 축 | Purpose / 기능 | Motor / 모터 |
+|---|---|---|
+| Hip pitch / 고관절 피치 | Forward/back leg swing / 다리 앞뒤 스윙 | XC330-M288-T |
+| Hip roll / 고관절 롤 | Side-to-side balance / 좌우 균형 | XL330-M288-T |
+| Hip yaw / 고관절 요 | Rotate leg about vertical / 수직축 방향 전환 | XL330-M288-T |
+| Knee pitch / 무릎 피치 | Bend and extend leg / 다리 굽힘·펴기 | XC330-M288-T |
+| Ankle pitch / 발목 피치 | Toe-up/down and foot placement / 발끝 위아래·발 위치 | XL330-M288-T |
+| Neck pitch / 목 피치 | Tilt head and camera view / 머리·카메라 시선 기울이기 | XL330-M288-T |
 
-다리당 XL330-M288-T 5개를 직렬로 사용합니다: **고관절 피치 → 롤 → 요 → 무릎 피치 → 발목 피치**. 발목 롤 모터는 없습니다. 고관절 P-R-Y는 삼각형으로 가깝게 배치하며 롤은 뒤쪽, 피치와 요는 정면/중앙면에 가깝게 둡니다. 허벅지·종아리 피치축 간격은 각각 65 mm입니다. 오른쪽은 케이스와 커넥터 편심을 포함해 왼쪽을 중앙면 기준으로 대칭 배치했습니다. 목 피치 XL330 1개를 더해 총 11축입니다.
+## Why place XC330 at P and knee? / XC330을 P와 무릎에 둔 이유
 
-### Loading and review limits
+Hip pitch carries the upper-body gravity and stride demand, so it is the first priority for the stronger motor. Knee pitch is the other likely high-load sagittal joint during crouch and stance. This is a first-pass actuator allocation, not a torque proof; final sizing needs the complete robot mass, center of mass, desired motion and actuator torque-speed/current data. At 5 V ROBOTIS lists 0.93 N·m stall torque for XC330-M288 and 0.52 N·m for XL330-M288. Both have a 20 × 34 × 26 mm listed envelope; nominal motor masses are 23 g and 18 g. Four XC motors add 20 g compared with using XL for all eleven positions. Stall torque is not continuous walking torque.
 
-The taller torso carries more mass above the hip pitch axis and may increase its static and dynamic torque. The previous motor-only R/Y inertia comparison does not answer whether P has enough margin for this taller assembly. Weigh the assembled torso, head, electronics and battery; measure their centers of mass; then recalculate static gravity torque and walking acceleration cases using the XL330’s practical torque-speed/current limits. Do not size motion from stall torque alone.
+고관절 피치는 상체 중력과 보행 부하를 받으므로 강한 모터를 우선 배치합니다. 무릎 피치도 웅크림/지지 자세에서 다음으로 큰 부하가 예상되는 시상면 관절입니다. 이는 초기 배치이며 토크 검증은 아닙니다. 최종 선정에는 완성 로봇 질량·무게중심·목표 동작과 모터 토크-속도/전류 자료가 필요합니다. 5 V 기준 ROBOTIS 표시 정지 토크는 XC330-M288 0.93 N·m, XL330-M288 0.52 N·m입니다. 두 모터의 표기 외형은 20 × 34 × 26 mm이며 명목 모터 질량은 각각 23 g, 18 g입니다. XC 4개는 11개 모두 XL일 때보다 20 g을 추가합니다. 정지 토크는 지속 보행 토크가 아닙니다.
 
-높아진 몸통은 고관절 피치축 위쪽의 질량을 늘려 정적·동적 토크를 키울 수 있습니다. 과거 R/Y 모터만 비교한 관성 계산으로는 높아진 조립체에서 P축 여유 토크가 충분한지 알 수 없습니다. 몸통·머리·전장·배터리 조립체 질량과 무게중심을 실측하고 XL330의 실제 토크-속도/전류 한계로 중력 및 보행 가속 조건을 다시 계산하세요. 정지 토크만으로 동작을 정하지 마세요.
+At 5 V, the listed stall-current sum is about **17.5 A** for 4 XC330 + 7 XL330. This is not expected walking current, but the proposed 10/11 A converter and motor wiring need transient and current-limit tests. Keep motor power off the controller board; the TTL DYNAMIXEL control bus can remain the same. Details are in [electronics and power](ELECTRONICS.md).
 
-## Design history
+5 V에서 XC330 4개와 XL330 7개의 표시 정지전류 합은 약 **17.5 A**입니다. 보행 예상 전류는 아니지만 10/11 A 변환기 후보와 모터 배선의 과도응답·전류 제한 시험이 필요합니다. 모터 전원을 제어기 보드에 통과시키지 마세요. TTL DYNAMIXEL 제어 버스는 그대로 사용할 수 있습니다. 자세한 내용은 [전장·전원 문서](ELECTRONICS.md)를 참고하세요.
 
-The original v0.5 geometry, P-R-Y spacing, electronics envelope assumptions and preliminary motor-only comparison remain below as historical context. They should not be taken as v0.6 load validation.
+## Motor CAD source and head horn / 모터 CAD 원본과 머리 혼
 
----
+The uploaded XL,XC-330 STEP is byte-identical to the M288 case/horn STEP already used in v0.6 (SHA-256 e2f7b060801a1d1a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6). It provides the same exterior case, horn, idler, screws and connectors for both motor instances; it does not model XC coreless versus XL cored internal parts. v0.7 identifies the motor type in assembly names, colors, and joint metadata without fabricating hidden internals.
 
-# CAD geometry and assembly / CAD 형상과 조립 구조
+첨부 XL,XC-330 STEP은 v0.6에서 사용한 M288 케이스/혼 STEP과 바이트 단위로 동일합니다(SHA-256 e2f7b060801a1d1a21f23bca2554f29a402f7d73b8498cb201c9e6adf3139eb6). 공통 외부 케이스·혼·아이들러·나사·커넥터를 제공하지만 XC 코어리스와 XL 코어드 모터 내부는 모델링하지 않습니다. v0.7은 내부를 임의로 만들지 않고 부품 이름·색·조인트 메타데이터로 모터를 구분합니다.
 
-**Current revision: v0.5 · triangular serial P-R-Y hip · units mm**
+The neck horn looked partly cut because the earlier boolean clipped the complete head carrier against an ellipsoid. v0.7 preserves the full two-sided output yoke and trims only the surrounding internal support frame. Check horn fastener access and head-shell clearance with a printed fit sample.
 
-The current CAD is a bipedal SNU GOM prototype with five XL330-M288-T joints per leg and one neck-pitch motor. The hips use a **serial pitch → roll → yaw chain**. P and Y sit forward on the leg centerline; R is offset 18 mm rearward, making the triangular side-view layout requested by the team. The layout remains a serial chain: each motor carries the downstream joints.
+목 모터 혼이 일부 잘려 보인 것은 이전 Boolean이 머리 캐리어 전체를 타원체로 잘랐기 때문입니다. v0.7은 양쪽 출력 요크 전체를 보존하고 주변 내부 지지 프레임만 다듬습니다. 출력 시편에서 혼 체결 접근성과 머리 쉘 간격을 확인해야 합니다.
 
-최신 CAD는 다리마다 XL330-M288-T 관절 5개와 목 피치 모터 1개가 있는 이족보행 SNU GOM 시제품입니다. 고관절은 **피치 → 롤 → 요 직렬 연결**입니다. P와 Y는 다리 중심선 전방에, R은 뒤로 18 mm 이동해 측면 삼각형을 이룹니다. 병렬 구조가 아니라 각 모터가 다음 관절을 지지하는 직렬 구조입니다.
+## Geometry and verification / 형상 및 검증
 
-![Triangular P-R-Y shell prototype / P-R-Y 삼각 배치 외장 시제품](images/cad-v05/PRY_TRI_full_shell.png)
++X is forward, +Y left, +Z up. Hip spacing is 108 mm. Left hip axis centers are P (0,54,230), R (-18,54,194), Y (0,54,158) mm; knee pitch is (0,54,93), ankle pitch (0,54,28). R sits 18 mm rearward, with 40.2 mm P-R and R-Y distances. Thigh and shin pitch-axis spacing are each 65 mm. Each foot outline is 88 × 66 mm. The full shell STEP round-trips with 244 valid solids; the internal assembly with 203. Variant solid counts, bounds and hashes are in [the v0.7 manifest](../hardware/mechanical/cad/v0.7/PRY_variant_manifest.json).
 
-![Triangular skeleton / 삼각형 배치 골격형](images/cad-v05/PRY_TRI_full_skeleton.png)
++X는 전방, +Y는 왼쪽, +Z는 위쪽입니다. 고관절 간격은 108 mm입니다. 왼쪽 고관절 중심은 P (0,54,230), R (-18,54,194), Y (0,54,158) mm이며 무릎 피치는 (0,54,93), 발목 피치는 (0,54,28)입니다. R은 18 mm 뒤쪽이며 P-R, R-Y 간격은 각각 40.2 mm입니다. 허벅지·종아리 피치축 간격은 각각 65 mm이고 발 외곽은 88 × 66 mm입니다. 전체 외장 STEP는 244개, 내부 조립체는 203개 유효 솔리드로 재가져오기됩니다. 변형별 솔리드 개수·외곽·해시는 [v0.7 매니페스트](../hardware/mechanical/cad/v0.7/PRY_variant_manifest.json)에 있습니다.
 
-[Leg side profile / 다리 측면](images/cad-v05/PRY_TRI_leg_profile.png)
+These are packaging and STEP-integrity checks only. They do not establish structural strength, fastener suitability, current/thermal margin, full-motion clearance, balance or walking. Verify electronics against purchased hardware, measure the assembled mass/COM, run both-leg motion sweeps, and test one supported leg before setting gait limits.
 
-## Joints and dimensions / 관절과 치수
-
-| Chain / 연결 순서 | Function / 역할 |
-|---|---|
-| Hip pitch (P) / 고관절 피치 | Swings the whole leg forward and back / 다리 전체를 앞뒤로 움직임 |
-| Hip roll (R) / 고관절 롤 | Moves the leg side-to-side / 다리를 좌우로 기울임 |
-| Hip yaw (Y) / 고관절 요 | Turns the leg about vertical / 다리 방향을 수평 회전 |
-| Knee pitch / 무릎 피치 | Bends the leg / 다리를 굽힘 |
-| Ankle pitch / 발목 피치 | Tilts the foot toe-up/toe-down / 발끝을 위아래로 기울임 |
-
-`+X` is forward, `+Y` is robot-left and `+Z` is up. Left-side joint centers are P `(0, 54, 230)`, R `(-18, 54, 194)`, Y `(0, 54, 158)`, knee `(0, 54, 93)`, ankle `(0, 54, 28)` mm. The right side is mirrored about the robot center plane. Hip spacing is 108 mm; P-R and R-Y axis distances are 40.2 mm each; thigh and shin pitch-axis distances are 65 mm each. The lower-leg chain has no ankle-roll joint.
-
-`+X`는 전방, `+Y`는 로봇 왼쪽, `+Z`는 위쪽입니다. 왼쪽 관절 중심은 P `(0, 54, 230)`, R `(-18, 54, 194)`, Y `(0, 54, 158)`, 무릎 `(0, 54, 93)`, 발목 `(0, 54, 28)` mm입니다. 오른쪽은 로봇 중앙면 기준으로 대칭입니다. 고관절 간격은 108 mm, P-R 및 R-Y 축 간격은 각각 40.2 mm, 허벅지 및 종아리 피치축 간격은 각각 65 mm입니다. 발목 롤 관절은 없습니다.
-
-The P axis carries the downstream hip joints and the entire leg. A supplier-CAD motor-assembly estimate in [`hardware/mechanical/cad/v0.5/PRY_TRIANGULAR_LAYOUT.md`](../hardware/mechanical/cad/v0.5/PRY_TRIANGULAR_LAYOUT.md) finds only a small added load from moving R rearward, but this is not a motor sizing result: it excludes links, feet, shell, wiring, impacts and thermal duty. XL330 stall torque must not be treated as continuous torque.
-
-P축은 그 아래의 고관절 관절과 다리 전체를 지지합니다. R을 뒤로 옮겨 추가되는 하중은 R/Y 모터 본체만 고려하면 작게 추정되지만, 이는 모터 선정 결과가 아닙니다. 링크, 발, 외장, 배선, 충격과 발열 부하가 제외되어 있습니다. XL330 정지 토크를 연속 사용 토크로 간주하면 안 됩니다.
-
-## Motors, links, covers / 모터·링크·외장
-
-Each motor instance uses the provided XL330-M288-T case, output horn, opposite idler, fasteners and connector geometry. Printed/custom components form the carriers, hip deck, thigh and shin links, ankle yoke, paw structure and wire shrouds. The outer bear shell is cosmetic and serviceable; the internal frame carries the joint loads. The CAD uses nominal purchased-part envelopes for electronics, not exact board models.
-
-각 모터는 제공된 XL330-M288-T 케이스, 출력 혼, 반대쪽 아이들러, 체결부와 커넥터 형상을 사용합니다. 출력 부품은 모터 캐리어, 골반 데크, 허벅지·종아리 링크, 발목 요크, 발 구조와 배선 커버입니다. 곰 외장은 외형·정비용이고 관절 하중은 내부 프레임이 받습니다. 전자부품은 실물 상세 모델이 아닌 구매품 외형 치수를 사용했습니다.
-
-The torso and head include packaging envelopes for the listed compute, motor-control, camera, microphone, speaker, IMU, battery and regulator components. This is a neutral-pose packaging study. Connector access, cable bend, cooling, mounting and the full motion range remain to be checked with purchased parts.
-
-몸통과 머리에는 부품표의 컴퓨팅 보드, 모터 제어기, 카메라, 마이크, 스피커, IMU, 배터리와 전압 변환기 외형을 배치했습니다. 중립 자세에서의 패키징 검토이며 실제 부품의 커넥터 접근, 배선 굽힘, 냉각, 체결과 전체 관절 가동 범위는 추가 확인해야 합니다.
-
-## Files and verification / 파일과 검증
-
-See [the CAD file index and downloads](../hardware/mechanical/README.md). STEP imports passed geometry validity checks for the exported leg variants and full skeleton. Neutral electronics envelopes have no pairwise or torso/head shell intersections. Full motion collision, structural strength, stable walking and fabrication readiness have not been validated. Older v0.3 documentation is retained under [`docs/legacy/`](legacy/README.md) and `hardware/mechanical/cad/v0.3/` as design history.
-
-[CAD 파일 목록과 다운로드](../hardware/mechanical/README.md)를 참고하세요. 양쪽 다리 STEP 변형들과 전체 골격은 재가져오기 형상 유효성 검사를 통과했습니다. 중립 자세에서 전자부품 외형끼리 또는 몸통·머리 쉘과 겹치지 않습니다. 전체 가동 범위 간섭, 구조 강도, 안정 보행과 제작 준비 상태는 검증되지 않았습니다. 이전 v0.3 문서는 설계 이력으로 보관합니다.
+이 검사는 패키징 및 STEP 형상 유효성만 확인합니다. 구조 강도·체결재 적합성·전류/발열 여유·전체 가동 간섭·균형·보행을 검증하지 않습니다. 구매한 전장 부품과 실물 크기를 대조하고, 조립 질량/무게중심을 측정하며, 양다리 동작 간섭 검사와 지지 상태의 한쪽 다리 시험 후 보행 제한을 정하세요.

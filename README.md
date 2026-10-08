@@ -6,13 +6,13 @@
 
 ## English
 
-**A small bear-shaped biped that walks, looks at people and responds through voice and movement.** SNU GOM combines a ten-joint lower body with a tilting head, a camera in its nose, microphones and a speaker.
+**A small bear-shaped biped designed to walk, look at people and respond through voice and movement.** SNU GOM combines a ten-joint lower body with a tilting head, a camera in its nose, microphones and a speaker.
 
 ### The design
 
 | Part | Current design |
 | --- | --- |
-| Legs | Five XL330-M288-T motors per leg: hip roll/pitch, knee pitch, ankle pitch/roll |
+| Legs | Five serial motors per leg: XC330 at hip pitch and knee pitch; XL330 at hip roll, hip yaw and ankle pitch |
 | Head | One XL330 neck-pitch motor to look up and down; 11 motors overall |
 | Nose | Camera faces straight ahead within the head; the neck changes its viewing angle |
 | Arms | Fixed bear-shaped arms |
@@ -50,17 +50,17 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Python 3.11 i
 
 ### Current work
 
-**CAD v0.3:** shell-on and skeleton STEP prototypes are available for the full robot and leg pair; the bilateral variants use five XL330 joints per leg. [Design and limits](docs/PAPER_DESIGN.md).
+**CAD v0.7:** the full shell is 403 mm (40.3 cm) tall; two stronger XC330s per leg now serve hip pitch and knee pitch. The head horn support is no longer clipped by the head-envelope trim. Shell-on and skeleton STEP assemblies are included. [CAD files, dimensions and limits](hardware/mechanical/README.md).
 
 #### CAD previews
 
-| Shell exterior | Skeleton and leg joint layout |
+| Shell exterior | Skeleton |
 | --- | --- |
-| ![SNU GOM v0.3 shell exterior](docs/images/cad-v03/15_full_shell.jpg) | ![SNU GOM v0.3 leg shell and skeleton comparison](docs/images/cad-v03/21_leg_shell_and_skeleton.jpg) |
+| ![SNU GOM v0.7 mixed-motor shell](docs/images/cad-v07/preview_shell.jpg) | ![SNU GOM v0.7 mixed-motor skeleton](docs/images/cad-v07/preview_skeleton.jpg) |
 
-See the [full shell/skeleton comparison](docs/images/cad-v03/20_shell_and_skeleton_comparison.jpg) and [leg close-up](docs/images/cad-v03/03_leg_detail.jpg). These are design previews; they are not manufacturing drawings.
+See [CAD files and dimensions](hardware/mechanical/README.md) for the P-R-Y motor arrangement and model variants. These are design previews, not manufacturing drawings. The older v0.3 and v0.5 concepts remain in the history.
 
-The fit-prototype archive and exact supplier motor/horn geometry have been shared with the project owner. The repository keeps the CAD manifest and design notes; a new Onshape document and fabrication-qualified CAD have not been created. Next: verify one joint, test one leg under load, complete wiring, update the simulation model and bench-test conversation. The HRI API design exists; an HRI runtime is not implemented yet.
+The current repository includes compressed STEP assemblies and the exact supplied XL330 motor/horn geometry in the CAD exports. A new Onshape document and fabrication-qualified CAD have not been created. Next: verify one joint, test one leg under load, complete wiring, update the simulation model and bench-test conversation. The HRI API design exists; an HRI runtime is not implemented yet.
 
 ---
 
@@ -68,7 +68,7 @@ The fit-prototype archive and exact supplier motor/horn geometry have been share
 
 ## 한국어
 
-**CAD v0.3:** 전체 로봇과 양쪽 다리의 외장형·골격형 STEP 시제품을 준비했습니다. 양쪽 다리는 XL330 5개씩 사용합니다. [설계·한계](docs/PAPER_DESIGN.md).
+**CAD v0.7:** 전체 외장 높이 403 mm(40.3 cm)를 유지합니다. 다리의 고관절 피치·무릎 피치에는 XC330, 롤·요·발목 피치에는 XL330을 배치했습니다. 머리 모터 혼 지지부를 외형 Boolean으로 자르지 않도록 수정했습니다. [CAD 파일·치수·한계](hardware/mechanical/README.md).
 
 **걷고, 사람을 바라보고, 말과 동작으로 반응하는 작은 곰 모양 이족보행 로봇입니다.** 다리 10축에 위아래로 움직이는 머리, 코 카메라, 마이크와 스피커를 결합합니다.
 
@@ -76,7 +76,7 @@ The fit-prototype archive and exact supplier motor/horn geometry have been share
 
 | 부분 | 현재 설계 |
 | --- | --- |
-| 다리 | 다리당 XL330-M288-T 5개: 고관절 롤/피치, 무릎 피치, 발목 피치/롤 |
+| 다리 | 다리당 직렬 모터 5개: 고관절 피치·무릎 피치는 XC330, 롤·요·발목 피치는 XL330 |
 | 머리 | 목 피치 XL330 1개로 위아래 보기; 전체 11개 모터 |
 | 코 | 머리 기준 정면 카메라; 목 움직임으로 시선 각도 변경 |
 | 팔 | 고정된 곰 모양 팔 |
@@ -100,7 +100,7 @@ The fit-prototype archive and exact supplier motor/horn geometry have been share
 
 위 실행 명령은 기존 다리 10축 도형 모델을 보여줍니다. 상세 CAD·목 피치는 아직 반영하지 않았으며 고정 베이스의 관절 확인용입니다. 보행 검증은 아닙니다. [검증 상태](docs/GOM_VALIDATION.md)를 확인하세요.
 
-시제품 STEP 패키지와 제공 모터/혼 형상을 프로젝트 소유자에게 전달했습니다. 저장소에는 CAD manifest와 설계 설명을 기록했으며 새 Onshape 문서나 제작 검증 CAD는 아직 없습니다. 다음은 관절 시편 → 한쪽 다리 하중 시험 → 배선 → 모델 갱신 → 정지 상태 대화 시험입니다. HRI API 설계는 있지만 실행 서버는 아직 없습니다.
+v0.7 STEP 배포 파일은 이번 검토에 별도 제공했습니다. 이 GitHub 변경에는 영어·한국어 설계 문서와 미리보기만 있고 대용량 STEP 바이너리는 포함하지 않았습니다. 전체 높이는 약 40.3 cm입니다. 새 Onshape 문서나 제작 검증 CAD는 아직 없습니다. 다음은 관절 시편 → 한쪽 다리 하중 시험 → 배선 → 모델 갱신 → 정지 상태 대화 시험입니다. HRI API 설계는 있지만 실행 서버는 아직 없습니다.
 
 ---
 
