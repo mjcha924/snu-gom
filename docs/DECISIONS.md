@@ -34,6 +34,12 @@ Add each new decision with its issue, rationale, rejected alternatives, affected
 
 새 결정은 관련 Issue, 선택 이유, 포기한 대안, 영향을 받는 파일, 검증 증거를 이 표 아래에 추가합니다. 두 다리 5축을 유지해도 hip yaw 채택 등 관절 구성 변경은 별도 결정과 모델 버전 변경이 필요합니다.
 
+## 2026-10-08 · Mixed XC/XL motor allocation / XC·XL 혼합 모터 배치
+
+Current CAD assignment: two XC330-M288-T per leg at hip pitch and knee pitch; XL330-M288-T at hip roll, hip yaw and ankle pitch; XL330 at neck pitch. Rationale: prioritize higher torque at trunk-supporting hip pitch and the next likely high-load sagittal knee joint. This remains a first-pass choice pending measured robot mass/COM and gait torque analysis. The head output yoke is kept complete; only its surrounding support frame is trimmed. External motor geometry is unchanged because the supplied XC/XL STEP is identical in outer case/horn geometry. Update CAD v0.7, the BOM (four XC motors), and power budget.
+
+현재 CAD 배치: 다리당 XC330-M288-T 2개를 고관절 피치와 무릎 피치에 배치하고, 고관절 롤·요와 발목 피치에는 XL330-M288-T를 사용합니다. 목 피치는 XL330입니다. 몸통 지지 하중이 큰 고관절 피치와 시상면에서 다음 고부하가 예상되는 무릎에 강한 모터를 우선하는 초기안입니다. 실측 질량/무게중심과 보행 토크 분석이 필요합니다. 머리 출력 요크 전체를 보존하고 주변 프레임만 자릅니다. 제공된 XC/XL STEP의 케이스·혼 외형이 동일하므로 모터 외형은 그대로 둡니다. CAD v0.7, BOM(XC 4개)과 전원 예산을 갱신합니다.
+
 ## 2026-09-29 HRI / HRI 변경
 
 Confirmed user requirements: human interaction, API connectivity, camera, microphone and speaker; lens at the bear nose. Proposed implementation: Pi 4 + retained OpenRB-150 + separate logic power. See [HRI.md](HRI.md). Latest update: the user requested head tilt; one neck-pitch motor is included, keeping five motors per leg.

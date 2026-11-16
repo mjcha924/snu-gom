@@ -1,6 +1,46 @@
+# CAD verification status / CAD 검증 상태
+
+## Current v0.7 mixed-motor taller prototype
+
+| Check | Result | Scope |
+|---|---:|---|
+| Full shell STEP round-trip | **244/244 solids valid** | Bounds 124.75 × 220 × 403 mm |
+| Internal assembly STEP round-trip | **203/203 solids valid** | Bounds 107 × 174 × 348.5 mm |
+| Tall-body change | **+35 mm** | Raised torso/shoulder/head packaging; XL/XC outer scale unchanged |
+| Overall height | **403 mm / 40.3 cm** | Full shell bounds |
+
+The five leg/skeleton variants were individually STEP re-imported during export; their solid counts, bounds and digests are in [`v0.7/PRY_variant_manifest.json`](../hardware/mechanical/cad/v0.7/PRY_variant_manifest.json). The assignment is 4 XC330-M288 (both hip-pitch and knee-pitch motors) and 7 XL330-M288 (remaining leg motors and neck). The full head yoke is no longer ellipsoid-clipped. These checks establish neutral B-rep validity only. They do not validate the taller torso's P-axis torque margin, printability, fasteners, cable bend/service loops, moving clearances, thermal performance, balance or walking.
+
+v0.7 전체 외장 STEP는 **244/244개**, 내부 조립체 STEP는 **203/203개** 솔리드가 유효하게 재가져오기 되었습니다. 전체 외장 크기는 124.75 × 220 × 403 mm, 높이 40.3 cm입니다. 다리/골격 5개 변형의 솔리드 개수·외곽·해시는 v0.7 매니페스트를 참조하세요. XC 4개는 양쪽 고관절 피치와 무릎 피치, XL 7개는 나머지 다리 축과 목 피치에 배치했습니다. 머리 요크는 잘라내지 않고 지지 프레임만 다듬습니다. 이 검사는 중립 형상의 B-rep 유효성만 확인합니다. 높아진 몸통의 P축 토크, 출력 가능성, 체결재, 배선 굽힘/정비 여유, 움직일 때 간섭, 발열, 균형 및 보행 검증은 아닙니다.
+
+**Next mechanical gate:** weigh the complete upper body and locate its center of mass; recalculate hip-pitch torque across crouch and gait accelerations using the actuator torque-speed curve; verify shoulder motor placement against the exact electronics and shell; then motion-sweep both mirrored legs and test a supported single leg.
+
+**다음 기구 검토:** 상체 전체 질량과 무게중심을 실측하고 자세/보행 가속 조건에서 XL330 토크-속도 곡선으로 고관절 피치 토크를 다시 계산하세요. 정확한 전장 부품과 쉘에서 어깨 모터 공간을 확인하고, 양쪽 대칭 다리의 동작 간섭을 검사한 뒤 한쪽 다리를 지지 상태에서 시험해야 합니다.
+
+---
+
 # CAD verification / CAD 검사 결과
 
-**v0.3 · 2026-10-04 · fit and kinematic prototype / 조립·운동학 시안**
+**Current revision v0.5 · 2026-10-08 · triangular serial P-R-Y / 최신 버전 v0.5 · 삼각형 직렬 P-R-Y**
+
+## Current v0.5 checks / v0.5 현재 검사
+
+The left/right motor frames are mirrored with proper rotation matrices. The leg-pair STEP files and full skeleton STEP re-imported with all solids valid. The full shell assembly also re-imported with 244 valid solids; its neutral bounds are 122.75 × 204 × 368 mm (X/Y/Z). The full skeleton is 107 × 174 × 313.5 mm. Neutral electronics envelopes have no pairwise intersections and do not intersect torso/head shell solids. These are neutral geometry checks only: no full motion sweep, strength, thermal, balance or walking validation was performed.
+
+좌우 모터 프레임은 올바른 회전행렬로 대칭 배치했습니다. 양쪽 다리 STEP과 전체 골격 STEP을 재가져왔을 때 모든 솔리드가 유효했고, 전체 외장형도 유효 솔리드 244개로 확인했습니다. 중립 외곽은 X/Y/Z 기준 122.75 × 204 × 368 mm이며, 전체 골격형은 107 × 174 × 313.5 mm입니다. 중립 전자부품 외형끼리 또는 몸통·머리 쉘과 겹치지 않습니다. 이는 중립 형상 검사이며 전체 관절 동작, 강도, 발열, 균형 또는 보행 검증은 아닙니다.
+
+| Current v0.5 model | Valid solids | Bounds X × Y × Z (mm) |
+|---|---:|---:|
+| Full shell | 244 | 122.75 × 204 × 368 |
+| Full skeleton | 193 | 107 × 174 × 313.5 |
+| Leg pair shell | 188 | 99.5 × 174 × 257 |
+| Leg pair skeleton | 171 | 99.5 × 174 × 260.75 |
+| One left leg shell | 94 | 99.5 × 66 × 257 |
+| One left leg skeleton | 85 | 99.5 × 66 × 254.5 |
+
+The shell includes provisional electronic envelopes and motor wire shrouds. Connector and cable clearances remain to be fitted with real parts. The earlier v0.3 records below describe a different motor layout and are retained only as design history.
+
+## Historical v0.3 verification / v0.3 이전 검사 이력
 
 ## English
 
@@ -46,7 +86,7 @@ The coordinated ±4° sway samples, bilateral −15°/+30°/−15° crouch, indi
 - Resolve foot collision through coordinated gait design or a later spacing/foot revision after simulation. Do not suppress collision checks to obtain a pass.
 - The old ten-joint proxy URDF is **not synchronized** to v0.3. No RL policy or autonomous HRI runtime was added by this CAD update.
 
-## 한국어
+## v0.3 이전 검증 이력 / Historical v0.3 data (한국어)
 
 | 검사 | 결과 | 범위 |
 | --- | --- | --- |
