@@ -1,0 +1,5 @@
+NEUTRAL-POSE COLLISION BOX CHECK
+Adjacent and same-link boxes excluded.
+Nonadjacent overlaps: 0
+No swept collision or exact mesh collision test was performed.
+Conservative box overlap can be a false positive. Do not treat this check as mechanical clearance certification.

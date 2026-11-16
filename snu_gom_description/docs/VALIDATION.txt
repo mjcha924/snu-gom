@@ -1,0 +1,17 @@
+LOCAL VALIDATION
+Physical rigid bodies: 13
+Reference frames: 1 (not world)
+Revolute joints: 12
+Fixed reference joints: 1
+Prismatic joints: 0
+Visual instances preserved: 79
+Collision boxes: 29
+Estimated total mass: 1.192507 kg
+FK comparisons: 21 poses x 79 visual instances
+Maximum transform matrix error: 5.005e-12
+All aggregate inertia tensors positive definite and satisfy principal-moment triangle inequality.
+Geometry scale, individual axes and zero-pose placement preserved, modulo one root translation.
+Base translated to original pelvis center -0.00799991184319 5.87714435674e-08 -0.1353864 m.
+
+NOT VALIDATED: physics engine import, balance, walking, self-collision clearance, collision simplifications, mechanical limits, real masses, servo sign/IDs, installed hardware versus guide mapping.
+Includes 30 enabled additional mass allowances; see config/additional_masses.csv. Allowances are not physical CAD parts and their mounting/clearance is unverified.

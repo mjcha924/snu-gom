@@ -1,0 +1,26 @@
+{
+  "checkpoint": "runs/20261116_211749_walk/model_0.pt",
+  "num_envs": 16,
+  "duration_seconds": 8.0,
+  "exploration": true,
+  "optimizer_updates": 0,
+  "fall_resets_per_environment": [
+    9,
+    8,
+    7,
+    7,
+    8,
+    8,
+    7,
+    9,
+    7,
+    7,
+    7,
+    8,
+    7,
+    9,
+    8,
+    8
+  ],
+  "purpose": "Parallel training-style rollout visualization, not a walking-success evaluation"
+}

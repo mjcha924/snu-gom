@@ -1,0 +1,1082 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="snu_gom_preview">
+  <!--PREVIEW MODEL: estimated masses, temporary limits, approximate collision boxes. Read docs/START_HERE.txt.-->
+  <link name="base_reference" />
+  <joint name="base_reference_joint" type="fixed">
+    <parent link="base_reference" />
+    <child link="base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="base_link">
+    <visual name="neck_base_plate">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_base_plate.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.788235_0.560784_0.282353_0.000000_0.000000">
+        <color rgba="0.788235 0.560784 0.282353 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_02">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_03">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_03.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="torso_center_riser">
+      <origin xyz="0.00799999999995 2.93856408255e-08 0.0353864" rpy="0 0 1.5708" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/torso_center_riser.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.160784_0.596078_0.678431_0.000000_0.000000">
+        <color rgba="0.160784 0.596078 0.678431 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_05">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1351864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_05.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="torso_left_rail">
+      <origin xyz="0.00799999999995 2.93856408255e-08 0.0353864" rpy="0 0 1.5708" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/torso_left_rail.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.160784_0.596078_0.678431_0.000000_0.000000">
+        <color rgba="0.160784 0.596078 0.678431 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_07">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_07.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="torso_right_rail">
+      <origin xyz="0.00799999999995 2.93856408255e-08 0.0353864" rpy="0 0 1.5708" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/torso_right_rail.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.160784_0.596078_0.678431_0.000000_0.000000">
+        <color rgba="0.160784 0.596078 0.678431 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_09">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_09.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="torso_neck_platform">
+      <origin xyz="0.00799999999995 2.93856408269e-08 0.0353864" rpy="0 0 1.5708" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/torso_neck_platform.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.160784_0.596078_0.678431_0.000000_0.000000">
+        <color rgba="0.160784 0.596078 0.678431 1" />
+      </material>
+    </visual>
+    <visual name="torso_electronics_shelves">
+      <origin xyz="0.00799999999995 2.93856408255e-08 0.0353864" rpy="0 0 1.5708" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/torso_electronics_shelves.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.470588_0.564706_0.658824_0.000000_0.000000">
+        <color rgba="0.470588 0.564706 0.658824 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_12">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_12.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_13">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_13.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_14">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_14.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_15">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1351864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_15.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="openrb150_controller">
+      <origin xyz="0.0263962045498 -0.000388795027385 0.0493864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/openrb150_controller.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.270588_0.666667_0.270588_0.000000_0.000000">
+        <color rgba="0.270588 0.666667 0.270588 1" />
+      </material>
+    </visual>
+    <visual name="bno085_imu">
+      <origin xyz="-0.00979740000002 -0.0114339893477 0.0443864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/bno085_imu.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.984314_0.831373_0.662745_0.000000_0.000000">
+        <color rgba="0.984314 0.831373 0.662745 1" />
+      </material>
+    </visual>
+    <visual name="raspberry_pi_board">
+      <origin xyz="-0.0218000198329 0.00539931376097 0.0762307493538" rpy="0.625611095235 1.57079179535 2.19641374883" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/raspberry_pi_board.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.000000_0.752941_0.000000_0.000000_0.000000">
+        <color rgba="0 0.752941 0 1" />
+      </material>
+    </visual>
+    <visual name="respeaker_board">
+      <origin xyz="-0.055074948316 0.0835976117636 0.0833864" rpy="-1.19584111493e-17 0 9.99999999998e-06" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/respeaker_board.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.313725_0.486275_0.411765_0.000000_0.000000">
+        <color rgba="0.313726 0.486275 0.411765 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_20">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_20.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_21">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_21.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_22">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_22.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_23">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_23.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_24">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_24.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="base_link_neck_motor_component_25">
+      <origin xyz="0.00799991184319 -5.87714435674e-08 0.1353864" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/base_link_neck_motor_component_25.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="pelvis_bridge">
+      <origin xyz="-0.004 -4.07385309983e-09 -0.0175" rpy="0 0 -1.57079530718" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/pelvis_bridge.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.341176_0.341176_0.341176_0.000000_0.000000">
+        <color rgba="0.341176 0.341176 0.341176 1" />
+      </material>
+    </visual>
+    <visual name="left_hip_yaw_motor">
+      <origin xyz="0.00149998215694 0.017499968842 0.0226999999999" rpy="-3.14159 0 4.69282041338e-06" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_hip_yaw_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <visual name="right_hip_yaw_motor">
+      <origin xyz="0.00150000784347 -0.017500031158 0.0226999999999" rpy="-3.14159 0 4.69282041338e-06" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_hip_yaw_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="-0.00287842771657 -7.90717485666e-05 0.0612538881969" rpy="0 0 0" />
+      <mass value="0.65100083625" />
+      <inertia ixx="0.00143655775581" ixy="1.10123029722e-05" ixz="-7.47616375321e-05" iyy="0.00130626481312" iyz="1.37946061618e-05" izz="0.000680142660937" />
+    </inertial>
+    <collision name="base_link_collision_01">
+      <origin xyz="0.00799991184319 -0.00750005860381 0.157636400387" rpy="0 0 0" />
+      <geometry>
+        <box size="0.019999999553 0.0339999990538 0.0185000002384" />
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_02">
+      <origin xyz="1.10281835735e-07 -0.0300000002606 0.0813863993909" rpy="0 0 1.5708" />
+      <geometry>
+        <box size="0.00999999977648 0.0300000002608 0.097999998834" />
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_03">
+      <origin xyz="-1.10110472381e-07 0.0300000002606 0.0813863993909" rpy="0 0 1.5708" />
+      <geometry>
+        <box size="0.00999999977648 0.0300000002608 0.097999998834" />
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_04">
+      <origin xyz="0.00149998215678 0.0175000026752 0.00995000023838" rpy="-3.14159 0 4.69282041338e-06" />
+      <geometry>
+        <box size="0.0340000018477 0.019999999553 0.0254999995232" />
+      </geometry>
+    </collision>
+    <collision name="base_link_collision_05">
+      <origin xyz="0.00150000784331 -0.0174999973248 0.00995000023837" rpy="-3.14159 0 4.69282041338e-06" />
+      <geometry>
+        <box size="0.0340000018477 0.019999999553 0.0254999995232" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="neck_yaw_link">
+    <visual name="neck_yaw_carrier">
+      <origin xyz="0 0 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_carrier.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.196078_0.592157_0.643137_0.000000_0.000000">
+        <color rgba="0.196078 0.592157 0.643137 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_02">
+      <origin xyz="0 1.50463276905e-36 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_03">
+      <origin xyz="0 0 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_03.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_04">
+      <origin xyz="0 -1.50463276905e-36 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_04.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_05">
+      <origin xyz="1.57006841359e-26 5.06444526849e-27 -0.0343" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_05.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_06">
+      <origin xyz="0 -3.00926553811e-36 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_06.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_07">
+      <origin xyz="0 -4.51389830716e-36 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_07.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_08">
+      <origin xyz="0 -6.01853107621e-36 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_08.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_09">
+      <origin xyz="0 -7.52316384526e-36 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_09.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_10">
+      <origin xyz="0 -9.02779661432e-36 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_10.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_11">
+      <origin xyz="1.57006841357e-26 5.06444526699e-27 -0.0343" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_11.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_12">
+      <origin xyz="1.57006841355e-26 5.06444526548e-27 -0.0343" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_12.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_13">
+      <origin xyz="1.57006841353e-26 5.06444526398e-27 -0.0343" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_13.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_14">
+      <origin xyz="1.57006841351e-26 5.06444526247e-27 -0.0343" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_14.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_15">
+      <origin xyz="0 -1.05324293834e-35 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_15.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <visual name="neck_yaw_link_neck_motor_component_16">
+      <origin xyz="0 -1.20370621524e-35 -0.0345" rpy="0 0 0.0309097" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/neck_yaw_link_neck_motor_component_16.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.337255_0.380392_0.419608_0.000000_0.000000">
+        <color rgba="0.337255 0.380392 0.419608 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="-0.000232753312218 0.00761516282518 0.0164392780749" rpy="0 0 0" />
+      <mass value="0.0300859" />
+      <inertia ixx="8.28947133873e-06" ixy="6.38758682908e-08" ixz="2.67840938907e-08" iyy="6.23784192797e-06" iyz="-8.65336448445e-07" izz="5.724770785e-06" />
+    </inertial>
+    <collision name="neck_yaw_link_collision_01">
+      <origin xyz="-0.000177702468555 0.00574725319467 0.0220000008792" rpy="0 0 0.0309097" />
+      <geometry>
+        <box size="0.019999999553 0.0184999997728 0.0339999981225" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="head_link">
+    <visual name="head_pitch_bracket">
+      <origin xyz="-0.00104957 0.0065 -0.0639914" rpy="-1.81067358268e-21 0.0164002 -2.96940777306e-23" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/head_pitch_bracket.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.858824_0.709804_0.317647_0.000000_0.000000">
+        <color rgba="0.858824 0.709804 0.317647 1" />
+      </material>
+    </visual>
+    <visual name="head_shell">
+      <origin xyz="-0.00104957 0.0065 -0.0639914" rpy="8.96980416893e-20 0.0164002 -2.20328193565e-18" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/head_shell.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.858824_0.725490_0.576471_0.000000_0.000000">
+        <color rgba="0.858824 0.72549 0.576471 1" />
+      </material>
+    </visual>
+    <visual name="head_right_ear">
+      <origin xyz="-0.00104957 0.0065 -0.0639914" rpy="1.29042268451e-19 0.0164002 -2.20295930183e-18" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/head_right_ear.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.207843_0.231373_0.262745_0.000000_0.000000">
+        <color rgba="0.207843 0.231373 0.262745 1" />
+      </material>
+    </visual>
+    <visual name="head_nose">
+      <origin xyz="-0.00104957 0.0065 -0.0639914" rpy="1.15927526197e-19 0.0164002 -2.20306684643e-18" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/head_nose.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.207843_0.231373_0.262745_0.000000_0.000000">
+        <color rgba="0.207843 0.231373 0.262745 1" />
+      </material>
+    </visual>
+    <visual name="head_left_ear">
+      <origin xyz="-0.00104957 0.0065 -0.0639914" rpy="1.02812783943e-19 0.0164002 -2.20317439104e-18" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/head_left_ear.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.207843_0.231373_0.262745_0.000000_0.000000">
+        <color rgba="0.207843 0.231373 0.262745 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0.0111635092126 0.00735582789746 0.0279680345642" rpy="0 0 0" />
+      <mass value="0.13912957081" />
+      <inertia ixx="0.000199472805983" ixy="9.58398297452e-07" ixz="1.25216940964e-05" iyy="0.000256892867547" iyz="9.48157636065e-07" izz="0.000311677113883" />
+    </inertial>
+    <collision name="head_link_collision_01">
+      <origin xyz="0.00827721357753 0.0065 0.0303467532739" rpy="8.96980416893e-20 0.0164002 -2.20328193565e-18" />
+      <geometry>
+        <box size="0.137975607067 0.116998702288 0.0889580398798" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_hip_yaw_link">
+    <visual name="right_hip_yaw_link_printed_part_01">
+      <origin xyz="-0.0122048874462 -1.09673984616e-05 0.0179999232295" rpy="1.57079074642 3.68371401249e-06 1.57170163452" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_yaw_link_printed_part_01.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.341176_0.341176_0.341176_0.000000_0.000000">
+        <color rgba="0.341176 0.341176 0.341176 1" />
+      </material>
+    </visual>
+    <visual name="right_hip_yaw_link_printed_part_02">
+      <origin xyz="0.0538278215016 -0.0557121942229 -0.0601671059769" rpy="-0.0174534 5.62688999839e-08 -1.5708" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_yaw_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.352941_0.352941_0.352941_0.000000_0.000000">
+        <color rgba="0.352941 0.352941 0.352941 1" />
+      </material>
+    </visual>
+    <visual name="right_hip_roll_motor">
+      <origin xyz="0.0114951060173 1.04718970052e-05 0.020999995248" rpy="-3.13800207242 -1.57079339999 3.13890738016" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_hip_yaw_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <visual name="right_hip_yaw_link_bearing_04">
+      <origin xyz="1.73472347598e-18 -3.46944695195e-18 0" rpy="-2.57817649954e-22 0 1.63012549367e-22" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_yaw_link_bearing_04.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.686275_0.623529_0.560784_0.000000_0.000000">
+        <color rgba="0.686275 0.623529 0.560784 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="-0.0014228987534 -1.64242655153e-07 0.0159695649372" rpy="0 0 0" />
+      <mass value="0.029106396375" />
+      <inertia ixx="4.91277473421e-06" ixy="-4.0888607855e-10" ixz="2.6652772518e-07" iyy="5.72037402068e-06" iyz="1.08133894194e-10" izz="2.88932937996e-06" />
+    </inertial>
+    <collision name="right_hip_yaw_link_collision_01">
+      <origin xyz="-0.00125488851934 -1.07077487536e-06 0.0209999579315" rpy="-3.13800207242 -1.57079339999 3.13890738016" />
+      <geometry>
+        <box size="0.0340000018477 0.019999999553 0.0254999995232" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_hip_roll_link">
+    <visual name="right_hip_pitch_motor">
+      <origin xyz="0.0556992 0.103722854 -0.07297183" rpy="-2.07135621794e-15 0 -5.99459078854e-18" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_pitch_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <visual name="right_hip_roll_link_printed_part_02">
+      <origin xyz="0.0556992 0.103717 -0.072972" rpy="-2.54073144572e-19 0 -4.8331955441e-22" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_roll_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.560784_0.686275_0.560784_0.000000_0.000000">
+        <color rgba="0.560784 0.686275 0.560784 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="-0.0288234862131 0.0118003984818 0.000201099603502" rpy="0 0 0" />
+      <mass value="0.02698959625" />
+      <inertia ixx="4.05828394264e-06" ixy="8.37162764509e-07" ixz="1.43310217253e-08" iyy="3.46481997601e-06" iyz="-4.09182835434e-08" izz="5.86019776161e-06" />
+    </inertial>
+    <collision name="right_hip_roll_link_collision_01">
+      <origin xyz="-0.031262073104 0.013973577362 0.000238323728723" rpy="-2.07135621794e-15 0 -5.99459078854e-18" />
+      <geometry>
+        <box size="0.0255296304822 0.0343573391438 0.0205780789256" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_thigh_link">
+    <visual name="right_thigh_link_printed_part_01">
+      <origin xyz="0.0449658680549 0.0229108994662 -0.0806396969663" rpy="-3.03019 0.000169906 -1.57923" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_01.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="right_thigh_link_printed_part_02">
+      <origin xyz="7.854753081e-19 -0.003 -3.89657468541e-17" rpy="4.6113942459e-20 -0.0201555 -1.8157689391e-21" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="right_thigh_link_printed_part_03">
+      <origin xyz="0.036959892734 -0.0742947588947 -0.0817249685892" rpy="-3.13895552622 -0.000914434276182 -1.57081968325" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_03.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="right_knee_pitch_motor">
+      <origin xyz="0.0370093868223 -0.0742946260434 -0.0813752856303" rpy="-3.13895 -0.000914459 -1.57081" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_knee_pitch_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0.0354978240923 0.0105569514533 0.000543839655233" rpy="0 0 0" />
+      <mass value="0.043094990625" />
+      <inertia ixx="7.29893491434e-06" ixy="-4.55677798811e-06" ixz="-3.27772947748e-07" iyy="2.92812745839e-05" iyz="-6.39448107563e-08" izz="3.12813063791e-05" />
+    </inertial>
+    <collision name="right_thigh_link_collision_01">
+      <origin xyz="0.0192505899248 0.0127500268215 0.000331998667392" rpy="-3.03019 0.000169906 -1.57923" />
+      <geometry>
+        <box size="0.0255812595133 0.00890982430428 0.0162329673767" />
+      </geometry>
+    </collision>
+    <collision name="right_thigh_link_collision_02">
+      <origin xyz="0.0197459879866 -0.000800000011921 0.000398044163366" rpy="4.6113942459e-20 -0.0201555 -1.8157689391e-21" />
+      <geometry>
+        <box size="0.0554999997839 0.00439999997616 0.019999999553" />
+      </geometry>
+    </collision>
+    <collision name="right_thigh_link_collision_03">
+      <origin xyz="0.0198335040251 0.0263003010213 0.000404777886121" rpy="-3.13895552622 -0.000914434276182 -1.57081968325" />
+      <geometry>
+        <box size="0.00441832840443 0.0555003797635 0.0200041681528" />
+      </geometry>
+    </collision>
+    <collision name="right_thigh_link_collision_04">
+      <origin xyz="0.055148020344 0.014149048513 0.000815999395822" rpy="-3.13895 -0.000914459 -1.57081" />
+      <geometry>
+        <box size="0.0255168005824 0.0340405476745 0.0200891420245" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_shank_link">
+    <visual name="right_shank_link_printed_part_01">
+      <origin xyz="0.0416721317704 0.0229109136262 -0.0823901056067" rpy="-3.07059 -0.000170679 -1.57923" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_01.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="right_shank_link_printed_part_02">
+      <origin xyz="-2.85446068928e-17 -0.003 -3.80983700186e-17" rpy="-9.65260434175e-20 0.0202471 1.89259505426e-21" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="right_shank_link_printed_part_03">
+      <origin xyz="-0.0288414876295 -0.0756945957354 -0.080748062105" rpy="3.10382832867 -0.000914442021418 -1.57078274922" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_shank_link_printed_part_03.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="right_ankle_pitch_motor">
+      <origin xyz="-0.0287787974435 -0.0756945207711 -0.0804007370725" rpy="3.10383 -0.000914458 -1.57078" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_ankle_pitch_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0.0390265541925 0.0120517153415 -0.00097427092879" rpy="0 0 0" />
+      <mass value="0.032094990625" />
+      <inertia ixx="4.43783103614e-06" ixy="-1.81575145695e-06" ixz="4.28023270915e-07" iyy="1.72356071411e-05" iyz="5.09334858551e-08" izz="1.9170327781e-05" />
+    </inertial>
+    <collision name="right_shank_link_collision_01">
+      <origin xyz="0.0192483206427 0.0127500258948 -0.000445835453001" rpy="-3.07059 -0.000170679 -1.57923" />
+      <geometry>
+        <box size="0.0255812595133 0.00890982430428 0.0162329673767" />
+      </geometry>
+    </collision>
+    <collision name="right_shank_link_collision_02">
+      <origin xyz="0.0197459514429 -0.000800000011921 -0.000399852894193" rpy="-9.65260434175e-20 0.0202471 1.89259505426e-21" />
+      <geometry>
+        <box size="0.0554999997839 0.00439999997616 0.019999999553" />
+      </geometry>
+    </collision>
+    <collision name="right_shank_link_collision_03">
+      <origin xyz="0.019833721584 0.0263001444477 -0.000396717312234" rpy="3.10382832867 -0.000914442021418 -1.57078274922" />
+      <geometry>
+        <box size="0.00441832840443 0.0555003751069 0.0200041681528" />
+      </geometry>
+    </collision>
+    <collision name="right_shank_link_collision_04">
+      <origin xyz="0.0551360693662 0.0141488842096 -0.00141228831144" rpy="3.10383 -0.000914458 -1.57078" />
+      <geometry>
+        <box size="0.0255167931318 0.0340405479074 0.0200891420245" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="right_foot_link">
+    <visual name="right_foot">
+      <origin xyz="-0.1232 0.000126999 -0.00949915" rpy="0.0133687 0 0" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_foot.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="-0.00967012489377 0.00548748998936 -0.00873371572093" rpy="0 0 0" />
+      <mass value="0.05485954375" />
+      <inertia ixx="2.58821657346e-05" ixy="1.06254335735e-06" ixz="-1.69121012513e-06" iyy="2.43724876497e-05" iyz="1.1203772216e-06" izz="4.33080768719e-05" />
+    </inertial>
+    <collision name="right_foot_link_collision_01">
+      <origin xyz="-0.0132004737079 0.00755612459394 -0.00414779199427" rpy="0.0133687 0 0" />
+      <geometry>
+        <box size="0.0705427154899 0.0850000008941 0.0285031292588" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hip_yaw_link">
+    <visual name="left_hip_yaw_link_printed_part_01">
+      <origin xyz="-0.0122048732597 1.07229818278e-05 0.0179999285366" rpy="1.57079605359 3.5064806938e-06 1.57078632582" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_yaw_link_printed_part_01.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.341176_0.341176_0.341176_0.000000_0.000000">
+        <color rgba="0.341176 0.341176 0.341176 1" />
+      </material>
+    </visual>
+    <visual name="left_hip_yaw_link_printed_part_02">
+      <origin xyz="0.0538278215016 -0.0557121942229 -0.0601671059769" rpy="-0.0174534 5.62688999839e-08 -1.5708" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_yaw_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.352941_0.352941_0.352941_0.000000_0.000000">
+        <color rgba="0.352941 0.352941 0.352941 1" />
+      </material>
+    </visual>
+    <visual name="left_hip_roll_motor">
+      <origin xyz="0.0114951060173 1.04689295804e-05 0.020999995248" rpy="3.08468928104 -1.57079339526 -3.08469928201" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_hip_yaw_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <visual name="left_hip_yaw_link_bearing_04">
+      <origin xyz="1.73472347598e-18 -3.46944695195e-18 2.77555756156e-17" rpy="-2.57817649954e-22 0 1.63012549366e-22" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_hip_yaw_link_bearing_04.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.686275_0.623529_0.560784_0.000000_0.000000">
+        <color rgba="0.686275 0.623529 0.560784 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="-0.00142290123388 7.29798489804e-06 0.0159695650019" rpy="0 0 0" />
+      <mass value="0.029106396375" />
+      <inertia ixx="4.9127750443e-06" ixy="-1.91664193566e-10" ixz="2.66527430986e-07" iyy="5.72037371558e-06" iyz="-8.61859905343e-10" izz="2.88932935102e-06" />
+    </inertial>
+    <collision name="left_hip_yaw_link_collision_01">
+      <origin xyz="-0.00125489374355 1.05964418703e-05 0.0209999579314" rpy="3.08468928104 -1.57079339526 -3.08469928201" />
+      <geometry>
+        <box size="0.0340000018477 0.019999999553 0.0254999995232" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_hip_roll_link">
+    <visual name="left_hip_roll_link_printed_part_01">
+      <origin xyz="0.0206992 0.103685 -0.0729725" rpy="-2.40456519887e-18 0 1.41047234869e-20" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_hip_roll_link_printed_part_01.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.560784_0.686275_0.560784_0.000000_0.000000">
+        <color rgba="0.560784 0.686275 0.560784 1" />
+      </material>
+    </visual>
+    <visual name="left_hip_pitch_motor">
+      <origin xyz="0.02069923 0.103685041 -0.07297254" rpy="-2.86189398751e-13 7.14983627859e-14 -6.53514733335e-15" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_hip_pitch_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0.0288009651525 0.0118596861427 0.000423630768142" rpy="0 0 0" />
+      <mass value="0.02698959625" />
+      <inertia ixx="4.06281390585e-06" ixy="-8.36370464631e-07" ixz="-2.8259511321e-08" iyy="3.46187023847e-06" iyz="-4.43021690249e-08" izz="5.86134248147e-06" />
+    </inertial>
+    <collision name="left_hip_roll_link_collision_01">
+      <origin xyz="0.031216685521 0.0140366899267 0.000466473212914" rpy="-2.86189398751e-13 7.14983627859e-14 -6.53514733335e-15" />
+      <geometry>
+        <box size="0.0256580414716 0.0343242287636 0.020715765655" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_thigh_link">
+    <visual name="left_thigh_link_printed_part_01">
+      <origin xyz="0.0451334760941 0.022910905855 -0.0786307096574" rpy="-3.03277 0.000148097 -1.57923" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_01.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="left_thigh_link_printed_part_02">
+      <origin xyz="0.0452264944788 0.0229108941248 -0.0777039357556" rpy="-3.03277 0.000148096999999 -1.57923" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_thigh_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="left_thigh_link_printed_part_03">
+      <origin xyz="4.75080713537e-18 -0.003 -3.86822780452e-17" rpy="-2.10222540114e-20 -0.122288 -5.04441905767e-19" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="left_knee_pitch_motor">
+      <origin xyz="0.0452264912207 0.0229108941479 -0.077703905933" rpy="-3.03277 0.000148096999999 -1.57923" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_knee_pitch_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0.0352910159732 0.0105568008084 0.00417602563139" rpy="0 0 0" />
+      <mass value="0.043094990625" />
+      <inertia ixx="7.63130676496e-06" ixy="-4.52453084019e-06" ixz="-2.89021881972e-06" iyy="2.92294457838e-05" iyz="-5.33233176279e-07" izz="3.08970289477e-05" />
+    </inertial>
+    <collision name="left_thigh_link_collision_01">
+      <origin xyz="0.0196272019283 0.0127500267214 0.00240706467916" rpy="-3.03277 0.000148097 -1.57923" />
+      <geometry>
+        <box size="0.0255812595133 0.00890982430428 0.0162329673767" />
+      </geometry>
+    </collision>
+    <collision name="left_thigh_link_collision_02">
+      <origin xyz="0.0196060198641 0.0264648119705 0.00270072625108" rpy="-3.03277 0.000148096999999 -1.57923" />
+      <geometry>
+        <box size="0.00454469665419 0.0555972745642 0.0200352445245" />
+      </geometry>
+    </collision>
+    <collision name="left_thigh_link_collision_03">
+      <origin xyz="0.0196025092 -0.000800000011921 0.00240917284339" rpy="-2.10222540114e-20 -0.122288 -5.04441905767e-19" />
+      <geometry>
+        <box size="0.0554999997839 0.00439999997616 0.019999999553" />
+      </geometry>
+    </collision>
+    <collision name="left_thigh_link_collision_04">
+      <origin xyz="0.0547891425277 0.0141395715449 0.00643589907333" rpy="-3.03277 0.000148096999999 -1.57923" />
+      <geometry>
+        <box size="0.0257786610164 0.0343099874444 0.020222954452" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_shank_link">
+    <visual name="left_shank_link_printed_part_01">
+      <origin xyz="0.00223371883122 -0.0346624101157 0.0837858080081" rpy="-0.0201856 0.000169302 -1.72167e-05" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_01.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="left_shank_link_printed_part_02">
+      <origin xyz="0.00415919 0.0277595 0.0820179" rpy="-0.0201856 0.000169302 -1.72167e-05" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_shank_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="left_shank_link_printed_part_03">
+      <origin xyz="0.0285027413741 0.000212561887812 2.93481781384e-05" rpy="-3.14082008005 -0.00671430988139 -1.57919550818" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/right_thigh_link_printed_part_02.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <visual name="left_ankle_pitch_motor">
+      <origin xyz="0.00415656704969 0.027447138735 0.0820231385605" rpy="-0.0201856 0.000169302 -1.72167e-05" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_ankle_pitch_motor.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.450980_0.450980_0.450980_0.000000_0.000000">
+        <color rgba="0.45098 0.45098 0.45098 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0.0107363020601 -0.0391218878765 0.000440703758222" rpy="0 0 0" />
+      <mass value="0.032094990625" />
+      <inertia ixx="1.73096194714e-05" ixy="1.04151830972e-06" ixz="-1.1306944904e-08" iyy="4.26713530842e-06" iyz="2.15285913215e-07" izz="1.90896894375e-05" />
+    </inertial>
+    <collision name="left_shank_link_collision_01">
+      <origin xyz="0.0125834386721 -0.0198799160434 0.000147924700181" rpy="-0.0201856 0.000169302 -1.72167e-05" />
+      <geometry>
+        <box size="0.0255812595133 0.00890982430428 0.0162329673767" />
+      </geometry>
+    </collision>
+    <collision name="left_shank_link_collision_02">
+      <origin xyz="-0.0011307919562 -0.019781647223 -0.000156362509123" rpy="-0.0201856 0.000169302 -1.72167e-05" />
+      <geometry>
+        <box size="0.00454469537362 0.0555972177535 0.0200352072716" />
+      </geometry>
+    </collision>
+    <collision name="left_shank_link_collision_03">
+      <origin xyz="0.0261369414083 -0.0195178292525 0.000160255175365" rpy="-3.14082008005 -0.00671430988139 -1.57919550818" />
+      <geometry>
+        <box size="0.0554999997839 0.00439999997616 0.019999999553" />
+      </geometry>
+    </collision>
+    <collision name="left_shank_link_collision_04">
+      <origin xyz="0.0108962713057 -0.0552552189436 0.000675553826116" rpy="-0.0201856 0.000169302 -1.72167e-05" />
+      <geometry>
+        <box size="0.0257786605507 0.034310258925 0.020223416388" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="left_foot_link">
+    <visual name="left_foot">
+      <origin xyz="-0.068379 -0.0842046 0.0444465" rpy="0.0275406 -1.79713000001e-05 -0.000231481" />
+      <geometry>
+        <mesh filename="package://snu_gom_description/meshes/left_foot.stl" scale="1 1 1" />
+      </geometry>
+      <material name="0.627451_0.627451_0.627451_0.000000_0.000000">
+        <color rgba="0.627451 0.627451 0.627451 1" />
+      </material>
+    </visual>
+    <inertial>
+      <origin xyz="0.00959085561944 -0.00516884349119 -0.00901112185236" rpy="0 0 0" />
+      <mass value="0.05485954375" />
+      <inertia ixx="2.59135061872e-05" ixy="9.82937822172e-07" ixz="1.82828936311e-06" iyy="2.44742705116e-05" iyz="-1.68819052419e-06" izz="4.31748772394e-05" />
+    </inertial>
+    <collision name="left_foot_link_collision_01">
+      <origin xyz="0.0130898206189 -0.00743634253095 -0.00462337458084" rpy="0.0275406 -1.79713000001e-05 -0.000231481" />
+      <geometry>
+        <box size="0.0705761574209 0.0850188210607 0.0289549715817" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="neck_yaw_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="neck_yaw_link" />
+    <origin xyz="0.00799991184319 -5.87714435674e-08 0.1696864" rpy="-2.96681021515e-25 0 2.56739e-16" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-1.53989000149" upper="1.60170999993" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="neck_pitch_joint" type="revolute">
+    <parent link="neck_yaw_link" />
+    <child link="head_link" />
+    <origin xyz="0.000194700103487 -0.00629699069951 0.0297" rpy="-3.05311331772e-16 1.50990331349e-14 0.0309097" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.539999006261" upper="0.507198998721" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="right_hip_yaw_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="right_hip_yaw_link" />
+    <origin xyz="-0.00599999215676 -0.0174999986876 -0.0028" rpy="-3.14159 0 4.69282041338e-06" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.523598775598" upper="0.523598775598" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="right_hip_roll_joint" type="revolute">
+    <parent link="right_hip_yaw_link" />
+    <child link="right_hip_roll_link" />
+    <origin xyz="-0.0140048615819 -1.2613506132e-05 0.013499920615" rpy="-0.01745074977 3.66537163199e-06 -1.57080566405" />
+    <axis xyz="-0.000914645 0.999847 0.0174525" />
+    <limit lower="-0.349065850399" upper="0.349065850399" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="right_hip_pitch_joint" type="revolute">
+    <parent link="right_hip_roll_link" />
+    <child link="right_thigh_link" />
+    <origin xyz="-0.0185196827 0.021482954 0.00036655" rpy="-3.14068 -1.55328 -1.5708" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.785398163397" upper="0.785398163397" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="right_knee_pitch_joint" type="revolute">
+    <parent link="right_thigh_link" />
+    <child link="right_shank_link" />
+    <origin xyz="0.0626480998896 0.00140010713704 0.000821967378588" rpy="-2.00093513988e-06 -0.0201575418012 8.43593210807e-06" />
+    <axis xyz="0 1 0" />
+    <limit lower="-1.0471975512" upper="1.0471975512" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="right_ankle_pitch_joint" type="revolute">
+    <parent link="right_shank_link" />
+    <child link="right_foot_link" />
+    <origin xyz="0.06263013136 0.0268999746307 -0.0017092198073" rpy="-1.55055000422 1.27253209081e-07 1.57079077223" />
+    <axis xyz="-1 0 0" />
+    <limit lower="-0.436332312999" upper="0.436332312999" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="left_hip_yaw_joint" type="revolute">
+    <parent link="base_link" />
+    <child link="left_hip_yaw_link" />
+    <origin xyz="-0.0060000178433 0.0175000013124 -0.00279999999999" rpy="-3.14159 0 4.69282041338e-06" />
+    <axis xyz="0 0 1" />
+    <limit lower="-0.523598775598" upper="0.523598775598" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="left_hip_roll_joint" type="revolute">
+    <parent link="left_hip_yaw_link" />
+    <child link="left_hip_roll_link" />
+    <origin xyz="-0.0140048720303 1.07252043785e-05 0.0134999206148" rpy="-0.017450749925 3.84260488384e-06 -1.57172097275" />
+    <axis xyz="-0.000914645 0.999847 0.0174525" />
+    <limit lower="-0.349065850399" upper="0.349065850399" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="left_hip_pitch_joint" type="revolute">
+    <parent link="left_hip_roll_link" />
+    <child link="left_thigh_link" />
+    <origin xyz="0.0439791 0.021546541 0.000701809999992" rpy="-0.0918704999989 -1.47916 1.66305" />
+    <axis xyz="0 1 0" />
+    <limit lower="-0.785398163397" upper="0.785398163397" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="left_knee_pitch_joint" type="revolute">
+    <parent link="left_thigh_link" />
+    <child link="left_shank_link" />
+    <origin xyz="0.0622379351485 0.0268998240284 0.00720507861479" rpy="-3.03277 0.000148097000001 -1.57923" />
+    <axis xyz="0.999964 -0.00839528 0.000768211" />
+    <limit lower="-1.0471975512" upper="1.0471975512" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+  <joint name="left_ankle_pitch_joint" type="revolute">
+    <parent link="left_shank_link" />
+    <child link="left_foot_link" />
+    <origin xyz="-0.0019265547924 -0.062633617838 0.000861305087446" rpy="-1.5909856 0.000169302 -1.72167000039e-05" />
+    <axis xyz="0.999964 -0.000768211 -0.00839528" />
+    <limit lower="-0.436332312999" upper="0.436332312999" effort="0.15" velocity="1.0" />
+    <dynamics damping="0.01" friction="0" />
+  </joint>
+</robot>

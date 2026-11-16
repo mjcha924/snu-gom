@@ -1,0 +1,10 @@
+numpy==1.26.4
+scipy==1.15.3
+imageio==2.37.0
+imageio-ffmpeg==0.6.0
+Pillow==11.3.0
+tensorboard==2.20.0
+matplotlib==3.10.3
+tensordict==0.11.0
+rsl-rl-lib==5.0.1
+warp-lang==1.12.0

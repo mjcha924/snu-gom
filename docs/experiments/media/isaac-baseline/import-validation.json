@@ -1,0 +1,39 @@
+{
+  "poses_checked": 21,
+  "max_position_error_m": 1.0601088977051391e-07,
+  "max_rotation_error_rad": 7.371004755275861e-06,
+  "max_inertia_relative_error": 3.1395688800091895e-07,
+  "per_body_inertia_relative_error": {
+    "base_reference": 3.1395688800091895e-07,
+    "left_hip_yaw_link": 2.6892529231943056e-07,
+    "neck_yaw_link": 7.068041899214912e-08,
+    "right_hip_yaw_link": 1.6235128397592756e-07,
+    "left_hip_roll_link": 1.73449758041507e-07,
+    "head_link": 1.378965758287557e-07,
+    "right_hip_roll_link": 1.933270249225331e-07,
+    "left_thigh_link": 1.374846314944127e-07,
+    "right_thigh_link": 2.1611741951957373e-07,
+    "left_shank_link": 1.7627004546987015e-07,
+    "right_shank_link": 2.079115815573657e-07,
+    "left_foot_link": 1.9608131229700913e-07,
+    "right_foot_link": 1.1068918136686553e-07
+  },
+  "max_full_tensor_relative_error": 2.2339224019640642e-07,
+  "max_center_of_mass_error_m": 2.2129589539155912e-09,
+  "per_body_full_tensor_relative_error": {
+    "base_reference": 2.2339224019640642e-07,
+    "left_hip_yaw_link": 1.9074326488657761e-07,
+    "neck_yaw_link": 9.023429362604516e-08,
+    "right_hip_yaw_link": 1.4255417606572327e-07,
+    "left_hip_roll_link": 1.4098932923304274e-07,
+    "head_link": 8.576395407444075e-08,
+    "right_hip_roll_link": 9.523949059106768e-08,
+    "left_thigh_link": 7.879506430520024e-08,
+    "right_thigh_link": 1.6969646835148936e-07,
+    "left_shank_link": 3.304104349582267e-08,
+    "right_shank_link": 1.32075684167796e-07,
+    "left_foot_link": 1.790250126654039e-07,
+    "right_foot_link": 6.205395960932095e-08
+  },
+  "passed": true
+}

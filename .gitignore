@@ -39,3 +39,12 @@ motion/examples/hardware_calibration.json
 *.iges
 *.igs
 *.3mf
+
+# Latest supplied robot visuals are required for a self-contained clone.
+!snu_gom_description/meshes/*.stl
+.cache/
+.upstream/
+.deps/
+assets/generated/
+reports/
+reports_setup.log

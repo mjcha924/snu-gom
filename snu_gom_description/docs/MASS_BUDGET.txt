@@ -1,0 +1,31 @@
+SNU GOM MASS BUDGET / 질량 예산
+Units: grams. Unmeasured estimates; low/high are chosen planning scenarios, not statistical confidence limits.
+
+Category                                               Low   Nominal      High
+Existing printed CAD parts                           341.4     429.0     509.5
+12 modeled motors (4 XC + 8 XL)                      236.0     236.0     236.0
+Existing electronics boards                           78.5      82.5      90.5
+Bearings                                               9.0      14.0      22.0
+Camera + mount + FFC                                   6.0      10.0      20.0
+Speaker + mount + cooling + microSD                    9.0      18.0      34.0
+Battery                                              103.0     108.0     113.0
+Unmodeled torso/paw shell allowances                  60.0     110.0     200.0
+Wiring/connectors                                     27.0      45.0      72.0
+External screws/inserts                               12.5      25.0      40.0
+Regulators + distribution + protection                66.0     103.0     181.0
+Battery tray/strap                                     6.0      12.0      25.0
+--------------------------------------------------------------------------------
+TOTAL                                                954.4    1192.5    1543.0
+
+Current skeleton (12 motors), 108g battery: 1.193 kg
+Current skeleton, 44g battery option: 1.129 kg
+14-motor plan, +2 XL motor masses only: 1.229 kg
+16-motor plan, +4 XL motor masses only: 1.265 kg
+The 14/16-motor numbers exclude the extra mechanisms/brackets and do not create extra motion DOFs.
+Optional motors remain disabled in the delivered URDF.
+
+Neutral-pose estimated whole-robot CoM in pelvis frame (mm): [ 0.90065792 -0.2598721  39.04920826]
+CoM depends on assumed payload locations; not a balance validation.
+Mass allowances are combined into existing rigid bodies, with finite box inertias and the parallel-axis theorem.
+Catalog full-board masses replace bare-PCB masses; no separate duplicate populated-board allowance.
+Added payloads have no visual/collision mesh and do not prove packaging clearance.

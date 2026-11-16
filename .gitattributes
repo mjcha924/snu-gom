@@ -1,0 +1,4 @@
+snu_gom_description/** -text
+snu_gom_description/meshes/*.stl -text -diff
+snu_gom_walk/*.py text eol=lf
+scripts/*.py text eol=lf

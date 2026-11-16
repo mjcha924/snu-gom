@@ -1,0 +1,14 @@
+category,low_g,nominal_g,high_g
+Existing printed CAD parts,341.4475273299998,429.0073423099998,509.48939980000006
+12 modeled motors (4 XC + 8 XL),235.99999999996788,235.99999999996788,235.99999999996788
+Existing electronics boards,78.5,82.5,90.5
+Bearings,9.0,14.0,22.0
+Camera + mount + FFC,6.0,10.0,20.0
+Speaker + mount + cooling + microSD,9.0,18.0,34.0
+Battery,103.0,108.0,113.0
+Unmodeled torso/paw shell allowances,60.0,110.0,200.0
+Wiring/connectors,27.000000000000004,45.0,72.0
+External screws/inserts,12.5,25.0,40.0
+Regulators + distribution + protection,66.0,103.0,181.0
+Battery tray/strap,6.0,12.0,25.0
+TOTAL,954.4475273299677,1192.5073423099677,1542.989399799968

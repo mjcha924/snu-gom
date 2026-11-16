@@ -1,0 +1,123 @@
+MASS ESTIMATE REVISION — supplied parts guides incorporated
+=========================================================
+
+1. Evidence hierarchy
+----------------------
+The supplied PCB guide (Rev D, 2026-11-01) gives the parts list, four XC330
+locations, battery options and four-group motor-power concept. The supplied
+upper-body connection/mounting guide (2026-10-29) gives PCB sizes and proposed
+mounting regions. Their schematic illustrations are not scale mounting CAD.
+Catalog weights are used for identified hardware; everything else has explicit
+nominal/low/high estimates in CSV. No physical parts were weighed.
+
+2. Existing printed geometry
+-----------------------------
+All existing printed parts now have explicit net CAD volume, material density
+and effective material fraction. Source mass values were approximately volume
+in m3 at 1 kg/m3; these net volumes matched independent mesh-volume checks in
+the initial review. Hollow head volume is already hollow: no second hollowing
+factor is applied to the outer bounding sphere.
+- PETG Basic assumption:1250 kg/m3 for structural components and feet.
+- PLA assumption:1240 kg/m3 for head shell/ears/nose.
+- Thin brackets/links and head walls:nominal effective fraction0.95, range0.85-1.
+- Bulk torso rails/plates:nominal0.85, range0.65-1.
+- Feet:nominal0.65, range0.40-1.
+Effective fraction is the material amount relative to the CAD net solid volume,
+INCLUDING perimeters, top/bottom layers and infill. It is NOT a slicer infill
+setting. These fractions are planning assumptions, not a print-process model.
+Uniformly scaling CAD inertia approximates the nonuniform effect of infill.
+Use slicer grams or measured finished-part mass when available.
+
+The two 23x40x3mm parts named bearing_roll are mounting plates with large holes,
+not whole bearings. Actual mesh inspection corrected their previous steel
+classification to printed PETG. Two separate roll-bearing reserves are included
+at3g each, plus two explicit16x22x4mm yaw bearings at4g each. Exact bearing models
+are not confirmed. Total14g; planning range9-22g. Remove an extra reserve if its
+bearing is already represented by a purchased assembly.
+
+3. Motor masses and the missing 2-4 joints
+-----------------------------------------
+PCB guide p1 assigns XC330-M288-T to left/right hip pitch and knee pitch. Each is
+23g; remaining modeled motors are XL330-M288-T at18g. Thus12 modeled motors:
+4 XC + 8 XL =236g. The earlier generic20g XC upgrade allowance was REMOVED;
+there is no double counting. Detailed neck motor parts share a total18g EACH.
+Motor CoM/inertia remains based on source geometry with uniformly scaled mass;
+this is not a manufacturer's complete motor inertia tensor. Mesh appearance
+has not been replaced with exact XC330 CAD.
+The guide plans14-16 motors. Extra2-4 XL motor masses add36-72g but their brackets,
+links and actual moving attachment locations are unspecified. Disabled rows in
+additional_masses.csv expose this reserve without creating fictitious joints.
+
+4. Identify and populate the existing electronics
+-------------------------------------------------
+- 66x25mm BCM17-named PCB inferred as OpenRB-150 using the mounting guide and
+  matching board dimensions:13g complete board; visual renamed openrb150.
+- 25.4x22.86mm generic Board_1 inferred as BNO085 #4754 from guide and matching
+  product dimensions:2.5g. Separate speculative IMU payload was REMOVED.
+- Raspberry Pi4 board:46g complete board; cooling/microSD12g separately reserved.
+- ReSpeaker Lite:21g retailer reference, including its microphones. No second
+  microphone or separate audio-amplifier allowance is added.
+The bare-PCB meshes are still bare-PCB meshes. Whole-board mass is distributed
+using their CAD inertia approximation, so vertical CoM/connector mass is not
+accurate. Confirm the two inferred CAD identities against the team's CAD names.
+
+5. Added head/torso hardware
+----------------------------
+- Camera Module3 Standard:4g + printed mount4g + ribbon2g =10g at/behind nose.
+- Adafruit speaker #3923:current manufacturer listing3g + mount3g. This replaces
+  the earlier generic25g speaker allowance. Older datasheets list a different
+  weight; the current catalog value was used.
+- Gens ace GEA222S60X76GT candidate:108g and92x31x17mm from guide p3, placed low
+  in torso. This candidate is NOT a confirmed procurement decision. Existing
+  800mAh pack option is44g (71x24x12mm), reducing total by64g. If switching,
+  update both mass and dimensions; do not include both packs.
+- Battery tray/strap12g; external screws/inserts25g; wiring/connectors45g.
+  Camera ribbon is outside the45g harness allowance. Motor internal screws are
+  already in motor mass;25g counts external assembly hardware only.
+- Unmodeled torso shell80g + open-bottom paw covers15g each =110g reserve.
+  These are design-budget allowances, NOT measurements from shell CAD.
+  Head shell is already included in the existing printed geometry.
+  Additional arm mechanisms/fabric hoodie are not included without a design.
+
+6. Motor-power electronics: current design remains open
+-------------------------------------------------------
+Guide pp11-16 discusses four independent motor-power groups and a custom
+16-port distribution PCB. To avoid pretending that a single10g converter is the
+whole supply, budget:
+- Four converter mass reserves15g each,60g total, based on D42V110F5 size/mass.
+  This is a MASS reference only. The guide leaves final models/count unresolved.
+- Logic converter candidate D24V50F5:3g, without optional headers.
+- Custom distribution PCB with board-mounted connectors/fuseholders:25g.
+- Additional off-board protection/switch/cutoff hardware:15g.
+Total power subsystem103g; range66-181g. Wiring counted elsewhere.
+This mass update does not approve the reference converter for the intended
+voltage/current/thermal conditions. Power topology and packaging need the
+team's separate electrical design and mounting checks.
+
+7. Position and uncertainty
+----------------------------
+Masses already in CAD retain their source CoM. Added parts use proposed mounting
+regions:camera follows head, battery/converters/boards follow torso, paw shells
+follow feet, leg harness/fasteners follow corresponding links. Box inertias are
+combined through the parallel-axis theorem. Extra rows have no collision or
+visual geometry, so this does not establish fit or cable routing.
+CSV low/high columns give alternative planning bounds. Summing them gives a
+budget envelope, not a statistical confidence interval. Nominal URDF contains
+one chosen estimate, not all scenarios at once.
+
+8. References
+--------------
+User-supplied PCB가이드.pdf: p1 parts/motor roles; p3 battery mass/size;
+pp11-16 power-group, custom-PCB and hardware requirements.
+User-supplied 마스코트_전장_연결과_장착_가이드.pdf: pp3-4 board sizes/mounting regions.
+XL330-M288-T: https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/
+XC330-M288-T: https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/
+OpenRB: https://www.robotis.com/shop/item_export_only.php?it_id=902-0183-000
+Pi4 reference46g: https://www.tomshardware.com/news/raspberry-pi-4-how-much-ram
+BNO0852.5g: https://www.adafruit.com/product/4754
+Speaker current3g: https://www.adafruit.com/product/3923
+CameraModule3 4g: https://www.raspberrypi.com/documentation/accessories/camera.html
+ReSpeaker21g: https://www.roboticscenter.ai/store/product/seeed-studio-respeaker-lite
+Converter reference15g: https://www.pololu.com/product/5671/specs
+Logic converter3g: https://www.pololu.com/product/2851/specs
+PETG1250kg/m3: https://store.bblcdn.com/s1/default/cb94589bf7994fdcbfa833badefae9cd/Bambu_PETG_Basic_Technical_Data_Sheet.pdf

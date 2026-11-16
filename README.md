@@ -1,5 +1,14 @@
 # SNU GOM · 스누곰
 
+## Headless walking experiments / 헤드리스 보행 실험
+
+The latest supplied robot is now included in `snu_gom_description/`: relative-path URDFs, STL visuals, collision boxes, and mass-estimate source tables. It has **12 joints** (hip yaw/roll/pitch, knee pitch, ankle pitch on each leg, plus neck yaw/pitch), and an estimated mass of **1.193 kg**. The older proxy/design material below remains historical context, not this training model.
+
+Start with [headless Isaac setup and commands](HEADLESS_TRAINING.md), [the staged training plan](WALKING_TRAINING_PLAN.md), and [experiment results](docs/experiments/isaac-headless-baseline.md). Training uses no cameras; checkpoint playback produces MP4/GIF files. A basic box-built home scene is available for evaluation without heavy household assets. These are simulation experiments, not a validated physical-robot walking controller.
+
+최신 제공 모델의 URDF·STL·질량 추정 자료와 Isaac 헤드리스 학습 코드를 포함했습니다. 이 모델은 다리 10축과 목 2축의 총 **12축**, 추정 질량 **1.193 kg**입니다. 아래의 이전 11축 설계·프록시와 구분해 주세요. [실행 안내](HEADLESS_TRAINING.md)에서 설치, 학습, 영상 체크포인트 명령을 확인할 수 있습니다. 단순 가구·벽으로 구성한 실내 평가 환경을 사용하며, 실물 보행 검증은 아직 완료되지 않았습니다.
+
+
 [English](#english) · [한국어](#한국어)
 
 <a id="english"></a>

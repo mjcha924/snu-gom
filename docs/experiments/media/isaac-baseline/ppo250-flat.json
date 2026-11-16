@@ -1,0 +1,21 @@
+[
+  {
+    "episode": 0,
+    "survived": true,
+    "duration": 20.0,
+    "forward_distance": 0.10404951870441437,
+    "lateral_distance": 0.09327363222837448,
+    "mean_speed": 0.037581430859863756,
+    "clear_touchdowns_left_right": [
+      0,
+      0
+    ],
+    "alternating_touchdowns": 0,
+    "max_sole_height_left_right": [
+      7.070973515510559e-05,
+      0.0005755219608545303
+    ],
+    "both_feet_contact_fraction": 0.895,
+    "speed_mae": 0.006934373261407018
+  }
+]

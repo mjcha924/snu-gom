@@ -1,0 +1,134 @@
+SNU GOM — ORGANIZED URDF WITH PARTS-BASED MASS ESTIMATES
+=====================================================
+
+QUICK START
+-----------
+1. Extract the full folder. Keep urdf/, meshes/, config/, tools/ together.
+2. For a direct URDF importer, open urdf/snu_gom_preview_relative.urdf.
+3. For ROS 2 use the package-path version and launch instructions below.
+4. Read docs/MASS_BUDGET.txt for totals and docs/MASS_ASSUMPTIONS.txt for
+   evidence, uncertainty, material settings and how to change estimates.
+
+The two URDFs differ only in asset paths. No Onshape reassembly is required.
+These files do not modify the source Onshape document.
+
+WHAT IS INCLUDED
+----------------
+- 13 rigid physical bodies + a massless base_reference frame.
+- 12 actuated revolute joints: five per leg and neck yaw/pitch.
+- Electronics planar-mate motion removed; boards fixed to the torso.
+- Rigidly connected source parts consolidated; all 79 visual instances kept.
+- 29 simplified collision boxes for soles, motors, links, rails and head.
+- Original axes, geometry, signs and exported neutral pose preserved.
+- Reference origin translated to pelvis center: +X approximately forward,
+  +Y left, +Z up in the exported pose.
+- 74 existing component masses and 30 enabled added mass allowances.
+- Added masses affect dynamics through aggregated CoM and inertia tensors.
+  They do not add visible CAD parts, joints or collision geometry.
+
+STRUCTURE AND MOTOR ASSIGNMENTS
+-------------------------------
+base_reference -> base_link (fixed internal reference; NOT world-fixed)
+base_link -> neck_yaw_link -> head_link
+base_link -> left_hip_yaw_link -> left_hip_roll_link -> left_thigh_link
+          -> left_shank_link -> left_foot_link
+base_link -> right_hip_yaw_link -> right_hip_roll_link -> right_thigh_link
+          -> right_shank_link -> right_foot_link
+
+The hip order is yaw -> roll -> pitch, exactly as exported.
+A link is the body MOVED by its incoming joint. Motor casing is usually carried
+by the parent body: e.g. hip pitch motor is in hip_roll_link, moving thigh_link.
+
+Using PCB guide p1: XC330-M288-T at left/right HIP PITCH and KNEE PITCH, 23g each.
+Remaining modeled joints: XL330-M288-T, 18g each. Modeled total:4 XC + 8 XL.
+The PDF plan says 14-16 motors, but the uploaded skeleton has 12. Four optional
+18g XL allowances are provided DISABLED, with arbitrary torso placeholder
+locations. They add no joints. Do not mistake mass reserves for extra mechanisms.
+
+config/joint_parameters.csv: original/new joint mapping and motor assignments.
+docs/link_name_map.csv: each original link -> consolidated rigid body.
+docs/part_name_map.csv: original part/mesh -> organized visual/mesh names.
+Shared mesh assets can carry their first instance's name; per-instance visual
+and link names identify the actual left/right part.
+
+EDITING AND REBUILDING
+----------------------
+config/component_masses.csv:
+  Existing parts; mass_kg is authoritative. Printed material/density/fraction
+  fields document the estimate but do not auto-recalculate mass_kg when edited.
+  For printed parts: mass_kg = volume_cm3 * density_kg_m3 / 1e6 * fraction.
+  Prefer a slicer's actual grams, excluding supports, or a measured weight.
+
+config/additional_masses.csv:
+  Camera, battery, converters, shell reserves, wires and hardware not in CAD.
+  enabled=1 includes a row; enabled=0 excludes it.
+  x_m/y_m/z_m are the mass center in the NAMED RIGID LINK's local frame,
+  NOT necessarily the pelvis frame. size_* defines a uniform-box inertia
+  surrogate in that frame; it is not an installation clearance envelope.
+  Change the position when actual mounting geometry is known.
+
+config/joint_parameters.csv:
+  Limits are degrees relative to the exported pose; URDF output uses radians.
+  Motor model names are now assigned from the guide, but numeric performance
+  limits still need validation. The model name alone does not change gains.
+  Servo IDs are blank; the guide's ID examples are not installed-ID evidence.
+
+Run from the snu_gom_description folder:
+  python -m pip install numpy scipy
+  python tools/rebuild.py
+  python tools/check_collision_boxes.py
+  python tools/mass_summary.py
+Then reimport the regenerated URDF. Rebuild overwrites manual URDF edits.
+
+MOTION LIMITS REMAIN PROVISIONAL
+--------------------------------
+Hip yaw +/-30, hip roll +/-20, hip pitch +/-45, knee +/-60, ankle +/-25 degrees.
+These are preview windows, not swept-clearance measurements. Neck ranges are
+retained from the original CAD export. Each joint has provisional effort 0.15
+N.m, velocity 1 rad/s and damping 0.01 N.m.s/rad. Confirm mechanical range,
+servo direction and actual usable performance before physics/RL calibration.
+Do not use stall torque as continuous usable torque.
+
+ROS 2 KINEMATIC PREVIEW
+-----------------------
+Requires a working ROS 2 desktop install, colcon, ament_cmake, launch,
+launch_ros, ament_index_python, robot_state_publisher,
+joint_state_publisher_gui and rviz2.
+1. Put snu_gom_description in your ROS workspace's src folder.
+2. Source your ROS installation; from the workspace root run:
+     colcon build --packages-select snu_gom_description --symlink-install
+     source install/setup.bash
+     ros2 launch snu_gom_description display.launch.py
+3. Move one slider at a time and check motion/signs.
+4. RViz SNU GOM > Collision Enabled shows the approximate collision boxes.
+The grid is at pelvis height, not a simulated floor. This display applies no
+physics or motor commands. ROS 2 runtime was unavailable here; only syntax and
+package/asset checks were performed.
+
+PHYSICS NEXT STEPS
+------------------
+Use a floating root for walking. The lowest exported sole is approximately
+0.161m below the pelvis reference in the neutral pose. Place the imported
+collision soles above your simulator's floor. Set friction, actuator drives,
+controllers and contact parameters in the chosen simulator. Check adjacent
+collision filtering and nonadjacent clearances through the full motion range.
+Added hardware/shell allowances have no collision geometry; do not regard a
+passing neutral box check as proof that a battery, board or shell fits.
+Camera/IMU inertial mass does not create a sensor simulation or optical frame.
+
+CHECKS AND LIMITS
+-----------------
+21 articulated poses preserved every original visual transform below 1e-8.
+Aggregate inertias are positive definite and obey principal-moment triangle
+inequalities. No nonadjacent collision boxes overlap at the exported neutral
+pose. Serialized URDF mass equals the itemized nominal budget.
+No physics engine import, walking, stability or full swept-collision test has
+been performed. Parts and placements remain estimates, not measured assembly.
+
+SOURCE AND RIGHTS
+-----------------
+source/original_export.urdf retains the source XML. Its mesh names map to the
+organized assets through source/mesh_filename_map.csv. Source XML is reference
+input for rebuilding, not another standalone launch package.
+No new license grant for third-party CAD is implied. Set real team metadata
+and licensing in package.xml before public distribution.
