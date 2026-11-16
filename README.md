@@ -1,116 +1,111 @@
 # SNU GOM · 스누곰
 
-## Headless walking experiments / 헤드리스 보행 실험
+**A small bear-inspired robot for walking, looking at people, and expressive interaction at home.**
 
-The latest supplied robot is now included in `snu_gom_description/`: relative-path URDFs, STL visuals, collision boxes, and mass-estimate source tables. It has **12 joints** (hip yaw/roll/pitch, knee pitch, ankle pitch on each leg, plus neck yaw/pitch), and an estimated mass of **1.193 kg**. The older proxy/design material below remains historical context, not this training model.
+[English](#english) · [한국어](#한국어) · [Run experiments](HEADLESS_TRAINING.md) · [Training plan](WALKING_TRAINING_PLAN.md) · [Measured results](docs/experiments/isaac-headless-baseline.md)
 
-Start with [headless Isaac setup and commands](HEADLESS_TRAINING.md), [the staged training plan](WALKING_TRAINING_PLAN.md), and [experiment results](docs/experiments/isaac-headless-baseline.md). Training uses no cameras; checkpoint playback produces MP4/GIF files. A basic box-built home scene is available for evaluation without heavy household assets. These are simulation experiments, not a validated physical-robot walking controller.
+![Latest supplied SNU-GOM model in the lightweight Isaac home scene](docs/experiments/media/isaac-baseline/home.png)
 
-최신 제공 모델의 URDF·STL·질량 추정 자료와 Isaac 헤드리스 학습 코드를 포함했습니다. 이 모델은 다리 10축과 목 2축의 총 **12축**, 추정 질량 **1.193 kg**입니다. 아래의 이전 11축 설계·프록시와 구분해 주세요. [실행 안내](HEADLESS_TRAINING.md)에서 설치, 학습, 영상 체크포인트 명령을 확인할 수 있습니다. 단순 가구·벽으로 구성한 실내 평가 환경을 사용하며, 실물 보행 검증은 아직 완료되지 않았습니다.
-
-
-[English](#english) · [한국어](#한국어)
+*The current supplied URDF in Isaac Sim—not a photograph or a fabrication-qualified final assembly.*
 
 <a id="english"></a>
 
-## English
+## Current Design
 
-**A small bear-shaped biped that walks, looks at people and responds through voice and movement.** SNU GOM combines a ten-joint lower body with a tilting head, a camera in its nose, microphones and a speaker.
+The repository includes the **latest supplied 12-joint robot**, STL meshes, mass-estimate source tables, and a headless Isaac Sim walking-training pipeline. The vision remains a friendly bear-like companion; the geometry and joint layout have evolved beyond the earlier proxy and CAD previews.
 
-### The design
-
-| Part | Current design |
+| Part | Current supplied model |
 | --- | --- |
-| Legs | Five XL330-M288-T motors per leg: hip roll/pitch, knee pitch, ankle pitch/roll |
-| Head | One XL330 neck-pitch motor to look up and down; 11 motors overall |
-| Nose | Camera faces straight ahead within the head; the neck changes its viewing angle |
-| Arms | Fixed bear-shaped arms |
-| Electronics | Proposed Pi 4 for camera/audio/API work; OpenRB-150 for motor communication; torso IMU |
-| Interaction | Voice input/output, camera perception and external APIs; implementation in progress |
+| Legs | Five joints per leg: **hip yaw, hip roll, hip pitch, knee pitch, ankle pitch**; no ankle-roll joint |
+| Head | **Neck yaw and pitch**; 12 actuated joints overall |
+| Motor allocation | Four XC330-M288-T at hip pitch/knee pitch; eight XL330-M288-T elsewhere, according to the supplied parts guide |
+| Estimated mass | **1.193 kg**, including explicit electronics, battery, wiring, and shell allowances—not a measured finished-robot mass |
+| Robot description | 13 physical rigid bodies, 79 visual instances, 67 STL files, 29 simplified box colliders |
+| Intended electronics/HRI | Pi 4, OpenRB-150, torso IMU, nose camera, microphone/audio board, and speaker; integration remains work in progress |
+| Simulation control | Ten leg actions at 50 Hz; physics at 500 Hz; the neck is currently held at a bounded neutral target |
 
-Walking, waddling and expressive responses are development goals. They have not been demonstrated on the physical robot.
+The current simulation model is [snu_gom_preview_relative.urdf](snu_gom_description/urdf/snu_gom_preview_relative.urdf).
+Read the [model guide](snu_gom_description/docs/START_HERE.txt), [mass assumptions](snu_gom_description/docs/MASS_ASSUMPTIONS.txt), and [joint/motor table](snu_gom_description/config/joint_parameters.csv) before changing it. Joint effort/speed limits remain **provisional**. Validated walking has not been demonstrated on the physical robot.
 
-### Explore the project
+## Progress: What Works, What Does Not
 
-| I want to… | Open |
+**Latest update: November 16, 2026.**
+
+| Milestone | Evidence / status |
 | --- | --- |
-| Understand the robot | [Project overview](docs/PROJECT_BRIEF.md) |
-| See the mechanical CAD design | [CAD geometry and layout](docs/CAD_GEOMETRY.md) · [CAD files and status](hardware/mechanical/README.md) |
-| Understand camera, voice and APIs | [HRI design](docs/HRI.md) |
-| Check wiring and parts | [Electronics](docs/ELECTRONICS.md) · [BOM and costs](hardware/bom/README.md) |
-| Run the existing model | [Simulation guide](docs/SIMULATING_MOTION.md) |
-| Find papers and videos | [Research](docs/RESEARCH.md) · [BD-X / Olaf design changes](docs/PAPER_DESIGN.md) |
-| Make a change | [Branch, commit and PR guide](CONTRIBUTING.md) |
-| See what comes next | [Roadmap](docs/ROADMAP.md) · [Open tasks](https://github.com/mjcha924/snu-gom/issues) |
+| Import the detailed robot | Passed joint-frame, mass, full inertia-tensor, and center-of-mass checks |
+| Initial standing | Bounded position controller stayed upright for 10 seconds; approximately 3.3 mm drift |
+| Train and replay PPO | Completed a 250-update, 2.05-million-transition baseline; checkpoints and TorchScript export verified |
+| Baseline learned locomotion | Stayed upright for 20 seconds, but **slid/pivoted without clear foot lifts**—not a successful walk |
+| Lightweight home scene | Primitive walls, sofa, and table; clear lane; no heavy household meshes or camera observations |
+| Natural stepping | Active follow-up: mild crouch, alternating foot placement, clearer swing lift, stronger anti-slip/turn penalties |
+| Turn, move the head, navigate | Planned after repeatable straight walking and stopping; not demonstrated capabilities |
+| Physical transfer | Not validated; actuator calibration, measured masses, safety, and hardware testing remain necessary |
 
-### Try the existing model
+The initial 0.5 m target is a **validation milestone**, not a fixed-distance animation or the final intended capability. The longer-term aim is one command-driven walking/turning controller, a separately commanded neck, and higher-level home behaviors.
+
+### Watch the Experiments
+
+![16 robots exploring from an early PPO checkpoint, including falls and resets](docs/experiments/media/isaac-baseline/parallel-early.gif)
+
+*Sixteen parallel robots replaying an early checkpoint with exploration and automatic fall resets. This is a rollout preview—not footage of optimizer updates or proof of walking.*
+
+[Parallel MP4](docs/experiments/media/isaac-baseline/parallel-early.mp4) · [Standing video](docs/experiments/media/isaac-baseline/standing.mp4) · [Baseline flat rollout](docs/experiments/media/isaac-baseline/ppo250-flat.mp4) · [Baseline home rollout](docs/experiments/media/isaac-baseline/ppo250-home.mp4) · [Training curves](docs/experiments/media/isaac-baseline/training-progress.png)
+
+The baseline videos intentionally show the remaining sliding failure. New policies must be assessed using foot clearance, alternating touchdowns, stride length, heading drift, and survival—not training return alone.
+
+## Clone and Experiment
 
 ```bash
 git clone https://github.com/mjcha924/snu-gom.git
 cd snu-gom
-python -m venv .venv
-source .venv/bin/activate
-python tools/check_project.py
-python -m pip install -r requirements-gom-viewer.txt
-python tools/view_robot.py --mode pose
 ```
 
-On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. Python 3.11 is recommended. The current viewer is an earlier **ten-leg-joint proxy** with a fixed base. It has not yet been updated to the detailed CAD or moving neck, and it does not simulate validated walking. See [validation status](docs/GOM_VALIDATION.md).
+All required detailed-model URDF/STL assets are included; no private CAD download or Git LFS setup is needed. Follow the **[headless setup and command guide](HEADLESS_TRAINING.md)** to install the pinned Isaac environment, validate the robot, train, and render GIFs/MP4s. Training has no cameras; videos are rendered separately.
 
-### Current work
+The initial camera-free baseline ran on an **RTX 3070 / 8 GB**. Its 256-environment run used approximately 3.2 GB total GPU memory at the end. This does not establish capacity for large scenes or vision-based training.
 
-**CAD v0.3:** shell-on and skeleton STEP prototypes are available for the full robot and leg pair; the bilateral variants use five XL330 joints per leg. [Design and limits](docs/PAPER_DESIGN.md).
-
-#### CAD previews
-
-| Shell exterior | Skeleton and leg joint layout |
+| Work on… | Start here |
 | --- | --- |
-| ![SNU GOM v0.3 shell exterior](docs/images/cad-v03/15_full_shell.jpg) | ![SNU GOM v0.3 leg shell and skeleton comparison](docs/images/cad-v03/21_leg_shell_and_skeleton.jpg) |
+| Geometry, masses, and joint limits | [Detailed robot package](snu_gom_description/) |
+| Walking environment and PPO | [Policy code](snu_gom_walk/) · [training guide](HEADLESS_TRAINING.md) |
+| Curriculum and acceptance gates | [Walking plan](WALKING_TRAINING_PLAN.md) |
+| Results and failure analysis | [Experiment report](docs/experiments/isaac-headless-baseline.md) |
+| Camera, speech, and expressive interaction | [HRI design](docs/HRI.md) |
+| Electronics and budgets | [Electronics](docs/ELECTRONICS.md) · [BOM](hardware/bom/README.md)—older assumptions need reconciliation with this model |
+| Contributing | [Team workflow](CONTRIBUTING.md) · [Open tasks](https://github.com/mjcha924/snu-gom/issues) |
 
-See the [full shell/skeleton comparison](docs/images/cad-v03/20_shell_and_skeleton_comparison.jpg) and [leg close-up](docs/images/cad-v03/03_leg_detail.jpg). These are design previews; they are not manufacturing drawings.
+### Earlier Designs
 
-The fit-prototype archive and exact supplier motor/horn geometry have been shared with the project owner. The repository keeps the CAD manifest and design notes; a new Onshape document and fabrication-qualified CAD have not been created. Next: verify one joint, test one leg under load, complete wiring, update the simulation model and bench-test conversation. The HRI API design exists; an HRI runtime is not implemented yet.
+The [0.6 kg proxy](robot/), older 11-motor design documents, and [CAD v0.3 previews](docs/PAPER_DESIGN.md) remain for history and comparison. They are **not** the current training geometry or joint contract. Earlier nine-joint material is in [legacy documentation](docs/legacy/README.md). The supplied detailed CAD package retains its original metadata and third-party licensing caveats.
 
 ---
 
 <a id="한국어"></a>
 
-## 한국어
+## 현재 설계
 
-**CAD v0.3:** 전체 로봇과 양쪽 다리의 외장형·골격형 STEP 시제품을 준비했습니다. 양쪽 다리는 XL330 5개씩 사용합니다. [설계·한계](docs/PAPER_DESIGN.md).
+**집 안에서 걷고, 사람을 바라보고, 말과 움직임으로 반응하는 곰 모양 로봇을 목표로 합니다.** 최신 제공 모델의 URDF·STL·질량 추정 자료와 Isaac 헤드리스 학습 코드를 포함했습니다. 상단 이미지는 상세 골격·머리 모델의 시뮬레이션이며 실물 사진이나 제작 완료 도면이 아닙니다.
 
-**걷고, 사람을 바라보고, 말과 동작으로 반응하는 작은 곰 모양 이족보행 로봇입니다.** 다리 10축에 위아래로 움직이는 머리, 코 카메라, 마이크와 스피커를 결합합니다.
-
-### 기본 구성
-
-| 부분 | 현재 설계 |
+| 항목 | 현재 제공 모델 |
 | --- | --- |
-| 다리 | 다리당 XL330-M288-T 5개: 고관절 롤/피치, 무릎 피치, 발목 피치/롤 |
-| 머리 | 목 피치 XL330 1개로 위아래 보기; 전체 11개 모터 |
-| 코 | 머리 기준 정면 카메라; 목 움직임으로 시선 각도 변경 |
-| 팔 | 고정된 곰 모양 팔 |
-| 전장 | 카메라·음성·API용 Pi 4, 모터 통신용 OpenRB-150, 몸통 IMU 후보 |
-| 상호작용 | 음성 입출력·영상 인식·외부 API; 구현 진행 전 설계 단계 |
+| 다리 | 다리당 5축: **고관절 yaw/roll/pitch, 무릎 pitch, 발목 pitch**; 발목 roll 없음 |
+| 머리 | **목 yaw와 pitch**; 총 12개 구동 관절 |
+| 모터 배치 | 고관절 pitch·무릎 pitch에 XC330 4개, 나머지에 XL330 8개; 제공 부품 가이드 기준 |
+| 추정 질량 | **1.193 kg**; 전장·배터리·배선·외장 여유 질량 포함, 실측값 아님 |
+| 모델 | 물리 강체 13개, 시각 인스턴스 79개, STL 67개, 단순 박스 충돌체 29개 |
+| 제어 | 물리 500 Hz, 다리 정책 50 Hz; 현재 목은 제한된 중립 목표로 유지 |
 
-보행·뒤뚱거림·표현 동작은 개발 목표이며 실물에서 검증된 기능은 아닙니다.
+[모델 시작 안내](snu_gom_description/docs/START_HERE.txt)와 [질량 가정](snu_gom_description/docs/MASS_ASSUMPTIONS.txt)을 먼저 확인하세요. 토크·속도 한계는 아직 임시값이며 실물 보행을 검증한 상태가 아닙니다.
 
-### 원하는 내용 찾기
+## 진행 상황
 
-| 궁금한 내용 | 문서 |
-| --- | --- |
-| 로봇의 목표와 구성 | [프로젝트 개요](docs/PROJECT_BRIEF.md) |
-| 기구 CAD 설계 | [CAD 형상·기구 배치](docs/CAD_GEOMETRY.md) · [CAD 상태](hardware/mechanical/README.md) |
-| 카메라·음성·API | [HRI 설계](docs/HRI.md) |
-| 전장·구매·가격 | [전장](docs/ELECTRONICS.md) · [BOM과 예산](hardware/bom/README.md) |
-| 모델 실행 | [시뮬레이션 안내](docs/SIMULATING_MOTION.md) |
-| 논문·영상 | [자료조사](docs/RESEARCH.md) |
-| GitHub에 변경 올리기 | [브랜치·커밋·PR 안내](CONTRIBUTING.md) |
-| 앞으로 할 일 | [개발 순서](docs/ROADMAP.md) · [작업 목록](https://github.com/mjcha924/snu-gom/issues) |
+- **확인됨:** URDF 관절 좌표·질량·관성·무게중심 검증, 초기 10초 기립, PPO 학습·체크포인트·영상·정책 내보내기.
+- **첫 학습 결과:** 250회 업데이트 후 20초 동안 넘어지지 않았지만 발을 들지 않고 미끄러지며 회전했습니다. **보행 성공이 아닙니다.**
+- **현재 개선:** 약한 웅크림 자세, 교대 발 착지와 스윙 높이, 미끄럼·의도하지 않은 회전 억제를 통해 자연스러운 걸음을 만드는 중입니다.
+- **실내 환경:** 벽·소파·테이블을 단순 박스로 구성해 부담을 줄였습니다. 아직 장애물 인식·회피 정책은 아닙니다.
+- **다음 단계:** 반복 가능한 직진·정지 → 회전 → 걸으며 목 움직이기 → 실내 행동. 실물 전이는 별도 검증이 필요합니다.
 
-위 실행 명령은 기존 다리 10축 도형 모델을 보여줍니다. 상세 CAD·목 피치는 아직 반영하지 않았으며 고정 베이스의 관절 확인용입니다. 보행 검증은 아닙니다. [검증 상태](docs/GOM_VALIDATION.md)를 확인하세요.
+0.5 m는 첫 검증 목표일 뿐 최종 이동 범위가 아닙니다. 위 16대 GIF는 초기 정책의 탐색·넘어짐·재시작을 보여주는 재생 영상이며, 최적화 실행 화면이나 보행 성공 증거가 아닙니다.
 
-시제품 STEP 패키지와 제공 모터/혼 형상을 프로젝트 소유자에게 전달했습니다. 저장소에는 CAD manifest와 설계 설명을 기록했으며 새 Onshape 문서나 제작 검증 CAD는 아직 없습니다. 다음은 관절 시편 → 한쪽 다리 하중 시험 → 배선 → 모델 갱신 → 정지 상태 대화 시험입니다. HRI API 설계는 있지만 실행 서버는 아직 없습니다.
-
----
-
-`robot/` model · `hardware/` CAD/electronics/BOM · `firmware/` communication · `simulation/` learning · `docs/` project notes. Earlier nine-joint material is kept under [legacy documentation](docs/legacy/README.md). / 이전 9축 자료는 별도 보관합니다.
+팀원은 저장소를 clone한 뒤 **[실행·설치 안내](HEADLESS_TRAINING.md)**, **[단계별 계획](WALKING_TRAINING_PLAN.md)**, **[실험 결과](docs/experiments/isaac-headless-baseline.md)**를 참고해 재현하고 실험할 수 있습니다. 상세 모델에 필요한 URDF/STL은 모두 포함되어 있습니다. 이전 0.6 kg 프록시·11모터 설계·CAD v0.3 문서는 비교용 과거 자료이며 현재 학습 모델과 구분해 주세요.
