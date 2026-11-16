@@ -11,9 +11,10 @@ from isaaclab.envs import DirectRLEnv, DirectRLEnvCfg
 from isaaclab.scene import InteractiveSceneCfg
 from isaaclab.sensors import ContactSensor, ContactSensorCfg
 from isaaclab.utils import configclass
-from isaaclab.utils.math import quat_apply
+from isaaclab.utils.math import quat_apply, quat_apply_inverse
 
-from .model import ALL_JOINTS, FOOT_LINKS, LEG_JOINTS, ROOT, URDF, audit_model
+from .model import ALL_JOINTS, FOOT_LINKS, LEG_JOINTS, ROOT, URDF, audit_model, stance_configuration
+from .gait import gait_targets
 
 
 MODEL = audit_model()
@@ -30,8 +31,10 @@ class GomEnvCfg(DirectRLEnvCfg):
     task = "walk"
     evaluation = False
     scene_layout = "flat"
-    speed = 0.04
-    gait_period = 2.0
+    speed = 0.025
+    gait_period = 2.4
+    stance_knee = 0.30
+    foot_clearance = 0.006
     stiffness = 4.0
     damping = 0.08
     sim = sim_utils.SimulationCfg(
@@ -87,6 +90,9 @@ class GomEnv(DirectRLEnv):
     cfg: GomEnvCfg
 
     def __init__(self, cfg, render_mode=None, **kwargs):
+        positions, height, centers = stance_configuration(cfg.stance_knee, MODEL)
+        cfg.robot.init_state.joint_pos = positions
+        cfg.robot.init_state.pos = (0.0, 0.0, height + 0.003)
         cfg.robot.actuators["legs"].stiffness = cfg.stiffness
         cfg.robot.actuators["legs"].damping = cfg.damping
         super().__init__(cfg, render_mode, **kwargs)
@@ -97,7 +103,9 @@ class GomEnv(DirectRLEnv):
         self.foot_ids, _ = self.robot.find_bodies(FOOT_LINKS, preserve_order=True)
         self.contact_foot_ids, _ = self.contacts.find_bodies(FOOT_LINKS, preserve_order=True)
         self.nonfoot_ids = [index for index, name in enumerate(self.contacts.body_names) if name not in FOOT_LINKS]
-        self.scales = torch.tensor([0.15, 0.2, 0.35, 0.55, 0.25] * 2, device=self.device)
+        self.scales = torch.tensor([0.15, 0.32, 0.65, 0.95, 0.40] * 2, device=self.device)
+        self.stance_height = height
+        self.nominal_foot_centers = torch.tensor([centers[name] for name in FOOT_LINKS], device=self.device)
         self.corner_offsets = torch.tensor([MODEL["foot_corners"][name] for name in FOOT_LINKS], device=self.device)
         self.actions = torch.zeros(self.num_envs, 10, device=self.device)
         self.previous_actions = self.actions.clone()
@@ -200,6 +208,10 @@ class GomEnv(DirectRLEnv):
             "position": self.robot.data.root_pos_w.detach().clone(),
             "velocity": self.robot.data.root_lin_vel_b.detach().clone(),
             "fallen": fallen.detach().clone(),
+            "quaternion": self.robot.data.root_quat_w.detach().clone(),
+            "foot_positions": self.robot.data.body_pos_w[:, self.foot_ids].detach().clone(),
+            "joint_velocities": self.robot.data.joint_vel.detach().clone(),
+            "torques": self.robot.data.applied_torque.detach().clone(),
         }
         return fallen, timeout
 
@@ -209,28 +221,37 @@ class GomEnv(DirectRLEnv):
         gravity = self.robot.data.projected_gravity_b
         contacts, heights = self.foot_state()
         phase = self.phase()
-        moving = self.commands[:, 0] > 0.005
-        left_swing = (phase > 0.10) & (phase < 0.40) & moving
-        right_swing = (phase > 0.60) & (phase < 0.90) & moving
-        swing = torch.stack((left_swing, right_swing), dim=-1)
+        swing, desired_heights, desired_x = gait_targets(
+            phase, self.commands[:, 0], self.cfg.gait_period, self.cfg.foot_clearance,
+        )
         expected_contacts = ~swing
         tracking = torch.exp(-((velocity[:, :2] - self.commands[:, :2]) / 0.025).square().sum(dim=-1))
         yaw = torch.exp(-((angular[:, 2] - self.commands[:, 2]) / 0.2).square())
         posture = torch.exp(-gravity[:, :2].square().sum(dim=-1) / 0.08)
         contact_match = (contacts == expected_contacts).float().mean(dim=-1)
-        clearance = (torch.exp(-((heights - 0.008) / 0.006).square()) * swing).sum(dim=-1)
+        clearance = torch.exp(-((heights - desired_heights) / 0.003).square()).mean(dim=-1)
+        foot_rotations = self.robot.data.body_quat_w[:, self.foot_ids]
+        local_centers = self.corner_offsets.mean(dim=1)[None].expand(self.num_envs, -1, -1)
+        centers = self.robot.data.body_pos_w[:, self.foot_ids] + quat_apply(foot_rotations, local_centers)
+        relative = quat_apply_inverse(
+            self.robot.data.root_quat_w[:, None].expand(-1, 2, -1),
+            centers - self.robot.data.root_pos_w[:, None],
+        )
+        foot_x_error = relative[..., 0] - self.nominal_foot_centers[None, :, 0] - desired_x
+        stride = torch.exp(-(foot_x_error / 0.015).square()).mean(dim=-1)
         slip = (self.robot.data.body_lin_vel_w[:, self.foot_ids, :2].square().sum(dim=-1) * contacts).sum(dim=-1)
-        height_error = self.robot.data.root_pos_w[:, 2] - (MODEL["initial_height"] - 0.003)
+        height_error = self.robot.data.root_pos_w[:, 2] - self.stance_height
         terms = {
             "tracking": 3.0 * tracking,
-            "yaw": 0.5 * yaw,
+            "yaw": 0.5 * yaw - 2.0 * (angular[:, 2] - self.commands[:, 2]).square(),
             "upright": 0.5 * posture,
-            "contact": 0.5 * contact_match,
-            "clearance": 0.4 * clearance,
+            "contact": 2.0 * contact_match,
+            "clearance": 2.0 * clearance,
+            "stride": 2.0 * stride,
             "height": -100.0 * height_error.square(),
             "vertical": -2.0 * velocity[:, 2].square(),
             "angular": -0.03 * angular[:, :2].square().sum(dim=-1),
-            "slip": -5.0 * slip,
+            "slip": -200.0 * slip,
             "action_rate": -0.02 * (self.actions - self.previous_actions).square().sum(dim=-1),
             "effort": -0.02 * self.robot.data.applied_torque.square().sum(dim=-1),
             "pose": -0.05 * (self.robot.data.joint_pos - self.robot.data.default_joint_pos).square().sum(dim=-1),
@@ -245,6 +266,7 @@ class GomEnv(DirectRLEnv):
         }
         self.extras["log"] = {f"Reward/{name}": value.mean() for name, value in terms.items()}
         self.extras["log"]["Metrics/forward_speed"] = velocity[:, 0].mean()
+        self.extras["log"]["Metrics/sole_clearance"] = heights.max(dim=-1).values.mean()
         return reward
 
     def _reset_idx(self, env_ids):

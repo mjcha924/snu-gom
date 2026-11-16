@@ -5,6 +5,7 @@ from datetime import datetime
 import hashlib
 import importlib.metadata
 import json
+import math
 from pathlib import Path
 import subprocess
 import shutil
@@ -32,10 +33,16 @@ def main():
     parser.add_argument("--output", type=Path)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--scene", choices=["flat", "home"], default="flat")
+    parser.add_argument("--speed", type=float, default=0.025)
+    parser.add_argument("--gait-period", type=float, default=2.4)
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
     if args.num_envs < 1 or args.iterations < 1:
         parser.error("Environment count and iterations must be positive")
+    if not math.isfinite(args.speed) or args.speed < 0:
+        parser.error("Speed must be finite and nonnegative")
+    if not math.isfinite(args.gait_period) or args.gait_period <= 0:
+        parser.error("Gait period must be finite and positive")
     args.headless = True
     args.enable_cameras = False
     args.kit_args = f"{kit_args} {args.kit_args}"
@@ -61,6 +68,8 @@ def main():
         cfg.task = args.task
         cfg.seed = args.seed
         cfg.scene_layout = args.scene
+        cfg.speed = args.speed
+        cfg.gait_period = args.gait_period
         if args.scene == "home":
             cfg.scene.env_spacing = 5.0
         agent = agent_config()
@@ -69,6 +78,7 @@ def main():
         settings = {"task": cfg.task, "speed": cfg.speed, "seed": cfg.seed,
                     "stiffness": cfg.stiffness, "damping": cfg.damping, "gait_period": cfg.gait_period,
                     "scene_layout": cfg.scene_layout}
+        settings.update(stance_knee=cfg.stance_knee, foot_clearance=cfg.foot_clearance)
         if args.checkpoint:
             saved = json.loads((args.checkpoint.resolve().parent / "config.json").read_text())
             if saved["model_hashes"] != MODEL["hashes"] or saved["source_hashes"] != source_hashes():
@@ -90,8 +100,8 @@ def main():
         for directory in ["snu_gom_walk", "scripts"]:
             shutil.copytree(ROOT / directory, run_dir / "source" / directory, ignore=shutil.ignore_patterns("__pycache__"))
         configure_asset_cache(cfg, MODEL)
-        dump_yaml(str(run_dir / "environment.yaml"), cfg)
         env = GomEnv(cfg)
+        dump_yaml(str(run_dir / "environment.yaml"), env.cfg)
         wrapped = RslRlVecEnvWrapper(env, clip_actions=1.0)
         runner = OnPolicyRunner(wrapped, agent, log_dir=str(run_dir), device=args.device)
         if args.checkpoint:

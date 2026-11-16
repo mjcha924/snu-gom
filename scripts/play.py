@@ -78,7 +78,7 @@ def main():
                 if args.stop_at is not None and step * env.step_dt >= args.stop_at:
                     env.commands.zero_()
                     observations = wrapped.get_observations()
-                with torch.inference_mode():
+                with torch.no_grad():
                     observations, rewards, dones, extras = wrapped.step(policy(observations))
                 sample = {
                     "time": (step + 1) * env.step_dt,
@@ -88,6 +88,10 @@ def main():
                     "contacts": env.last_metrics["contacts"][0].tolist(),
                     "sole_heights": env.last_metrics["sole_heights"][0].tolist(),
                     "fallen": bool(env.last_terminal["fallen"][0]),
+                    "quaternion": env.last_terminal["quaternion"][0].tolist(),
+                    "foot_positions": env.last_terminal["foot_positions"][0].tolist(),
+                    "peak_joint_speed": float(env.last_terminal["joint_velocities"][0].abs().max()),
+                    "peak_torque": float(env.last_terminal["torques"][0].abs().max()),
                 }
                 samples.append(sample)
                 if args.video and episode == 0 and step % 2 == 0 and not dones.any():
@@ -104,14 +108,30 @@ def main():
             clear_steps = [0, 0]
             lifted = [False, False]
             landing_order = []
+            air_frames = [0, 0]
+            previous_landings = [None, None]
+            strides = [[], []]
             for sample_index in range(len(samples)):
                 for foot_index in range(2):
+                    if not contact_array[sample_index, foot_index]:
+                        air_frames[foot_index] += 1
                     if not contact_array[sample_index, foot_index] and height_array[sample_index, foot_index] > 0.002:
                         lifted[foot_index] = True
-                    if contact_array[sample_index, foot_index] and lifted[foot_index]:
+                    if contact_array[sample_index, foot_index] and lifted[foot_index] and air_frames[foot_index] >= 3:
                         clear_steps[foot_index] += 1
                         landing_order.append(foot_index)
+                        landing = np.array(samples[sample_index]["foot_positions"][foot_index][:2])
+                        if previous_landings[foot_index] is not None:
+                            strides[foot_index].append((landing - previous_landings[foot_index]).tolist())
+                        previous_landings[foot_index] = landing
+                    if contact_array[sample_index, foot_index]:
                         lifted[foot_index] = False
+                        air_frames[foot_index] = 0
+            quaternions = np.array([sample["quaternion"] for sample in samples])
+            yaw = np.unwrap(np.arctan2(
+                2 * (quaternions[:, 0] * quaternions[:, 3] + quaternions[:, 1] * quaternions[:, 2]),
+                1 - 2 * (quaternions[:, 2] ** 2 + quaternions[:, 3] ** 2),
+            ))
             results.append({
                 "episode": episode,
                 "survived": not any(sample["fallen"] for sample in samples),
@@ -121,6 +141,10 @@ def main():
                 "mean_speed": float(np.mean([sample["velocity"][0] for sample in samples])),
                 "clear_touchdowns_left_right": clear_steps,
                 "alternating_touchdowns": sum(first != second for first, second in zip(landing_order, landing_order[1:])),
+                "same_foot_stride_xy_left_right": strides,
+                "heading_change_degrees": float(np.degrees(yaw[-1] - yaw[0])),
+                "peak_joint_speed": max(sample["peak_joint_speed"] for sample in samples),
+                "peak_torque": max(sample["peak_torque"] for sample in samples),
                 "max_sole_height_left_right": height_array.max(axis=0).tolist(),
                 "both_feet_contact_fraction": float(contact_array.all(axis=1).mean()),
                 "speed_mae": float(np.mean([

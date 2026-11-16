@@ -1,5 +1,38 @@
 # SNU-GOM walking policy: implementation and validation plan
 
+## Active follow-up: real stepping before longer strides
+
+Follow-up outcome: 512 environments × 250 updates completed (4.096 million
+transitions); all three 20-second flat trials survived, but had zero clear steps
+and only 5.5–7.2 mm forward displacement. This is a standing local optimum, not
+longer-stride walking. See [measured results](docs/experiments/stepping-v2.md).
+Next: validate the kinematic/weight-transfer reference in step 5. Observed peak
+joint speeds exceeded the configured 1 rad/s setting (up to 2.69 rad/s), so inspect
+reset/contact transients and actuator enforcement before claiming speed compliance.
+
+The user requested more natural, longer steps after reviewing the initial previews.
+The measured baseline had no clear foot lifts, so this is a stepping correction,
+not a cosmetic speed increase. Keep the `d5103c1` baseline and its videos intact.
+
+1. Validate a mild 0.30 rad knee crouch using the actual left/right axes and FK.
+   Passed: 10 seconds upright, 3.64 mm horizontal drift, original actuator limits.
+2. Start a distinct experiment with wider bounded position offsets, a 2.4-second
+   gait cycle, 0.025 m/s command, and 6 mm swing clearance. At steady speed the
+   intended **same-foot stride** is speed × cycle = 60 mm (about 30 mm per alternating
+   step); these are targets, not achieved measurements.
+3. Reward alternating contact, a smooth swing-height profile, and fore-aft foot
+   placement. Increase stance-slip penalties and add a nonsaturating uncommanded-yaw
+   penalty. Keep the supplied 0.15 N·m effort and 1 rad/s speed limits unchanged.
+4. Check checkpoints for sustained flight, alternating touchdowns, per-foot stride
+   displacement, heading drift, torque/speed limits, and uninterrupted survival.
+   A touchdown counts only after at least 60 ms airborne and >2 mm clearance.
+5. Show new single/grid GIFs and compare against the sliding baseline. If this round
+   still fails to discover stepping, build and validate a robot-specific kinematic
+   reference before using it as a residual-policy aid. Do not pass off animation as
+   dynamically balanced walking.
+6. Attempt the 0.5 m / 30-second acceptance test only after consistent steps appear;
+   then evaluate start/stop and the simple home scene. Turning/head motion remain later stages.
+
 Date: 2026-11-16
 
 Status: headless Isaac startup, URDF fidelity, initial standing, PPO training/export, and flat/home video playback work. The 250-update policy survives 20 seconds but slides/pivots with zero clear steps: **walking is not validated**. The lightweight home scene is implemented. Source, URDF/STLs, instructions, and selected review artifacts are included for collaborators, including a 16-robot exploration GIF.

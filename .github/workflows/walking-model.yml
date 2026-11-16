@@ -11,7 +11,7 @@ permissions:
 jobs:
   model-contract:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
         with:
@@ -20,5 +20,6 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install numpy==1.26.4 scipy==1.15.3
+      - run: python -m pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cpu
       - run: python -m unittest discover -s tests/walking -v
       - run: python -m compileall -q snu_gom_walk scripts/check_setup.py scripts/check_model.py scripts/check_stand.py scripts/train.py scripts/play.py scripts/runtime.py scripts/plot_training.py scripts/record_grid.py

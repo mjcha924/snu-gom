@@ -31,6 +31,45 @@ def origin_matrix(element):
     return matrix
 
 
+def forward_kinematics(positions):
+    robot = ET.parse(URDF).getroot()
+    frames = {"base_reference": np.eye(4)}
+    pending = list(robot.findall("joint"))
+    while pending:
+        progressed = False
+        for joint in pending[:]:
+            parent = joint.find("parent").get("link")
+            if parent not in frames:
+                continue
+            motion = np.eye(4)
+            if joint.get("type") == "revolute":
+                axis = np.fromstring(joint.find("axis").get("xyz"), sep=" ")
+                axis /= np.linalg.norm(axis)
+                motion[:3, :3] = Rotation.from_rotvec(axis * positions.get(joint.get("name"), 0.0)).as_matrix()
+            frames[joint.find("child").get("link")] = frames[parent] @ origin_matrix(joint) @ motion
+            pending.remove(joint)
+            progressed = True
+        if not progressed:
+            raise ValueError("URDF joint tree is disconnected or cyclic")
+    return frames
+
+
+def stance_configuration(knee_angle, model):
+    positions = {name: 0.0 for name in ALL_JOINTS}
+    for side, knee_sign in [("left", 1), ("right", -1)]:
+        positions[f"{side}_hip_pitch_joint"] = knee_angle / 2
+        positions[f"{side}_knee_pitch_joint"] = knee_sign * knee_angle
+        positions[f"{side}_ankle_pitch_joint"] = -knee_angle / 2
+    frames = forward_kinematics(positions)
+    feet = {
+        name: np.array(model["foot_corners"][name]) @ frames[name][:3, :3].T + frames[name][:3, 3]
+        for name in FOOT_LINKS
+    }
+    height = -min(corners[:, 2].min() for corners in feet.values())
+    centers = {name: corners.mean(axis=0).tolist() for name, corners in feet.items()}
+    return positions, float(height), centers
+
+
 def audit_model():
     robot = ET.parse(URDF).getroot()
     frames = {"base_reference": np.eye(4)}

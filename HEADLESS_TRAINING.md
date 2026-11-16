@@ -54,6 +54,7 @@ For CPU-only model checks (no Isaac installation required):
 
 ```bash
 python -m pip install numpy==1.26.4 scipy==1.15.3
+python -m pip install torch==2.7.0 --index-url https://download.pytorch.org/whl/cpu
 python -m unittest discover -s tests/walking -v
 ```
 
@@ -73,6 +74,28 @@ Training prints `RUN_DIRECTORY=...` and saves `model.pt`, numbered checkpoints,
 `config.json`, `environment.yaml`, TensorBoard events, and `policy_jit.pt` there.
 Successful completion writes `summary.json`, including throughput and an action
 equivalence check between the original policy and exported TorchScript policy.
+
+### Stepping follow-up
+
+The current experiment starts from a mild 0.30 rad knee crouch, commands 0.025 m/s,
+and uses a 2.4-second gait period with 6 mm target swing clearance. The intended
+same-foot stride is 60 mm (approximately 30 mm per alternating step). These are
+reward targets, not demonstrated walking measurements. Original joint effort and
+speed limits remain unchanged. To reproduce the larger follow-up run:
+
+```bash
+"$SNU_GOM_PYTHON" -u scripts/train.py --task walk --num-envs 512 --iterations 250 --speed 0.025 --gait-period 2.4 --output runs/stepping_v2_512 --headless
+```
+
+Use a new output directory for each experiment. The original sliding baseline is
+preserved at Git revision `d5103c1`; its checkpoints require that revision's policy
+source. Do not bypass source-hash checks to replay or resume old policies with new
+rewards, action scaling, or initialization.
+
+Evaluation now reports clear touchdowns, consecutive same-foot landing displacement,
+unwrapped heading change, and peak joint speed/torque. A clear touchdown requires at
+least 60 ms airborne and more than 2 mm sole clearance; contact flicker alone does
+not count as stepping. A policy can remain upright and still fail this test.
 
 For progress plots without starting Isaac:
 `"$SNU_GOM_PYTHON" scripts/plot_training.py runs/SELECTED_RUN`.
