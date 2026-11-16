@@ -1,6 +1,7 @@
 """Plot lightweight progress figures from a completed or ongoing PPO run."""
 
 import argparse
+import json
 from pathlib import Path
 
 from runtime import ROOT, configure_runtime
@@ -33,7 +34,8 @@ def main():
         axis.plot([sample.step for sample in samples], [sample.value * scale for sample in samples])
         axis.set(title=title, xlabel="PPO update")
         axis.grid(alpha=0.25)
-    axes[0, 1].axhline(0.04, color="orange", linestyle="--", label="moving command")
+    settings = json.loads((run / "config.json").read_text())["settings"]
+    axes[0, 1].axhline(settings["speed"], color="orange", linestyle="--", label="moving command")
     axes[0, 1].legend()
     figure.suptitle("SNU-GOM training progress — evaluate stepping separately")
     path = run / "training_progress.png"

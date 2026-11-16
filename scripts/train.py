@@ -35,6 +35,7 @@ def main():
     parser.add_argument("--scene", choices=["flat", "home"], default="flat")
     parser.add_argument("--speed", type=float, default=0.025)
     parser.add_argument("--gait-period", type=float, default=2.4)
+    parser.add_argument("--reference", action="store_true")
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
     if args.num_envs < 1 or args.iterations < 1:
@@ -70,6 +71,9 @@ def main():
         cfg.scene_layout = args.scene
         cfg.speed = args.speed
         cfg.gait_period = args.gait_period
+        cfg.reference_assistance = args.reference
+        if args.reference:
+            cfg.foot_clearance = 0.005
         if args.scene == "home":
             cfg.scene.env_spacing = 5.0
         agent = agent_config()
@@ -79,6 +83,7 @@ def main():
                     "stiffness": cfg.stiffness, "damping": cfg.damping, "gait_period": cfg.gait_period,
                     "scene_layout": cfg.scene_layout}
         settings.update(stance_knee=cfg.stance_knee, foot_clearance=cfg.foot_clearance)
+        settings.update(reference_assistance=cfg.reference_assistance, reference_lean=cfg.reference_lean)
         if args.checkpoint:
             saved = json.loads((args.checkpoint.resolve().parent / "config.json").read_text())
             if saved["model_hashes"] != MODEL["hashes"] or saved["source_hashes"] != source_hashes():
@@ -101,6 +106,8 @@ def main():
             shutil.copytree(ROOT / directory, run_dir / "source" / directory, ignore=shutil.ignore_patterns("__pycache__"))
         configure_asset_cache(cfg, MODEL)
         env = GomEnv(cfg)
+        if env.reference_report is not None:
+            (run_dir / "reference.json").write_text(json.dumps(env.reference_report, indent=2) + "\n")
         dump_yaml(str(run_dir / "environment.yaml"), env.cfg)
         wrapped = RslRlVecEnvWrapper(env, clip_actions=1.0)
         runner = OnPolicyRunner(wrapped, agent, log_dir=str(run_dir), device=args.device)

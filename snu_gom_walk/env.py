@@ -35,6 +35,8 @@ class GomEnvCfg(DirectRLEnvCfg):
     gait_period = 2.4
     stance_knee = 0.30
     foot_clearance = 0.006
+    reference_assistance = False
+    reference_lean = 0.20
     stiffness = 4.0
     damping = 0.08
     sim = sim_utils.SimulationCfg(
@@ -93,6 +95,13 @@ class GomEnv(DirectRLEnv):
         positions, height, centers = stance_configuration(cfg.stance_knee, MODEL)
         cfg.robot.init_state.joint_pos = positions
         cfg.robot.init_state.pos = (0.0, 0.0, height + 0.003)
+        reference = None
+        if cfg.reference_assistance:
+            from .reference import build_reference
+
+            reference = build_reference(period=cfg.gait_period, speed=cfg.speed, clearance=cfg.foot_clearance, lean=cfg.reference_lean)
+            if not reference["velocity_limits_passed"] or reference["max_position_error_m"] > 0.002:
+                raise ValueError("Reference fails joint-speed or foot-placement feasibility checks")
         cfg.robot.actuators["legs"].stiffness = cfg.stiffness
         cfg.robot.actuators["legs"].damping = cfg.damping
         super().__init__(cfg, render_mode, **kwargs)
@@ -104,6 +113,11 @@ class GomEnv(DirectRLEnv):
         self.contact_foot_ids, _ = self.contacts.find_bodies(FOOT_LINKS, preserve_order=True)
         self.nonfoot_ids = [index for index, name in enumerate(self.contacts.body_names) if name not in FOOT_LINKS]
         self.scales = torch.tensor([0.15, 0.32, 0.65, 0.95, 0.40] * 2, device=self.device)
+        self.reference_report = reference
+        self.reference_table = None
+        if reference is not None:
+            self.reference_table = torch.tensor([row["joints"] for row in reference["rows"]], device=self.device)
+            self.scales = torch.tensor([0.08, 0.16, 0.25, 0.30, 0.20] * 2, device=self.device)
         self.stance_height = height
         self.nominal_foot_centers = torch.tensor([centers[name] for name in FOOT_LINKS], device=self.device)
         self.corner_offsets = torch.tensor([MODEL["foot_corners"][name] for name in FOOT_LINKS], device=self.device)
@@ -150,13 +164,26 @@ class GomEnv(DirectRLEnv):
 
     def _pre_physics_step(self, actions):
         self.previous_actions.copy_(self.actions)
-        desired = self.robot.data.default_joint_pos[:, self.leg_ids] + actions.clamp(-1, 1) * self.scales
+        baseline = self.reference_positions()
+        desired = baseline + actions.clamp(-1, 1) * self.scales
         limits = self.robot.data.soft_joint_pos_limits[:, self.leg_ids]
         desired = torch.clamp(desired, limits[..., 0], limits[..., 1])
         previous = self.targets[:, self.leg_ids]
         max_change = self.robot.data.joint_vel_limits[:, self.leg_ids] * self.step_dt
         self.targets[:, self.leg_ids] = previous + torch.clamp(desired - previous, -max_change, max_change)
-        self.actions = (self.targets[:, self.leg_ids] - self.robot.data.default_joint_pos[:, self.leg_ids]) / self.scales
+        self.actions = (self.targets[:, self.leg_ids] - baseline) / self.scales
+
+    def reference_positions(self):
+        neutral = self.robot.data.default_joint_pos[:, self.leg_ids]
+        if self.reference_table is None:
+            return neutral
+        coordinate = self.phase() * len(self.reference_table)
+        index = coordinate.long() % len(self.reference_table)
+        fraction = (coordinate - coordinate.floor())[:, None]
+        reference = torch.lerp(self.reference_table[index], self.reference_table[(index + 1) % len(self.reference_table)], fraction)
+        ramp = (self.episode_length_buf * self.step_dt / 2.0).clamp(0, 1)[:, None]
+        reference = torch.lerp(neutral, reference, ramp)
+        return torch.where(self.commands[:, :1] > 0.005, reference, neutral)
 
     def _apply_action(self):
         self.robot.set_joint_position_target(self.targets)
@@ -165,19 +192,25 @@ class GomEnv(DirectRLEnv):
         phase = self.episode_length_buf * self.step_dt / self.cfg.gait_period + self.phase_offsets
         return torch.remainder(phase, 1.0)
 
-    def foot_state(self):
-        forces = self.contacts.data.net_forces_w[:, self.contact_foot_ids]
-        contacts = torch.linalg.vector_norm(forces, dim=-1) > 0.3
+    def foot_corners_world(self):
         rotations = self.robot.data.body_quat_w[:, self.foot_ids, None, :].expand(-1, -1, 8, -1)
         corners = self.corner_offsets[None].expand(self.num_envs, -1, -1, -1)
         world = quat_apply(rotations.reshape(-1, 4), corners.reshape(-1, 3)).reshape(self.num_envs, 2, 8, 3)
         world += self.robot.data.body_pos_w[:, self.foot_ids, None, :]
+        return world
+
+    def foot_state(self):
+        forces = self.contacts.data.net_forces_w[:, self.contact_foot_ids]
+        contacts = torch.linalg.vector_norm(forces, dim=-1) > 0.3
+        world = self.foot_corners_world()
         heights = world[..., 2].min(dim=-1).values
         return contacts, heights
 
     def _get_observations(self):
         phase = self.phase() * (2 * math.pi)
         clock = torch.stack((phase.sin(), phase.cos()), dim=-1)
+        if self.reference_table is not None:
+            clock *= (self.episode_length_buf * self.step_dt / 2.0).clamp(0, 1)[:, None]
         clock = torch.where(self.commands[:, :1] > 0.005, clock, torch.zeros_like(clock))
         policy = torch.cat([
             self.robot.data.root_ang_vel_b * 0.25,
@@ -212,6 +245,7 @@ class GomEnv(DirectRLEnv):
             "foot_positions": self.robot.data.body_pos_w[:, self.foot_ids].detach().clone(),
             "joint_velocities": self.robot.data.joint_vel.detach().clone(),
             "torques": self.robot.data.applied_torque.detach().clone(),
+            "body_contact_forces": self.contacts.data.net_forces_w.detach().clone(),
         }
         return fallen, timeout
 
@@ -240,6 +274,16 @@ class GomEnv(DirectRLEnv):
         foot_x_error = relative[..., 0] - self.nominal_foot_centers[None, :, 0] - desired_x
         stride = torch.exp(-(foot_x_error / 0.015).square()).mean(dim=-1)
         slip = (self.robot.data.body_lin_vel_w[:, self.foot_ids, :2].square().sum(dim=-1) * contacts).sum(dim=-1)
+        if self.reference_table is not None:
+            corners = self.foot_corners_world()
+            lowest = corners[..., 2].amin(dim=-1, keepdim=True)
+            mask = (corners[..., 2] < lowest + 0.001).float()
+            point = (corners * mask[..., None]).sum(dim=-2) / mask.sum(dim=-1, keepdim=True)
+            offset = point - self.robot.data.body_com_pos_w[:, self.foot_ids]
+            point_velocity = self.robot.data.body_com_lin_vel_w[:, self.foot_ids] + torch.cross(
+                self.robot.data.body_com_ang_vel_w[:, self.foot_ids], offset, dim=-1,
+            )
+            slip = (point_velocity[..., :2].square().sum(dim=-1) * contacts).sum(dim=-1)
         height_error = self.robot.data.root_pos_w[:, 2] - self.stance_height
         terms = {
             "tracking": 3.0 * tracking,
@@ -256,6 +300,11 @@ class GomEnv(DirectRLEnv):
             "effort": -0.02 * self.robot.data.applied_torque.square().sum(dim=-1),
             "pose": -0.05 * (self.robot.data.joint_pos - self.robot.data.default_joint_pos).square().sum(dim=-1),
         }
+        if self.reference_table is not None:
+            error = (self.robot.data.joint_pos[:, self.leg_ids] - self.reference_positions()) / 0.15
+            terms["reference"] = 3.0 * torch.exp(-error.square().mean(dim=-1))
+            terms["slip"] = -30.0 * slip
+            terms["clearance"] = 4.0 * (torch.exp(-((heights - desired_heights) / 0.003).square()) * swing).sum(dim=-1)
         reward = sum(terms.values()) * self.step_dt - self.reset_terminated.float()
         self.episode_returns += reward
         self.last_metrics = {

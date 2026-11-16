@@ -2,6 +2,23 @@
 
 ## Active follow-up: real stepping before longer strides
 
+### Confirmed curriculum boundaries
+
+- Continue early training on the default flat floor. Do not use room clutter or
+  navigation incentives to mask a locomotion failure.
+- Compare the **same checkpoint** on flat and primitive-home scenes with identical
+  commands, seeds, durations, and initial-state perturbations. Home playback changes
+  only scene layout; no fine-tuning or automatic difficulty increase.
+- `train.py --scene home` remains an explicit separate experiment with 5 m spacing.
+- Only after repeatable flat walking and stopping: measured friction variation,
+  then explicit rug edges, then very low thresholds, each with its own run and
+  acceptance report. The current flush cosmetic rug has no edge or special friction.
+- Camera-aware obstacle avoidance remains a later perception/navigation task.
+
+Current work: test an actual-URDF kinematic weight-transfer/stepping seed, audit its
+joint speeds and limits, then evaluate it under free-base dynamics before training
+a residual policy. Reference geometry is not evidence of dynamic walking.
+
 Follow-up outcome: 512 environments × 250 updates completed (4.096 million
 transitions); all three 20-second flat trials survived, but had zero clear steps
 and only 5.5–7.2 mm forward displacement. This is a standing local optimum, not

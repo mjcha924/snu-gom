@@ -153,6 +153,7 @@ def main():
                 ])),
                 "samples": samples,
             })
+            print(f"TRIAL {episode}: survived={results[-1]['survived']} duration={results[-1]['duration']:.2f}s forward={results[-1]['forward_distance']:.4f}m clear_touchdowns={clear_steps}", flush=True)
         summary = [{key: value for key, value in result.items() if key != "samples"} for result in results]
         (output / "evaluation.json").write_text(json.dumps({"checkpoint": str(checkpoint), "scene_layout": cfg.scene_layout, "episodes": results}, indent=2) + "\n")
         (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")

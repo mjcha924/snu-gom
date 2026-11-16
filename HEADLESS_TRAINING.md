@@ -77,6 +77,44 @@ equivalence check between the original policy and exported TorchScript policy.
 
 ### Stepping follow-up
 
+#### Reference-assisted flat experiment
+
+The next experiment is opt-in and separate from the reward-only baseline. It uses
+an actual-URDF inverse-kinematics seed plus learned bounded position corrections.
+The seed is checked for joint position/rate limits and foot placement, but that
+does **not** establish dynamic balance. Physics remains free-base; no body pose,
+contact, or foot trajectory is forced after reset. It starts from the checked
+neutral crouch and blends the seed in over two seconds.
+
+```bash
+"$SNU_GOM_PYTHON" scripts/build_reference.py
+"$SNU_GOM_PYTHON" scripts/check_stand.py --reference --seconds 12 --headless
+"$SNU_GOM_PYTHON" scripts/train.py --reference --speed 0.01 --gait-period 4 --num-envs 512 --iterations 250 --output runs/reference_v3_512 --headless
+"$SNU_GOM_PYTHON" scripts/compare_scenes.py --checkpoint runs/reference_v3_512/model.pt --episodes 3
+```
+
+Reference targets: 5 mm swing clearance, 4-second cycle, 0.01 m/s, 40 mm same-foot
+stride, 0.20 rad torso-roll geometry. They are exploratory targets, not achieved
+walking measurements. The torso-roll geometry is used only to solve joint targets;
+the controller does not apply a torso pose or external balancing force.
+
+`compare_scenes.py` runs the **same checkpoint** for 30 seconds in both layouts,
+checks its SHA-256 before/after, and saves both metric sets and gate results. There
+are no optimizer updates. Three trials are a quick diagnostic; use at least 20
+for the straight-walking gate. Even a straight-gate pass does not authorize the
+next curriculum without start/stop, actuator, and multiple-training-seed checks.
+The deliberately slow seed cannot meet 0.5 m in 30 seconds by tracking its command;
+it is a stepping-discovery stage, not a relaxation of that milestone.
+
+Keep flat training first. Optional `--scene home` training clones the primitive
+scene at 5 m spacing as a **separate experiment**, not an automatic curriculum.
+After reliable walking/stopping, introduce measured friction variation, explicit
+rug edges, and very low thresholds one at a time. The existing rug is cosmetic and
+flush. Camera-aware obstacle avoidance remains a later task; scene decoration or
+navigation rewards cannot substitute for locomotion validation.
+
+#### Reward-only baseline
+
 The current experiment starts from a mild 0.30 rad knee crouch, commands 0.025 m/s,
 and uses a 2.4-second gait period with 6 mm target swing clearance. The intended
 same-foot stride is 60 mm (approximately 30 mm per alternating step). These are
