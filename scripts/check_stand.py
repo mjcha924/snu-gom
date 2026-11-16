@@ -43,6 +43,9 @@ def main():
             cfg.speed = 0.01
             cfg.gait_period = 4.0
             cfg.foot_clearance = 0.005
+            if args.support_seed:
+                cfg.reference_kind = "support"
+                cfg.reference_lean = 0.30
         cfg.evaluation = True
         cfg.episode_length_s = args.seconds + 1
         cfg.stiffness = args.stiffness
@@ -52,13 +55,6 @@ def main():
         cfg.viewer.resolution = (640, 480)
         configure_asset_cache(cfg, MODEL)
         env = GomEnv(cfg, render_mode="rgb_array" if args.video else None)
-        if args.support_seed:
-            from build_support_seed import build_support_seed
-
-            support_seed = build_support_seed()
-            if not support_seed["velocity_limits_passed"] or not support_seed["position_limits_passed"]:
-                raise ValueError("Support seed violates joint position/speed limits")
-            env.reference_table = torch.tensor([row["joints"] for row in support_seed["rows"]], device=env.device, dtype=torch.float32)
         env.reset()
         mass = float(env.robot.root_physx_view.get_masses()[0].sum())
         assert abs(mass - MODEL["mass_kg"]) / MODEL["mass_kg"] < 0.001, (mass, MODEL["mass_kg"])

@@ -21,6 +21,7 @@ wandb/
 checkpoints/
 *.onnx
 *.pt
+!policies/support-v4/*.pt
 *.pth
 *.ckpt
 *.usd

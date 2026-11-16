@@ -1,0 +1,65 @@
+{
+  "checkpoint_sha256": "bf8c9deadc5d75126d6ef996d20b26ae1c85d9834da8078e248b045294837ee9",
+  "episodes_per_scene": 1,
+  "duration_seconds": 12,
+  "scenes": {
+    "flat": [
+      {
+        "episode": 0,
+        "survived": true,
+        "duration": 12.0,
+        "forward_distance": 0.0989745482802391,
+        "lateral_distance": -0.03926451504230499,
+        "mean_speed": 0.008664823300233972,
+        "clear_touchdowns_left_right": [
+          0,
+          0
+        ],
+        "alternating_touchdowns": 0,
+        "same_foot_stride_xy_left_right": [
+          [],
+          []
+        ],
+        "heading_change_degrees": -9.202082694211276,
+        "peak_joint_speed": 3.2234132289886475,
+        "peak_torque": 0.15000000596046448,
+        "max_sole_height_left_right": [
+          0.000275198370218277,
+          0.0004988964647054672
+        ],
+        "both_feet_contact_fraction": 0.9266666666666666,
+        "speed_mae": 0.007380489320873167
+      }
+    ],
+    "home": [
+      {
+        "episode": 0,
+        "survived": true,
+        "duration": 12.0,
+        "forward_distance": 0.0989745482802391,
+        "lateral_distance": -0.03926451504230499,
+        "mean_speed": 0.008664823300233972,
+        "clear_touchdowns_left_right": [
+          0,
+          0
+        ],
+        "alternating_touchdowns": 0,
+        "same_foot_stride_xy_left_right": [
+          [],
+          []
+        ],
+        "heading_change_degrees": -9.202082694211276,
+        "peak_joint_speed": 3.2234132289886475,
+        "peak_torque": 0.15000000596046448,
+        "max_sole_height_left_right": [
+          0.000275198370218277,
+          0.0004988964647054672
+        ],
+        "both_feet_contact_fraction": 0.9266666666666666,
+        "speed_mae": 0.007380489320873167
+      }
+    ]
+  },
+  "curriculum_advance_allowed": false,
+  "reason": "Short diagnostic only; zero clear touchdowns. Not a walking acceptance test."
+}

@@ -36,6 +36,7 @@ class GomEnvCfg(DirectRLEnvCfg):
     stance_knee = 0.30
     foot_clearance = 0.006
     reference_assistance = False
+    reference_kind = "ik"
     reference_lean = 0.20
     stiffness = 4.0
     damping = 0.08
@@ -97,10 +98,19 @@ class GomEnv(DirectRLEnv):
         cfg.robot.init_state.pos = (0.0, 0.0, height + 0.003)
         reference = None
         if cfg.reference_assistance:
-            from .reference import build_reference
+            if cfg.reference_kind == "support":
+                from .support_reference import build_support_seed
 
-            reference = build_reference(period=cfg.gait_period, speed=cfg.speed, clearance=cfg.foot_clearance, lean=cfg.reference_lean)
-            if not reference["velocity_limits_passed"] or reference["max_position_error_m"] > 0.002:
+                reference = build_support_seed(period=cfg.gait_period, speed=cfg.speed, lean=cfg.reference_lean)
+                geometry_valid = reference["position_limits_passed"]
+            elif cfg.reference_kind == "ik":
+                from .reference import build_reference
+
+                reference = build_reference(period=cfg.gait_period, speed=cfg.speed, clearance=cfg.foot_clearance, lean=cfg.reference_lean)
+                geometry_valid = reference["max_position_error_m"] <= 0.002
+            else:
+                raise ValueError("Unknown reference kind")
+            if not reference["velocity_limits_passed"] or not geometry_valid:
                 raise ValueError("Reference fails joint-speed or foot-placement feasibility checks")
         cfg.robot.actuators["legs"].stiffness = cfg.stiffness
         cfg.robot.actuators["legs"].damping = cfg.damping
@@ -117,6 +127,9 @@ class GomEnv(DirectRLEnv):
         self.reference_table = None
         if reference is not None:
             self.reference_table = torch.tensor([row["joints"] for row in reference["rows"]], device=self.device)
+            if cfg.reference_kind == "support":
+                self.reference_heights = torch.tensor([row["sole_heights"] for row in reference["rows"]], device=self.device).clamp_min(0)
+                self.reference_foot_x = torch.tensor([row["foot_x_offsets"] for row in reference["rows"]], device=self.device)
             self.scales = torch.tensor([0.08, 0.16, 0.25, 0.30, 0.20] * 2, device=self.device)
         self.stance_height = height
         self.nominal_foot_centers = torch.tensor([centers[name] for name in FOOT_LINKS], device=self.device)
@@ -177,13 +190,16 @@ class GomEnv(DirectRLEnv):
         neutral = self.robot.data.default_joint_pos[:, self.leg_ids]
         if self.reference_table is None:
             return neutral
-        coordinate = self.phase() * len(self.reference_table)
-        index = coordinate.long() % len(self.reference_table)
-        fraction = (coordinate - coordinate.floor())[:, None]
-        reference = torch.lerp(self.reference_table[index], self.reference_table[(index + 1) % len(self.reference_table)], fraction)
+        reference = self.reference_values(self.reference_table)
         ramp = (self.episode_length_buf * self.step_dt / 2.0).clamp(0, 1)[:, None]
         reference = torch.lerp(neutral, reference, ramp)
         return torch.where(self.commands[:, :1] > 0.005, reference, neutral)
+
+    def reference_values(self, table):
+        coordinate = self.phase() * len(table)
+        index = coordinate.long() % len(table)
+        fraction = (coordinate - coordinate.floor())[:, None]
+        return torch.lerp(table[index], table[(index + 1) % len(table)], fraction)
 
     def _apply_action(self):
         self.robot.set_joint_position_target(self.targets)
@@ -258,6 +274,12 @@ class GomEnv(DirectRLEnv):
         swing, desired_heights, desired_x = gait_targets(
             phase, self.commands[:, 0], self.cfg.gait_period, self.cfg.foot_clearance,
         )
+        if self.reference_table is not None and self.cfg.reference_kind == "support":
+            ramp = (self.episode_length_buf * self.step_dt / 2.0).clamp(0, 1)[:, None]
+            moving = self.commands[:, :1] > 0.005
+            desired_heights = self.reference_values(self.reference_heights) * ramp * moving
+            desired_x = self.reference_values(self.reference_foot_x) * ramp * moving
+            swing = desired_heights > 0.002
         expected_contacts = ~swing
         tracking = torch.exp(-((velocity[:, :2] - self.commands[:, :2]) / 0.025).square().sum(dim=-1))
         yaw = torch.exp(-((angular[:, 2] - self.commands[:, 2]) / 0.2).square())

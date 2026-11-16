@@ -78,7 +78,7 @@ def main():
                 frame = Image.fromarray(env.render())
                 draw = ImageDraw.Draw(frame)
                 draw.rectangle((0, 0, 960, 72), fill=(24, 32, 45))
-                draw.text((16, 9), f"SNU-GOM | {args.num_envs} parallel robots | checkpoint {checkpoint.stem}", font=font, fill="white")
+                draw.text((16, 9), f"SNU-GOM | {args.num_envs} robots | {checkpoint.parent.name}/{checkpoint.stem}", font=font, fill="white")
                 mode = "deterministic" if args.deterministic else "exploration enabled"
                 draw.text((16, 40), f"Rollout preview, no optimizer updates | {mode} | t={(step + 1) * env.step_dt:.1f}s | falls/resets: {int(fall_counts.sum())}", font=small_font, fill=(208, 221, 236))
                 frames.append(np.array(frame))

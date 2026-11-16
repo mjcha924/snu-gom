@@ -36,6 +36,7 @@ def main():
     parser.add_argument("--speed", type=float, default=0.025)
     parser.add_argument("--gait-period", type=float, default=2.4)
     parser.add_argument("--reference", action="store_true")
+    parser.add_argument("--support-reference", action="store_true")
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
     if args.num_envs < 1 or args.iterations < 1:
@@ -71,9 +72,12 @@ def main():
         cfg.scene_layout = args.scene
         cfg.speed = args.speed
         cfg.gait_period = args.gait_period
-        cfg.reference_assistance = args.reference
-        if args.reference:
+        cfg.reference_assistance = args.reference or args.support_reference
+        if cfg.reference_assistance:
             cfg.foot_clearance = 0.005
+        if args.support_reference:
+            cfg.reference_kind = "support"
+            cfg.reference_lean = 0.30
         if args.scene == "home":
             cfg.scene.env_spacing = 5.0
         agent = agent_config()
@@ -84,6 +88,7 @@ def main():
                     "scene_layout": cfg.scene_layout}
         settings.update(stance_knee=cfg.stance_knee, foot_clearance=cfg.foot_clearance)
         settings.update(reference_assistance=cfg.reference_assistance, reference_lean=cfg.reference_lean)
+        settings["reference_kind"] = cfg.reference_kind
         if args.checkpoint:
             saved = json.loads((args.checkpoint.resolve().parent / "config.json").read_text())
             if saved["model_hashes"] != MODEL["hashes"] or saved["source_hashes"] != source_hashes():

@@ -15,9 +15,18 @@
   acceptance report. The current flush cosmetic rug has no edge or special friction.
 - Camera-aware obstacle avoidance remains a later perception/navigation task.
 
-Current work: test an actual-URDF kinematic weight-transfer/stepping seed, audit its
-joint speeds and limits, then evaluate it under free-base dynamics before training
-a residual policy. Reference geometry is not evidence of dynamic walking.
+Latest completed work: a bounded shallow-support residual-policy experiment,
+matched flat/home playback and single/16-robot videos. It completed 250 updates;
+the final policy survived 12 seconds and moved 98.97 mm forward in both scenes,
+but had zero clear touchdowns. More sliding is not natural-walking improvement.
+Training is stopped at this checkpoint. Next, inspect actuator saturation,
+support-leg tracking and collision clearances before another experiment.
+The previous IK-assisted
+v3 policy survived three 30-second trials per scene but produced zero clear steps.
+The shallow-support seed improves the ideal static effort audit from 6/20 to
+18/20 sampled phases; its unassisted dynamic replay still falls. Reference
+geometry and static support are not evidence of dynamic walking. See the
+[reference experiment report](docs/experiments/support-v4.md).
 
 Follow-up outcome: 512 environments × 250 updates completed (4.096 million
 transitions); all three 20-second flat trials survived, but had zero clear steps

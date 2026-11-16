@@ -30,6 +30,7 @@ def main():
     try:
         import imageio.v2 as imageio
         import numpy as np
+        from PIL import Image, ImageDraw, ImageFont
         import torch
         import warp
         from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper
@@ -67,6 +68,7 @@ def main():
         output.mkdir(exist_ok=True)
         results = []
         frames = []
+        video_font = ImageFont.truetype("DejaVuSans.ttf", 16) if args.video else None
         for episode in range(args.episodes):
             observations, _ = wrapped.reset()
             if episode:
@@ -100,7 +102,12 @@ def main():
                         (position[0] + cfg.viewer.eye[0], position[1] + cfg.viewer.eye[1], cfg.viewer.eye[2]),
                         (position[0] + cfg.viewer.lookat[0], position[1] + cfg.viewer.lookat[1], cfg.viewer.lookat[2]),
                     )
-                    frames.append(env.render())
+                    frame = Image.fromarray(env.render())
+                    draw = ImageDraw.Draw(frame)
+                    draw.rectangle((0, 0, 640, 54), fill=(24, 32, 45))
+                    draw.text((12, 6), f"SNU-GOM | {checkpoint.parent.name} | {cfg.scene_layout}", font=video_font, fill="white")
+                    draw.text((12, 30), f"Saved-policy evaluation | t={sample['time']:.1f}s | not validated walking", font=video_font, fill=(208, 221, 236))
+                    frames.append(np.array(frame))
                 if dones.any():
                     break
             contact_array = np.array([sample["contacts"] for sample in samples], dtype=bool)
@@ -159,7 +166,8 @@ def main():
         (output / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
         if frames:
             imageio.mimsave(output / "rollout.mp4", frames, fps=25)
-            imageio.mimsave(output / "rollout.gif", frames[::2], duration=80, loop=0)
+            gif_frames = [Image.fromarray(frame).quantize(colors=128, method=Image.Quantize.FASTOCTREE) for frame in frames[::2]]
+            gif_frames[0].save(output / "rollout.gif", save_all=True, append_images=gif_frames[1:], duration=80, loop=0, optimize=False)
             imageio.imwrite(output / "preview.png", frames[len(frames) // 2])
         print(json.dumps(summary, indent=2), flush=True)
         print(f"REVIEW_DIRECTORY={output}", flush=True)

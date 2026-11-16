@@ -93,7 +93,32 @@ neutral crouch and blends the seed in over two seconds.
 "$SNU_GOM_PYTHON" scripts/compare_scenes.py --checkpoint runs/reference_v3_512/model.pt --episodes 3
 ```
 
-Reference targets: 5 mm swing clearance, 4-second cycle, 0.01 m/s, 40 mm same-foot
+The v3 reference converged to standing, not walking: all three 30-second trials
+survived on each scene, but none had a clear touchdown. Its frozen source revision
+is `dbfa33f`; old checkpoints cannot silently replay with newer environment code.
+
+The next bounded experiment keeps the support knee shallow and derives foot
+targets from the actual URDF geometry:
+
+```bash
+"$SNU_GOM_PYTHON" scripts/build_support_seed.py
+"$SNU_GOM_PYTHON" scripts/audit_reference_support.py reports/support-seed.json
+"$SNU_GOM_PYTHON" scripts/check_stand.py --support-seed --seconds 12 --headless
+"$SNU_GOM_PYTHON" scripts/train.py --support-reference --speed 0.01 --gait-period 4 --num-envs 512 --iterations 250 --output runs/support_v4_512 --headless
+"$SNU_GOM_PYTHON" scripts/play.py --checkpoint runs/support_v4_512/model.pt --scene flat --seconds 12 --video --headless
+"$SNU_GOM_PYTHON" scripts/play.py --checkpoint runs/support_v4_512/model.pt --scene home --seconds 12 --video --headless
+"$SNU_GOM_PYTHON" scripts/record_grid.py --checkpoint runs/support_v4_512/model.pt --num-envs 16 --seconds 8 --headless
+```
+
+This is an experimental joint-target seed, **not a balanced reference gait**.
+Its ideal static support audit improves from 6/20 to 18/20 sampled phases, but
+the unassisted dynamic replay still falls. Root poses in the reference JSON are
+geometry-audit data only; they are never imposed on the simulated robot. Original
+actuator limits and self-collision remain enabled. The 0.01 m/s command is for
+stepping discovery and cannot satisfy the 0.5 m / 30 s acceptance milestone even
+with perfect tracking. These short videos are diagnostics, not acceptance tests.
+
+V3 reference targets: 5 mm swing clearance, 4-second cycle, 0.01 m/s, 40 mm same-foot
 stride, 0.20 rad torso-roll geometry. They are exploratory targets, not achieved
 walking measurements. The torso-roll geometry is used only to solve joint targets;
 the controller does not apply a torso pose or external balancing force.
