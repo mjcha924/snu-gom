@@ -4,6 +4,7 @@ import argparse
 import json
 
 from runtime import ROOT, close_app, configure_asset_cache, configure_runtime
+from snu_gom_walk.bam import add_bam_arguments, bam_settings, provenance
 
 
 def main():
@@ -17,8 +18,15 @@ def main():
     parser.add_argument("--video", action="store_true")
     parser.add_argument("--reference", action="store_true")
     parser.add_argument("--support-seed", action="store_true")
+    parser.add_argument("--short-support", action="store_true")
+    add_bam_arguments(parser)
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
+    try:
+        actuator_settings = bam_settings(args)
+    except (ValueError, OSError) as error:
+        parser.error(str(error))
+    args.support_seed = args.support_seed or args.short_support
     args.reference = args.reference or args.support_seed
     if args.seconds <= 0 or args.stiffness <= 0 or args.damping < 0:
         parser.error("Duration and stiffness must be positive; damping must be nonnegative")
@@ -34,6 +42,8 @@ def main():
 
         warp.config.kernel_cache_dir = str(ROOT / ".cache/warp")
         cfg = GomEnvCfg()
+        for key, value in actuator_settings.items():
+            setattr(cfg, key, value)
         cfg.scene.num_envs = 1
         cfg.sim.device = args.device
         cfg.task = "stand"
@@ -46,6 +56,12 @@ def main():
             if args.support_seed:
                 cfg.reference_kind = "support"
                 cfg.reference_lean = 0.30
+            if args.short_support:
+                cfg.reference_lean = 0.10
+                cfg.reference_swing_fraction = 0.15
+                cfg.reference_knee_amplitude = 0.10
+                cfg.reference_speed_scale = 0.0
+                cfg.reference_roll_pulse = True
         cfg.evaluation = True
         cfg.episode_length_s = args.seconds + 1
         cfg.stiffness = args.stiffness
@@ -60,6 +76,9 @@ def main():
         assert abs(mass - MODEL["mass_kg"]) / MODEL["mass_kg"] < 0.001, (mass, MODEL["mass_kg"])
         assert not env.robot.is_fixed_base
         report = {
+            "actuator_settings": actuator_settings,
+            "bam_runtime_audit": env.bam_audit,
+            "actuator_provenance": provenance() if args.actuator_model != "implicit" else None,
             "import_mass_kg": mass,
             "model": MODEL,
             "sim_joint_order": env.robot.joint_names,
@@ -100,6 +119,10 @@ def main():
         name = "reference-dynamics" if args.reference else "standing"
         if args.support_seed:
             name = "support-seed-dynamics"
+        if args.short_support:
+            name = "short-support-dynamics"
+        if args.actuator_model != "implicit":
+            name += "_bam-xl330-m1"
         path = ROOT / "reports" / f"{name}.json"
         path.write_text(json.dumps(report, indent=2) + "\n")
         (ROOT / "reports/model_audit.json").write_text(json.dumps(MODEL, indent=2) + "\n")

@@ -1,0 +1,326 @@
+{
+  "date_kst": "2026-11-17",
+  "hardware_calibrated": false,
+  "walking_validated": false,
+  "parity": {
+    "upstream_commit": "b9e11118e17fe8ec803d430202f6fcf31d57901e",
+    "profile_url": "https://raw.githubusercontent.com/Rhoban/bam/b9e11118e17fe8ec803d430202f6fcf31d57901e/bam/params/xl330/m1.json",
+    "profile_sha256": "3774df0ea9e329b9e1ae6b1debb18d701d674a84006def89e23f90e38883acf2",
+    "model": "xl330/m1",
+    "adapter": "experimental_isaac_physx_not_upstream_backend",
+    "hardware_calibrated": false,
+    "xc330_identified": false,
+    "q_offset_applied": false,
+    "command_delay_applied": false,
+    "electrical_parity_passed": true,
+    "friction_parameter_parity_passed": true,
+    "armature_parity_passed": true,
+    "max_torque_difference_nm": 1.1102230246251565e-16,
+    "samples": 512,
+    "scope": "Equation/parameter parity only, not cross-engine dynamics or hardware validation"
+  },
+  "bam_neutral_standing": {
+    "passed": false,
+    "duration": 1.32,
+    "horizontal_drift": 0.07673058448379412,
+    "import_mass_kg": 1.192507266998291,
+    "actuator_settings": {
+      "actuator_model": "bam-xl330-m1",
+      "bam_parameters": {
+        "kt": 0.37062307455549115,
+        "R": 3.452252366570699,
+        "armature": 0.001609112468267143,
+        "q_offset": 0.023520136285463317,
+        "command_delay": 0.005934804684998987,
+        "friction_base": 0.01909359679968616,
+        "friction_viscous": 0.003923501485844748,
+        "model": "m1",
+        "actuator": "xl330"
+      },
+      "bam_voltage": 5.0,
+      "bam_kp": 400.0
+    },
+    "bam_runtime_audit": {
+      "passed": true,
+      "environments": 1,
+      "bam_joint_names": [
+        "left_hip_yaw_joint",
+        "neck_yaw_joint",
+        "right_hip_yaw_joint",
+        "left_hip_roll_joint",
+        "neck_pitch_joint",
+        "right_hip_roll_joint",
+        "left_ankle_pitch_joint",
+        "right_ankle_pitch_joint"
+      ],
+      "friction_static_dynamic_viscous": [
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ],
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ],
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ],
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ],
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ],
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ],
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ],
+        [
+          0.019093597307801247,
+          0.019093597307801247,
+          0.00392350135371089
+        ]
+      ],
+      "armature": [
+        0.0016091124853119254,
+        0.0016091124853119254,
+        0.0016091124853119254,
+        0.0016091124853119254,
+        0.0016091124853119254,
+        0.0016091124853119254,
+        0.0016091124853119254,
+        0.0016091124853119254
+      ],
+      "implicit_drives_disabled_on_bam_joints": true,
+      "scope": "PhysX parameter wiring, not hardware or cross-engine dynamic validation"
+    }
+  },
+  "implicit_neutral_standing": {
+    "passed": true,
+    "duration": 10.0,
+    "horizontal_drift": 0.003639423999083232,
+    "import_mass_kg": 1.192507266998291,
+    "actuator_settings": {
+      "actuator_model": "implicit",
+      "bam_parameters": null,
+      "bam_voltage": null,
+      "bam_kp": null
+    },
+    "bam_runtime_audit": null
+  },
+  "smoke_training": {
+    "status": "training_completed",
+    "walking_validated": false,
+    "iteration": 4,
+    "duration_seconds": 9.391251966999334,
+    "transitions": 10240,
+    "transitions_per_second": 1090.3764520410216,
+    "export_action_equivalence": "passed",
+    "gpu_memory_at_end": "2864 MiB, 8192 MiB"
+  },
+  "runtime_audit": {
+    "passed": true,
+    "environments": 64,
+    "bam_joint_names": [
+      "left_hip_yaw_joint",
+      "neck_yaw_joint",
+      "right_hip_yaw_joint",
+      "left_hip_roll_joint",
+      "neck_pitch_joint",
+      "right_hip_roll_joint",
+      "left_ankle_pitch_joint",
+      "right_ankle_pitch_joint"
+    ],
+    "friction_static_dynamic_viscous": [
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ],
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ],
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ],
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ],
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ],
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ],
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ],
+      [
+        0.019093597307801247,
+        0.019093597307801247,
+        0.00392350135371089
+      ]
+    ],
+    "armature": [
+      0.0016091124853119254,
+      0.0016091124853119254,
+      0.0016091124853119254,
+      0.0016091124853119254,
+      0.0016091124853119254,
+      0.0016091124853119254,
+      0.0016091124853119254,
+      0.0016091124853119254
+    ],
+    "implicit_drives_disabled_on_bam_joints": true,
+    "scope": "PhysX parameter wiring, not hardware or cross-engine dynamic validation"
+  },
+  "smoke_checkpoint_sha256": "8ea17ab25590642940c746c69d6c58ecadfbdbb4ec9a4dc1c4440c5781021241",
+  "smoke_source_hashes": {
+    "snu_gom_walk/__init__.py": "df8a6578fea7daf5b20decb10417f9bc2757172ba50cfb2a1d24547ba9ba31fe",
+    "snu_gom_walk/agent.py": "24f290a723d6425ca157724c192ce1ec45feebaf1dd3795f76f2703d31970c2b",
+    "snu_gom_walk/bam.py": "42441d6a90032bda29fdb37cf5ff27d046dd2bd19284a13f0e21b3bdac00a521",
+    "snu_gom_walk/bam_actuator.py": "65cb90761eb68b1d8dcf64273de6cb6e73b9d9f2f960fb59bf47ea5c3c3479ba",
+    "snu_gom_walk/env.py": "8b0981bcb9623668507645ed9607409bafd571fd67f8615a99a94572afc48f0b",
+    "snu_gom_walk/evaluation.py": "42c73f3ab0e1495358cd21478048ff19ac4155ce995cd7ac298d7e7b0131b381",
+    "snu_gom_walk/gait.py": "c406582d934f17d3c99a89ba600f15c52af9b7b7b2f40312d332e65853130bd4",
+    "snu_gom_walk/home.py": "0467528d345a407b685af50dc5fbfb203a63658cc71bc2f4caa98ffb898a9682",
+    "snu_gom_walk/model.py": "04175ab6da87787591eaac547bca32227cbbd7c503e5438d51938db3d78ca568",
+    "snu_gom_walk/reference.py": "6bfe855f9a832e798db9253522f6cf6f1a0c19e6b25842b13d6a397739142d9d",
+    "snu_gom_walk/stepping.py": "cce772bd20860310b166eab2ad67e1478688f790ba3d5443ec4b732bea320014",
+    "snu_gom_walk/support_reference.py": "90cc4acfe143f024e1e3fb974e0b0b356a19bbb3f49d2076f723978792ef72f9"
+  },
+  "smoke_replay": [
+    {
+      "episode": 0,
+      "survived": false,
+      "duration": 0.74,
+      "forward_distance": -0.06266026943922043,
+      "lateral_distance": 0.0009649714920669794,
+      "mean_speed": -0.16332646056606964,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 2.3348023264806255,
+      "peak_joint_speed": 1.6570708751678467,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        0.0007995199412107468,
+        0.0005909893661737442
+      ],
+      "both_feet_contact_fraction": 0.972972972972973,
+      "speed_mae": 0.2856711807219606
+    }
+  ],
+  "v6_before_bam": [
+    {
+      "episode": 0,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.01211244985461235,
+      "lateral_distance": 0.0065902299247682095,
+      "mean_speed": 0.0013428654123049456,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 4.548382428496509,
+      "peak_joint_speed": 2.5766055583953857,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        0.00013571977615356445,
+        2.5872141122817993e-06
+      ],
+      "both_feet_contact_fraction": 0.9983333333333333,
+      "speed_mae": 0.00961721683324544
+    },
+    {
+      "episode": 1,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.013647761195898056,
+      "lateral_distance": 0.0064378902316093445,
+      "mean_speed": 0.0014919362655564329,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 1.9288308556673432,
+      "peak_joint_speed": 2.805814504623413,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        1.6838312149047852e-06,
+        9.311363101005554e-06
+      ],
+      "both_feet_contact_fraction": 1.0,
+      "speed_mae": 0.009657599383622291
+    },
+    {
+      "episode": 2,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.013621498830616474,
+      "lateral_distance": 0.006537585519254208,
+      "mean_speed": 0.0014986818571918548,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 3.301619039231344,
+      "peak_joint_speed": 2.7876546382904053,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        0.00011473894119262695,
+        1.2461096048355103e-06
+      ],
+      "both_feet_contact_fraction": 0.9983333333333333,
+      "speed_mae": 0.009384251186584106
+    }
+  ]
+}

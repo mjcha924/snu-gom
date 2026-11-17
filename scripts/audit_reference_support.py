@@ -32,6 +32,7 @@ def main():
         translation = np.array(row["root_pose"][:3])
         positions = np.array(row["joints"])
         stance = [index for index, swing in enumerate(row["swing"]) if not swing]
+        contact_geometry_valid = all(abs(row["sole_heights"][index]) <= 0.001 for index in stance)
 
         def geometry(values):
             frames = kinematics.frames(dict(zip(LEG_JOINTS, values)))
@@ -67,6 +68,7 @@ def main():
         results.append({
             "phase": row["phase"], "stance_feet": stance,
             "vertical_static_support_possible": bool(solution.success),
+            "nominal_stance_within_1mm_of_floor": contact_geometry_valid,
             "minimum_peak_effort_fraction": float(solution.x[-1]) if solution.success else None,
             "joint_torques_at_optimum": dict(zip(LEG_JOINTS, (gravity - contact_jacobian.T @ solution.x[:-1]).tolist())) if solution.success else None,
         })
@@ -74,6 +76,7 @@ def main():
         "scope": "Ideal vertical corner forces and static gravity only; no acceleration, frictional wrench, compliance, or collision clearance proof",
         "rows": results,
         "supported_within_effort_limits": sum(row["vertical_static_support_possible"] and row["minimum_peak_effort_fraction"] <= 1 for row in results),
+        "supported_with_valid_contact_geometry": sum(row["nominal_stance_within_1mm_of_floor"] and row["vertical_static_support_possible"] and row["minimum_peak_effort_fraction"] <= 1 for row in results),
         "sampled_phases": len(results),
     }
     output = reference_path.with_name("reference-support.json")

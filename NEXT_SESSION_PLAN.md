@@ -13,6 +13,61 @@ saturation and torso pitch. See [the session report](docs/experiments/stepping-v
 
 ## 1. Objective and starting point
 
+### BAM integration follow-up
+
+The user requested BAM to reduce future sim-to-real mismatch. The experimental
+[XL330 M1 adapter](docs/experiments/bam-actuators.md) is opt-in; XC330 joints stay
+on their provisional controller. Equation parity alone is not calibration. The
+first 5 V / firmware-gain-400 standing trial falls at 1.32 s, so do not start long
+walking training or replace the baseline until actuator/standing gates pass.
+Measure the real settings and identify both motor families separately.
+
+The preceding v6 short-support run completed 100 updates / 1,638,400 transitions
+in 219.19 s before BAM edits. Three flat 12-second evaluations survived, advancing
+12.1/13.6/13.6 mm with zero qualified touchdowns. This is stable near-standing,
+not walking. It was not extended. Its source snapshot, checkpoint, and evaluation
+remain in `runs/short_support_v6_512`; no BAM settings were used in that run.
+
+### Instability diagnosis and next controlled changes
+
+The v5 failure is a real deterministic balance failure, not just noisy grid
+exploration: the right foot lifts but the robot falls before landing. Neutral
+standing is stable. Fixing reference feasibility precedes raising speed.
+
+- `build_support_seed`: verify actual sole geometry, then separate weight transfer,
+  a short lift, landing, and supported settling. The original ideal static audit
+  counted some nominal stance feet above the floor; adding a 1 mm contact check
+  reduces the old reference's passing phases from 18/20 to 12/20. Neither result
+  establishes dynamic feasibility.
+- Current bounded v6 trial changes only reference parameters: 0.10 rad pulsed
+  lean, 0.10 rad knee amplitude, 0.15 cycle swing fraction, four-second cycle,
+  and zero fore-aft reference excursion. The moving command remains 0.01 m/s.
+  It is an in-place stepping seed, not a forward-walking demonstration. Predicted
+  clearance is 4.1/4.9 mm, but only 13/20 sampled phases pass the corrected static
+  audit; unassisted dynamics still falls at 1.74 s. Evaluate before extending.
+- `GomEnv._get_rewards`: the existing speed tolerance is 0.025 m/s at a 0.01 m/s
+  command. Standing earns exp(-(0.01/0.025)^2), about 85% of maximum speed reward.
+  After supported stepping works, test a command-scaled tolerance with a noise
+  floor and a separate zero-command branch. Do not reward faster sliding.
+- `supported_lift_rewards`: keep modest clearance, opposite-foot support, and
+  overshoot decay. Test ending lift/unloading credit when landing is due, with
+  an overdue-airtime cost. More height reward alone is not the next intervention.
+- `TouchdownTracker.update` currently supplies metrics only. Test a bounded reward
+  for qualified alternating touchdowns, confirmed after a short stable settling
+  window; reject terminal events, hops, chatter, and same-foot repetitions.
+  Keep event bonuses separate from time-integrated shaping and test their scale.
+- Test reference imitation weight 3 -> 1 and upright weight 0.5 -> 1 separately,
+  not together as an unexplained retune. These are hypotheses, not validated
+  settings. Preserve useful support-transfer lean; log torso angular velocity,
+  stance slip, and support-joint saturation rather than forcing perfect rigidity.
+- `_pre_physics_step` and actuator configuration require target/actual tracking
+  diagnostics, not higher effort limits by fiat. Preserve realistic limits;
+  measure servo behavior before motor calibration or hardware transfer. Do not
+  loosen `_get_dones` to count a falling robot as surviving.
+
+Freeze environment source through each run and its evaluations. Accept changes
+on survival, qualified alternating landings, slip, and tracking, not PPO return.
+
 Improve the policy/rewards so SNU-GOM transfers weight, lifts each foot, and lands
 alternately while moving forward. **Only then increase measured stride length and
 walking speed.** Simply rewarding more velocity now risks faster sliding.

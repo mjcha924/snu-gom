@@ -41,6 +41,7 @@ Read the [model guide](snu_gom_description/docs/START_HERE.txt), [mass assumptio
 | Natural stepping | [Latest supported-lift reward test](docs/experiments/stepping-v5-diagnostics.md): a right-foot lift appears, but all three trials fall around 3.3 s before landing; walking still fails |
 | Turn, move the head, navigate | Planned after repeatable straight walking and stopping; not demonstrated capabilities |
 | Physical transfer | Not validated; actuator calibration, measured masses, safety, and hardware testing remain necessary |
+| BAM actuator experiment | [Opt-in XL330 M1 adapter](docs/experiments/bam-actuators.md); equation parity checked, XC330s remain provisional, initial standing trial fails—no sim-to-real improvement demonstrated yet |
 
 The initial 0.5 m target is a **validation milestone**, not a fixed-distance animation or the final intended capability. The longer-term aim is one command-driven walking/turning controller, a separately commanded neck, and higher-level home behaviors.
 
@@ -56,7 +57,9 @@ The initial 0.5 m target is a **validation milestone**, not a fixed-distance ani
 
 The baseline videos intentionally show the remaining sliding failure. New policies must be assessed using foot clearance, alternating touchdowns, stride length, heading drift, and survival—not training return alone.
 
-**Newest experiment:** [v5A diagnostics and measured results](docs/experiments/stepping-v5-diagnostics.md). Supported-lift/unloading rewards produced a foot lift but lost balance: zero qualified landings in three flat/home trials. The 100-update run is stopped. The [v4 checkpoint](policies/support-v4/README.md) remains the more stable saved baseline, though it slides rather than walks. Next: dynamically feasible lift-and-land control, not higher speed or terrain difficulty.
+**Published walking experiment:** [v5A diagnostics and measured results](docs/experiments/stepping-v5-diagnostics.md). Supported-lift/unloading rewards produced a foot lift but lost balance: zero qualified landings in three flat/home trials. The 100-update run is stopped. The [v4 checkpoint](policies/support-v4/README.md) remains the more stable published baseline, though it slides rather than walks.
+
+**Latest development:** the shorter-support v6 trial survives three 12-second flat evaluations but advances only 12–14 mm with zero qualified steps. Separately, [BAM actuator integration](docs/experiments/bam-actuators.md) is being validated for future sim-to-real work; it is not a walking improvement. Next: actuator validation and balanced lift-and-land control, not higher speed or terrain difficulty.
 
 ## Clone and Experiment
 

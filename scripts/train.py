@@ -12,6 +12,7 @@ import shutil
 import time
 
 from runtime import ROOT, close_app, configure_asset_cache, configure_runtime
+from snu_gom_walk.bam import add_bam_arguments, bam_settings, provenance
 
 
 def source_hashes():
@@ -38,10 +39,18 @@ def main():
     parser.add_argument("--reference", action="store_true")
     parser.add_argument("--support-reference", action="store_true")
     parser.add_argument("--dense-lift", action="store_true")
+    parser.add_argument("--short-support", action="store_true")
+    add_bam_arguments(parser)
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
+    try:
+        actuator_settings = bam_settings(args)
+    except (ValueError, OSError) as error:
+        parser.error(str(error))
     if args.dense_lift and not args.support_reference:
         parser.error("Dense-lift ablation requires --support-reference")
+    if args.short_support and not args.support_reference:
+        parser.error("Short support requires --support-reference")
     if args.num_envs < 1 or args.iterations < 1:
         parser.error("Environment count and iterations must be positive")
     if not math.isfinite(args.speed) or args.speed < 0:
@@ -68,6 +77,8 @@ def main():
             raise ValueError("Run output must be inside the snu-gom workspace")
         run_dir.mkdir(parents=True, exist_ok=False)
         cfg = GomEnvCfg()
+        for key, value in actuator_settings.items():
+            setattr(cfg, key, value)
         cfg.scene.num_envs = args.num_envs
         cfg.sim.device = args.device
         cfg.task = args.task
@@ -82,6 +93,12 @@ def main():
         if args.support_reference:
             cfg.reference_kind = "support"
             cfg.reference_lean = 0.30
+        if args.short_support:
+            cfg.reference_lean = 0.10
+            cfg.reference_swing_fraction = 0.15
+            cfg.reference_knee_amplitude = 0.10
+            cfg.reference_speed_scale = 0.0
+            cfg.reference_roll_pulse = True
         if args.scene == "home":
             cfg.scene.env_spacing = 5.0
         agent = agent_config()
@@ -94,6 +111,11 @@ def main():
         settings.update(reference_assistance=cfg.reference_assistance, reference_lean=cfg.reference_lean)
         settings["reference_kind"] = cfg.reference_kind
         settings["dense_lift_rewards"] = cfg.dense_lift_rewards
+        settings.update(reference_swing_fraction=cfg.reference_swing_fraction,
+                        reference_knee_amplitude=cfg.reference_knee_amplitude,
+                        reference_speed_scale=cfg.reference_speed_scale,
+                        reference_roll_pulse=cfg.reference_roll_pulse)
+        settings.update(actuator_settings)
         if args.checkpoint:
             saved = json.loads((args.checkpoint.resolve().parent / "config.json").read_text())
             if saved["model_hashes"] != MODEL["hashes"] or saved["source_hashes"] != source_hashes():
@@ -102,6 +124,7 @@ def main():
                 raise ValueError("Resume settings differ from the saved run")
             agent = saved["agent"]
         manifest = {
+            "actuator_provenance": provenance() if args.actuator_model != "implicit" else None,
             "settings": settings,
             "agent": agent,
             "model_hashes": MODEL["hashes"],
@@ -116,6 +139,8 @@ def main():
             shutil.copytree(ROOT / directory, run_dir / "source" / directory, ignore=shutil.ignore_patterns("__pycache__"))
         configure_asset_cache(cfg, MODEL)
         env = GomEnv(cfg)
+        if env.bam_audit is not None:
+            (run_dir / "bam-runtime-audit.json").write_text(json.dumps(env.bam_audit, indent=2) + "\n")
         if env.reference_report is not None:
             (run_dir / "reference.json").write_text(json.dumps(env.reference_report, indent=2) + "\n")
         dump_yaml(str(run_dir / "environment.yaml"), env.cfg)

@@ -40,8 +40,16 @@ class GomEnvCfg(DirectRLEnvCfg):
     reference_kind = "ik"
     reference_lean = 0.20
     dense_lift_rewards = False
+    reference_swing_fraction = 0.35
+    reference_knee_amplitude = 0.25
+    reference_speed_scale = 1.0
+    reference_roll_pulse = False
     stiffness = 4.0
     damping = 0.08
+    actuator_model = "implicit"
+    bam_parameters = None
+    bam_voltage = None
+    bam_kp = None
     sim = sim_utils.SimulationCfg(
         dt=0.002,
         render_interval=10,
@@ -103,7 +111,11 @@ class GomEnv(DirectRLEnv):
             if cfg.reference_kind == "support":
                 from .support_reference import build_support_seed
 
-                reference = build_support_seed(period=cfg.gait_period, speed=cfg.speed, lean=cfg.reference_lean)
+                reference = build_support_seed(
+                    period=cfg.gait_period, speed=cfg.speed * cfg.reference_speed_scale, lean=cfg.reference_lean,
+                    swing_fraction=cfg.reference_swing_fraction, knee_amplitude=cfg.reference_knee_amplitude,
+                    roll_pulse=cfg.reference_roll_pulse,
+                )
                 geometry_valid = reference["position_limits_passed"]
             elif cfg.reference_kind == "ik":
                 from .reference import build_reference
@@ -114,9 +126,21 @@ class GomEnv(DirectRLEnv):
                 raise ValueError("Unknown reference kind")
             if not reference["velocity_limits_passed"] or not geometry_valid:
                 raise ValueError("Reference fails joint-speed or foot-placement feasibility checks")
-        cfg.robot.actuators["legs"].stiffness = cfg.stiffness
-        cfg.robot.actuators["legs"].damping = cfg.damping
+        if cfg.actuator_model == "bam-xl330-m1":
+            from .bam_actuator import configure_bam_actuators
+
+            configure_bam_actuators(cfg, MODEL)
+        elif cfg.actuator_model == "implicit":
+            cfg.robot.actuators["legs"].stiffness = cfg.stiffness
+            cfg.robot.actuators["legs"].damping = cfg.damping
+        else:
+            raise ValueError("Unknown actuator model")
         super().__init__(cfg, render_mode, **kwargs)
+        self.bam_audit = None
+        if cfg.actuator_model == "bam-xl330-m1":
+            from .bam_actuator import verify_bam_runtime
+
+            self.bam_audit = verify_bam_runtime(self.robot, cfg.bam_parameters)
         self.leg_ids, names = self.robot.find_joints(LEG_JOINTS, preserve_order=True)
         assert names == LEG_JOINTS
         self.obs_ids, names = self.robot.find_joints(ALL_JOINTS, preserve_order=True)

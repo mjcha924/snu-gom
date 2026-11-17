@@ -7,6 +7,12 @@ the character goals, validation stages, and model assumptions.
 
 ## Team setup: clone and reproduce
 
+An opt-in [BAM XL330 M1 actuator experiment](docs/experiments/bam-actuators.md)
+is available for Isaac Sim 5. It leaves the default implicit controller unchanged,
+does not reuse XL330 fits on XC330 joints, and is not hardware-calibrated. Its first
+neutral standing trial fails; use it for actuator validation, not a proven walking
+upgrade. The linked guide contains fetch, standing, smoke-training, and parity commands.
+
 The URDFs and all referenced STL visuals are committed directly: no private CAD
 download, absolute mesh path, or Git LFS setup is required for this model. Generated
 USDs, runtime caches, and training runs are intentionally not committed. The older
