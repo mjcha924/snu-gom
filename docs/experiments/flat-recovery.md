@@ -110,6 +110,26 @@ without qualified landings. Avoiding this collision is useful progress, but
 
 ## Video checkpoints
 
+[Close-up hip collision inspection](media/hip-collision-closeup/hip-collision-closeup.mp4)
+isolates the orange hip-yaw motor housing and magenta thigh side plate:
+
+- **0–3 s:** assembly context from the supplied CAD.
+- **3–13 s:** slowed reconstruction of recorded joint poses, with cyan outlines
+  of the simulator collision boxes. At the recorded 3.78 s termination, boxes
+  intersect while the visual surfaces remain approximately **0.231 mm apart**.
+- **13–22 s:** explicitly labeled hypothetical CAD-only sweep to **−0.25 rad
+  (−14.32°)** inward left hip roll. The supplied visual meshes then intersect.
+  This is not footage of the physical simulation reaching that pose.
+
+The root is fixed for inspection; no physics steps or training updates occur
+after initialization. Other components are hidden in the close-up, without
+changing the inspected mesh geometry. The yellow circle is a screen annotation.
+[Geometry checks and provenance](media/hip-collision-closeup/inspection.json)
+accompany the clip. This identifies both conservative box contact and a supplied
+CAD clearance concern, not certified interference in the manufactured assembly.
+Review assembly/clearance or avoid the offending range; simply disabling
+self-collision would hide rather than solve the problem.
+
 [Latest 16-robot guard comparison](media/flat-recovery/guard-comparison-16.mp4)
 tests eight unguarded and eight guarded robots with otherwise matched controller
 settings and independent ±0.005 rad initial joint perturbations (seed 91).
@@ -165,6 +185,7 @@ Optional CPU mesh clearance audit (dependencies stay inside the workspace):
 ```bash
 python -m pip install --target .deps/collision-audit --no-deps -r requirements-collision-audit.txt
 python scripts/audit_hip_clearance.py docs/experiments/media/flat-recovery/contacts-trace.json --candidate 4 --scan --output reports/hip-clearance.json
+python scripts/render_hip_collision.py --output reports/hip-closeup --headless
 ```
 
 The FCL query measures surface intersections/distances, not certified solid

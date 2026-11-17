@@ -43,6 +43,11 @@ terminations, but **repeatable alternating stepping still fails**. See the
 [16-robot guard comparison](docs/experiments/media/flat-recovery/guard-comparison-16.mp4)
 for scripted tests—not a newly trained walking policy.
 
+[Close-up collision video](docs/experiments/media/hip-collision-closeup/hip-collision-closeup.mp4)
+separates early simulator-box contact from supplied CAD mesh interference at a
+larger inward hip angle. The latter is a labeled hypothetical pose inspection,
+not a physical rollout.
+
 | Milestone | Evidence / status |
 | --- | --- |
 | Import the detailed robot | Passed joint-frame, mass, full inertia-tensor, and center-of-mass checks |
