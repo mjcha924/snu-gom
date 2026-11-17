@@ -149,6 +149,10 @@ These clips are diagnostic progress, not new walking demonstrations.
 
 ## Next acceptance gates
 
+The user is revising CAD before more training. See the
+[measured hip-spacing proposal](hip-spacing-proposal.md) for a conditional
+6 mm outward extension per side and its limitations; no geometry is changed yet.
+
 1. Audit collision-free hip-roll/hip-pitch combinations against both proxies and
    supplied meshes. Keep a clearance margin; do not silently remove collisions.
 2. Replace fixed-time knee flexion with a validated transfer/unload/lift/land

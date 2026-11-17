@@ -2,6 +2,12 @@
 
 ## Active priority: flat-floor recovery
 
+**Latest decision:** pause training while the user revises the hip-roll bracket.
+The [CAD spacing proposal](docs/experiments/hip-spacing-proposal.md) screens
+6 mm extra outward spacing per side. This is a hypothetical clearance estimate,
+not an applied or strength-validated redesign. On receipt of new CAD, audit the
+exported assembly and dynamics before resuming the feasibility work below.
+
 User resumed work on November 17: make flat walking reliable before home terrain.
 Recovery update: [bounded flat-floor tests](docs/experiments/flat-recovery.md)
 identify inward hip/thigh interference during larger weight shifts. An
