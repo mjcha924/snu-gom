@@ -37,8 +37,11 @@ def main():
     parser.add_argument("--gait-period", type=float, default=2.4)
     parser.add_argument("--reference", action="store_true")
     parser.add_argument("--support-reference", action="store_true")
+    parser.add_argument("--dense-lift", action="store_true")
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
+    if args.dense_lift and not args.support_reference:
+        parser.error("Dense-lift ablation requires --support-reference")
     if args.num_envs < 1 or args.iterations < 1:
         parser.error("Environment count and iterations must be positive")
     if not math.isfinite(args.speed) or args.speed < 0:
@@ -73,6 +76,7 @@ def main():
         cfg.speed = args.speed
         cfg.gait_period = args.gait_period
         cfg.reference_assistance = args.reference or args.support_reference
+        cfg.dense_lift_rewards = args.dense_lift
         if cfg.reference_assistance:
             cfg.foot_clearance = 0.005
         if args.support_reference:
@@ -89,6 +93,7 @@ def main():
         settings.update(stance_knee=cfg.stance_knee, foot_clearance=cfg.foot_clearance)
         settings.update(reference_assistance=cfg.reference_assistance, reference_lean=cfg.reference_lean)
         settings["reference_kind"] = cfg.reference_kind
+        settings["dense_lift_rewards"] = cfg.dense_lift_rewards
         if args.checkpoint:
             saved = json.loads((args.checkpoint.resolve().parent / "config.json").read_text())
             if saved["model_hashes"] != MODEL["hashes"] or saved["source_hashes"] != source_hashes():

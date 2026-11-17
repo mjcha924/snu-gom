@@ -1,0 +1,80 @@
+[
+  {
+    "episode": 0,
+    "survived": false,
+    "duration": 3.3200000000000003,
+    "forward_distance": -0.04228512942790985,
+    "lateral_distance": -0.0009904056787490845,
+    "mean_speed": -0.030049090903092466,
+    "clear_touchdowns_left_right": [
+      0,
+      0
+    ],
+    "alternating_touchdowns": 0,
+    "same_foot_stride_xy_left_right": [
+      [],
+      []
+    ],
+    "heading_change_degrees": 5.126073196740528,
+    "peak_joint_speed": 2.448761463165283,
+    "peak_torque": 0.15000000596046448,
+    "max_sole_height_left_right": [
+      0.0007103346288204193,
+      0.010272081941366196
+    ],
+    "both_feet_contact_fraction": 0.6626506024096386,
+    "speed_mae": 0.07903772547979929
+  },
+  {
+    "episode": 1,
+    "survived": false,
+    "duration": 3.36,
+    "forward_distance": -0.041181355714797974,
+    "lateral_distance": -0.0011493703350424767,
+    "mean_speed": -0.02914270782830066,
+    "clear_touchdowns_left_right": [
+      0,
+      0
+    ],
+    "alternating_touchdowns": 0,
+    "same_foot_stride_xy_left_right": [
+      [],
+      []
+    ],
+    "heading_change_degrees": 5.145268031449595,
+    "peak_joint_speed": 2.480173349380493,
+    "peak_torque": 0.15000000596046448,
+    "max_sole_height_left_right": [
+      0.0004888903349637985,
+      0.01084129512310028
+    ],
+    "both_feet_contact_fraction": 0.6547619047619048,
+    "speed_mae": 0.07755334813717386
+  },
+  {
+    "episode": 2,
+    "survived": false,
+    "duration": 3.34,
+    "forward_distance": -0.0421132855117321,
+    "lateral_distance": 0.00033517926931381226,
+    "mean_speed": -0.02977766062780531,
+    "clear_touchdowns_left_right": [
+      0,
+      0
+    ],
+    "alternating_touchdowns": 0,
+    "same_foot_stride_xy_left_right": [
+      [],
+      []
+    ],
+    "heading_change_degrees": 4.728876518473425,
+    "peak_joint_speed": 3.0830674171447754,
+    "peak_torque": 0.15000000596046448,
+    "max_sole_height_left_right": [
+      0.0006738435477018356,
+      0.010747026652097702
+    ],
+    "both_feet_contact_fraction": 0.6586826347305389,
+    "speed_mae": 0.07820487079307592
+  }
+]

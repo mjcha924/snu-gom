@@ -1,6 +1,15 @@
 # SNU-GOM walking policy: implementation and validation plan
 
+Next work session: [diagnostics, reward changes, then stride/speed progression](NEXT_SESSION_PLAN.md).
+This is a handoff plan, not an instruction to launch unattended training.
+
 ## Active follow-up: real stepping before longer strides
+
+November 17 execution: [v5A supported-lift ablation](docs/experiments/stepping-v5-diagnostics.md)
+completed 100 updates. One foot lifts, but three flat/home trials all fall before
+a qualified landing. The run is stopped; v4 remains the more stable saved baseline.
+Next isolate a dynamically feasible small lift-and-land sequence before increasing
+stride, cadence, or terrain difficulty. Earlier v4 results below remain historical.
 
 ### Confirmed curriculum boundaries
 

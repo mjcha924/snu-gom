@@ -22,6 +22,7 @@ checkpoints/
 *.onnx
 *.pt
 !policies/support-v4/*.pt
+!policies/stepping-v5a/*.pt
 *.pth
 *.ckpt
 *.usd

@@ -1,0 +1,26 @@
+{
+  "checkpoint": "runs/stepping_v5a_512/model.pt",
+  "num_envs": 16,
+  "duration_seconds": 8.0,
+  "exploration": true,
+  "optimizer_updates": 0,
+  "fall_resets_per_environment": [
+    2,
+    0,
+    0,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    0,
+    1,
+    1,
+    2,
+    2,
+    2,
+    2
+  ],
+  "purpose": "Parallel training-style rollout visualization, not a walking-success evaluation"
+}

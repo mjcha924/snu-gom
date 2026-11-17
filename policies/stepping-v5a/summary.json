@@ -1,0 +1,10 @@
+{
+  "status": "training_completed",
+  "walking_validated": false,
+  "iteration": 99,
+  "duration_seconds": 242.6688438770002,
+  "transitions": 1638400,
+  "transitions_per_second": 6751.587776263705,
+  "export_action_equivalence": "passed",
+  "gpu_memory_at_end": "2910 MiB, 8192 MiB"
+}

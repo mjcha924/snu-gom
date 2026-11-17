@@ -38,7 +38,7 @@ Read the [model guide](snu_gom_description/docs/START_HERE.txt), [mass assumptio
 | Train and replay PPO | Completed a 250-update, 2.05-million-transition baseline; checkpoints and TorchScript export verified |
 | Baseline learned locomotion | Stayed upright for 20 seconds, but **slid/pivoted without clear foot lifts**—not a successful walk |
 | Lightweight home scene | Primitive walls, sofa, and table; clear lane; no heavy household meshes or camera observations |
-| Natural stepping | [Latest 512-environment reference experiment](docs/experiments/support-v4.md): 12 seconds upright and 9.9 cm forward, but zero clear steps; sliding, not validated walking |
+| Natural stepping | [Latest supported-lift reward test](docs/experiments/stepping-v5-diagnostics.md): a right-foot lift appears, but all three trials fall around 3.3 s before landing; walking still fails |
 | Turn, move the head, navigate | Planned after repeatable straight walking and stopping; not demonstrated capabilities |
 | Physical transfer | Not validated; actuator calibration, measured masses, safety, and hardware testing remain necessary |
 
@@ -46,17 +46,17 @@ The initial 0.5 m target is a **validation milestone**, not a fixed-distance ani
 
 ### Watch the Experiments
 
-![16 robots exploring the updated shallow-support checkpoint](docs/experiments/media/support-v4/parallel.gif)
+![16 robots exploring the supported-lift reward checkpoint, including failures](docs/experiments/media/stepping-v5/parallel.gif)
 
-*Sixteen robots replaying the updated checkpoint with exploration; one fall/reset in eight seconds. This is a rollout preview—not footage of optimizer updates or proof of walking.*
+*Sixteen robots replaying the latest reward-ablation checkpoint with exploration and fall resets. This is a rollout preview—not footage of optimizer updates or proof of walking.*
 
-[Updated single-robot MP4](docs/experiments/media/support-v4/flat.mp4) · [Same checkpoint at home](docs/experiments/media/support-v4/home.mp4) · [Updated 16-robot MP4](docs/experiments/media/support-v4/parallel.mp4) · [Cloneable checkpoint](policies/support-v4/README.md)
+[Updated single-robot MP4](docs/experiments/media/stepping-v5/flat.mp4) · [Same checkpoint at home](docs/experiments/media/stepping-v5/home.mp4) · [Updated 16-robot MP4](docs/experiments/media/stepping-v5/parallel.mp4) · [Experimental checkpoint](policies/stepping-v5a/README.md)
 
 [Parallel MP4](docs/experiments/media/isaac-baseline/parallel-early.mp4) · [Standing video](docs/experiments/media/isaac-baseline/standing.mp4) · [Baseline flat rollout](docs/experiments/media/isaac-baseline/ppo250-flat.mp4) · [Baseline home rollout](docs/experiments/media/isaac-baseline/ppo250-home.mp4) · [Training curves](docs/experiments/media/isaac-baseline/training-progress.png)
 
 The baseline videos intentionally show the remaining sliding failure. New policies must be assessed using foot clearance, alternating touchdowns, stride length, heading drift, and survival—not training return alone.
 
-**Newest checkpoint:** [measured results](docs/experiments/support-v4.md). The shallow-support experiment completed 4.096 million transitions. It moves farther than the prior near-stationary policy, but still slides without clear foot lifts. Walking and the 0.5 m milestone remain unpassed; terrain progression is deferred. Training is stopped at the saved checkpoint.
+**Newest experiment:** [v5A diagnostics and measured results](docs/experiments/stepping-v5-diagnostics.md). Supported-lift/unloading rewards produced a foot lift but lost balance: zero qualified landings in three flat/home trials. The 100-update run is stopped. The [v4 checkpoint](policies/support-v4/README.md) remains the more stable saved baseline, though it slides rather than walks. Next: dynamically feasible lift-and-land control, not higher speed or terrain difficulty.
 
 ## Clone and Experiment
 
@@ -106,7 +106,7 @@ The [0.6 kg proxy](robot/), older 11-motor design documents, and [CAD v0.3 previ
 
 - **확인됨:** URDF 관절 좌표·질량·관성·무게중심 검증, 초기 10초 기립, PPO 학습·체크포인트·영상·정책 내보내기.
 - **첫 학습 결과:** 250회 업데이트 후 20초 동안 넘어지지 않았지만 발을 들지 않고 미끄러지며 회전했습니다. **보행 성공이 아닙니다.**
-- **최신 실험:** 얕은 지지 다리 기준 동작으로 512개 환경에서 409만 회 전이를 학습했습니다. 같은 체크포인트로 평지와 실내에서 12초 기립과 약 9.9 cm 전진을 확인했지만, 명확한 발 들기·착지는 0회였습니다. 이동량은 늘었으나 여전히 미끄럼이며 자연스러운 보행 성공은 아닙니다. 학습은 저장된 체크포인트에서 중단했습니다. [측정 결과와 영상](docs/experiments/support-v4.md)을 참고하세요.
+- **최신 실험:** 지지 발 하중과 발 들기를 보상하는 v5A를 512개 환경에서 100회 업데이트했습니다. 오른발이 약 10–11 mm 들렸지만, 평지·실내 각 3회 평가에서 모두 약 3.3초 후 착지 전에 넘어졌습니다. 명확한 착지는 0회이며 보행 성공이 아닙니다. 학습은 중단했고, 기존 v4를 더 안정적인 비교 기준으로 보존합니다. [진단·측정 결과와 영상](docs/experiments/stepping-v5-diagnostics.md)을 참고하세요.
 - **실내 환경:** 벽·소파·테이블을 단순 박스로 구성해 부담을 줄였습니다. 아직 장애물 인식·회피 정책은 아닙니다.
 - **다음 단계:** 반복 가능한 직진·정지 → 회전 → 걸으며 목 움직이기 → 실내 행동. 실물 전이는 별도 검증이 필요합니다.
 

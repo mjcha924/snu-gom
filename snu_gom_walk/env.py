@@ -15,6 +15,7 @@ from isaaclab.utils.math import quat_apply, quat_apply_inverse
 
 from .model import ALL_JOINTS, FOOT_LINKS, LEG_JOINTS, ROOT, URDF, audit_model, stance_configuration
 from .gait import gait_targets
+from .stepping import TouchdownTracker, supported_lift_rewards
 
 
 MODEL = audit_model()
@@ -38,6 +39,7 @@ class GomEnvCfg(DirectRLEnvCfg):
     reference_assistance = False
     reference_kind = "ik"
     reference_lean = 0.20
+    dense_lift_rewards = False
     stiffness = 4.0
     damping = 0.08
     sim = sim_utils.SimulationCfg(
@@ -142,6 +144,7 @@ class GomEnv(DirectRLEnv):
         self.episode_returns = torch.zeros(self.num_envs, device=self.device)
         self.last_metrics = {}
         self.last_terminal = {}
+        self.touchdowns = TouchdownTracker(self.num_envs, self.step_dt, self.device)
 
     def _setup_scene(self):
         self.robot = Articulation(self.cfg.robot)
@@ -327,6 +330,18 @@ class GomEnv(DirectRLEnv):
             terms["reference"] = 3.0 * torch.exp(-error.square().mean(dim=-1))
             terms["slip"] = -30.0 * slip
             terms["clearance"] = 4.0 * (torch.exp(-((heights - desired_heights) / 0.003).square()) * swing).sum(dim=-1)
+        if self.cfg.dense_lift_rewards:
+            vertical_forces = self.contacts.data.net_forces_w[:, self.contact_foot_ids, 2]
+            lift, unloading = supported_lift_rewards(
+                heights, desired_heights, vertical_forces, MODEL["mass_kg"] * 9.81,
+                self.commands[:, 0] > 0.005,
+            )
+            stable = (-gravity[:, 2] > 0.9) & ~self.reset_terminated
+            terms["clearance"] = 4.0 * lift * stable
+            terms["unloading"] = 2.0 * unloading * stable
+        touchdown, alternating = self.touchdowns.update(
+            contacts, heights, self.commands[:, 0] > 0.005, self.reset_terminated,
+        )
         reward = sum(terms.values()) * self.step_dt - self.reset_terminated.float()
         self.episode_returns += reward
         self.last_metrics = {
@@ -334,16 +349,21 @@ class GomEnv(DirectRLEnv):
             "contacts": contacts.detach(),
             "sole_heights": heights.detach(),
             "upright": (-gravity[:, 2]).detach(),
+            "qualified_touchdowns": touchdown.detach(),
+            "alternating_touchdowns": alternating.detach(),
         }
         self.extras["log"] = {f"Reward/{name}": value.mean() for name, value in terms.items()}
         self.extras["log"]["Metrics/forward_speed"] = velocity[:, 0].mean()
         self.extras["log"]["Metrics/sole_clearance"] = heights.max(dim=-1).values.mean()
+        self.extras["log"]["Metrics/qualified_touchdowns"] = touchdown.float().sum(dim=-1).mean()
+        self.extras["log"]["Metrics/alternating_touchdowns"] = alternating.float().mean()
         return reward
 
     def _reset_idx(self, env_ids):
         if env_ids is None:
             env_ids = self.robot._ALL_INDICES
         super()._reset_idx(env_ids)
+        self.touchdowns.reset(env_ids)
         positions = self.robot.data.default_joint_pos[env_ids].clone()
         if not self.cfg.evaluation:
             positions += (torch.rand_like(positions) - 0.5) * 0.01

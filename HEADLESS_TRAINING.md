@@ -77,6 +77,14 @@ equivalence check between the original policy and exported TorchScript policy.
 
 ### Stepping follow-up
 
+The next isolated reward ablation adds `--dense-lift` alongside
+`--support-reference`: opposite-foot-supported clearance progress and swing-foot
+unloading, with unchanged reference geometry and actuator limits. See
+[v5 diagnostics and commands](docs/experiments/stepping-v5-diagnostics.md).
+Qualified touchdown logging now rejects unsupported hops as well as insufficient
+airtime/clearance, contact chatter, resets, and zero-command stepping. This changes
+the environment-source hash; replay old checkpoints at their recorded revision.
+
 #### Reference-assisted flat experiment
 
 The next experiment is opt-in and separate from the reward-only baseline. It uses

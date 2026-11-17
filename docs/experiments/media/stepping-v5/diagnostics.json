@@ -1,0 +1,329 @@
+{
+  "policy": {
+    "duration": 12.0,
+    "fallen": false,
+    "final_position": [
+      0.0989745482802391,
+      -0.03926451504230499,
+      0.1595487743616104
+    ],
+    "statistics_start_seconds": 2.0,
+    "max_sole_height_left_right": [
+      0.000275198370218277,
+      0.0004988964647054672
+    ],
+    "stance_sliding_distance_left_right": [
+      0.13094427709903644,
+      0.1219755776174614
+    ],
+    "both_contact_fraction": 0.9266666666666666,
+    "peak_substep_speed": 3.7909178733825684,
+    "peak_substep_speed_after_statistics_start": 1.6902565956115723,
+    "peak_reported_torque": 0.15000000596046448,
+    "mean_foot_vertical_force": [
+      6.6534070914644685,
+      5.063393058746072
+    ],
+    "max_nonfoot_force": 0.0,
+    "joints": {
+      "left_hip_yaw_joint": {
+        "target_tracking_rmse": 0.010675300471901432,
+        "reference_tracking_rmse": 0.0465136858854119,
+        "reference_range": 0.0,
+        "actual_range": 0.15879461914300919,
+        "residual_rms": 0.049552503003543635,
+        "effort_near_limit_fraction": 0.0001996007984031936
+      },
+      "left_hip_roll_joint": {
+        "target_tracking_rmse": 0.03439093108603958,
+        "reference_tracking_rmse": 0.09544584268960629,
+        "reference_range": 0.6000000238418579,
+        "actual_range": 0.4258541166782379,
+        "residual_rms": 0.08516538821212746,
+        "effort_near_limit_fraction": 0.21736526946107784
+      },
+      "left_hip_pitch_joint": {
+        "target_tracking_rmse": 0.024341004349995265,
+        "reference_tracking_rmse": 0.03761598164993529,
+        "reference_range": 0.27692601829767227,
+        "actual_range": 0.23470322042703629,
+        "residual_rms": 0.08490816297670845,
+        "effort_near_limit_fraction": 0.14491017964071856
+      },
+      "left_knee_pitch_joint": {
+        "target_tracking_rmse": 0.0250128596941908,
+        "reference_tracking_rmse": 0.044414704318441606,
+        "reference_range": 0.25,
+        "actual_range": 0.3172060698270798,
+        "residual_rms": 0.1307155811870666,
+        "effort_near_limit_fraction": 0.04890219560878244
+      },
+      "left_ankle_pitch_joint": {
+        "target_tracking_rmse": 0.015860496162979548,
+        "reference_tracking_rmse": 0.019819488065319305,
+        "reference_range": 0.2769260052591562,
+        "actual_range": 0.2627470977604389,
+        "residual_rms": 0.06191377580791767,
+        "effort_near_limit_fraction": 0.026347305389221556
+      },
+      "right_hip_yaw_joint": {
+        "target_tracking_rmse": 0.011544323822145193,
+        "reference_tracking_rmse": 0.025208834897047432,
+        "reference_range": 0.0,
+        "actual_range": 0.07808528281748295,
+        "residual_rms": 0.03567609750327549,
+        "effort_near_limit_fraction": 0.0011976047904191617
+      },
+      "right_hip_roll_joint": {
+        "target_tracking_rmse": 0.02725144919195741,
+        "reference_tracking_rmse": 0.10595537147145767,
+        "reference_range": 0.6000000238418579,
+        "actual_range": 0.4216819256544113,
+        "residual_rms": 0.10864509003362362,
+        "effort_near_limit_fraction": 0.10838323353293414
+      },
+      "right_hip_pitch_joint": {
+        "target_tracking_rmse": 0.026296165028207176,
+        "reference_tracking_rmse": 0.02457510819624174,
+        "reference_range": 0.2769260052591562,
+        "actual_range": 0.3055329089984298,
+        "residual_rms": 0.07464374316529777,
+        "effort_near_limit_fraction": 0.16786427145708582
+      },
+      "right_knee_pitch_joint": {
+        "target_tracking_rmse": 0.02217609372426865,
+        "reference_tracking_rmse": 0.03371607454180183,
+        "reference_range": 0.25,
+        "actual_range": 0.32121431827545166,
+        "residual_rms": 0.09553238072085646,
+        "effort_near_limit_fraction": 0.05029940119760479
+      },
+      "right_ankle_pitch_joint": {
+        "target_tracking_rmse": 0.018095256296269204,
+        "reference_tracking_rmse": 0.024119167588611726,
+        "reference_range": 0.2769260238856077,
+        "actual_range": 0.28362622670829296,
+        "residual_rms": 0.0639707740695291,
+        "effort_near_limit_fraction": 0.032335329341317366
+      }
+    }
+  },
+  "seed": {
+    "duration": 1.12,
+    "fallen": true,
+    "final_position": [
+      -0.06357868015766144,
+      -0.0033323923125863075,
+      0.13010390102863312
+    ],
+    "statistics_start_seconds": 0.56,
+    "max_sole_height_left_right": [
+      0.0008417703211307526,
+      0.0012357719242572784
+    ],
+    "stance_sliding_distance_left_right": [
+      0.004866764727206825,
+      0.0028081403445063885
+    ],
+    "both_contact_fraction": 0.9821428571428571,
+    "peak_substep_speed": 4.682395935058594,
+    "peak_substep_speed_after_statistics_start": 1.787310004234314,
+    "peak_reported_torque": 0.15000000596046448,
+    "mean_foot_vertical_force": [
+      2.6321502225152376,
+      8.12268803037446
+    ],
+    "max_nonfoot_force": 0.0,
+    "joints": {
+      "left_hip_yaw_joint": {
+        "target_tracking_rmse": 0.0018541905072389864,
+        "reference_tracking_rmse": 0.0018541905072389864,
+        "reference_range": 0.0,
+        "actual_range": 0.006088936701416969,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "left_hip_roll_joint": {
+        "target_tracking_rmse": 0.009543680501534728,
+        "reference_tracking_rmse": 0.009543680501534728,
+        "reference_range": 0.0932144746184349,
+        "actual_range": 0.109441839158535,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "left_hip_pitch_joint": {
+        "target_tracking_rmse": 0.08039901009337108,
+        "reference_tracking_rmse": 0.08039901009337108,
+        "reference_range": 0.09699372947216034,
+        "actual_range": 0.058824121952056885,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.596551724137931
+      },
+      "left_knee_pitch_joint": {
+        "target_tracking_rmse": 0.13670786044240382,
+        "reference_tracking_rmse": 0.13670786044240382,
+        "reference_range": 0.1309409737586975,
+        "actual_range": 0.43217331171035767,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.6310344827586207
+      },
+      "left_ankle_pitch_joint": {
+        "target_tracking_rmse": 0.1119525296033116,
+        "reference_tracking_rmse": 0.1119525296033116,
+        "reference_range": 0.037777602672576904,
+        "actual_range": 0.24908043444156647,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.5586206896551724
+      },
+      "right_hip_yaw_joint": {
+        "target_tracking_rmse": 0.003204742339779227,
+        "reference_tracking_rmse": 0.003204742339779227,
+        "reference_range": 0.0,
+        "actual_range": 0.010226755402982235,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_hip_roll_joint": {
+        "target_tracking_rmse": 0.009783991995263079,
+        "reference_tracking_rmse": 0.009783991995263079,
+        "reference_range": 0.0932144746184349,
+        "actual_range": 0.1187840886414051,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_hip_pitch_joint": {
+        "target_tracking_rmse": 0.016040175328067858,
+        "reference_tracking_rmse": 0.016040175328067858,
+        "reference_range": 0.014400005340576172,
+        "actual_range": 0.058744773268699646,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_knee_pitch_joint": {
+        "target_tracking_rmse": 0.3463575877668486,
+        "reference_tracking_rmse": 0.3463575877668486,
+        "reference_range": 0.0,
+        "actual_range": 0.5886825323104858,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 1.0
+      },
+      "right_ankle_pitch_joint": {
+        "target_tracking_rmse": 0.04672658272134954,
+        "reference_tracking_rmse": 0.04672658272134954,
+        "reference_range": 0.014400005340576172,
+        "actual_range": 0.1774025848135352,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.19310344827586207
+      }
+    }
+  },
+  "neutral": {
+    "duration": 4.0,
+    "fallen": false,
+    "final_position": [
+      -0.0035997224040329456,
+      -0.00028337218100205064,
+      0.15863272547721863
+    ],
+    "statistics_start_seconds": 2.0,
+    "max_sole_height_left_right": [
+      0.0008417703211307526,
+      0.0012357719242572784
+    ],
+    "stance_sliding_distance_left_right": [
+      0.0066979089137035675,
+      0.009330094212718989
+    ],
+    "both_contact_fraction": 0.995,
+    "peak_substep_speed": 4.728375434875488,
+    "peak_substep_speed_after_statistics_start": 0.7342017292976379,
+    "peak_reported_torque": 0.15000000596046448,
+    "mean_foot_vertical_force": [
+      8.134326368275255,
+      3.567167048407073
+    ],
+    "max_nonfoot_force": 0.0,
+    "joints": {
+      "left_hip_yaw_joint": {
+        "target_tracking_rmse": 0.0019535554927403442,
+        "reference_tracking_rmse": 0.0019535554927403442,
+        "reference_range": 0.0,
+        "actual_range": 0.00018807873129844666,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "left_hip_roll_joint": {
+        "target_tracking_rmse": 0.01076328549532132,
+        "reference_tracking_rmse": 0.01076328549532132,
+        "reference_range": 0.0,
+        "actual_range": 6.801262497901917e-05,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "left_hip_pitch_joint": {
+        "target_tracking_rmse": 0.010292602787246865,
+        "reference_tracking_rmse": 0.010292602787246865,
+        "reference_range": 0.0,
+        "actual_range": 0.003981724381446838,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "left_knee_pitch_joint": {
+        "target_tracking_rmse": 0.03931585736680334,
+        "reference_tracking_rmse": 0.03931585736680334,
+        "reference_range": 0.0,
+        "actual_range": 0.0076232850551605225,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "left_ankle_pitch_joint": {
+        "target_tracking_rmse": 0.0034440325993376044,
+        "reference_tracking_rmse": 0.0034440325993376044,
+        "reference_range": 0.0,
+        "actual_range": 0.011477410793304443,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_hip_yaw_joint": {
+        "target_tracking_rmse": 0.00016286022813039635,
+        "reference_tracking_rmse": 0.00016286022813039635,
+        "reference_range": 0.0,
+        "actual_range": 1.9719969714060426e-05,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_hip_roll_joint": {
+        "target_tracking_rmse": 0.011552807805832704,
+        "reference_tracking_rmse": 0.011552807805832704,
+        "reference_range": 0.0,
+        "actual_range": 8.796714246273041e-05,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_hip_pitch_joint": {
+        "target_tracking_rmse": 0.00766546826975391,
+        "reference_tracking_rmse": 0.00766546826975391,
+        "reference_range": 0.0,
+        "actual_range": 0.004109218716621399,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_knee_pitch_joint": {
+        "target_tracking_rmse": 0.03081341704035286,
+        "reference_tracking_rmse": 0.03081341704035286,
+        "reference_range": 0.0,
+        "actual_range": 0.007539242506027222,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.0
+      },
+      "right_ankle_pitch_joint": {
+        "target_tracking_rmse": 0.03146557465521214,
+        "reference_tracking_rmse": 0.03146557465521214,
+        "reference_range": 0.0,
+        "actual_range": 0.011422522366046906,
+        "residual_rms": 0.0,
+        "effort_near_limit_fraction": 0.8603960396039604
+      }
+    }
+  }
+}
