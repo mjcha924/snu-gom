@@ -38,7 +38,7 @@ Read the [model guide](snu_gom_description/docs/START_HERE.txt), [mass assumptio
 | Train and replay PPO | Completed a 250-update, 2.05-million-transition baseline; checkpoints and TorchScript export verified |
 | Baseline learned locomotion | Stayed upright for 20 seconds, but **slid/pivoted without clear foot lifts**—not a successful walk |
 | Lightweight home scene | Primitive walls, sofa, and table; clear lane; no heavy household meshes or camera observations |
-| Natural stepping | [Latest supported-lift reward test](docs/experiments/stepping-v5-diagnostics.md): a right-foot lift appears, but all three trials fall around 3.3 s before landing; walking still fails |
+| Natural stepping | [Latest imitation-weight ablation](docs/experiments/reference-weight-v7a.md): survives three 12 s flat trials, but only 7.6–9.2 mm drift and zero qualified steps; walking still fails |
 | Turn, move the head, navigate | Planned after repeatable straight walking and stopping; not demonstrated capabilities |
 | Physical transfer | Not validated; actuator calibration, measured masses, safety, and hardware testing remain necessary |
 | BAM actuator experiment | [Opt-in XL330 M1 adapter](docs/experiments/bam-actuators.md); equation parity checked, XC330s remain provisional, initial standing trial fails—no sim-to-real improvement demonstrated yet |
@@ -47,11 +47,11 @@ The initial 0.5 m target is a **validation milestone**, not a fixed-distance ani
 
 ### Watch the Experiments
 
-![16 robots exploring the supported-lift reward checkpoint, including failures](docs/experiments/media/stepping-v5/parallel.gif)
+![16 robots exploring the reduced-imitation checkpoint](docs/experiments/media/reference-weight-v7a/parallel.gif)
 
-*Sixteen robots replaying the latest reward-ablation checkpoint with exploration and fall resets. This is a rollout preview—not footage of optimizer updates or proof of walking.*
+*Sixteen robots replaying the latest checkpoint with exploration and reset handling. This is a rollout preview—not footage of optimizer updates or proof of walking. The deterministic policy mostly stands.*
 
-[Updated single-robot MP4](docs/experiments/media/stepping-v5/flat.mp4) · [Same checkpoint at home](docs/experiments/media/stepping-v5/home.mp4) · [Updated 16-robot MP4](docs/experiments/media/stepping-v5/parallel.mp4) · [Experimental checkpoint](policies/stepping-v5a/README.md)
+[Updated single-robot MP4](docs/experiments/media/reference-weight-v7a/flat.mp4) · [Same checkpoint at home](docs/experiments/media/reference-weight-v7a/home.mp4) · [Updated 16-robot MP4](docs/experiments/media/reference-weight-v7a/parallel.mp4) · [Experimental checkpoint](policies/reference-weight-v7a/README.md)
 
 [Parallel MP4](docs/experiments/media/isaac-baseline/parallel-early.mp4) · [Standing video](docs/experiments/media/isaac-baseline/standing.mp4) · [Baseline flat rollout](docs/experiments/media/isaac-baseline/ppo250-flat.mp4) · [Baseline home rollout](docs/experiments/media/isaac-baseline/ppo250-home.mp4) · [Training curves](docs/experiments/media/isaac-baseline/training-progress.png)
 
@@ -59,7 +59,7 @@ The baseline videos intentionally show the remaining sliding failure. New polici
 
 **Published walking experiment:** [v5A diagnostics and measured results](docs/experiments/stepping-v5-diagnostics.md). Supported-lift/unloading rewards produced a foot lift but lost balance: zero qualified landings in three flat/home trials. The 100-update run is stopped. The [v4 checkpoint](policies/support-v4/README.md) remains the more stable published baseline, though it slides rather than walks.
 
-**Latest development:** the shorter-support v6 trial survives three 12-second flat evaluations but advances only 12–14 mm with zero qualified steps. Separately, [BAM actuator integration](docs/experiments/bam-actuators.md) is being validated for future sim-to-real work; it is not a walking improvement. Next: actuator validation and balanced lift-and-land control, not higher speed or terrain difficulty.
+**Latest development:** [v7A reduced imitation weight](docs/experiments/reference-weight-v7a.md) also produces near-standing, not walking; training stops after 100 updates. [BAM actuator integration](docs/experiments/bam-actuators.md) remains optional and disabled in this run. Next: supported weight transfer and balanced lift-and-land control, not higher speed or terrain difficulty.
 
 ## Clone and Experiment
 

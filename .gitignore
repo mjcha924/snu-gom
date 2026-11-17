@@ -23,6 +23,7 @@ checkpoints/
 *.pt
 !policies/support-v4/*.pt
 !policies/stepping-v5a/*.pt
+!policies/reference-weight-v7a/*.pt
 *.pth
 *.ckpt
 *.usd

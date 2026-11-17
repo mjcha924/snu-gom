@@ -13,7 +13,47 @@ saturation and torso pitch. See [the session report](docs/experiments/stepping-v
 
 ## 1. Objective and starting point
 
+### Current continuation: v7A reference-weight ablation
+
+Completed: 100 updates / 1,638,400 transitions in 214.44 s. Three flat trials
+survive 12 seconds but advance only 7.6–9.2 mm, with zero qualified landings and
+less than 0.224 mm maximum sole clearance. No walking improvement. Stop this
+ablation; return to supported weight-transfer / single lift-land dynamics before
+another long PPO run. See [v7A results](docs/experiments/reference-weight-v7a.md).
+Matched home metrics are identical. Single flat/home videos, an eight-second
+16-robot exploration video, all evaluation metrics, and a replayable checkpoint
+are preserved. The grid has zero falls but mostly stands; no optimizer updates
+occur during its recording. All training and rendering stop at session end.
+
+Use the original implicit actuators, whose neutral standing check still passes.
+BAM remains opt-in and is not used for this locomotion experiment. Physical BAM
+calibration cannot be manufactured from simulated training trajectories.
+
+- Keep v6 geometry, 0.01 m/s moving command, four-second period, and dense lift
+  rewards. The reference still has zero fore-aft excursion and unresolved dynamic
+  feasibility; it is a stepping-discovery seed, not a validated demonstration.
+- Change only reference imitation weight from 3 to 1. Keep upright weight, speed
+  tolerance, motor limits, observation/action contract, and PPO settings unchanged.
+- Train from scratch for 100 updates with 512 environments and seed 42, matching
+  v6's transition budget. No silent checkpoint migration or extra training budget.
+- Evaluate three 12-second flat trials; check survival, qualified landings,
+  alternation, sole clearance, and drift. Do not extend a zero-step result.
+- Record the same checkpoint on the home scene, plus single-robot and 16-robot
+  exploration videos. Exploration previews perform no optimizer updates.
+- Save all outcomes and a replayable checkpoint, including failure. Landing-event
+  and upright-weight changes remain separate experiments, not bundled into v7A.
+
 ### BAM integration follow-up
+
+User clarification: BAM is optional, not a requirement for continuing locomotion.
+Keep it disabled while the trial settings fail standing. Later, use MuJoCo as an
+independent validation backend: first match model, observation/action ordering,
+normalization, joint signs, control rate, and baseline actuator behavior. Then test
+calibrated BAM as a separately identified dynamics change, with fine-tuning if
+needed. BAM is not a policy converter, and passing two simulators does not certify
+hardware behavior. Prefer measured model accuracy over model complexity; a simple
+validated actuator model is acceptable. Do not wait until hardware deployment to
+introduce materially different actuator dynamics into the policy's training.
 
 The user requested BAM to reduce future sim-to-real mismatch. The experimental
 [XL330 M1 adapter](docs/experiments/bam-actuators.md) is opt-in; XC330 joints stay

@@ -5,6 +5,13 @@ import math
 import torch
 
 
+def reference_tracking_reward(positions, reference, weight=3.0):
+    if not math.isfinite(weight) or weight < 0:
+        raise ValueError("Reference reward weight must be finite and nonnegative")
+    error = (positions - reference) / 0.15
+    return weight * torch.exp(-error.square().mean(dim=-1))
+
+
 def supported_lift_rewards(heights, desired_heights, vertical_forces, weight, moving):
     load = (vertical_forces.clamp_min(0) / weight).clamp(0, 1)
     support = (load.flip(-1) / 0.75).clamp(0, 1)

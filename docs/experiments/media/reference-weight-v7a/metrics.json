@@ -1,0 +1,221 @@
+{
+  "date_kst": "2026-11-17",
+  "walking_validated": false,
+  "decision": "Stop at 100 updates: no qualified steps in deterministic evaluations",
+  "checkpoint": "policies/reference-weight-v7a/model.pt",
+  "checkpoint_sha256": "be79975b561ffc857ff372b4d492cbf072fd923edcf71120516602dbcabbfcfa",
+  "actuator_model": "implicit",
+  "intervention": "Reference imitation weight 3 to 1; all other v6 settings unchanged",
+  "training": {
+    "status": "training_completed",
+    "walking_validated": false,
+    "iteration": 99,
+    "duration_seconds": 214.44408113499958,
+    "transitions": 1638400,
+    "transitions_per_second": 7640.220197863952,
+    "export_action_equivalence": "passed",
+    "gpu_memory_at_end": "3019 MiB, 8192 MiB"
+  },
+  "flat_trials": [
+    {
+      "episode": 0,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.007623907178640366,
+      "lateral_distance": 0.0006580669432878494,
+      "mean_speed": 0.0009747312739485399,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 2.227843437220813,
+      "peak_joint_speed": 2.661503553390503,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        0.00022393278777599335,
+        1.1920928955078125e-06
+      ],
+      "both_feet_contact_fraction": 0.9966666666666667,
+      "speed_mae": 0.00981973197134481
+    },
+    {
+      "episode": 1,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.009228527545928955,
+      "lateral_distance": 0.0019207082223147154,
+      "mean_speed": 0.001106195750049134,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 2.3915113453357035,
+      "peak_joint_speed": 2.8633668422698975,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        1.7285346984863281e-06,
+        6.202608346939087e-06
+      ],
+      "both_feet_contact_fraction": 0.9983333333333333,
+      "speed_mae": 0.009549263011262483
+    },
+    {
+      "episode": 2,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.00904360506683588,
+      "lateral_distance": 0.001948490273207426,
+      "mean_speed": 0.001121322393180435,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 3.162206385367952,
+      "peak_joint_speed": 3.4022469520568848,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        0.00015713833272457123,
+        1.1958181858062744e-06
+      ],
+      "both_feet_contact_fraction": 0.995,
+      "speed_mae": 0.009645445193728775
+    }
+  ],
+  "home_trials": [
+    {
+      "episode": 0,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.007623907178640366,
+      "lateral_distance": 0.0006580669432878494,
+      "mean_speed": 0.0009747312739485399,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 2.227843437220813,
+      "peak_joint_speed": 2.661503553390503,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        0.00022393278777599335,
+        1.1920928955078125e-06
+      ],
+      "both_feet_contact_fraction": 0.9966666666666667,
+      "speed_mae": 0.00981973197134481
+    },
+    {
+      "episode": 1,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.009228527545928955,
+      "lateral_distance": 0.0019207082223147154,
+      "mean_speed": 0.001106195750049134,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 2.3915113453357035,
+      "peak_joint_speed": 2.8633668422698975,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        1.7285346984863281e-06,
+        6.202608346939087e-06
+      ],
+      "both_feet_contact_fraction": 0.9983333333333333,
+      "speed_mae": 0.009549263011262483
+    },
+    {
+      "episode": 2,
+      "survived": true,
+      "duration": 12.0,
+      "forward_distance": 0.00904360506683588,
+      "lateral_distance": 0.001948490273207426,
+      "mean_speed": 0.001121322393180435,
+      "clear_touchdowns_left_right": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "same_foot_stride_xy_left_right": [
+        [],
+        []
+      ],
+      "heading_change_degrees": 3.162206385367952,
+      "peak_joint_speed": 3.4022469520568848,
+      "peak_torque": 0.15000000596046448,
+      "max_sole_height_left_right": [
+        0.00015713833272457123,
+        1.1958181858062744e-06
+      ],
+      "both_feet_contact_fraction": 0.995,
+      "speed_mae": 0.009645445193728775
+    }
+  ],
+  "flat_home_summaries_identical": true,
+  "home_scope": "Same checkpoint in unobstructed home lane; no obstacle interaction",
+  "grid": {
+    "checkpoint": "runs/reference_weight_v7a_512/model.pt",
+    "num_envs": 16,
+    "duration_seconds": 8.0,
+    "exploration": true,
+    "optimizer_updates": 0,
+    "fall_resets_per_environment": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "purpose": "Parallel training-style rollout visualization, not a walking-success evaluation"
+  },
+  "video_frames_and_seconds": {
+    "flat.mp4": [
+      300,
+      12.0
+    ],
+    "home.mp4": [
+      300,
+      12.0
+    ],
+    "parallel.mp4": [
+      200,
+      8.0
+    ]
+  }
+}

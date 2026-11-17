@@ -37,6 +37,7 @@ def main():
     parser.add_argument("--speed", type=float, default=0.025)
     parser.add_argument("--gait-period", type=float, default=2.4)
     parser.add_argument("--reference", action="store_true")
+    parser.add_argument("--reference-weight", type=float, default=3.0)
     parser.add_argument("--support-reference", action="store_true")
     parser.add_argument("--dense-lift", action="store_true")
     parser.add_argument("--short-support", action="store_true")
@@ -53,6 +54,10 @@ def main():
         parser.error("Short support requires --support-reference")
     if args.num_envs < 1 or args.iterations < 1:
         parser.error("Environment count and iterations must be positive")
+    if not math.isfinite(args.reference_weight) or args.reference_weight < 0:
+        parser.error("Reference weight must be finite and nonnegative")
+    if args.reference_weight != 3.0 and not (args.reference or args.support_reference):
+        parser.error("A nondefault reference weight requires a reference")
     if not math.isfinite(args.speed) or args.speed < 0:
         parser.error("Speed must be finite and nonnegative")
     if not math.isfinite(args.gait_period) or args.gait_period <= 0:
@@ -87,6 +92,7 @@ def main():
         cfg.speed = args.speed
         cfg.gait_period = args.gait_period
         cfg.reference_assistance = args.reference or args.support_reference
+        cfg.reference_reward_weight = args.reference_weight
         cfg.dense_lift_rewards = args.dense_lift
         if cfg.reference_assistance:
             cfg.foot_clearance = 0.005
@@ -110,6 +116,7 @@ def main():
         settings.update(stance_knee=cfg.stance_knee, foot_clearance=cfg.foot_clearance)
         settings.update(reference_assistance=cfg.reference_assistance, reference_lean=cfg.reference_lean)
         settings["reference_kind"] = cfg.reference_kind
+        settings["reference_reward_weight"] = cfg.reference_reward_weight
         settings["dense_lift_rewards"] = cfg.dense_lift_rewards
         settings.update(reference_swing_fraction=cfg.reference_swing_fraction,
                         reference_knee_amplitude=cfg.reference_knee_amplitude,

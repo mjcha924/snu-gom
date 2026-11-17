@@ -2,7 +2,23 @@ import unittest
 
 import torch
 
-from snu_gom_walk.stepping import TouchdownTracker, supported_lift_rewards
+from snu_gom_walk.stepping import TouchdownTracker, reference_tracking_reward, supported_lift_rewards
+
+
+class ReferenceRewardTests(unittest.TestCase):
+    def test_default_equivalence_and_weight_scaling(self):
+        positions = torch.tensor([[0.0] * 10, [0.15] * 10])
+        reference = torch.zeros_like(positions)
+        original = 3.0 * torch.exp(-((positions - reference) / 0.15).square().mean(dim=-1))
+        torch.testing.assert_close(reference_tracking_reward(positions, reference), original)
+        torch.testing.assert_close(reference_tracking_reward(positions, reference, 1.0), original / 3)
+        torch.testing.assert_close(reference_tracking_reward(positions, reference, 0.0), torch.zeros(2))
+
+    def test_invalid_weight(self):
+        positions = torch.zeros(2, 10)
+        for weight in [-1, float("nan"), float("inf")]:
+            with self.subTest(weight=weight), self.assertRaises(ValueError):
+                reference_tracking_reward(positions, positions, weight)
 
 
 class LiftRewardTests(unittest.TestCase):

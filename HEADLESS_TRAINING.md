@@ -7,6 +7,11 @@ the character goals, validation stages, and model assumptions.
 
 ## Team setup: clone and reproduce
 
+Reference-assisted experiments accept `--reference-weight` (default 3). The
+`--reference-weight 1` v7A ablation reduces imitation pressure without changing
+speed, upright reward, or actuators. The setting is stored in the checkpoint
+manifest; changing it requires a new experiment rather than strict resume.
+
 An opt-in [BAM XL330 M1 actuator experiment](docs/experiments/bam-actuators.md)
 is available for Isaac Sim 5. It leaves the default implicit controller unchanged,
 does not reuse XL330 fits on XC330 joints, and is not hardware-calibrated. Its first

@@ -128,6 +128,27 @@ Machine-readable results: [validation report](data/bam-m1-validation.json).
 
 ## Next acceptance gates
 
+### Optional Isaac → MuJoCo → hardware workflow
+
+BAM is optional. The upstream [MuJoCo integration](https://bam.readthedocs.io/en/latest/usage/mujoco_cpu.html)
+is a more direct route to its full models than this experimental Isaac adapter.
+First transfer the policy interface and reproduce the baseline actuation model
+in MuJoCo; otherwise a failure conflates simulator differences with changed motor
+dynamics. Match joint signs/order, observations and normalization, action offsets
+and scaling, timing, model inertias, and contact settings before interpreting a
+cross-simulator result.
+
+Next compare independently calibrated actuator models, including BAM if useful.
+If the more realistic dynamics break a policy, train/fine-tune with those dynamics
+or a validated approximation rather than swapping them only at deployment. BAM's
+[mjlab backend](https://bam.readthedocs.io/en/latest/usage/mjlab_gpu.html) is another
+training option, not a requirement to abandon Isaac now. A successful sim-to-sim
+test is a robustness check, not proof of sim-to-real success or safety. A simpler
+model that predicts held-out hardware measurements better is preferable to an
+uncalibrated complex one.
+
+### Calibration and deployment gates
+
 1. Verify real servo models, supply under load, firmware mode, P/I/D gains,
    PWM/current limits, position profiles, encoder signs, and transport timing.
 2. On a restrained single-joint pendulum bench, collect time-aligned target,

@@ -15,7 +15,7 @@ from isaaclab.utils.math import quat_apply, quat_apply_inverse
 
 from .model import ALL_JOINTS, FOOT_LINKS, LEG_JOINTS, ROOT, URDF, audit_model, stance_configuration
 from .gait import gait_targets
-from .stepping import TouchdownTracker, supported_lift_rewards
+from .stepping import TouchdownTracker, reference_tracking_reward, supported_lift_rewards
 
 
 MODEL = audit_model()
@@ -39,6 +39,7 @@ class GomEnvCfg(DirectRLEnvCfg):
     reference_assistance = False
     reference_kind = "ik"
     reference_lean = 0.20
+    reference_reward_weight = 3.0
     dense_lift_rewards = False
     reference_swing_fraction = 0.35
     reference_knee_amplitude = 0.25
@@ -350,8 +351,9 @@ class GomEnv(DirectRLEnv):
             "pose": -0.05 * (self.robot.data.joint_pos - self.robot.data.default_joint_pos).square().sum(dim=-1),
         }
         if self.reference_table is not None:
-            error = (self.robot.data.joint_pos[:, self.leg_ids] - self.reference_positions()) / 0.15
-            terms["reference"] = 3.0 * torch.exp(-error.square().mean(dim=-1))
+            terms["reference"] = reference_tracking_reward(
+                self.robot.data.joint_pos[:, self.leg_ids], self.reference_positions(), self.cfg.reference_reward_weight,
+            )
             terms["slip"] = -30.0 * slip
             terms["clearance"] = 4.0 * (torch.exp(-((heights - desired_heights) / 0.003).square()) * swing).sum(dim=-1)
         if self.cfg.dense_lift_rewards:
