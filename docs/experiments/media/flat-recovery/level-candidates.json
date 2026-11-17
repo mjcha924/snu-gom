@@ -1,0 +1,962 @@
+[
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.18,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.22,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.26,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.3,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.45,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 8.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 0.0
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.6,
+    "pitch_bias": 0.0,
+    "period": 10.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03,
+    "swing_level": 1.0
+  }
+]

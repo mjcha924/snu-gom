@@ -1,0 +1,1112 @@
+[
+  {
+    "side": "left",
+    "roll": -0.35,
+    "pitch": -0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.35,
+    "pitch": 0,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.35,
+    "pitch": 0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.35,
+    "pitch": 0.3,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.35,
+    "pitch": 0.45,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.3,
+    "pitch": -0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.3,
+    "pitch": 0,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.3,
+    "pitch": 0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.3,
+    "pitch": 0.3,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.3,
+    "pitch": 0.45,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.25,
+    "pitch": -0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.25,
+    "pitch": 0,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.25,
+    "pitch": 0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.25,
+    "pitch": 0.3,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.25,
+    "pitch": 0.45,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.2,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0006479085796568278,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.2,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0006479070680678517,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.2,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0006479075234019417,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.2,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0006479098125502245,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": -0.2,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0006479141492894275,
+    "nearest_pair": [
+      "left_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.2,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0021806927384701675,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.2,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.002180925595877983,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.2,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.002180664213645797,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.2,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0021809902510949164,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.2,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.002180664432355093,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.25,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0016215493201839105,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.25,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.001621793559865884,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.25,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0016215085320765315,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.25,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0016219299554091821,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.25,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.001621501646771936,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.3,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.001173544799187904,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.3,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0011735385535973236,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.3,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0011735426569780677,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.3,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.001173539917891185,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.3,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0011735431959406697,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.35,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0008048295940237144,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.35,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.00080482758066673,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.35,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.000804824739678683,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.35,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0008048253028835219,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "left",
+    "roll": 0.35,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0008048225022792349,
+    "nearest_pair": [
+      "left_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "left_thigh_link/1/left_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.35,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.00075389995595594,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.35,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.000753900023645897,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.35,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0007538998950256337,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.35,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0007538999583035344,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.35,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0007538999793065744,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.3,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0011151788073713747,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.3,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0011151787483122011,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.3,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.001115178945630155,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.3,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0011151787346439584,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.3,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0011151787950907867,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.25,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0015397818027095844,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.25,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0015400773122085133,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.25,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.001539771710749933,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.25,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0015400455992159454,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.25,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0015397884974167667,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.2,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.002100074675358478,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.2,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0021003868304573124,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.2,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.002100064045776697,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.2,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0021003531207150193,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": -0.2,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0021000818870543286,
+    "nearest_pair": [
+      "right_hip_yaw_link/1/right_hip_yaw_link_printed_part_02.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.2,
+    "pitch": -0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.000831856817056393,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.2,
+    "pitch": 0,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0008318568034903432,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.2,
+    "pitch": 0.15,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0008318569173642271,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.2,
+    "pitch": 0.3,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0008318568469148885,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.2,
+    "pitch": 0.45,
+    "surface_intersection": false,
+    "intersecting_pairs": [],
+    "minimum_surface_distance_m": 0.0008318611328830248,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.25,
+    "pitch": -0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.25,
+    "pitch": 0,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.25,
+    "pitch": 0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.25,
+    "pitch": 0.3,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.25,
+    "pitch": 0.45,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.3,
+    "pitch": -0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.3,
+    "pitch": 0,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.3,
+    "pitch": 0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.3,
+    "pitch": 0.3,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.3,
+    "pitch": 0.45,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.35,
+    "pitch": -0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.35,
+    "pitch": 0,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.35,
+    "pitch": 0.15,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.35,
+    "pitch": 0.3,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  },
+  {
+    "side": "right",
+    "roll": 0.35,
+    "pitch": 0.45,
+    "surface_intersection": true,
+    "intersecting_pairs": [
+      [
+        "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+        "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+      ]
+    ],
+    "minimum_surface_distance_m": 0.0,
+    "nearest_pair": [
+      "right_hip_yaw_link/2/left_hip_yaw_motor.stl",
+      "right_thigh_link/1/right_thigh_link_printed_part_02.stl"
+    ]
+  }
+]

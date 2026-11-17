@@ -1,5 +1,50 @@
 # Next session: genuine stepping, then longer strides and higher speed
 
+## Active priority: flat-floor recovery
+
+User resumed work on November 17: make flat walking reliable before home terrain.
+Recovery update: [bounded flat-floor tests](docs/experiments/flat-recovery.md)
+identify inward hip/thigh interference during larger weight shifts. An
+asymmetric target guard prevents the early contact terminations in the tested
+grid, but no candidate achieves repeatable alternating stepping. Preserve the
+scripts, measured traces, and videos; no new PPO checkpoint is promoted.
+The separate 16-robot perturbed-start comparison has 8/8 guarded trials survive
+12 seconds versus 0/8 unguarded trials (hip/thigh contact termination), with zero
+qualified landings in both groups. This is contact avoidance, not walking.
+First resolve collision-aware dynamic unloading before knee flexion. A static
+support pose is not enough, and a single marginal left landing is not progress
+to a harder task. Do not disable the collision pair: the supplied visual meshes
+also intersect at larger inward angles. No URDF/STL or motor-limit edits were made.
+
+The [stall audit](docs/experiments/walking-stall-diagnosis.md) supersedes the older
+ablation proposals below. No further blind PPO extensions. Keep BAM disabled,
+the supplied motor limits unchanged, and existing policy/source hashes intact.
+
+1. Continue from the completed bounded free-base scripted feasibility screen with smoother transfer
+   before lift, shallower support postures, and small lift amplitudes. Record all
+   failures, target clipping, actual joint speed, and qualified alternating
+   landings. No root assistance or collision disabling.
+2. A search candidate must survive repeated alternating lift/land cycles before
+   becoming a new reference. Independently retest initialization, duration, and
+   small perturbations; do not mistake in-place rocking for forward walking.
+3. Address the measured near-25 Hz command chatter with a versioned physical
+   target-bandwidth/smoothness intervention. Check both commanded and actual
+   trajectories. Do not silently filter an old policy and call it equivalent.
+4. Only then test rewards for stable completed alternating landings and coherent
+   forward motion. Compare reward against neutral holding and sliding controls;
+   avoid increasing speed rewards on an unvalidated reference.
+5. Run bounded training only after these gates, with videos clearly labeled as
+   deterministic evaluation or exploration. Preserve failed results too.
+6. Final flat walking gate: at least 20 independent 30-second trials, at least
+   90% meeting 0.5 m advance, genuine alternating landings, heading/lateral-drift
+   and speed-tracking bounds in `straight_walk_gate`. Separately test start/stop,
+   multiple training seeds, slip, target chatter, and actuator compliance. This
+   is measurable reliability, not a promise of perfection or hardware safety.
+7. The current decorative home scene is not a terrain test. Add physical rug
+   friction/edges and thresholds only after flat walking passes.
+
+## Historical experiments and longer-term details
+
 Prepared: 2026-11-17 KST. Execute when the user resumes work; no scheduled or
 overnight training is started by this document.
 

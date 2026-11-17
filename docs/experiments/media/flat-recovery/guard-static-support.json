@@ -1,0 +1,50 @@
+{
+  "scope": "Ideal vertical corner forces and static gravity only; no acceleration, frictional wrench, compliance, or collision clearance proof",
+  "rows": [
+    {
+      "phase": 0.25,
+      "stance_feet": [
+        1
+      ],
+      "vertical_static_support_possible": true,
+      "nominal_stance_within_1mm_of_floor": true,
+      "minimum_peak_effort_fraction": 0.37893491303114357,
+      "joint_torques_at_optimum": {
+        "left_hip_yaw_joint": -0.005218785374454545,
+        "left_hip_roll_joint": 0.05684023695467153,
+        "left_hip_pitch_joint": 0.009052335320169707,
+        "left_knee_pitch_joint": 0.008976516917223792,
+        "left_ankle_pitch_joint": -0.0028570376743195956,
+        "right_hip_yaw_joint": 0.022389742595834036,
+        "right_hip_roll_joint": 0.005922985121152052,
+        "right_hip_pitch_joint": 0.003369303729339869,
+        "right_knee_pitch_joint": 0.02785981199282647,
+        "right_ankle_pitch_joint": 0.0015991648196644107
+      }
+    },
+    {
+      "phase": 0.75,
+      "stance_feet": [
+        0
+      ],
+      "vertical_static_support_possible": true,
+      "nominal_stance_within_1mm_of_floor": true,
+      "minimum_peak_effort_fraction": 0.42255931323385226,
+      "joint_torques_at_optimum": {
+        "left_hip_yaw_joint": -0.022245801927158006,
+        "left_hip_roll_joint": -0.006492793570636202,
+        "left_hip_pitch_joint": 0.003981752741459975,
+        "left_knee_pitch_joint": -0.03288141873258926,
+        "left_ankle_pitch_joint": -0.007949084002869783,
+        "right_hip_yaw_joint": 0.005020458236580863,
+        "right_hip_roll_joint": -0.06338389698507783,
+        "right_hip_pitch_joint": 0.008401664425237428,
+        "right_knee_pitch_joint": -0.009175256341041787,
+        "right_ankle_pitch_joint": -0.0029333548304253925
+      }
+    }
+  ],
+  "supported_within_effort_limits": 2,
+  "supported_with_valid_contact_geometry": 2,
+  "sampled_phases": 2
+}

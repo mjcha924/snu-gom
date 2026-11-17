@@ -1,0 +1,1298 @@
+[
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.1,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.2,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.3,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.1,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 4.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.3,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 0.7,
+    "pitch_kd": 0.08
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.03
+  },
+  {
+    "stance": 0.2,
+    "lean": 0.4,
+    "lift": 0.2,
+    "pitch_bias": 0.0,
+    "period": 6.0,
+    "pitch_kp": 1.2,
+    "pitch_kd": 0.08
+  }
+]

@@ -1,0 +1,605 @@
+{
+  "optimizer_updates": 0,
+  "checkpoint": "policies/reference-weight-v7a/model.pt",
+  "traces": {
+    "policy": {
+      "duration": 12.0,
+      "fallen": false,
+      "final_position": [
+        0.007623907178640366,
+        0.0006580669432878494,
+        0.1605517566204071
+      ],
+      "statistics_start_seconds": 2.0,
+      "max_sole_height_left_right": [
+        0.00022393278777599335,
+        1.1920928955078125e-06
+      ],
+      "stance_sliding_distance_left_right": [
+        0.037624569951982705,
+        0.04237489600145173
+      ],
+      "both_contact_fraction": 0.9966666666666667,
+      "peak_substep_speed": 2.865797519683838,
+      "peak_substep_speed_after_statistics_start": 1.3631123304367065,
+      "peak_reported_torque": 0.15000000596046448,
+      "mean_foot_vertical_force": [
+        6.437399149535897,
+        5.245403982862503
+      ],
+      "max_nonfoot_force": 0.0,
+      "joints": {
+        "left_hip_yaw_joint": {
+          "target_tracking_rmse": 0.010949831221336812,
+          "reference_tracking_rmse": 0.014659087906613225,
+          "reference_range": 0.0,
+          "actual_range": 0.03807740192860365,
+          "residual_rms": 0.02151179001317312,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.6287425149700598,
+          "target_direction_reversals_per_second": 49.1,
+          "target_rate_dominant_frequency_hz": 24.9500998003992,
+          "target_rate_power_above_5hz_fraction": 0.9986426344448895
+        },
+        "left_hip_roll_joint": {
+          "target_tracking_rmse": 0.01888658256591208,
+          "reference_tracking_rmse": 0.028081717752314724,
+          "reference_range": 0.19999998807907104,
+          "actual_range": 0.16916237026453018,
+          "residual_rms": 0.05432963963001833,
+          "effort_near_limit_fraction": 0.03592814371257485,
+          "slew_limited_fraction": 0.7465069860279441,
+          "target_direction_reversals_per_second": 46.1,
+          "target_rate_dominant_frequency_hz": 24.9500998003992,
+          "target_rate_power_above_5hz_fraction": 0.9681950673564724
+        },
+        "left_hip_pitch_joint": {
+          "target_tracking_rmse": 0.01455268815427268,
+          "reference_tracking_rmse": 0.011974412767413336,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.05345164239406586,
+          "residual_rms": 0.05734583082038502,
+          "effort_near_limit_fraction": 0.017564870259481037,
+          "slew_limited_fraction": 0.9261477045908184,
+          "target_direction_reversals_per_second": 49.1,
+          "target_rate_dominant_frequency_hz": 24.75049900199601,
+          "target_rate_power_above_5hz_fraction": 0.9938681326255554
+        },
+        "left_knee_pitch_joint": {
+          "target_tracking_rmse": 0.018840814510423062,
+          "reference_tracking_rmse": 0.027570849982991693,
+          "reference_range": 0.09999999403953552,
+          "actual_range": 0.10881251096725464,
+          "residual_rms": 0.06345637729137407,
+          "effort_near_limit_fraction": 0.0029940119760479044,
+          "slew_limited_fraction": 0.9041916167664671,
+          "target_direction_reversals_per_second": 46.9,
+          "target_rate_dominant_frequency_hz": 24.850299401197606,
+          "target_rate_power_above_5hz_fraction": 0.9835075723759484
+        },
+        "left_ankle_pitch_joint": {
+          "target_tracking_rmse": 0.018167508009022306,
+          "reference_tracking_rmse": 0.017272679635297574,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.0627172440290451,
+          "residual_rms": 0.04675611245087719,
+          "effort_near_limit_fraction": 0.02155688622754491,
+          "slew_limited_fraction": 0.9481037924151696,
+          "target_direction_reversals_per_second": 49.1,
+          "target_rate_dominant_frequency_hz": 24.75049900199601,
+          "target_rate_power_above_5hz_fraction": 0.9955831360190488
+        },
+        "right_hip_yaw_joint": {
+          "target_tracking_rmse": 0.010719553725757273,
+          "reference_tracking_rmse": 0.016514987819425977,
+          "reference_range": 0.0,
+          "actual_range": 0.0332843151409179,
+          "residual_rms": 0.017375173305598204,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.5848303393213573,
+          "target_direction_reversals_per_second": 48.699999999999996,
+          "target_rate_dominant_frequency_hz": 24.9500998003992,
+          "target_rate_power_above_5hz_fraction": 0.9981813066868271
+        },
+        "right_hip_roll_joint": {
+          "target_tracking_rmse": 0.020946834037003002,
+          "reference_tracking_rmse": 0.021132882624845525,
+          "reference_range": 0.19999998807907104,
+          "actual_range": 0.167250357568264,
+          "residual_rms": 0.04625533163419425,
+          "effort_near_limit_fraction": 0.07325349301397206,
+          "slew_limited_fraction": 0.7864271457085829,
+          "target_direction_reversals_per_second": 46.9,
+          "target_rate_dominant_frequency_hz": 24.9500998003992,
+          "target_rate_power_above_5hz_fraction": 0.9782498698359557
+        },
+        "right_hip_pitch_joint": {
+          "target_tracking_rmse": 0.014499379817321571,
+          "reference_tracking_rmse": 0.016207864358060216,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.06134295463562012,
+          "residual_rms": 0.05576962423248518,
+          "effort_near_limit_fraction": 0.013972055888223553,
+          "slew_limited_fraction": 0.8782435129740519,
+          "target_direction_reversals_per_second": 48.699999999999996,
+          "target_rate_dominant_frequency_hz": 24.9500998003992,
+          "target_rate_power_above_5hz_fraction": 0.9904205570800846
+        },
+        "right_knee_pitch_joint": {
+          "target_tracking_rmse": 0.016902210080206845,
+          "reference_tracking_rmse": 0.021422664347166227,
+          "reference_range": 0.09999999403953552,
+          "actual_range": 0.09893640875816345,
+          "residual_rms": 0.06419812223262444,
+          "effort_near_limit_fraction": 0.005389221556886228,
+          "slew_limited_fraction": 0.8143712574850299,
+          "target_direction_reversals_per_second": 45.9,
+          "target_rate_dominant_frequency_hz": 24.9500998003992,
+          "target_rate_power_above_5hz_fraction": 0.968131994621191
+        },
+        "right_ankle_pitch_joint": {
+          "target_tracking_rmse": 0.01557063120471856,
+          "reference_tracking_rmse": 0.016713229410267882,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.06972447037696838,
+          "residual_rms": 0.038658088596160455,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.844311377245509,
+          "target_direction_reversals_per_second": 48.3,
+          "target_rate_dominant_frequency_hz": 24.75049900199601,
+          "target_rate_power_above_5hz_fraction": 0.9909560230841641
+        }
+      },
+      "total_return": 99.28239639103413,
+      "mean_reward_terms_after_settling": {
+        "tracking": 2.3281091066177733,
+        "yaw": 0.4297037131623356,
+        "upright": 0.49281929715902745,
+        "contact": 1.840319361277445,
+        "clearance": 3.792941854639767e-05,
+        "stride": 1.9812150168085765,
+        "height": -3.605961661221983e-05,
+        "vertical": -0.00012056244351421453,
+        "angular": -0.0012268716436293124,
+        "slip": -0.0021107769492385536,
+        "action_rate": -0.0033699800715802195,
+        "effort": -0.0006399604329756162,
+        "pose": -0.0003099545604576535,
+        "reference": 0.9819347745406175,
+        "unloading": 0.23354806597837194
+      },
+      "qualified_touchdowns": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "final_rpy_degrees": [
+        0.6956612236289985,
+        1.2421149371266584,
+        2.174117301263347
+      ],
+      "wrapped_action_near_clip_fraction": 0.0
+    },
+    "hold": {
+      "duration": 12.0,
+      "fallen": false,
+      "final_position": [
+        -0.003612836357206106,
+        -0.0002831597812473774,
+        0.15863151848316193
+      ],
+      "statistics_start_seconds": 2.0,
+      "max_sole_height_left_right": [
+        0.0008417703211307526,
+        0.0012357719242572784
+      ],
+      "stance_sliding_distance_left_right": [
+        0.020183014953225588,
+        0.025581152752568816
+      ],
+      "both_contact_fraction": 0.9983333333333333,
+      "peak_substep_speed": 4.728375434875488,
+      "peak_substep_speed_after_statistics_start": 0.7338467836380005,
+      "peak_reported_torque": 0.15000000596046448,
+      "mean_foot_vertical_force": [
+        8.135217470561196,
+        3.5642527106279385
+      ],
+      "max_nonfoot_force": 0.0,
+      "joints": {
+        "left_hip_yaw_joint": {
+          "target_tracking_rmse": 0.001952535789880021,
+          "reference_tracking_rmse": 0.001952535789880021,
+          "reference_range": 0.0,
+          "actual_range": 0.0001880098134279251,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "left_hip_roll_joint": {
+          "target_tracking_rmse": 0.010768417723738795,
+          "reference_tracking_rmse": 0.03587667315814665,
+          "reference_range": 0.19999998807907104,
+          "actual_range": 6.928201764822006e-05,
+          "residual_rms": 0.0332672534585503,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "left_hip_pitch_joint": {
+          "target_tracking_rmse": 0.010188883513046289,
+          "reference_tracking_rmse": 0.01655255972634968,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.003980457782745361,
+          "residual_rms": 0.010520026851674733,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "left_knee_pitch_joint": {
+          "target_tracking_rmse": 0.039181339129389994,
+          "reference_tracking_rmse": 0.03891209735133533,
+          "reference_range": 0.09999999403953552,
+          "actual_range": 0.0076258182525634766,
+          "residual_rms": 0.021040053978499604,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "left_ankle_pitch_joint": {
+          "target_tracking_rmse": 0.00179116659423921,
+          "reference_tracking_rmse": 0.010268168385398825,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.011476010084152222,
+          "residual_rms": 0.010520026851674733,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_hip_yaw_joint": {
+          "target_tracking_rmse": 0.00016027320642777887,
+          "reference_tracking_rmse": 0.00016027320642777887,
+          "reference_range": 0.0,
+          "actual_range": 1.9963481463491917e-05,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_hip_roll_joint": {
+          "target_tracking_rmse": 0.011558126846470522,
+          "reference_tracking_rmse": 0.03618689380255424,
+          "reference_range": 0.19999998807907104,
+          "actual_range": 8.913222700357437e-05,
+          "residual_rms": 0.0332672534585503,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_hip_pitch_joint": {
+          "target_tracking_rmse": 0.007531530124587569,
+          "reference_tracking_rmse": 0.017001923019763752,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.004105567932128906,
+          "residual_rms": 0.012884350655233065,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_knee_pitch_joint": {
+          "target_tracking_rmse": 0.030679231840529078,
+          "reference_tracking_rmse": 0.03253273577053489,
+          "reference_range": 0.09999999403953552,
+          "actual_range": 0.007547497749328613,
+          "residual_rms": 0.02576870165827572,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_ankle_pitch_joint": {
+          "target_tracking_rmse": 0.03118392863252679,
+          "reference_tracking_rmse": 0.03761797527658865,
+          "reference_range": 0.04999999701976776,
+          "actual_range": 0.011422090232372284,
+          "residual_rms": 0.012884350655233065,
+          "effort_near_limit_fraction": 0.9718562874251497,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        }
+      },
+      "total_return": 100.25952566415071,
+      "mean_reward_terms_after_settling": {
+        "tracking": 2.6237078562468112,
+        "yaw": 0.4998031293679616,
+        "upright": 0.48002947917479477,
+        "contact": 1.8383233532934131,
+        "clearance": 2.9182381934763774e-07,
+        "stride": 1.893166304824357,
+        "height": -0.00012235060847037195,
+        "vertical": -9.10749354107192e-05,
+        "angular": -1.0216122263328886e-05,
+        "slip": -0.00020963992684625997,
+        "action_rate": -3.149711838181121e-05,
+        "effort": -0.001075179280202925,
+        "pose": -0.00020306408214763907,
+        "reference": 0.9689133490868909,
+        "unloading": 0.14585542208896188
+      },
+      "qualified_touchdowns": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "final_rpy_degrees": [
+        0.6587010423176496,
+        -3.188674667794099,
+        0.2158548418658832
+      ],
+      "wrapped_action_near_clip_fraction": 0.0
+    },
+    "seed": {
+      "duration": 1.74,
+      "fallen": true,
+      "final_position": [
+        -0.06492012739181519,
+        -0.00027054589008912444,
+        0.12934085726737976
+      ],
+      "statistics_start_seconds": 0.88,
+      "max_sole_height_left_right": [
+        0.0008417703211307526,
+        0.0012357719242572784
+      ],
+      "stance_sliding_distance_left_right": [
+        0.002655860958158205,
+        0.005259187801543228
+      ],
+      "both_contact_fraction": 0.9885057471264368,
+      "peak_substep_speed": 4.728375434875488,
+      "peak_substep_speed_after_statistics_start": 1.7737116813659668,
+      "peak_reported_torque": 0.15000000596046448,
+      "mean_foot_vertical_force": [
+        5.080728701569817,
+        6.031743412668055
+      ],
+      "max_nonfoot_force": 0.0,
+      "joints": {
+        "left_hip_yaw_joint": {
+          "target_tracking_rmse": 0.0027884546103368107,
+          "reference_tracking_rmse": 0.0027884546103368107,
+          "reference_range": 0.0,
+          "actual_range": 0.007370057748630643,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "left_hip_roll_joint": {
+          "target_tracking_rmse": 0.011994962129667898,
+          "reference_tracking_rmse": 0.011994962129667898,
+          "reference_range": 0.055000003427267075,
+          "actual_range": 0.041932342806831,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 1.1627906976744187,
+          "target_rate_dominant_frequency_hz": 1.1363636363636365,
+          "target_rate_power_above_5hz_fraction": 0.01404104900245965
+        },
+        "left_hip_pitch_joint": {
+          "target_tracking_rmse": 0.0235269973417234,
+          "reference_tracking_rmse": 0.0235269973417234,
+          "reference_range": 0.027500003576278687,
+          "actual_range": 0.026942193508148193,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.1431818181818182,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 1.1627906976744187,
+          "target_rate_dominant_frequency_hz": 1.1363636363636365,
+          "target_rate_power_above_5hz_fraction": 0.014041168800860806
+        },
+        "left_knee_pitch_joint": {
+          "target_tracking_rmse": 0.2407596945917609,
+          "reference_tracking_rmse": 0.2407596945917609,
+          "reference_range": 0.05500000715255737,
+          "actual_range": 0.5352592468261719,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.5886363636363636,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 1.1627906976744187,
+          "target_rate_dominant_frequency_hz": 1.1363636363636365,
+          "target_rate_power_above_5hz_fraction": 0.014041168800860806
+        },
+        "left_ankle_pitch_joint": {
+          "target_tracking_rmse": 0.04695035486423965,
+          "reference_tracking_rmse": 0.04695035486423965,
+          "reference_range": 0.027500003576278687,
+          "actual_range": 0.19758300110697746,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.1590909090909091,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 1.1627906976744187,
+          "target_rate_dominant_frequency_hz": 1.1363636363636365,
+          "target_rate_power_above_5hz_fraction": 0.014041168800860806
+        },
+        "right_hip_yaw_joint": {
+          "target_tracking_rmse": 0.001610862579875031,
+          "reference_tracking_rmse": 0.001610862579875031,
+          "reference_range": 0.0,
+          "actual_range": 0.003488609887426719,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_hip_roll_joint": {
+          "target_tracking_rmse": 0.011916804833309057,
+          "reference_tracking_rmse": 0.011916804833309057,
+          "reference_range": 0.055000003427267075,
+          "actual_range": 0.041220814222469926,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.0,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 1.1627906976744187,
+          "target_rate_dominant_frequency_hz": 1.1363636363636365,
+          "target_rate_power_above_5hz_fraction": 0.01404104900245965
+        },
+        "right_hip_pitch_joint": {
+          "target_tracking_rmse": 0.017226652501581112,
+          "reference_tracking_rmse": 0.017226652501581112,
+          "reference_range": 0.0,
+          "actual_range": 0.056605011224746704,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.10454545454545454,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_knee_pitch_joint": {
+          "target_tracking_rmse": 0.24129469556233676,
+          "reference_tracking_rmse": 0.24129469556233676,
+          "reference_range": 0.0,
+          "actual_range": 0.5208335518836975,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.95,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        },
+        "right_ankle_pitch_joint": {
+          "target_tracking_rmse": 0.063797978648389,
+          "reference_tracking_rmse": 0.063797978648389,
+          "reference_range": 0.0,
+          "actual_range": 0.23481591045856476,
+          "residual_rms": 0.0,
+          "effort_near_limit_fraction": 0.45,
+          "slew_limited_fraction": 0.0,
+          "target_direction_reversals_per_second": 0.0,
+          "target_rate_dominant_frequency_hz": null,
+          "target_rate_power_above_5hz_fraction": null
+        }
+      },
+      "total_return": 10.078935500234365,
+      "mean_reward_terms_after_settling": {
+        "tracking": 1.0037158670523434,
+        "yaw": 0.49667957628315146,
+        "upright": 0.3188310413150413,
+        "contact": 1.8636363636363635,
+        "clearance": 0.0,
+        "stride": 1.158900941547472,
+        "height": -0.008382713104682889,
+        "vertical": -0.000534095949755004,
+        "angular": -0.05728540795671093,
+        "slip": -0.00037896871303515087,
+        "action_rate": 0.0,
+        "effort": -0.0016821084507021376,
+        "pose": -0.006306455905856142,
+        "reference": 0.7169824650680477,
+        "unloading": 0.2262492613358931
+      },
+      "qualified_touchdowns": [
+        0,
+        0
+      ],
+      "alternating_touchdowns": 0,
+      "final_rpy_degrees": [
+        -0.21383353275838254,
+        -46.67293314602865,
+        0.34476580454829403
+      ],
+      "wrapped_action_near_clip_fraction": 0.0
+    }
+  },
+  "reference": {
+    "period_seconds": 4.0,
+    "reference_fore_aft_speed_m_s": 0.0,
+    "active_swing_fraction": 0.15,
+    "maximum_sole_height_m": [
+      0.004132830811668986,
+      0.00491273669387271
+    ],
+    "reference_peak_joint_speed_rad_s": 0.5000000000000027,
+    "expected_contact_reward_for_both_feet_grounded": 1.85,
+    "intended_support_lateral_com_margin": [
+      {
+        "swing_foot": 0,
+        "active_samples": 5,
+        "minimum_m": -0.00981815684392657,
+        "maximum_m": -0.007892942951533293,
+        "fraction_nonnegative": 0.0
+      },
+      {
+        "swing_foot": 1,
+        "active_samples": 7,
+        "minimum_m": -0.006380516831459376,
+        "maximum_m": -0.002539695190475316,
+        "fraction_nonnegative": 0.0
+      }
+    ],
+    "scope": "Ideal reference geometry only; static margin is not a dynamic stability criterion"
+  },
+  "stationary_velocity_reward_fraction": 0.8521437889662113,
+  "training_event_history": [
+    {
+      "run": "runs/stepping_v5a_512",
+      "transitions": 1638400,
+      "logged_event_equivalents": {
+        "qualified_touchdowns": 2278.0,
+        "alternating_touchdowns": 28.0
+      },
+      "method": "Per-update mean of per-step event counts/num_envs, multiplied by num_envs * rollout_steps; not deterministic success counts"
+    },
+    {
+      "run": "runs/short_support_v6_512",
+      "transitions": 1638400,
+      "logged_event_equivalents": {
+        "qualified_touchdowns": 2.0,
+        "alternating_touchdowns": 0.0
+      },
+      "method": "Per-update mean of per-step event counts/num_envs, multiplied by num_envs * rollout_steps; not deterministic success counts"
+    },
+    {
+      "run": "runs/reference_weight_v7a_512",
+      "transitions": 1638400,
+      "logged_event_equivalents": {
+        "qualified_touchdowns": 1.0,
+        "alternating_touchdowns": 0.0
+      },
+      "method": "Per-update mean of per-step event counts/num_envs, multiplied by num_envs * rollout_steps; not deterministic success counts"
+    }
+  ],
+  "credit_assignment": {
+    "rollout_seconds": 0.64,
+    "discount_e_folding_seconds": 1.9899832494684417,
+    "gae_e_folding_seconds": 0.32603222080938626,
+    "full_cycle_discount": 0.13397967485796172,
+    "scope": "Secondary considerations, not hard learning horizons; bootstrapping can propagate longer-term value"
+  }
+}

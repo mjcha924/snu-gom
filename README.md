@@ -31,6 +31,18 @@ Read the [model guide](snu_gom_description/docs/START_HERE.txt), [mass assumptio
 
 **Latest update: November 17, 2026 (KST).**
 
+**Flat-floor recovery:** [the controlled stall audit](docs/experiments/walking-stall-diagnosis.md)
+finds attractive standing rewards, an unvalidated support-transfer reference,
+and rapid target jitter. Further PPO extensions are paused while smoother
+free-base lift/landing motions are tested. The home rug is currently visual only,
+not a friction or edge test. Reliable flat walking remains the immediate goal.
+
+[New flat-floor tests](docs/experiments/flat-recovery.md) also identify hip/thigh
+interference during inward roll. Collision-aware targets avoid early contact
+terminations, but **repeatable alternating stepping still fails**. See the
+[16-robot guard comparison](docs/experiments/media/flat-recovery/guard-comparison-16.mp4)
+for scripted tests—not a newly trained walking policy.
+
 | Milestone | Evidence / status |
 | --- | --- |
 | Import the detailed robot | Passed joint-frame, mass, full inertia-tensor, and center-of-mass checks |
