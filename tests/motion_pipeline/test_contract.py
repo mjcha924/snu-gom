@@ -2,7 +2,6 @@
 
 import copy
 import json
-import os
 from pathlib import Path
 import tempfile
 from types import SimpleNamespace
@@ -127,8 +126,10 @@ class ContractTests(unittest.TestCase):
             write_json(path.with_suffix(".validation.json"), report)
             return report, {}
 
-        with tempfile.TemporaryDirectory() as directory:
-            relative = Path(os.path.relpath(directory))
+        # Windows runners can keep the checkout and system temp on different
+        # drives. A relative-output test needs its temporary directory on ROOT.
+        with tempfile.TemporaryDirectory(dir=ROOT) as directory:
+            relative = Path(directory).relative_to(ROOT)
             with patch(
                 "snu_gom_walk.motion_pipeline.generate.generate",
                 return_value=(self.arrays, {}),
@@ -148,7 +149,7 @@ class ContractTests(unittest.TestCase):
             self.assertEqual(summary["rejected_attempts"], 12)
             self.assertEqual(summary["accepted_kinematic"], 0)
             latest = json.loads((Path(directory) / "latest.json").read_text())
-            self.assertEqual(latest["run"], str(run))
+            self.assertEqual(latest["run"], run.relative_to(ROOT).as_posix())
 
     def test_absolute_and_relative_package_roots_inside_repo_have_same_id(self):
         relative = copy.deepcopy(self.robot.profile)
