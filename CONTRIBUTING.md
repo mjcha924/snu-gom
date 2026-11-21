@@ -54,3 +54,18 @@ python -m unittest discover -s tests -v
 These check the existing proxy model and budget. They do not establish real motor fit, power capacity or walking. For hardware changes, record measurements and unresolved points in `docs/experiments/`. For CAD changes, record clearance, fasteners, mass assumptions and the matching simulation revision.
 
 위 검사는 기존 도형 모델·예산 일치 검사입니다. 실물 체결·전원·보행을 검증하지 않습니다. 하드웨어는 `docs/experiments/`에 측정값·미해결점을, CAD는 간섭·체결품·질량 가정·대응 모델 버전을 기록합니다.
+
+For the current URDF/reference/training path, use a personal Python environment
+and additionally run:
+
+```bash
+python -m unittest discover -s tests/motion_pipeline -v
+python -m unittest discover -s tests/walking -v
+python -m compileall -q snu_gom_walk scripts
+```
+
+현재 URDF·모션·학습 경로는 위 추가 검사도 실행합니다. 생성·모델·접촉·검증
+로직이 바뀌면 새 라이브러리 생성, stand/walk `train-plan`, 내보내기/재로딩까지
+확인합니다. GPU 실행은 별도 검증이며 CPU 통과로 대신하지 않습니다.
+See [the handoff](docs/MOTION_PIPELINE_HANDOFF.md) for the code map, data schema,
+regeneration rules and exact commands. CI runs CPU checks on Linux and Windows.

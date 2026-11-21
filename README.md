@@ -6,6 +6,18 @@
 
 **URDF → reference motion → validation → imitation training:** [CPU pipeline guide](docs/MOTION_PIPELINE.md) · [한국어 실행 안내](docs/MOTION_PIPELINE_KO.md). This branch adds versioned stand/walk references, offline 3D review and guarded handoff to the existing Isaac trainer. New GPU training and dynamically validated natural walking are not claimed. / URDF 변경 감지·모션 생성·전 프레임 검사·물리 검사·확인 화면·기존 학습 연결을 추가했습니다. 새 GPU 학습이나 자연스러운 물리 보행 성공을 뜻하지 않습니다.
 
+**Start here on this branch / 이 브랜치 처음 사용하기**
+
+| Need / 목적 | Read / 안내 |
+| --- | --- |
+| Generate, inspect and hand off reference motions / 모션 생성·확인·학습 연결 | [한국어 실행 순서](docs/MOTION_PIPELINE_KO.md) · [English quickstart](docs/MOTION_PIPELINE.md) |
+| Continue development or give context to another AI / 개발·AI 인수인계 | [Architecture, data schema and change checklist](docs/MOTION_PIPELINE_HANDOFF.md) · [AGENTS.md](AGENTS.md) |
+| Understand what was actually tested / 실제 검증 범위 | [2026-11-21 branch review](docs/experiments/motion-pipeline-review.md) |
+
+This branch's CPU pipeline is newer than the historical GPU experiments below.
+Those videos and checkpoints do not validate a policy trained with this new library.
+아래 GPU 실험은 이전 기록이며, 새 모션 라이브러리로 학습한 결과가 아닙니다.
+
 ![Latest supplied SNU-GOM model in the lightweight Isaac home scene](docs/experiments/media/isaac-baseline/home.png)
 
 *The current supplied URDF in Isaac Sim—not a photograph or a fabrication-qualified final assembly.*
@@ -24,14 +36,14 @@ The repository includes the **latest supplied 12-joint robot**, STL meshes, mass
 | Estimated mass | **1.193 kg**, including explicit electronics, battery, wiring, and shell allowances—not a measured finished-robot mass |
 | Robot description | 13 physical rigid bodies, 79 visual instances, 67 STL files, 29 simplified box colliders |
 | Intended electronics/HRI | Pi 4, OpenRB-150, torso IMU, nose camera, microphone/audio board, and speaker; integration remains work in progress |
-| Simulation control | Ten leg actions at 50 Hz; physics at 500 Hz; the neck is currently held at a bounded neutral target |
+| Simulation control | Ten leg actions at 50 Hz; physics at 500 Hz; neck follows the library reference in library mode and stays near neutral in legacy mode |
 
 The current simulation model is [snu_gom_preview_relative.urdf](snu_gom_description/urdf/snu_gom_preview_relative.urdf).
 Read the [model guide](snu_gom_description/docs/START_HERE.txt), [mass assumptions](snu_gom_description/docs/MASS_ASSUMPTIONS.txt), and [joint/motor table](snu_gom_description/config/joint_parameters.csv) before changing it. Joint effort/speed limits remain **provisional**. Validated walking has not been demonstrated on the physical robot.
 
 ## Progress: What Works, What Does Not
 
-**Latest update: November 17, 2026 (KST).**
+**Historical GPU results: November 17, 2026 (KST).** For the November 21 CPU pipeline review, see the branch guide above.
 
 **Flat-floor recovery:** [the controlled stall audit](docs/experiments/walking-stall-diagnosis.md)
 finds attractive standing rewards, an unvalidated support-transfer reference,
@@ -83,7 +95,7 @@ The baseline videos intentionally show the remaining sliding failure. New polici
 ## Clone and Experiment
 
 ```bash
-git clone https://github.com/mjcha924/snu-gom.git
+git clone --branch feature/urdf-motion-pipeline https://github.com/mjcha924/snu-gom.git
 cd snu-gom
 ```
 
@@ -120,7 +132,7 @@ The [0.6 kg proxy](robot/), older 11-motor design documents, and [CAD v0.3 previ
 | 모터 배치 | 고관절 pitch·무릎 pitch에 XC330 4개, 나머지에 XL330 8개; 제공 부품 가이드 기준 |
 | 추정 질량 | **1.193 kg**; 전장·배터리·배선·외장 여유 질량 포함, 실측값 아님 |
 | 모델 | 물리 강체 13개, 시각 인스턴스 79개, STL 67개, 단순 박스 충돌체 29개 |
-| 제어 | 물리 500 Hz, 다리 정책 50 Hz; 현재 목은 제한된 중립 목표로 유지 |
+| 제어 | 물리 500 Hz, 다리 정책 50 Hz; 라이브러리 모드에서 목은 기준 모션을 따르고 기존 모드에서는 중립 목표 유지 |
 
 [모델 시작 안내](snu_gom_description/docs/START_HERE.txt)와 [질량 가정](snu_gom_description/docs/MASS_ASSUMPTIONS.txt)을 먼저 확인하세요. 토크·속도 한계는 아직 임시값이며 실물 보행을 검증한 상태가 아닙니다.
 

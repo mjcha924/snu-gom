@@ -1,0 +1,340 @@
+{
+  "schema": "gom_branch_review_v1",
+  "date_kst": "2026-11-21",
+  "base_commit": "54f248b384f05f23dd5c5b07b197e03c15bf206b",
+  "model_id": "c9de91158255e10863af8ad27414a05b735e3fb0276609b909d86d6ab882f091",
+  "urdf": "snu_gom_description/urdf/snu_gom_preview_relative.urdf",
+  "asset_hashes": {
+    "urdf": "f2d8ac6b10782fa2af64fad3b6f6cbf63f883bea9f71b104d076eb7885c5457a",
+    "mesh:../meshes/neck_base_plate.stl": "2208103944e422b0f625233804fab0acd0894bb92f8f68f2b8934202e58af4e4",
+    "mesh:../meshes/base_link_neck_motor_component_02.stl": "c2e89f6a2a318e458c34a8b964b5fb64f2a440d51effa7e139017c4463169e02",
+    "mesh:../meshes/base_link_neck_motor_component_03.stl": "93adedcdbc42f9d4f62492c5151d146185fe980db2d905e41c6c197c2ada2a0f",
+    "mesh:../meshes/torso_center_riser.stl": "97819e6fc72e46f2a60eb08b176c2be2f312ab802df675efb4ad02f9cdbbbb55",
+    "mesh:../meshes/base_link_neck_motor_component_05.stl": "0477df85c4e3c7f9a15576098e09bf8349fefb8d5c3b24ad7c8712ba7deff80a",
+    "mesh:../meshes/torso_left_rail.stl": "d3236b9f0eaff901de54ab978677adf48bc4596423d85a617f4c8894a77de163",
+    "mesh:../meshes/base_link_neck_motor_component_07.stl": "d5fde5a175fa4e661756fdb958a23e3d0ab5ea27e08c47dbea516dc16134d0ff",
+    "mesh:../meshes/torso_right_rail.stl": "aec4f4fb697f4c4c5dc4f1c8d5a1eacd50009d6c1aa18b3669d6bbec57fca59e",
+    "mesh:../meshes/base_link_neck_motor_component_09.stl": "e4b7fa512bbcd2a4a9e485a13cf2e0bde9de5721bbb12f7e55f7fe0afdffac65",
+    "mesh:../meshes/torso_neck_platform.stl": "8542f547914b364f12d692b662db77d647371e546f0f8558e51342bb7289fa94",
+    "mesh:../meshes/torso_electronics_shelves.stl": "213c58004d32224ae8e6dcd01c349d3a807262b8bcc8f085567b0c181e705ce7",
+    "mesh:../meshes/base_link_neck_motor_component_12.stl": "93d5f83381ff0d8f3736163292dadf02c4fc322709b9473c2c4fe47da36f374d",
+    "mesh:../meshes/base_link_neck_motor_component_13.stl": "9212123f982ad789a3c70044957b6d9d28f215e83b405be05b05f65c4082fa9c",
+    "mesh:../meshes/base_link_neck_motor_component_14.stl": "598b5e0dd06d7f9fa4073ffaad7d3e9d8e0eb26e018c8f3c88e474d3a2e727c0",
+    "mesh:../meshes/base_link_neck_motor_component_15.stl": "793af1e4d05bc213f8da5d89d82afb746f026cb2d7f8576da11311186db48a66",
+    "mesh:../meshes/openrb150_controller.stl": "e9a3144b2f1b9dbe98dd05a04e0ca8cf8713b7bd16e9e5012a8aacd5e439ad41",
+    "mesh:../meshes/bno085_imu.stl": "a7171934ed6752ad9a950d186c83e1dcd1de830c28831a67d58dc477aaffab20",
+    "mesh:../meshes/raspberry_pi_board.stl": "dc1ba4334a19923dd9be6df8f84f3633f8976706846271ce4ae50f5b5ab6dae3",
+    "mesh:../meshes/respeaker_board.stl": "440afdf4a1f8f50648f9012be0175fb78e7cc505463b987e0edbc15d626dada7",
+    "mesh:../meshes/base_link_neck_motor_component_20.stl": "e5252cb5256722124c5b163db052312dc4f42f35b6ebfcd0fdf9d6c4a7ace1ea",
+    "mesh:../meshes/base_link_neck_motor_component_21.stl": "56b7e50830aa74847403a7a56bfae97e0d02cab66640babc4ac4f6ac947fdf81",
+    "mesh:../meshes/base_link_neck_motor_component_22.stl": "ee5287c9a88a8798b99f8c7efb843ab6c128a51bcbb2d95668b5ab1eab182833",
+    "mesh:../meshes/base_link_neck_motor_component_23.stl": "172cbebc2dfac4a1c7d75490e88314cfbeacd086ac15d81792f8935182411c9b",
+    "mesh:../meshes/base_link_neck_motor_component_24.stl": "26b654c892429658f5b08f09a9e2b7bb6e6e490b1d36fa9258312ce961ff5b42",
+    "mesh:../meshes/base_link_neck_motor_component_25.stl": "868e65d61c0621b3c8f021797de09a13e4e7010957bb4c3f38a3cdb7ec2d26f0",
+    "mesh:../meshes/pelvis_bridge.stl": "19dd394c944a99a96161df455e19f1bcb882c3f8ae1dcf1a6c110e202aa96ffd",
+    "mesh:../meshes/left_hip_yaw_motor.stl": "7347d278b7f58278f7c2d68431f669dbbe04aa07d955f16840842cb5b8e58670",
+    "mesh:../meshes/neck_yaw_carrier.stl": "cb1e8a1912389316efd8c310a471e1322d5ccf9d44ca0571a38b4bc3b230e715",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_02.stl": "1cb8926fcbfb6f099ca82af67763fd39ef9686099b067b95ce069ba4a98844d2",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_03.stl": "9307e88a2768d77522db8688dff39e1ca3f393ad833cfefafa2fd1f9bf0d3ed2",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_04.stl": "ee3e9d0e4582bc3dd14497ff3d567e93581756a270af21f67b51529b9e2681f1",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_05.stl": "3d5470bce764ebb63b47ec5196199f3ed78e043870acb9cbebbdf17264610b01",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_06.stl": "573240ce1daa9fef8bac35828653c0f9dd0648ea03100c47d45a2c2acd19a07d",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_07.stl": "35e0aff180d7fab9abe1ea002074a05001df4e7c6000406898ac1f58ac02bb5f",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_08.stl": "592d35fa8a5049098e91b2be8238e35a4b425383e35ce4ea4aa9f303d99aa12a",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_09.stl": "566de1d5a526f1f371b7eb189d9a0229b951bebc67dad5e3c700e52afce667fd",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_10.stl": "a68a4c574dc30df4e1cfb34049e5a11ea16b534fd38ab732ccb971fa4b6e1e95",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_11.stl": "119e2f921947f8c5ca2c034cde9d01a08a8df192814c0d8fd976385c7c83cfc9",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_12.stl": "77cfb0171aa70534c05a2e5e4dd66deeffb65136201a126510ad90cfa7f48a25",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_13.stl": "5d1be698d8e99ebcc20544f2991aa0b9b67ddbd89064dea615c5cf7c935a8f3b",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_14.stl": "8dd26e43bcd94558e4cd8882a9faaf64a68629541442fbae6ad4c57d582215a0",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_15.stl": "cfd874793db62a645b328d815a109f7685ae31fde63c9d9ccca2a0502c00df44",
+    "mesh:../meshes/neck_yaw_link_neck_motor_component_16.stl": "032e00d317a1392ef713fa628b2c4d1f6386b2f45edc527ce34da596b4764a75",
+    "mesh:../meshes/head_pitch_bracket.stl": "79a82bd99996e95119a66f573aea84d45ee02d21fd6f5069a3d170a44ee3dba6",
+    "mesh:../meshes/head_shell.stl": "4f29c8676e03b4d522cadfca80c6ac4571f592676b1873c092ef31ea53b34aae",
+    "mesh:../meshes/head_right_ear.stl": "2de97e55cd9eae24423177c0156177bba8e4e6140852473dedda57ea156bddd5",
+    "mesh:../meshes/head_nose.stl": "6bddefd4cd54fa13df716e53980c624f50c4b26c33b11ddb6b1b823bf8c45561",
+    "mesh:../meshes/head_left_ear.stl": "3c0607f867bbdaeaea1ce7d8df08c79817e6b75739f58c32230e1777e312b992",
+    "mesh:../meshes/right_hip_yaw_link_printed_part_01.stl": "113916913673fd71860105fbd90070b422ef25573dcc59c3da1fccce93b54d7e",
+    "mesh:../meshes/right_hip_yaw_link_printed_part_02.stl": "305ad33537ae42fed9c2ee7881f208cc5b015cfb75ea4ed42865d3cabefc4557",
+    "mesh:../meshes/right_hip_yaw_link_bearing_04.stl": "fdc7a72d882905d6c9e747c562c77590fc6c9198cfa32cdc4899714c8495a3b0",
+    "mesh:../meshes/right_hip_pitch_motor.stl": "83e3e414d24bcc4bd8047a58f0745df02cdf3a8fbf6a99ab2ebed09fad792b7b",
+    "mesh:../meshes/right_hip_roll_link_printed_part_02.stl": "4c83426e0bced929a3a0a9368659ce54eeeebd5cc6fa2081c790f54c3314312e",
+    "mesh:../meshes/right_thigh_link_printed_part_01.stl": "c9956263b199702c89bfebc62c976122c0128eea7872dd598aff4bb2c930edb5",
+    "mesh:../meshes/right_thigh_link_printed_part_02.stl": "7aa9ef73115e2e546200d7cc2580d7879816c55cfeaffd040aacdc2a645a9c37",
+    "mesh:../meshes/right_thigh_link_printed_part_03.stl": "7d420bb982ec6e0f06486cd04dff955245a7d29b728b4c1d1ef7f388770b7a12",
+    "mesh:../meshes/right_knee_pitch_motor.stl": "c6189e37c246f0d25e117267e7926aac1ccae27d1c9c6265609c9829e069972f",
+    "mesh:../meshes/right_shank_link_printed_part_03.stl": "2358f5de12b10ab6ec37964c07d06cd0bc18704b2f79c75c6464e3c5073c8529",
+    "mesh:../meshes/right_ankle_pitch_motor.stl": "06834b48aedfa7c71d71f5158a8a175e40bdd4723815b10c25a78d35fc15e0e0",
+    "mesh:../meshes/right_foot.stl": "8dabd2ce852be39fe561631d6aeed632825e611487ee0438e036daff33a3b41a",
+    "mesh:../meshes/left_hip_roll_link_printed_part_01.stl": "cff683b73d8645bde53396be4e162b17b5177d2abb9469e681975c43afccae3c",
+    "mesh:../meshes/left_hip_pitch_motor.stl": "504b97493912b17ae9e7633b32ce653d7e1cf1320613d118d4e0be8ec2a04151",
+    "mesh:../meshes/left_thigh_link_printed_part_02.stl": "cbd72e16dab525070113befdcfe3dd59797c0ce89c8f2e72696599b4078c7064",
+    "mesh:../meshes/left_knee_pitch_motor.stl": "b71fbd9e750165a1c42928862358739aa2e1efb8d894bb61556ed2b42072da8f",
+    "mesh:../meshes/left_shank_link_printed_part_02.stl": "1148429d070bc2805b0f8f26b3556ab97f9ed6e93d0163c13ed546058b428788",
+    "mesh:../meshes/left_ankle_pitch_motor.stl": "24d5b20c3a46f3a97c20621d3471979c205d2707b0cf8811128c88be7f71ef76",
+    "mesh:../meshes/left_foot.stl": "fe18c6de4158cfb680048fc2d8583c1be432326dbd67ab0594f4a5894decc3e7"
+  },
+  "generator_hashes": {
+    "__init__.py": "7dc85862600cf4b369a62f12fdb3c843bd5e4cd652730a2604616e8678d4d1d8",
+    "contract.py": "bcdfbcb24d4033b59678a72021b368329e7c4cc75bf350430d92997857473275",
+    "feasibility.py": "9bd42dd8f1ea4f3763eedf3f0471da49dda0dc814fd0eddf5f528d73ba4b384d",
+    "generate.py": "fad02a2a5ee8cb9879c2791152fda7955d071d6d3e4bd8835fa542a968c23c32",
+    "library.py": "efdc6a059c01e0befcb9e841275cc905d8e0416857569f6d68a0a86a69ef3ced",
+    "model.py": "4e85702c3017ceeb9ed86a80754e77c073652a2e220bee192e8381b33ff198fa",
+    "motors.py": "98829bf4d277d34eba31374e82adf524951a05013b41874d9e0f4d3b43fcbb1e",
+    "physics.py": "30ed654d350d11f77aa6a6033e667bdb261a4d54f216bcca09c5a0a845fc0f31",
+    "validate.py": "4f3158f65a42e51809bb2b61c180733e5da5eccbfa2574d009b074fc1ae2261c"
+  },
+  "config": {
+    "count": 4,
+    "seconds": 4.0,
+    "fps": 50,
+    "seed": 20261121,
+    "physics_seconds": null
+  },
+  "run": "reports/review-verification/c9de91158255-b45cd5c3e8",
+  "cpu_tests": {
+    "pipeline": 32,
+    "walking": 41,
+    "project": 8,
+    "total": 81
+  },
+  "checks": {
+    "stand-default": "passed",
+    "walk-default": "passed",
+    "stand-strict": "passed",
+    "walk-strict": "correctly_rejected"
+  },
+  "export": {
+    "sha256": "9993ac9e7d36e5ecfe2a5304748ae037d6f73cc47c5007c34a4375491583a501",
+    "files": 22
+  },
+  "python": "3.11.2",
+  "packages": {
+    "numpy": "2.4.2",
+    "scipy": "1.17.0",
+    "mujoco": "3.3.7",
+    "clarabel": "0.11.1",
+    "torch": "2.10.0"
+  },
+  "clips": [
+    {
+      "id": "stand_000_a0",
+      "kind": "stand",
+      "split": "train",
+      "sha256": "a4b1d68e9b7cfc4fe105fd69017f522f1f07366f861aade81f1740b9ff5e0bfd",
+      "kinematic": true,
+      "reference_eligible": true,
+      "dynamics_verified": true,
+      "motor_status": "within_planning_envelope",
+      "solved_frames": 201,
+      "balance_unresolved_count": 0,
+      "peak_minimum_torque_utilization": 0.12793217414807864,
+      "max_equation_residual": 1.2817208590134487e-14,
+      "physics": {
+        "duration_s": 4.0,
+        "contact_schedule_agreement": 1.0,
+        "single_support_fraction": 0.0,
+        "qualified_touchdowns": [
+          0,
+          0
+        ],
+        "alternating_touchdowns": 0,
+        "path_progress_ratio": null,
+        "joint_tracking_rmse_rad": 7.74272816286687e-05,
+        "max_tilt_deg": 2.032314889846557,
+        "checks": {
+          "survived": true,
+          "full_reference_duration": true,
+          "contact_match": true,
+          "single_support": true,
+          "qualified_alternation": true,
+          "forward_progress": true,
+          "torque_envelope": true,
+          "actual_joint_positions": true,
+          "actual_joint_velocities": true,
+          "actual_critical_collisions": true,
+          "profile_tilt": true,
+          "tracking": true
+        }
+      }
+    },
+    {
+      "id": "walk_001_a0",
+      "kind": "walk",
+      "split": "train",
+      "sha256": "f013cab3443723d115b4960bc08f599af886e0061aeeaa2c2329dbf41a67b1d1",
+      "kinematic": true,
+      "reference_eligible": true,
+      "dynamics_verified": false,
+      "motor_status": "balance_unresolved",
+      "solved_frames": 192,
+      "balance_unresolved_count": 9,
+      "peak_minimum_torque_utilization": 0.7781981218297587,
+      "max_equation_residual": 2.400128706891991e-13,
+      "physics": {
+        "duration_s": 4.0,
+        "contact_schedule_agreement": 0.7139303482587065,
+        "single_support_fraction": 0.1890547263681592,
+        "qualified_touchdowns": [
+          0,
+          0
+        ],
+        "alternating_touchdowns": 0,
+        "path_progress_ratio": 0.5884748070645323,
+        "joint_tracking_rmse_rad": 0.006511474562106715,
+        "max_tilt_deg": 3.187199322047501,
+        "checks": {
+          "survived": true,
+          "full_reference_duration": true,
+          "contact_match": false,
+          "single_support": false,
+          "qualified_alternation": false,
+          "forward_progress": true,
+          "torque_envelope": true,
+          "actual_joint_positions": true,
+          "actual_joint_velocities": true,
+          "actual_critical_collisions": true,
+          "profile_tilt": true,
+          "tracking": true
+        }
+      }
+    },
+    {
+      "id": "stand_002_a0",
+      "kind": "stand",
+      "split": "val",
+      "sha256": "50bb57ca9fefa10327bd9ef4b62b49d0ec544bad3258566faf01d264ae352823",
+      "kinematic": true,
+      "reference_eligible": true,
+      "dynamics_verified": true,
+      "motor_status": "within_planning_envelope",
+      "solved_frames": 201,
+      "balance_unresolved_count": 0,
+      "peak_minimum_torque_utilization": 0.12777596669636956,
+      "max_equation_residual": 1.2772058716490958e-14,
+      "physics": {
+        "duration_s": 4.0,
+        "contact_schedule_agreement": 1.0,
+        "single_support_fraction": 0.0,
+        "qualified_touchdowns": [
+          0,
+          0
+        ],
+        "alternating_touchdowns": 0,
+        "path_progress_ratio": null,
+        "joint_tracking_rmse_rad": 7.400932608571253e-05,
+        "max_tilt_deg": 2.032314889846557,
+        "checks": {
+          "survived": true,
+          "full_reference_duration": true,
+          "contact_match": true,
+          "single_support": true,
+          "qualified_alternation": true,
+          "forward_progress": true,
+          "torque_envelope": true,
+          "actual_joint_positions": true,
+          "actual_joint_velocities": true,
+          "actual_critical_collisions": true,
+          "profile_tilt": true,
+          "tracking": true
+        }
+      }
+    },
+    {
+      "id": "walk_003_a0",
+      "kind": "walk",
+      "split": "val",
+      "sha256": "bb1252094f523a0e6e7187f9dba7bdf2334e3676534afc32a0ce7ae375f2995d",
+      "kinematic": true,
+      "reference_eligible": true,
+      "dynamics_verified": false,
+      "motor_status": "balance_unresolved",
+      "solved_frames": 191,
+      "balance_unresolved_count": 10,
+      "peak_minimum_torque_utilization": 0.7859245565534624,
+      "max_equation_residual": 1.7763568394002505e-14,
+      "physics": {
+        "duration_s": 4.0,
+        "contact_schedule_agreement": 0.7114427860696517,
+        "single_support_fraction": 0.18407960199004975,
+        "qualified_touchdowns": [
+          0,
+          0
+        ],
+        "alternating_touchdowns": 0,
+        "path_progress_ratio": 0.5666402127951254,
+        "joint_tracking_rmse_rad": 0.007437964329126661,
+        "max_tilt_deg": 3.0355494139284374,
+        "checks": {
+          "survived": true,
+          "full_reference_duration": true,
+          "contact_match": false,
+          "single_support": false,
+          "qualified_alternation": false,
+          "forward_progress": true,
+          "torque_envelope": true,
+          "actual_joint_positions": true,
+          "actual_joint_velocities": true,
+          "actual_critical_collisions": true,
+          "profile_tilt": true,
+          "tracking": true
+        }
+      }
+    }
+  ],
+  "isaac_runtime_verified": false,
+  "gpu_training_run": false,
+  "hardware_ready": false,
+  "fresh_checkout_roundtrip": [
+    {
+      "checkout": "66bca7e",
+      "newlines": "LF",
+      "kind": "stand",
+      "result": "passed",
+      "train": [
+        "stand_000_a0"
+      ],
+      "val": [
+        "stand_002_a0"
+      ]
+    },
+    {
+      "checkout": "66bca7e",
+      "newlines": "LF",
+      "kind": "walk",
+      "result": "passed",
+      "train": [
+        "walk_001_a0"
+      ],
+      "val": [
+        "walk_003_a0"
+      ]
+    },
+    {
+      "checkout": "66bca7e",
+      "newlines": "CRLF",
+      "kind": "stand",
+      "result": "passed",
+      "train": [
+        "stand_000_a0"
+      ],
+      "val": [
+        "stand_002_a0"
+      ]
+    },
+    {
+      "checkout": "66bca7e",
+      "newlines": "CRLF",
+      "kind": "walk",
+      "result": "passed",
+      "train": [
+        "walk_001_a0"
+      ],
+      "val": [
+        "walk_003_a0"
+      ]
+    }
+  ],
+  "functional_commit": "66bca7e8f0df302f191338d92a57e7b38b7b74c9"
+}

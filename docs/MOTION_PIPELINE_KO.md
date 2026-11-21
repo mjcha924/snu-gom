@@ -2,6 +2,8 @@
 
 [English](MOTION_PIPELINE.md) · [기존 Isaac 설치 안내](../HEADLESS_TRAINING.md) · [로컬 실행 기록](experiments/motion-pipeline-local.md)
 
+[다른 개발자·AI를 위한 코드 지도와 데이터 규격](MOTION_PIPELINE_HANDOFF.md) · [이번 브랜치 검토 결과](experiments/motion-pipeline-review.md). 이전 실행 기록은 당시 소스 지문에 연결되어 있으므로, 코드를 갱신한 뒤에는 모션을 다시 생성하세요.
+
 이 브랜치는 기존 `snu_gom_walk`와 `scripts/train.py`에 모션 라이브러리를 연결합니다. 기존 로컬 Open Duck 폴더나 다른 브랜치를 수정하는 방식이 아닙니다. 원본 URDF·메시·질량·관절 축도 덮어쓰지 않습니다.
 
 **학습 레퍼런스 사용과 현재 제어기의 물리 보행 성공을 구분합니다.** 기본 학습은 전 프레임 기구학 검사와 별도의 모터 검사를 통과한 후보를 받습니다. 접촉 균형을 풀지 못한 일부 프레임은 조건부로 표시하며, 물리 추종 미통과만으로 학습을 차단하지 않습니다. Isaac의 새 학습 경로와 실물 운전은 아직 검증하지 않았으며 GPU 학습이나 서버 접속은 하지 않았습니다. [hip roll 원인 분석](experiments/hip-roll-torque-diagnosis.md).
@@ -11,6 +13,8 @@
 Python 3.11을 권장합니다. 현재 작업 PC에는 저장소 안의 `.venv-motion`을 준비했습니다. 다른 PC에서는 다음처럼 만듭니다.
 
 ```powershell
+git clone --branch feature/urdf-motion-pipeline https://github.com/mjcha924/snu-gom.git
+cd snu-gom
 python -m venv .venv-motion
 .\.venv-motion\Scripts\python.exe -m pip install -r requirements-motion-pipeline.txt
 # Torch가 없는 CPU 검사용 환경에서만 추가합니다. 서버의 CUDA Torch를 바꾸지 마세요.
@@ -20,6 +24,8 @@ python -m venv .venv-motion
 Linux에서는 `.venv-motion/bin/python`을 사용합니다. 모션 생성·MuJoCo 검사는 GPU나 Isaac을 설치하지 않아도 됩니다. Torch는 학습 입력 보간 검사에 사용합니다.
 
 ## 2. URDF 선택과 변경
+
+상대 URDF 경로와 `package_roots`는 저장소 루트를 기준으로, 상대 메시 경로는 URDF 파일 위치를 기준으로 읽습니다. 생성 결과의 `--output`은 명령을 실행한 폴더 기준이며 상대 경로도 지원합니다.
 
 설정 파일은 [`configs/motion_pipeline/gom.json`](../configs/motion_pipeline/gom.json)입니다.
 
@@ -48,6 +54,8 @@ STL/OBJ 충돌 발은 실제 볼록 껍질 정점을 사용합니다. 발 링크
 기본 충돌 정책은 엄격합니다. CAD 수정 예정인 쌍을 허용하려면 `allowed_collision_pairs`에 `{"links":["링크A","링크B"],"max_penetration_m":0.003}`처럼 명시합니다. 기구학 보고서는 이 깊이까지만 허용합니다. 현재 물리 엔진과 Isaac의 충돌을 통째로 끄지 않으므로, 단순 허용 설정만으로 동역학 합격이 보장되지는 않습니다.
 
 ## 3. 생성 → 전 프레임 검사 → 물리 검사
+
+실행 후 `summary.json`의 `complete`를 확인하세요. stand/walk 각각 train/val이 하나 이상 있어야 완성입니다. 제한된 재시도로 만들지 못하면 결과와 확인 화면은 저장하고, 부족한 종류를 표시하며 실패 상태로 종료합니다. `latest.json`은 가장 최근 **시도**를 가리키므로 파일이 있다는 것만으로 완성을 뜻하지 않습니다.
 
 ```powershell
 .\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py run --count 4 --seconds 4 --fps 50
@@ -102,6 +110,10 @@ $motionRun = (Get-Content reports/motion_pipeline/latest.json -Raw | ConvertFrom
 ```
 
 이 단계는 Isaac·GPU 학습을 실행하지 않습니다. 라이브 모델과 모든 파일/보고서 지문을 확인하고 학습/검증 클립 및 서버 명령을 `train-plan.json`에 씁니다. 기본값은 기구학·모터 검사를 통과한 레퍼런스입니다. `--require-dynamics`만 물리 추종 합격까지 요구합니다. 기존 `--allow-kinematic`은 호환용 별칭이며 모터 검사·변조 검사를 우회하지 않습니다.
+
+다른 PC로 옮길 때는 같은 코드·모델 버전을 사용하세요. Python 소스의 Windows/Linux 줄바꿈 차이는 정규화해서 지문을 계산하지만, 데이터·보고서·URDF·메시는 실제 바이트를 검사합니다. 내보내기 ZIP에는 모션과 보고서만 들어가므로 선택한 URDF·메시는 저장소 안에 두고 상대 경로나 `package://` 경로로 참조해야 합니다. 저장소 밖의 자산이나 절대 메시 경로가 있으면 휴대 가능한 ZIP 내보내기를 중단합니다.
+
+프로파일의 모터 곡선은 속도 0에서 시작해 증가하고, 토크는 음수 없이 감소하여 마지막에 0이 되어야 합니다. 일부 구간만 있는 곡선이나 관절 이름 오타는 생성 전에 오류로 표시합니다. 상한은 `motors.planning_stall_fraction`을 우선 사용하며, `physics.stall_fraction`은 이전 설정의 호환용 기본값입니다.
 
 ## 6. 나중에 서버에서 학습
 

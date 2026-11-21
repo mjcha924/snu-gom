@@ -2,6 +2,8 @@
 
 [한국어 상세 안내](MOTION_PIPELINE_KO.md) · [Existing Isaac setup](../HEADLESS_TRAINING.md) · [Local evidence](experiments/motion-pipeline-local.md)
 
+[Developer/AI handoff and NPZ schema](MOTION_PIPELINE_HANDOFF.md) · [Current branch review](experiments/motion-pipeline-review.md). The earlier local evidence has its own source fingerprints; regenerate data after updating this branch.
+
 This branch connects CPU reference authoring to the repository's existing `snu_gom_walk`, `scripts/train.py`, and `scripts/play.py`. Source URDFs, meshes, axes and inertias remain intact. No GPU training or server connection was performed for this change. Passing kinematics is explicitly separate from passing free-base dynamics or demonstrating natural walking.
 
 ## Local use
@@ -9,6 +11,8 @@ This branch connects CPU reference authoring to the repository's existing `snu_g
 Use Python 3.11 and a personal environment. On Linux, replace the Windows Python path below with `.venv-motion/bin/python`.
 
 ```powershell
+git clone --branch feature/urdf-motion-pipeline https://github.com/mjcha924/snu-gom.git
+cd snu-gom
 python -m venv .venv-motion
 .\.venv-motion\Scripts\python.exe -m pip install -r requirements-motion-pipeline.txt
 # Only if Torch is absent in a CPU test environment; do not replace a server's CUDA Torch.
@@ -44,6 +48,8 @@ MuJoCo diagnostics use gravity, friction, a free root and bounded joint efforts.
 
 Outputs under `reports/motion_pipeline/<model-id>-<run-id>/` include NPZ motion arrays, metadata, full-frame validation, physical reports/trace/torque CSV, manifest, summary and offline review HTML. `latest.json` points at the newest run. Generated datasets and large HTML traces are not committed as source.
 
+`summary.json.complete` requires eligible stand/walk clips in both train and val. If bounded retries cannot produce all four pairs, the command saves its review and exits unsuccessfully with the missing pairs. Relative `--output` paths are supported. Source fingerprints normalize Python CRLF/LF differences; data, reports and robot-asset hashes remain byte-exact.
+
 ## CPU handoff checks and dataset export
 
 ```powershell
@@ -78,3 +84,5 @@ The manufacturer lists [XL330-M288](https://emanual.robotis.com/docs/en/dxl/x/xl
 Torch's default memory fraction is .35 (maximum .4), which does not bound PhysX/renderer memory. Source/model/dataset changes require a new experiment; existing checkpoint provenance is not bypassed. See [hip-roll causal diagnosis](experiments/hip-roll-torque-diagnosis.md) for the self-contact counterfactual and hardware implications.
 
 The new Isaac path was checked against the repository's pinned public source revision `f4aa17f87e2e5db5484f0b5974918573e8918ce2` for explicit actuators and root-link velocity APIs, and syntax/CPU data contracts were checked locally. It has **not** been run in Isaac for this change. Online speed/turn blending, seamless infinite cycles, identified hardware parameters, GPU smoke tests and physical transfer remain future work.
+
+The dataset exporter includes data only. Keep the selected URDF and all referenced meshes in the checkout with relative or `package://` URIs; external assets and absolute mesh URIs are rejected for portable export. Full motor curves must have increasing speeds starting at zero and nonnegative decreasing torques ending at zero. Unknown joint overrides and partial/invalid curves are rejected before generation. `motors.planning_stall_fraction` is active; `physics.stall_fraction` is a legacy fallback, not an additional multiplier.
