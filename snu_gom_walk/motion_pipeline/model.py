@@ -107,6 +107,9 @@ class RobotModel:
         self.lower=np.asarray(self.lower);self.upper=np.asarray(self.upper);self.speed=np.asarray(self.speed);self.effort=np.asarray(self.effort)
         self.urdf_lower=np.asarray(self.urdf_lower);self.urdf_upper=np.asarray(self.urdf_upper)
         if not np.isfinite([self.lower,self.upper,self.speed,self.effort]).all() or min(self.speed.min(),self.effort.min())<=0:raise ValueError('Nonfinite/nonpositive limits')
+        self.urdf_speed=self.speed.copy();self.urdf_effort=self.effort.copy()
+        from .motors import limits
+        self.effort,self.speed=limits(self.profile,self.names,self.urdf_effort,self.urdf_speed)
         self.nominal=np.array([self.profile.get('nominal_joints',{}).get(n,0.) for n in self.names])
         if ((self.nominal<self.lower)|(self.nominal>self.upper)).any():raise ValueError('Nominal pose outside revised joint ranges; edit nominal_joints')
         self.hashes={'urdf':digest(self.urdf)};self.meshes={}

@@ -34,11 +34,13 @@ Default self-collision checking is strict. Optional `allowed_collision_pairs` st
 
 The architecture takes inspiration from [BDX §V-A](https://arxiv.org/html/2501.05204v1): task-space gait authoring, CoM/CoP planning, whole-body motion, pre-sampled interpolation. It is an independent implementation, not Disney's private generator or equivalent performance. Gaussian episodic time features/sensor noise in the paper are not interpreted as a distribution of walking clips.
 
-The finite reference uses C2 swing/landing curves, initial/final double support, a full-horizon nominal-height LIPM CoP/CoM QP, and analytic-Jacobian whole-body IK. Pelvis height and torso style are authored separately; actual CoM height is free to vary. Joint position/slew constraints are enforced. With no ankle roll, the sole can passively rock while its actual lowest collision surface remains above the floor.
+The finite reference uses C2 swing/landing curves, initial/final double support, a full-horizon LIPM CoP/CoM QP with 2D convex support polygons, and analytic-Jacobian whole-body IK. A second QP softly follows the observed low-edge contact patch within a 2 mm CoM trust region, retaining hard outer-support constraints. It does not certify exact rocking contact. Pelvis height and torso style are authored separately; actual CoM height varies. Joint position/slew constraints are enforced. With no ankle roll, the sole can passively rock while its lowest collision surface remains above the floor.
 
 Bounded seeded parameter sampling produces stand/walk train/val clips. Each kind has an independent held-out clip, and attempts are capped. Retrying reduces task demands rather than relaxing gates. Full-frame checks cover names, hashes, FK, velocity consistency, ROM/speed, task errors, self-collision and foot/body ground penetration. Support AABB margin is a diagnostic, not a dynamic certificate.
 
-MuJoCo diagnostics use gravity, friction, a free root and bounded joint efforts. The controller obtains acceleration sensitivity from MuJoCo's own soft-contact inverse dynamics and verifies candidates through actual forward dynamics. No root force or post-reset root teleportation is applied. Acceptance additionally requires full-duration survival, motor/ROM/speed/tilt/collision limits, contact agreement, single support, supported qualified alternating touchdowns and path progress. Short `--physics-seconds` diagnostics never qualify the full clip. Thresholds are provisional engineering choices, not paper constants.
+An independent full-frame inverse-dynamics screen minimizes the maximum normalized joint torque under floating-base equations, unilateral forces and friction constraints. It uses the optimistic outer stance-sole footprint, so passing is a necessary-condition screen, not contact feasibility proof. Excessive required torque rejects a reference. Unresolved contact-balance frames are labeled conditional rather than confused with excessive motor torque; zero solved frames rejects the reference. `*.screen.json` records this separately from tracking performance.
+
+MuJoCo diagnostics use gravity, friction, a free root and bounded joint efforts. The controller includes joint/CoM/foot velocity and acceleration feedforward. Loaded support uses vertical force with hysteresis rather than geometry proximity. It obtains acceleration sensitivity from MuJoCo's own soft-contact inverse dynamics and verifies candidates through actual forward dynamics. No root force or post-reset root teleportation is applied. Physical qualification requires full-duration survival, motor/ROM/speed/tilt/collision limits, loaded contact agreement, single support, supported qualified alternating touchdowns and progress. Short `--physics-seconds` diagnostics never qualify the full clip. These diagnostics do not automatically block imitation training.
 
 Outputs under `reports/motion_pipeline/<model-id>-<run-id>/` include NPZ motion arrays, metadata, full-frame validation, physical reports/trace/torque CSV, manifest, summary and offline review HTML. `latest.json` points at the newest run. Generated datasets and large HTML traces are not committed as source.
 
@@ -47,13 +49,13 @@ Outputs under `reports/motion_pipeline/<model-id>-<run-id>/` include NPZ motion 
 ```powershell
 $motionRun = (Get-Content reports/motion_pipeline/latest.json -Raw | ConvertFrom-Json).run
 .\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py train-plan --run $motionRun --kind stand
-# Explicit experimental use of a kinematic walking reference that may fail dynamics:
-.\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py train-plan --run $motionRun --kind walk --allow-kinematic
+.\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py train-plan --run $motionRun --kind walk
+# Add --require-dynamics only if a passing local tracking rollout is required.
 .\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py export --run $motionRun
 .\.venv-motion\Scripts\python.exe -m unittest discover -s tests/motion_pipeline -v
 ```
 
-`train-plan` performs live asset/data/report integrity checks and writes eligible train/val IDs plus the exact command. It imports no Isaac and starts no training. Default training rejects non-passing physics references; provisional imitation requires `--allow-kinematic`. Duplicate/tampered/stale data and train/val leaks are rejected. The export ZIP whitelists motion arrays and reports, preserving repository-relative paths for extraction at the server repository root. It includes no credentials, VPN profiles, recordings or environments.
+`train-plan` performs live asset/data/report integrity checks and writes eligible train/val IDs plus the exact command. It imports no Isaac and starts no training. Default training admits full-frame kinematic and motor-screened references independently of tracking-controller success. `--require-dynamics` additionally demands passing physics. The compatibility flag `--allow-kinematic` cannot bypass motor screening. Duplicate/tampered/stale data and train/val leaks are rejected. The export ZIP whitelists motion arrays and reports, preserving repository-relative paths for extraction at the server repository root. It includes no credentials, VPN profiles, recordings or environments.
 
 ## Later on the GPU server
 
@@ -65,12 +67,14 @@ Check `nvitop`, then start with 32 environments and two iterations:
 python scripts/train.py --task stand --motion-manifest reports/motion_pipeline/<run>/manifest.json \
   --num-envs 32 --iterations 2 --memory-fraction .35 --headless
 python scripts/train.py --task walk --motion-manifest reports/motion_pipeline/<run>/manifest.json \
-  --allow-kinematic --num-envs 32 --iterations 2 --memory-fraction .35 --headless
+  --num-envs 32 --iterations 2 --memory-fraction .35 --headless
 python scripts/play.py --checkpoint runs/<run>/model.pt --episodes 2 --seconds 4 --headless
 ```
 
 Library mode keeps ten leg actions and twelve measured joints. Reference-conditioned observations have 72 policy / 90 critic values. Clip sampling is random during training; evaluation cycles through held-out val clips. Finite endpoints terminate rather than silently wrapping. The neck follows the reference. Targets are interpolated from 50 Hz to the existing 500 Hz simulation, with explicit bounded PD effort and a symmetric 5 V torque-speed envelope. The offline inverse-dynamics controller and training PD controller are intentionally different controllers within the same provisional effort envelope.
 
-Effort is bounded by the smaller of the URDF limit, 20% of manufacturer stall, and the assumed linear speed envelope. These are **not measured continuous/thermal ratings**. Dynamics and training use the XL330/XC330 mapping; the separate BAM experiment is not silently enabled. Torch's default memory fraction is .35 (maximum .4), which does not bound PhysX/renderer memory. Follow team sharing rules for long/large jobs. Source/model/dataset changes require a new experiment; existing checkpoint provenance is not bypassed.
+The manufacturer lists [XL330-M288](https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/) at 0.52 N·m stall / 103 rpm no-load and [XC330-M288](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/) at 0.93 N·m / 81 rpm, at 5 V. The generous reference-planning cap is 60% stall: **0.312 / 0.558 N·m**, further limited by speed. XC330 uses approximate points read from the official loaded performance graph; XL330 retains an assumed linear envelope. These are **not continuous/thermal ratings**. The profile explicitly overrides placeholder URDF effort/velocity (0.15 N·m / 1 rad/s); turn that override off to preserve smaller URDF limits. Original position stops remain active. Planning speed is 35% no-load; IK slew remains at most 0.8 rad/s. Both CPU and Isaac paths use the same profile and curve; BAM is separate.
+
+Torch's default memory fraction is .35 (maximum .4), which does not bound PhysX/renderer memory. Source/model/dataset changes require a new experiment; existing checkpoint provenance is not bypassed. See [hip-roll causal diagnosis](experiments/hip-roll-torque-diagnosis.md) for the self-contact counterfactual and hardware implications.
 
 The new Isaac path was checked against the repository's pinned public source revision `f4aa17f87e2e5db5484f0b5974918573e8918ce2` for explicit actuators and root-link velocity APIs, and syntax/CPU data contracts were checked locally. It has **not** been run in Isaac for this change. Online speed/turn blending, seamless infinite cycles, identified hardware parameters, GPU smoke tests and physical transfer remain future work.

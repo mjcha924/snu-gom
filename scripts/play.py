@@ -27,7 +27,7 @@ def main():
     if motion_path:
         from snu_gom_walk.motion_pipeline.library import load_library
         settings=saved_config['settings'];motion_path=ROOT/motion_path
-        selected,_,_=load_library(motion_path,kind=settings['task'],split='val',allow_kinematic=settings.get('motion_allow_kinematic',False))
+        selected,_,_=load_library(motion_path,kind=settings['task'],split='val',allow_kinematic=settings.get('motion_allow_kinematic'),require_dynamics=settings.get('motion_require_dynamics',False))
         import hashlib
         if hashlib.sha256(motion_path.read_bytes()).hexdigest()!=settings['motion_manifest_sha256']:raise ValueError('Checkpoint motion library changed')
         os.environ['SNU_GOM_URDF']=str(selected.urdf)

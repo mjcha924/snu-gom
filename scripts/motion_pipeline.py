@@ -22,7 +22,8 @@ def main():
     run.add_argument('--seconds',type=float,default=4.);run.add_argument('--fps',type=int,default=50);run.add_argument('--seed',type=int,default=20261121)
     run.add_argument('--physics-seconds',type=float,help='Optional shorter diagnostic; never marks the full clip physics-passing')
     plan=sub.add_parser('train-plan');plan.add_argument('--run',type=Path,required=True);plan.add_argument('--kind',choices=['stand','walk'],default='walk')
-    plan.add_argument('--allow-kinematic',action='store_true');plan.add_argument('--urdf',type=Path)
+    plan.add_argument('--allow-kinematic',action='store_true',default=None,help='Compatibility alias; motor screening always remains required')
+    plan.add_argument('--require-dynamics',action='store_true');plan.add_argument('--urdf',type=Path)
     review=sub.add_parser('review');review.add_argument('--run',type=Path)
     export=sub.add_parser('export');export.add_argument('--run',type=Path,required=True);export.add_argument('--output',type=Path)
     args=parser.parse_args()
@@ -42,8 +43,8 @@ def main():
         print(json.dumps(export_dataset(args.run,args.output),indent=2))
     else:
         from snu_gom_walk.motion_pipeline.library import load_library
-        path=args.run.resolve()/'manifest.json';robot,manifest,train=load_library(path,kind=args.kind,allow_kinematic=args.allow_kinematic,urdf=args.urdf)
-        _,_,val=load_library(path,kind=args.kind,split='val',allow_kinematic=args.allow_kinematic,urdf=args.urdf)
+        path=args.run.resolve()/'manifest.json';robot,manifest,train=load_library(path,kind=args.kind,allow_kinematic=args.allow_kinematic,require_dynamics=args.require_dynamics,urdf=args.urdf)
+        _,_,val=load_library(path,kind=args.kind,split='val',allow_kinematic=args.allow_kinematic,require_dynamics=args.require_dynamics,urdf=args.urdf)
         from snu_gom_walk.model import ALL_JOINTS
         if set(robot.names)!=set(ALL_JOINTS):raise ValueError('Motion generated, but current Isaac adapter requires the SNU GOM 12-joint contract')
         if robot.profile['root_link']!='base_reference' or robot.feet!=['left_foot_link','right_foot_link']:raise ValueError('Changed root/foot roles require a training adapter update')
@@ -54,9 +55,11 @@ def main():
         relative=path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
         command=['python','scripts/train.py','--task',args.kind,'--motion-manifest',relative,'--num-envs','32','--iterations','2','--headless']
         if args.allow_kinematic:command.append('--allow-kinematic')
+        if args.require_dynamics:command.append('--require-dynamics')
         result=dict(schema='gom_training_handoff_v1',model_id=robot.model_id,manifest_sha256=digest(path),
                     train=[e['id'] for e,_ in train],val=[e['id'] for e,_ in val],
-                    allow_kinematic=args.allow_kinematic,command=command,training_executed=False,isaac_runtime_verified=False)
+                    allow_kinematic=args.allow_kinematic,require_dynamics=args.require_dynamics,reference_eligibility='full-frame kinematics + independent motor screen',
+                    dynamics_verified=all(e['dynamics_verified'] for e,_ in train+val),command=command,training_executed=False,isaac_runtime_verified=False)
         write_json(args.run/'train-plan.json',result);print(json.dumps(result,ensure_ascii=False,indent=2))
 
 

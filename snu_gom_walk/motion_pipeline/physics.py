@@ -11,7 +11,9 @@ from scipy.spatial.transform import Rotation,Slerp
 def sample(a,time):
     t=float(np.clip(time,a['time'][0],a['time'][-1]));i=min(int(np.searchsorted(a['time'],t,side='right')-1),len(a['time'])-2);i=max(i,0)
     u=(t-a['time'][i])/(a['time'][i+1]-a['time'][i]);result={}
-    for k in ['joints_pos','joints_vel','root_pos','world_linear_vel','world_angular_vel','com_world','foot_positions_world']:
+    for k in ['joints_pos','joints_vel','root_pos','world_linear_vel','world_angular_vel','com_world','foot_positions_world',
+              'joints_acc','com_velocity_world','com_acceleration_world','foot_velocities_world','foot_accelerations_world']:
+        if k not in a:continue
         result[k]=a[k][i]*(1-u)+a[k][i+1]*u
     result['root_quat']=Slerp([0,1],Rotation.from_quat(a['root_quat'][i:i+2]))([u]).as_quat()[0]
     result['planned_contacts']=a['planned_contacts'][i]
@@ -42,19 +44,20 @@ class ContactController:
     def step(self,d,target):
         import mujoco
         r=self.r;m=self.m;nv=m.nv;settings=r.profile['physics'];Jq=np.eye(nv)[r.vi]
-        C=[Jq];b=[settings['kp']*(target['joints_pos']-d.qpos[r.qi])+settings['kd']*(target['joints_vel']-d.qvel[r.vi])]
+        C=[Jq];b=[target.get('joints_acc',0)+settings['kp']*(target['joints_pos']-d.qpos[r.qi])+settings['kd']*(target['joints_vel']-d.qvel[r.vi])]
         J=np.zeros((3,nv));mujoco.mj_jacSubtreeCom(m,d,J,r.root_id)
-        C.append(np.sqrt(30)*J);b.append(np.sqrt(30)*(60*(target['com_world']-d.subtree_com[r.root_id])-12*(J@d.qvel)))
+        C.append(np.sqrt(30)*J);b.append(np.sqrt(30)*(target.get('com_acceleration_world',0)+60*(target['com_world']-d.subtree_com[r.root_id])+12*(target.get('com_velocity_world',0)-J@d.qvel)))
         J=np.zeros((3,nv));W=J.copy();mujoco.mj_jacBody(m,d,J,W,r.root_id)
         error=(Rotation.from_quat(target['root_quat'])*Rotation.from_matrix(d.xmat[r.root_id].reshape(3,3)).inv()).as_rotvec()
         C.append(np.sqrt(3)*W);b.append(np.sqrt(3)*(50*error+12*(target['world_angular_vel']-W@d.qvel)))
         for s,body in enumerate(r.foot_ids):
             point=d.xmat[body].reshape(3,3)@r.sole_local[s]+d.xpos[body];J=np.zeros((3,nv));mujoco.mj_jac(m,d,J,None,point,body)
             weight=100 if target['planned_contacts'][s] else 20
-            desired=150*(target['foot_positions_world'][s]-point)-20*(J@d.qvel)
+            desired=target.get('foot_accelerations_world',np.zeros((2,3)))[s]+150*(target['foot_positions_world'][s]-point)+20*(target.get('foot_velocities_world',np.zeros((2,3)))[s]-J@d.qvel)
             C.append(np.sqrt(weight)*J);b.append(np.sqrt(weight)*desired)
         C=np.concatenate(C);b=np.concatenate(b)
-        cap=np.minimum(r.effort,np.minimum(self.stall*settings['stall_fraction'],self.stall*np.maximum(0,1-abs(d.qvel[r.vi])/self.speed)))
+        from .motors import torque_envelope
+        cap=torque_envelope(r.profile,r.names,d.qvel[r.vi],r.effort)
         safe=np.maximum(cap,1e-9);u=np.clip(self.u,-cap,cap);a=self.forward(d,u)
         def cost(acc,effort):return np.sum((C@acc-b)**2)+.01*np.sum((effort/safe)**2)
         value=cost(a,u)
@@ -72,6 +75,20 @@ class ContactController:
         return u,cap
 
 
+def loaded_contacts(robot,data,previous):
+    """Force-based support with hysteresis, not proximity of collision shapes."""
+    import mujoco
+    loads=np.zeros(2);m=robot.model
+    for ci,c in enumerate(data.contact):
+        if 0 not in c.geom:continue
+        geom=int(c.geom[1] if c.geom[0]==0 else c.geom[0]);body=int(m.geom_bodyid[geom])
+        if body not in robot.foot_ids:continue
+        force=np.zeros(6);mujoco.mj_contactForce(m,data,ci,force)
+        world=c.frame.reshape(3,3).T@force[:3];loads[robot.foot_ids.index(body)]+=abs(world[2])
+    settings=robot.profile['physics'];weight=robot.mass*9.81
+    return np.where(previous,loads>weight*settings.get('contact_off_weight_fraction',.01),loads>weight*settings.get('contact_on_weight_fraction',.025)),loads
+
+
 def rollout(robot,a,seconds=None):
     import mujoco
     m=robot.model;d=mujoco.MjData(m);controller=ContactController(robot);warmup=robot.profile['physics']['warmup_s']
@@ -80,10 +97,13 @@ def rollout(robot,a,seconds=None):
     d.qpos[:3]=a['root_pos'][0];d.qpos[3:7]=a['root_quat'][0][[3,0,1,2]];d.qpos[robot.qi]=a['joints_pos'][0]
     mujoco.mj_forward(m,d);trace=[];failure=None;all_tau=[];all_caps=[];errors=[]
     dt=m.opt.timestep;record_stride=max(1,round(1/float(a['fps'])/dt));q_within=True;speed_within=True;critical={};max_tilt=0.
+    contact_state=np.ones(2,dtype=bool)
     for step in range(round((warmup+duration)/dt)+1):
         time=step*dt;ref=sample(a,max(0,time-warmup))
         if time<warmup:
             ref['joints_vel']=np.zeros(len(robot.names));ref['world_angular_vel']=np.zeros(3)
+            for key in ['joints_acc','com_velocity_world','com_acceleration_world','foot_velocities_world','foot_accelerations_world']:
+                if key in ref:ref[key]=np.zeros_like(ref[key])
         u,cap=controller.step(d,ref);d.ctrl[:]=u;mujoco.mj_step(m,d);mujoco.mj_forward(m,d)
         all_tau.append(u.copy());all_caps.append(cap.copy())
         q_within &= bool(((d.qpos[robot.qi]>=robot.urdf_lower-1e-4)&(d.qpos[robot.qi]<=robot.urdf_upper+1e-4)).all())
@@ -102,13 +122,9 @@ def rollout(robot,a,seconds=None):
         max_tilt=max(max_tilt,tilt)
         if not np.isfinite(d.qpos).all() or tilt>45 or d.xpos[robot.root_id,2]<.65*robot.height:
             failure={'time_s':float(time),'during_warmup':time<warmup,'reason':'fell / invalid state'}
+        contact_state,loads=loaded_contacts(robot,d,contact_state)
         if time>=warmup and step%record_stride==0:
-            robot.data=d;points=robot.world_feet();heights=[float(p[:,2].min()) for p in points];contacts=[False,False]
-            for c in d.contact:
-                if 0 not in c.geom or c.dist>.0005:continue
-                geom=int(c.geom[1] if c.geom[0]==0 else c.geom[0]);body=int(m.geom_bodyid[geom])
-                for s,bid in enumerate(robot.foot_ids):
-                    if body==bid:contacts[s]=True
+            robot.data=d;points=robot.world_feet();heights=[float(p[:,2].min()) for p in points];contacts=contact_state.tolist()
             error=d.qpos[robot.qi]-ref['joints_pos'];errors.append(error)
             boxes=[]
             for g in range(1,m.ngeom):
@@ -118,7 +134,7 @@ def rollout(robot,a,seconds=None):
             trace.append(dict(time_s=float(time-warmup),root_pos=d.xpos[robot.root_id].tolist(),tilt_deg=tilt,
                  root_quat=Rotation.from_matrix(d.xmat[robot.root_id].reshape(3,3)).as_quat().tolist(),
                  joints_pos=d.qpos[robot.qi].tolist(),joints_vel=d.qvel[robot.vi].tolist(),torque_nm=u.tolist(),
-                 contacts=contacts,reference_contacts=ref['planned_contacts'].tolist(),sole_heights=heights,boxes=boxes))
+                 contacts=contacts,normal_load_n=loads.tolist(),reference_contacts=ref['planned_contacts'].tolist(),sole_heights=heights,boxes=boxes))
         if failure:break
     tau=np.asarray(all_tau);caps=np.asarray(all_caps);agreement=0.;single=0.;progress=None;qualified=[0,0];alternating=0
     if trace:

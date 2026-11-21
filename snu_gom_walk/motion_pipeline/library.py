@@ -15,6 +15,7 @@ def build(robot,output,count=4,seconds=4.,fps=50,seed=20261121,physics_seconds=N
     from .generate import generate
     from .validate import validate_file
     from .physics import rollout
+    from .feasibility import screen_reference
     from .review import render
     if count<4:raise ValueError('At least four clips are required for stand/walk train/val separation')
     config=dict(count=count,seconds=seconds,fps=fps,seed=seed,physics_seconds=physics_seconds)
@@ -36,8 +37,10 @@ def build(robot,output,count=4,seconds=4.,fps=50,seed=20261121,physics_seconds=N
             validation,preview=validate_file(robot,path)
             metadata.update(clip_sha256=digest(path),model_id=robot.model_id,kind=kind,split=split)
             write_json(path.with_suffix('.metadata.json'),metadata)
-            physical=None;trace=[]
+            physical=None;trace=[];screen=None
             if validation['passed']:
+                screen=screen_reference(robot,arrays);screen['clip_sha256']=digest(path)
+                write_json(path.with_suffix('.screen.json'),screen)
                 physical,trace=rollout(robot,arrays,physics_seconds)
                 physical['clip_sha256']=digest(path);write_json(path.with_suffix('.physics.json'),physical)
                 write_json(path.with_suffix('.trace.json'),dict(frames=trace,joint_names=robot.names))
@@ -47,23 +50,26 @@ def build(robot,output,count=4,seconds=4.,fps=50,seed=20261121,physics_seconds=N
             entry=dict(id=name,kind=kind,split=split,file=path.name,sha256=digest(path),
                        validation_sha256=digest(path.with_suffix('.validation.json')),
                        kinematic_verified=validation['passed'],dynamics_verified=bool(physical and physical['passed']),
+                       reference_eligible=bool(validation['passed'] and screen and screen['reference_eligible']),
                        duration_s=float(arrays['time'][-1]),fps=fps,parameters=parameters.copy())
             if physical:entry['physics_sha256']=digest(path.with_suffix('.physics.json'))
-            review.append(dict(entry=entry,kinematic=validation,physics=physical,preview=preview,trace=trace))
-            if validation['passed']:
+            if screen:entry['screen_sha256']=digest(path.with_suffix('.screen.json'));entry['motor_status']=screen['motor_status']
+            review.append(dict(entry=entry,kinematic=validation,screen=screen,physics=physical,preview=preview,trace=trace))
+            if entry['reference_eligible']:
                 manifest['clips'].append(entry);accepted=True
             else:
-                manifest['rejected'].append(dict(id=name,checks=[k for k,v in validation['checks'].items() if not v]))
+                manifest['rejected'].append(dict(id=name,checks=[k for k,v in validation['checks'].items() if not v],motor_status=screen['motor_status'] if screen else None))
             write_json(run/'manifest.json',manifest)
-            print(f'{name}: kinematic={validation["passed"]}; physics={entry["dynamics_verified"]}',flush=True)
+            print(f'{name}: kinematic={validation["passed"]}; reference={entry["reference_eligible"]}; motor={entry.get("motor_status")}; physics={entry["dynamics_verified"]}',flush=True)
             if accepted:break
             # Smaller/slower authored tasks, never a relaxation of the gates.
             parameters['speed_m_s']*=.7;parameters['clearance_m']*=.85
             parameters['torso_roll_deg']*=.5;parameters['torso_pitch_deg']*=.5
-        if not accepted:print(f'No accepted kinematic clip for {kind}/{split}',flush=True)
+        if not accepted:print(f'No eligible reference clip for {kind}/{split}',flush=True)
     render(run/'review.html',review,manifest)
     summary=dict(schema='gom_pipeline_summary_v1',model_id=robot.model_id,config=config,
                  accepted_kinematic=len(manifest['clips']),accepted_physics=sum(c['dynamics_verified'] for c in manifest['clips']),
+                 accepted_reference=sum(c['reference_eligible'] for c in manifest['clips']),
                  rejected_attempts=len(manifest['rejected']),isaac_runtime_verified=False,gpu_training_run=False,
                  clips=[dict(id=r['entry']['id'],kind=r['entry']['kind'],split=r['entry']['split'],
                              kinematic=r['kinematic']['passed'],physics=bool(r['physics'] and r['physics']['passed']),
@@ -73,7 +79,7 @@ def build(robot,output,count=4,seconds=4.,fps=50,seed=20261121,physics_seconds=N
     print('RUN_DIRECTORY='+str(run.resolve()),flush=True);return run,summary
 
 
-def load_library(path,*,split='train',kind=None,allow_kinematic=False,urdf=None,check_sources=True):
+def load_library(path,*,split='train',kind=None,allow_kinematic=None,require_dynamics=False,urdf=None,check_sources=True):
     """Recompute all live asset fingerprints before exposing any training target."""
     path=Path(path).resolve();manifest=json.loads(path.read_text(encoding='utf-8'));robot=RobotModel(manifest['profile'],urdf=urdf,with_physics=False)
     if manifest.get('schema')!='gom_motion_library_v1':raise ValueError('Unsupported motion library schema')
@@ -91,17 +97,22 @@ def load_library(path,*,split='train',kind=None,allow_kinematic=False,urdf=None,
         if digest(clip)!=entry['sha256']:raise ValueError('Motion file modified: '+entry['id'])
         validation=clip.with_suffix('.validation.json')
         if digest(validation)!=entry['validation_sha256']:raise ValueError('Validation report modified')
-        report=json.loads(validation.read_text())
+        report=json.loads(validation.read_text(encoding='utf-8'))
         if not report['passed'] or report['clip_sha256']!=entry['sha256'] or report['model_id']!=robot.model_id or report['geometry_frame_stride']!=1:
             raise ValueError('Missing/stale full-frame validation')
+        screen=clip.with_suffix('.screen.json')
+        if not screen.exists() or digest(screen)!=entry.get('screen_sha256'):raise ValueError('Missing/modified motor reference screen; rebuild library')
+        assessment=json.loads(screen.read_text(encoding='utf-8'))
+        if not entry.get('reference_eligible') or not assessment['reference_eligible'] or assessment['model_id']!=robot.model_id or assessment['clip_sha256']!=entry['sha256']:
+            raise ValueError('Reference exceeds motor planning envelope or has a stale screen')
         physics=clip.with_suffix('.physics.json')
         if entry.get('physics_sha256'):
             if not physics.exists() or digest(physics)!=entry['physics_sha256']:raise ValueError('Physics report modified')
-            result=json.loads(physics.read_text())
+            result=json.loads(physics.read_text(encoding='utf-8'))
             if result['clip_sha256']!=entry['sha256'] or result['model_id']!=robot.model_id:raise ValueError('Stale physics result')
-        if not allow_kinematic:
-            if not entry['dynamics_verified'] or not physics.exists() or digest(physics)!=entry.get('physics_sha256'):raise ValueError('No passing physics validation. Explicit --allow-kinematic is required for a provisional RL experiment.')
-            result=json.loads(physics.read_text())
+        if require_dynamics or allow_kinematic is False:
+            if not entry['dynamics_verified'] or not physics.exists() or digest(physics)!=entry.get('physics_sha256'):raise ValueError('No passing physics validation for --require-dynamics. Default reference mode uses kinematic and motor screens independently of tracking success.')
+            result=json.loads(physics.read_text(encoding='utf-8'))
             if not result['passed'] or result['clip_sha256']!=entry['sha256'] or result['model_id']!=robot.model_id:raise ValueError('Stale physics result')
         with np.load(clip,allow_pickle=False) as raw:a={k:raw[k].copy() for k in raw.files}
         if str(a['model_id'])!=robot.model_id or a['joint_names'].tolist()!=robot.names:raise ValueError('Motion joint/model contract mismatch')
@@ -119,7 +130,7 @@ def export_dataset(run,output=None):
     for e in manifest['clips']:
         clip=(run/e['file']).resolve()
         if not clip.is_relative_to(run):raise ValueError('Dataset path escapes run')
-        for suffix in ['.npz','.validation.json','.physics.json','.metadata.json']:
+        for suffix in ['.npz','.validation.json','.screen.json','.physics.json','.metadata.json']:
             candidate=clip.with_suffix(suffix)
             if candidate.exists():files.append(candidate)
     if not run.is_relative_to(ROOT):raise ValueError('Keep run inside repository for portable server export')

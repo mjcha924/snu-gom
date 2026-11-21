@@ -4,7 +4,7 @@
 
 이 브랜치는 기존 `snu_gom_walk`와 `scripts/train.py`에 모션 라이브러리를 연결합니다. 기존 로컬 Open Duck 폴더나 다른 브랜치를 수정하는 방식이 아닙니다. 원본 URDF·메시·질량·관절 축도 덮어쓰지 않습니다.
 
-**부드러운 기구학 보행 후보와 실제 물리 보행 성공을 구분합니다.** 기립은 CPU 물리 검사로 확인했지만 자연스러운 동역학 보행·Isaac의 새 학습 경로·실물 운전은 아직 검증하지 않았습니다. 이 작업에서 GPU 학습이나 GPU 서버 접속은 하지 않았습니다.
+**학습 레퍼런스 사용과 현재 제어기의 물리 보행 성공을 구분합니다.** 기본 학습은 전 프레임 기구학 검사와 별도의 모터 검사를 통과한 후보를 받습니다. 접촉 균형을 풀지 못한 일부 프레임은 조건부로 표시하며, 물리 추종 미통과만으로 학습을 차단하지 않습니다. Isaac의 새 학습 경로와 실물 운전은 아직 검증하지 않았으며 GPU 학습이나 서버 접속은 하지 않았습니다. [hip roll 원인 분석](experiments/hip-roll-torque-diagnosis.md).
 
 ## 1. 로컬 설치
 
@@ -60,10 +60,11 @@ STL/OBJ 충돌 발은 실제 볼록 껍질 정점을 사용합니다. 발 링크
 기립·보행을 최소 두 개씩 만들고 종류별로 마지막 클립을 검증용으로 분리합니다. seed와 제한된 균등 범위에서 주기·속도·상체·시선을 바꾸며, 관절에 무작위 잡음을 더하는 방식이 아닙니다. 각 후보의 재시도는 최대 세 번이고, 실패하면 목표를 작게 바꿉니다. 합격 기준을 자동 완화하지 않습니다.
 
 1. **부드러운 발 궤적:** 이륙/착지에서 속도와 가속도가 0인 다항 곡선을 사용합니다. 처음·끝에는 양발 지지 시간을 둡니다.
-2. **무게중심/압력중심 계획:** 유한 구간 LIPM QP로 지지 영역과 미래 발 배치를 고려합니다. 이 계획은 명목 CoM 높이 근사입니다. 실제 전신 CoM 높이는 고정하지 않고, 골반 곡선과 IK 결과에 따라 바뀝니다.
+2. **무게중심/압력중심 계획:** 유한 구간 LIPM QP에 양발의 2차원 볼록 지지 다각형을 사용합니다. 기울어진 발의 낮은 접촉면을 다시 읽어 CoM 계획을 최대 2 mm 범위에서 부드럽게 보정합니다. 실제 접촉면은 소프트 목표이고 발 외곽은 하드 제약입니다. 접촉면 일치나 완전한 동역학을 보장하지 않습니다. 실제 전신 CoM 높이는 골반 곡선과 IK 결과에 따라 바뀝니다.
 3. **전신 IK:** 분석 Jacobian으로 발·CoM·골반·목을 맞추고, 관절 범위와 프레임 간 속도 제한을 강제합니다. 발목 roll이 없으므로 발의 수동 구름을 허용하되 실제 충돌 형상의 최저점이 바닥에 박히지 않도록 계산합니다.
 4. **기구학 검사:** 모든 프레임의 FK, ROM, 속도, 저장된 속도의 일치, 발/CoM 오차, 바닥 침투, 몸통의 바닥 접촉과 자기충돌을 검사합니다. AABB 지지 여유는 진단값이며 동역학 안정성 증명은 아닙니다.
-5. **물리 검사:** MuJoCo에서 부유 기저·중력·마찰·접촉을 켜고 관절 토크만 적용합니다. 동일한 접촉 법칙의 역동역학 미분으로 토크를 탐색하고 실제 전진 계산에서 다시 확인합니다. 루트에 보조 힘을 주거나 매 프레임 위치를 강제하지 않습니다.
+5. **독립 모터 검사:** 모든 프레임에서 부유 기저를 포함한 전신 운동방정식을 풀고, 양의 지면 반력·마찰 제약 아래 최대 정규화 관절 토크를 최소화합니다. 이 최소값이 모터 임시 외피를 넘으면 레퍼런스에서 제외합니다. 발 외곽 전체를 지지 가능하다고 보는 낙관적 검사라 실제 구름 접촉의 실현 가능성 증명은 아닙니다. 접촉 균형 자체가 미해결인 프레임은 과토크로 단정하지 않고 조건부로 표시합니다. 모든 프레임이 미해결이면 제외합니다.
+6. **물리 추종 검사:** MuJoCo에서 부유 기저·중력·마찰·접촉을 켜고 관절 토크만 적용합니다. 발·CoM·관절의 목표 속도/가속도도 추종하며, 지면 반력과 히스테리시스로 실제 지지 발을 판단합니다. 동일 접촉 법칙의 역동역학 미분으로 토크를 탐색하고 실제 전진 계산에서 확인합니다. 루트 보조 힘이나 매 프레임 위치 강제는 없습니다.
 
 물리 합격에는 전체 구간 생존뿐 아니라 관절 한계·속도·토크, 자기/몸통 바닥 접촉, 몸통 기울기, 접촉 일정, 실제 한 발 지지, 충분히 들고 반대 발이 지지한 상태에서의 번갈아 착지, 목표 대비 전진을 확인합니다. 짧게 검사하는 `--physics-seconds`는 진단용이며 전체 클립의 물리 합격을 만들지 않습니다. 이 문턱값은 프로젝트의 임시 공학 기준이며 Disney 논문 수치가 아닙니다.
 
@@ -84,6 +85,7 @@ BDX는 제작된 태스크 공간 보행 → CoM/CoP 계획 → 역동역학 →
 | `manifest.json` | 모델·코드·클립·검사 지문, 학습/검증 구분 |
 | `*.npz` | 관절/루트/발/CoM 상태, 위상, 접촉, 목표 |
 | `*.validation.json` | 전 프레임 기구학 결과, 속도·가속도 지표 |
+| `*.screen.json` | 추종 제어기와 독립적인 모터 필요 토크 검사, 미해결 균형 프레임 |
 | `*.physics.json` | 생존·착지·전진·충돌·토크 peak/RMS·추종 오차 |
 | `*.trace.json`, `*.torque.csv` | 물리 재생 데이터와 관절별 토크 |
 | `review.html`, `summary.json` | 사람용 비교 화면과 기계가 읽는 요약 |
@@ -93,12 +95,13 @@ BDX는 제작된 태스크 공간 보행 → CoM/CoP 계획 → 역동역학 →
 ```powershell
 $motionRun = (Get-Content reports/motion_pipeline/latest.json -Raw | ConvertFrom-Json).run
 .\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py train-plan --run $motionRun --kind stand
-# 물리 미통과 보행을 모방하며 균형을 배우는 실험을 명시적으로 선택할 때만:
-.\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py train-plan --run $motionRun --kind walk --allow-kinematic
+.\.venv-motion\Scripts\python.exe scripts/motion_pipeline.py train-plan --run $motionRun --kind walk
+# 물리 추종까지 합격한 후보만 사용하려는 경우 추가:
+# --require-dynamics
 .\.venv-motion\Scripts\python.exe -m unittest discover -s tests/motion_pipeline -v
 ```
 
-이 단계는 Isaac·GPU 학습을 실행하지 않습니다. 라이브 모델과 모든 파일/보고서 지문을 확인하고 학습/검증 클립 및 서버 명령을 `train-plan.json`에 씁니다. 기본값은 물리 합격 데이터만 허용합니다. `--allow-kinematic`은 물리적으로 추종 가능한 보행이 검증됐다는 의미가 아닙니다.
+이 단계는 Isaac·GPU 학습을 실행하지 않습니다. 라이브 모델과 모든 파일/보고서 지문을 확인하고 학습/검증 클립 및 서버 명령을 `train-plan.json`에 씁니다. 기본값은 기구학·모터 검사를 통과한 레퍼런스입니다. `--require-dynamics`만 물리 추종 합격까지 요구합니다. 기존 `--allow-kinematic`은 호환용 별칭이며 모터 검사·변조 검사를 우회하지 않습니다.
 
 ## 6. 나중에 서버에서 학습
 
@@ -119,9 +122,9 @@ python scripts/motion_pipeline.py train-plan --run reports/motion_pipeline/<run>
 python scripts/train.py --task stand --motion-manifest reports/motion_pipeline/<run>/manifest.json \
   --num-envs 32 --iterations 2 --memory-fraction .35 --headless
 
-# 기구학 보행을 쓰는 명시적 실험
+# 모터 검사된 기준 보행을 사용해 균형과 추종을 학습
 python scripts/train.py --task walk --motion-manifest reports/motion_pipeline/<run>/manifest.json \
-  --allow-kinematic --num-envs 32 --iterations 2 --memory-fraction .35 --headless
+  --num-envs 32 --iterations 2 --memory-fraction .35 --headless
 
 # 분리해 둔 val 모션으로 평가
 python scripts/play.py --checkpoint runs/<run>/model.pt --episodes 2 --seconds 4 --headless
@@ -129,7 +132,9 @@ python scripts/play.py --checkpoint runs/<run>/model.pt --episodes 2 --seconds 4
 
 라이브러리 모드는 10개 다리 행동과 12개 관절 상태를 사용합니다. 정책 관측 72개/critic 90개이며, 기준 관절·속도·접촉·높이·목·위상 정보를 포함합니다. 클립을 무작위로 선택하고 유한 구간 끝에서 reset합니다. 평가에서는 val 클립을 순서대로 순환합니다. 목은 기준 명령을 따릅니다. 50Hz 목표는 500Hz 물리 계산에 선형 보간하고, 명시적 PD effort와 같은 5V 토크/속도 외피를 적용합니다. 오프라인의 역동역학 제어기와 학습의 PD 제어기는 서로 다릅니다.
 
-XL330/XC330의 공급 전압은 5V, 기본 상한은 stall의 20%와 URDF effort 중 작은 값입니다. 속도에 따른 상한도 보수적으로 적용합니다. **연속 정격·열·패드 물성·실측 서보 모델이 아닙니다.** `working_limits`는 IK 작업 범위이며 MuJoCo에 가짜 기계적 스토퍼로 추가하지 않습니다. 실제 관절 스토퍼는 원본 URDF 범위를 보존합니다.
+제조사 5V 사양은 [XL330-M288](https://emanual.robotis.com/docs/en/dxl/x/xl330-m288/) stall 0.52 N·m·무부하 103 rpm, [XC330-M288](https://emanual.robotis.com/docs/en/dxl/x/xc330-m288/) 0.93 N·m·81 rpm입니다. 이 프로파일은 레퍼런스 계획용으로 stall의 60%인 **0.312 / 0.558 N·m**를 상한으로 두며 속도가 높으면 더 낮춥니다. XC330은 공식 성능 그래프에서 읽은 근사 표, XL330은 임시 선형 외피를 사용합니다. 60%는 사용자가 요청한 여유 있는 레퍼런스 검토 가정이며 제조사 연속 정격이 아닙니다.
+
+`override_provisional_urdf_effort_velocity=true`로 현재 URDF의 임시 0.15 N·m·1 rad/s를 이 모터 프로파일로 명시적으로 대체합니다. 속도 계획 한계는 무부하의 35%지만 IK 목표의 변화는 0.8 rad/s 이하로 유지합니다. 이를 끄면 URDF의 더 작은 제한도 적용합니다. **연속 정격·열·패드 물성·실측 서보 모델은 아닙니다.** `working_limits`는 IK 작업 범위이며 실제 관절 스토퍼는 원본 URDF 범위를 보존합니다.
 
 Torch 메모리 비율은 기본 0.35, 최대 0.4로 제한하지만 PhysX·렌더러까지 제한하지 않으므로 전체 사용량을 확인해야 합니다. 장시간/대용량 실행은 팀 공유 규칙을 따르세요. 기존 체크포인트는 당시 소스/모델과 연결돼 있으므로 새 관측·모터 모델의 실험에는 새 학습을 시작합니다. 모델·소스·데이터가 다른 resume/replay를 강제로 허용하지 않습니다.
 

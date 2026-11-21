@@ -13,8 +13,8 @@ def slerp(a,b,u):
 
 
 class MotionBank:
-    def __init__(self,path,joint_names,*,device='cpu',kind='walk',split='train',allow_kinematic=False,urdf=None):
-        robot,manifest,clips=load_library(path,split=split,kind=kind,allow_kinematic=allow_kinematic,urdf=urdf)
+    def __init__(self,path,joint_names,*,device='cpu',kind='walk',split='train',allow_kinematic=None,require_dynamics=False,urdf=None):
+        robot,manifest,clips=load_library(path,split=split,kind=kind,allow_kinematic=allow_kinematic,require_dynamics=require_dynamics,urdf=urdf)
         if len(set(joint_names))!=len(joint_names) or set(joint_names)!=set(robot.names):raise ValueError('Training joint mapping differs from motion profile')
         self.device=torch.device(device);self.entries=[e for e,_ in clips];self.model_id=robot.model_id;self.joint_names=list(joint_names)
         self.fps=torch.tensor([float(a['fps']) for _,a in clips],device=self.device)

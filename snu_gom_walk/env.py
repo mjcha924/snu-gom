@@ -38,7 +38,8 @@ class GomEnvCfg(DirectRLEnvCfg):
     foot_clearance = 0.006
     reference_assistance = False
     motion_manifest = ''
-    motion_allow_kinematic = False
+    motion_allow_kinematic = None
+    motion_require_dynamics = False
     motion_split = 'train'
     motion_manifest_sha256 = ''
     motion_model_id = ''
@@ -140,14 +141,15 @@ class GomEnv(DirectRLEnv):
             if cfg.actuator_model!='implicit':raise ValueError('Library mode uses explicit bounded PD efforts; BAM remains a separate actuator experiment')
             from .motion_pipeline.library import load_library
             selected,_,selected_clips=load_library(ROOT/cfg.motion_manifest,kind=cfg.task,split=cfg.motion_split,
-                                     allow_kinematic=cfg.motion_allow_kinematic,urdf=URDF)
-            motors=selected.profile['motors'];fraction=selected.profile['physics']['stall_fraction']
-            params={n:motors.get('overrides',{}).get(n,motors['default']) for n in ALL_JOINTS}
-            caps={n:min(MODEL['joints'][n]['effort'],params[n]['stall_nm']*fraction) for n in ALL_JOINTS}
+                                     allow_kinematic=cfg.motion_allow_kinematic,require_dynamics=cfg.motion_require_dynamics,urdf=URDF)
+            from .motion_pipeline.motors import motor_rows
+            params=dict(zip(ALL_JOINTS,motor_rows(selected.profile,ALL_JOINTS)))
+            caps={n:float(selected.effort[selected.names.index(n)]) for n in ALL_JOINTS}
+            speeds={n:float(selected.speed[selected.names.index(n)]) for n in ALL_JOINTS}
             self.motion_motor_parameters=(params,caps)
             cfg.robot.actuators={'library_effort':IdealPDActuatorCfg(joint_names_expr=ALL_JOINTS,
                 stiffness=0.,damping=0.,effort_limit=caps,effort_limit_sim=caps,
-                velocity_limit_sim={n:MODEL['joints'][n]['velocity'] for n in ALL_JOINTS})}
+                velocity_limit_sim=speeds)}
             cfg.episode_length_s=max(cfg.episode_length_s,max(float(a['time'][-1]) for _,a in selected_clips)+cfg.sim.dt*cfg.decimation)
         elif cfg.actuator_model == "bam-xl330-m1":
             from .bam_actuator import configure_bam_actuators
@@ -178,7 +180,7 @@ class GomEnv(DirectRLEnv):
         if cfg.motion_manifest:
             from .motion_pipeline.bank import MotionBank
             self.motion_bank=MotionBank(ROOT/cfg.motion_manifest,ALL_JOINTS,device=self.device,kind=cfg.task,
-                                       split=cfg.motion_split,allow_kinematic=cfg.motion_allow_kinematic,urdf=URDF)
+                                       split=cfg.motion_split,allow_kinematic=cfg.motion_allow_kinematic,require_dynamics=cfg.motion_require_dynamics,urdf=URDF)
             self.motion_ids=torch.zeros(self.num_envs,dtype=torch.long,device=self.device)
             self.motion_sole_offsets=self.motion_bank.sole_points_link
             self.motion_evaluation_cursor=0
@@ -186,12 +188,16 @@ class GomEnv(DirectRLEnv):
             self.motion_stall=torch.tensor([params[n]['stall_nm'] for n in ALL_JOINTS],device=self.device)
             self.motion_no_load=torch.tensor([params[n]['no_load_rad_s'] for n in ALL_JOINTS],device=self.device)
             self.motion_effort_cap=torch.tensor([caps[n] for n in ALL_JOINTS],device=self.device)
+            from .motion_pipeline.motors import curve_arrays
+            curve_speed,curve_torque=curve_arrays(selected.profile,ALL_JOINTS)
+            self.motion_curve_speed=torch.tensor(curve_speed,dtype=torch.float32,device=self.device)
+            self.motion_curve_torque=torch.tensor(curve_torque,dtype=torch.float32,device=self.device)
             self.motion_leg_indices=[ALL_JOINTS.index(n) for n in LEG_JOINTS]
             self.motion_neck_indices=[ALL_JOINTS.index(n) for n in ['neck_yaw_joint','neck_pitch_joint']]
             self.motion_speeds=torch.tensor([e['parameters']['speed_m_s'] if e['kind']=='walk' else 0. for e in self.motion_bank.entries],device=self.device)
             self.reference_report={'kind':'versioned_motion_library','model_id':self.motion_bank.model_id,
                                    'split':cfg.motion_split,'clips':[e['id'] for e in self.motion_bank.entries],
-                                   'allow_kinematic':cfg.motion_allow_kinematic,'finite_clips':True}
+                                   'allow_kinematic':cfg.motion_allow_kinematic,'require_dynamics':cfg.motion_require_dynamics,'finite_clips':True}
             self.scales=torch.tensor([.08,.16,.25,.30,.20]*2,device=self.device)
         if reference is not None:
             self.reference_table = torch.tensor([row["joints"] for row in reference["rows"]], device=self.device)
@@ -293,6 +299,8 @@ class GomEnv(DirectRLEnv):
             velocity=self.robot.data.joint_vel[:,self.obs_ids]
             request=self.cfg.stiffness*(target[:,self.obs_ids]-self.robot.data.joint_pos[:,self.obs_ids])-self.cfg.damping*velocity
             cap=torch.minimum(self.motion_effort_cap,self.motion_stall*(1-velocity.abs()/self.motion_no_load).clamp_min(0))
+            from .motion_pipeline.motors import torch_curve_cap
+            cap=torch.minimum(cap,torch_curve_cap(velocity,self.motion_curve_speed,self.motion_curve_torque))
             self.robot.set_joint_effort_target(request.clamp(-cap,cap),joint_ids=self.obs_ids)
         else:self.robot.set_joint_position_target(self.targets)
 

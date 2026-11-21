@@ -19,7 +19,9 @@ from snu_gom_walk.motion_pipeline.generate import generate
 from snu_gom_walk.motion_pipeline.validate import validate_arrays,validate_file
 from snu_gom_walk.motion_pipeline.library import load_library,source_hashes
 from snu_gom_walk.motion_pipeline.bank import MotionBank,observation_features,slerp
-from snu_gom_walk.motion_pipeline.physics import ContactController
+from snu_gom_walk.motion_pipeline.physics import ContactController,loaded_contacts
+from snu_gom_walk.motion_pipeline.feasibility import screen_reference
+from snu_gom_walk.motion_pipeline.motors import torque_envelope,curve_arrays,torch_curve_cap,motor_rows
 
 
 def fixture(directory,robot=None):
@@ -31,8 +33,10 @@ def fixture(directory,robot=None):
         path=directory/f'clip_{i}.npz';np.savez_compressed(path,**a,clip_seed=np.asarray(i))
         report,_=validate_file(robot,path)
         if not report['passed']:raise AssertionError(report)
+        screen=screen_reference(robot,a);screen['clip_sha256']=digest(path);write_json(path.with_suffix('.screen.json'),screen)
         manifest['clips'].append(dict(id=f'clip_{i}',file=path.name,kind='stand',split=split,sha256=digest(path),
                                       validation_sha256=digest(path.with_suffix('.validation.json')),dynamics_verified=False,
+                                      screen_sha256=digest(path.with_suffix('.screen.json')),reference_eligible=screen['reference_eligible'],
                                       parameters=robot.profile['generation']))
     path=directory/'manifest.json';write_json(path,manifest);return path,a
 
@@ -57,6 +61,10 @@ class PipelineTests(unittest.TestCase):
         self.assertFalse(report['dynamics_verified'])
         self.assertTrue((a['target_sole_height_m'].max(0)>.003).all())
         self.assertLess(max(report['torso_peak_to_peak_deg'][:2]),3.)
+        screen=screen_reference(r,a)
+        self.assertTrue(screen['reference_eligible'],screen)
+        self.assertTrue(set(screen['solver_statuses'])<={0,2})
+        self.assertLess(screen['max_equation_residual'],1e-6)
 
     def test_stand_never_schedules_or_lifts_a_swing_foot(self):
         a,_=generate(RobotModel(),'stand',seconds=2,fps=10)
@@ -96,12 +104,46 @@ class PipelineTests(unittest.TestCase):
             expected=r.foot_points[0];actual=adapted.foot_points[0]
             self.assertLess(np.max(np.min(np.linalg.norm(expected[:,None]-actual[None],axis=-1),axis=1)),1e-7)
 
-    def test_unverified_library_requires_explicit_opt_in(self):
+    def test_screened_reference_is_default_and_tracker_pass_is_optional(self):
         with tempfile.TemporaryDirectory() as d:
             path,_=fixture(d)
-            with self.assertRaisesRegex(ValueError,'physics'):load_library(path,kind='stand')
-            _,_,clips=load_library(path,kind='stand',allow_kinematic=True)
+            _,_,clips=load_library(path,kind='stand')
             self.assertEqual(len(clips),1)
+            with self.assertRaisesRegex(ValueError,'physics'):load_library(path,kind='stand',require_dynamics=True)
+
+    def test_motor_screen_cannot_be_bypassed_with_compatibility_flag(self):
+        with tempfile.TemporaryDirectory() as d:
+            path,_=fixture(d);manifest=json.loads(path.read_text());report=Path(d)/'clip_0.screen.json'
+            screen=json.loads(report.read_text());screen['reference_eligible']=False;write_json(report,screen)
+            manifest['clips'][0]['screen_sha256']=digest(report);write_json(path,manifest)
+            with self.assertRaisesRegex(ValueError,'motor planning'):load_library(path,allow_kinematic=True)
+
+    def test_motor_profile_replaces_only_explicit_placeholder_limits(self):
+        r=RobotModel();roll=r.names.index('left_hip_roll_joint');pitch=r.names.index('left_hip_pitch_joint')
+        self.assertAlmostEqual(r.urdf_effort[roll],.15);self.assertAlmostEqual(r.effort[roll],.312)
+        self.assertAlmostEqual(r.effort[pitch],.558)
+        profile=copy.deepcopy(r.profile);profile['motors']['override_provisional_urdf_effort_velocity']=False
+        limited=RobotModel(profile);self.assertLessEqual(limited.effort[roll],.15);self.assertLessEqual(limited.speed[roll],1.)
+        np.testing.assert_array_equal(limited.urdf_lower,r.urdf_lower)
+        x,y=curve_arrays(r.profile,r.names);tx=torch.tensor(x);ty=torch.tensor(y)
+        for speed in [0,1,2,4,7,11]:
+            v=np.full(len(r.names),speed);curve=torch_curve_cap(torch.tensor(v)[None],tx,ty).numpy()[0]
+            linear=np.array([row['stall_nm']*max(0,1-speed/row['no_load_rad_s']) for row in motor_rows(r.profile,r.names)])
+            np.testing.assert_allclose(np.minimum(np.minimum(curve,linear),r.effort),torque_envelope(r.profile,r.names,v,r.effort))
+
+    def test_reference_screen_rejects_implausible_motors_without_a_tracker(self):
+        r=RobotModel();a,_=generate(r,'stand',seconds=2,fps=10)
+        screen=screen_reference(r,a);self.assertTrue(screen['reference_eligible']);self.assertFalse(screen['tracking_controller_used'])
+        profile=copy.deepcopy(r.profile);profile['motors']['planning_stall_fraction']=.001
+        weak=RobotModel(profile);bad=screen_reference(weak,a)
+        self.assertFalse(bad['reference_eligible']);self.assertGreater(bad['peak_minimum_torque_utilization'],1)
+        a['joints_vel'][:]=100;self.assertFalse(screen_reference(r,a)['reference_eligible'])
+
+    def test_support_polygon_excludes_phantom_aabb_corners(self):
+        from snu_gom_walk.motion_pipeline.generate import preview_com
+        nominal=np.tile([-.02,.02,.15],(21,1));feet=np.tile([[.02,.02,0],[-.02,-.02,0]],(21,1,1))
+        with self.assertRaisesRegex(ValueError,'infeasible'):
+            preview_com(nominal,feet,np.ones((21,2)),np.full((2,2),.002),.15,.1)
 
     def test_train_val_are_disjoint_and_joint_mapping_is_named(self):
         with tempfile.TemporaryDirectory() as d:
@@ -163,6 +205,18 @@ class PipelineTests(unittest.TestCase):
         actual=np.column_stack([(c.forward(d,u+np.eye(len(u))[i]*1e-6)-acc)/1e-6 for i in range(len(u))])
         self.assertLess(np.linalg.norm(expected-actual)/np.linalg.norm(actual),1e-3)
         np.testing.assert_array_equal(d.qfrc_applied,0);np.testing.assert_array_equal(d.xfrc_applied,0)
+
+    def test_separating_geometric_contact_is_not_loaded_support(self):
+        import mujoco
+        r=RobotModel();a,_=generate(r,'stand',seconds=2,fps=10)
+        r.set_state(a['joints_pos'][0],a['root_pos'][0]-[0,0,.0005],a['root_quat'][0])
+        state,loads=loaded_contacts(r,r.data,np.zeros(2,dtype=bool))
+        self.assertTrue(state.all());self.assertGreater(loads.sum(),r.mass*9.81*.1)
+        # Shapes still overlap at this instant, but both feet move away rapidly.
+        r.data.qvel[2]=1.;mujoco.mj_forward(r.model,r.data)
+        self.assertGreater(r.data.ncon,0)
+        state,loads=loaded_contacts(r,r.data,state)
+        self.assertFalse(state.any());self.assertLess(loads.sum(),.001)
 
 
 if __name__=='__main__':unittest.main()
