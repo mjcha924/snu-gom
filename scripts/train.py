@@ -62,8 +62,11 @@ def main():
         load_library(args.motion_manifest,kind=args.task,split='val',allow_kinematic=args.allow_kinematic,require_dynamics=args.require_dynamics,urdf=args.urdf)
         os.environ['SNU_GOM_URDF']=str(selected.urdf)
         os.environ['SNU_GOM_PACKAGE_ROOTS']=json.dumps(selected.profile.get('package_roots',{}))
-        if selected.profile['root_link']!='base_reference' or selected.feet!=['left_foot_link','right_foot_link']:
-            parser.error('Changed root/foot roles require an explicit Isaac adapter update')
+        from snu_gom_walk.motion_pipeline.contract import validate_training_adapter
+        try:
+            validate_training_adapter(selected)
+        except ValueError as error:
+            parser.error(str(error))
     elif args.urdf:os.environ['SNU_GOM_URDF']=str(args.urdf.resolve())
     try:
         actuator_settings = bam_settings(args)

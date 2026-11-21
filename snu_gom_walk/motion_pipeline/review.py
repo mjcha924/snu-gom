@@ -1,9 +1,10 @@
 """Offline, dependency-free 3D collider review with angle/torque plots."""
+
 import json
 
 
-def render(path,clips,manifest):
-    template='''<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>SNU GOM 모션 검토</title>
+def render(path, clips, manifest):
+    template = """<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="data:,"><title>SNU GOM 모션 검토</title>
 <style>*{box-sizing:border-box}body{margin:0;background:#f3f6f5;color:#203a40;font:14px/1.6 system-ui,"Malgun Gothic",sans-serif}main{max-width:1400px;margin:auto;padding:28px}h1{font-size:25px;margin:0}p{color:#5d7378}.toolbar,.panel{background:white;border:1px solid #d1e0dd;border-radius:12px;padding:18px;margin:18px 0}.row{display:flex;gap:18px}.panel{flex:1;min-width:0}.view{width:100%;height:420px;background:#edf3f1;border-radius:8px;touch-action:none}.graph{height:160px;width:100%;background:#f7faf9}select,button{font:inherit;padding:8px 12px;border:1px solid #bfd0cb;border-radius:7px;background:white}input{width:55%;vertical-align:middle}.bad{color:#ac442e}.good{color:#087d74}#status{white-space:pre-wrap}code{font-size:12px}footer{font-size:12px;color:#647b80}@media(max-width:800px){.row{display:block}.view{height:350px}}</style>
 <main><h1>SNU GOM · 모션 생성과 물리 검사</h1><p>형상·질량·제한이 연결된 후보입니다. 3D는 실제 검사용 충돌체를 표시합니다. 드래그로 시점을 돌릴 수 있습니다.</p>
 <div class="toolbar"><select id="clips" aria-label="모션 선택"></select> <button id="play">일시정지</button> <input id="seek" aria-label="재생 구간" type="range" min="0" max="1" step=".001" value="0"> <span id="time"></span><p id="status"></p></div>
@@ -36,6 +37,10 @@ function charts(){let r=DATA.clips[selected];plot($('angle'),r.preview.joints.ma
 $('clips').onchange=()=>{selected=Number($('clips').value);choose()};$('joint').onchange=()=>{joint=Number($('joint').value);charts()};$('play').onclick=()=>{playing=!playing;$('play').textContent=playing?'일시정지':'재생'};$('seek').oninput=()=>{clock=Number($('seek').value)*DATA.clips[selected].preview.time.at(-1)};
 for(let id of ['target','actual']){let x,y;$(id).onpointerdown=e=>{x=e.clientX;y=e.clientY;$(id).setPointerCapture(e.pointerId)};$(id).onpointermove=e=>{if(!$(id).hasPointerCapture(e.pointerId))return;az+=(e.clientX-x)*.01;el=Math.max(.05,Math.min(1.3,el+(e.clientY-y)*.01));x=e.clientX;y=e.clientY};$(id).onpointerup=e=>$(id).releasePointerCapture(e.pointerId)}
 function tick(now){let r=DATA.clips[selected],duration=r.preview.time.at(-1);if(playing)clock=(clock+Math.min(Math.max((now-last)/1000,0),.05))%duration;last=now;let index=Math.min(r.preview.time.length-1,Math.floor(clock/duration*(r.preview.time.length-1)));let actual=r.trace.findLast(v=>v.time_s<=clock)||r.trace[0];draw($('target'),r.preview.boxes[index],r.preview.root[index]);draw($('actual'),actual?.boxes,actual?.root_pos);$('seek').value=clock/duration;$('time').textContent=clock.toFixed(2)+' / '+duration.toFixed(2)+'초';requestAnimationFrame(tick)}
-choose();requestAnimationFrame(tick);addEventListener('resize',charts);</script></html>'''
-    payload=json.dumps(dict(model_id=manifest['model_id'],clips=clips),ensure_ascii=False,allow_nan=False).replace('<','\\u003c')
-    path.write_text(template.replace('__DATA__',payload),encoding='utf-8')
+choose();requestAnimationFrame(tick);addEventListener('resize',charts);</script></html>"""
+    payload = json.dumps(
+        dict(model_id=manifest["model_id"], clips=clips),
+        ensure_ascii=False,
+        allow_nan=False,
+    ).replace("<", "\\u003c")
+    path.write_text(template.replace("__DATA__", payload), encoding="utf-8")

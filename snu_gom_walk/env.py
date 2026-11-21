@@ -142,6 +142,8 @@ class GomEnv(DirectRLEnv):
             from .motion_pipeline.library import load_library
             selected,_,selected_clips=load_library(ROOT/cfg.motion_manifest,kind=cfg.task,split=cfg.motion_split,
                                      allow_kinematic=cfg.motion_allow_kinematic,require_dynamics=cfg.motion_require_dynamics,urdf=URDF)
+            from .motion_pipeline.contract import validate_training_adapter
+            validate_training_adapter(selected)
             from .motion_pipeline.motors import motor_rows
             params=dict(zip(ALL_JOINTS,motor_rows(selected.profile,ALL_JOINTS)))
             caps={n:float(selected.effort[selected.names.index(n)]) for n in ALL_JOINTS}
