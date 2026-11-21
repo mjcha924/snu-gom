@@ -4,6 +4,7 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .venv/
+.venv-*/
 venv/
 *.egg-info/
 build/
@@ -51,3 +52,5 @@ motion/examples/hardware_calibration.json
 assets/generated/
 reports/
 reports_setup.log
+.playwright-cli/
+output/playwright/

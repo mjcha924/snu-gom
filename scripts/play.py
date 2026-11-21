@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import os
 from pathlib import Path
 
 from runtime import ROOT, close_app, configure_asset_cache, configure_runtime
@@ -21,6 +22,18 @@ def main():
     parser.add_argument("--scene", choices=["flat", "home"])
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
+    saved_config=json.loads((args.checkpoint.resolve().parent/'config.json').read_text())
+    motion_path=saved_config['settings'].get('motion_manifest')
+    if motion_path:
+        from snu_gom_walk.motion_pipeline.library import load_library
+        settings=saved_config['settings'];motion_path=ROOT/motion_path
+        selected,_,_=load_library(motion_path,kind=settings['task'],split='val',allow_kinematic=settings.get('motion_allow_kinematic',False))
+        import hashlib
+        if hashlib.sha256(motion_path.read_bytes()).hexdigest()!=settings['motion_manifest_sha256']:raise ValueError('Checkpoint motion library changed')
+        os.environ['SNU_GOM_URDF']=str(selected.urdf)
+        os.environ['SNU_GOM_PACKAGE_ROOTS']=json.dumps(selected.profile.get('package_roots',{}))
+    elif saved_config['settings'].get('model_urdf'):
+        os.environ['SNU_GOM_URDF']=str((ROOT/saved_config['settings']['model_urdf']).resolve())
     if args.seconds <= 0 or args.episodes < 1:
         parser.error("Duration and episode count must be positive")
     args.headless = True
@@ -47,6 +60,8 @@ def main():
         for key, value in saved["settings"].items():
             setattr(cfg, key, value)
         cfg.evaluation = True
+        if motion_path:
+            cfg.motion_split='val';cfg.observation_space=72;cfg.state_space=90
         if args.scene:
             cfg.scene_layout = args.scene
         cfg.scene.num_envs = 1

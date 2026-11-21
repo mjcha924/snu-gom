@@ -4,6 +4,8 @@
 
 [English](#english) · [한국어](#한국어) · [Run experiments](HEADLESS_TRAINING.md) · [Training plan](WALKING_TRAINING_PLAN.md) · [Measured results](docs/experiments/isaac-headless-baseline.md)
 
+**URDF → reference motion → validation → imitation training:** [CPU pipeline guide](docs/MOTION_PIPELINE.md) · [한국어 실행 안내](docs/MOTION_PIPELINE_KO.md). This branch adds versioned stand/walk references, offline 3D review and guarded handoff to the existing Isaac trainer. New GPU training and dynamically validated natural walking are not claimed. / URDF 변경 감지·모션 생성·전 프레임 검사·물리 검사·확인 화면·기존 학습 연결을 추가했습니다. 새 GPU 학습이나 자연스러운 물리 보행 성공을 뜻하지 않습니다.
+
 ![Latest supplied SNU-GOM model in the lightweight Isaac home scene](docs/experiments/media/isaac-baseline/home.png)
 
 *The current supplied URDF in Isaac Sim—not a photograph or a fabrication-qualified final assembly.*

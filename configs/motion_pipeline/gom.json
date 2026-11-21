@@ -1,0 +1,17 @@
+{
+  "schema": "gom_motion_profile_v1",
+  "urdf": "snu_gom_description/urdf/snu_gom_preview_relative.urdf",
+  "root_link": "base_reference",
+  "torso_link": "base_link",
+  "feet": ["left_foot_link", "right_foot_link"],
+  "joint_order": ["left_hip_yaw_joint", "left_hip_roll_joint", "left_hip_pitch_joint", "left_knee_pitch_joint", "left_ankle_pitch_joint", "right_hip_yaw_joint", "right_hip_roll_joint", "right_hip_pitch_joint", "right_knee_pitch_joint", "right_ankle_pitch_joint", "neck_yaw_joint", "neck_pitch_joint"],
+  "nominal_joints": {"left_hip_pitch_joint": 0.15, "left_knee_pitch_joint": 0.30, "left_ankle_pitch_joint": -0.15, "right_hip_pitch_joint": 0.15, "right_knee_pitch_joint": -0.30, "right_ankle_pitch_joint": -0.15},
+  "working_limits": {"left_knee_pitch_joint": [0.15, 1.0471975512], "right_knee_pitch_joint": [-1.0471975512, -0.15]},
+  "allowed_collision_pairs": [],
+  "package_roots": {},
+  "physics": {"dt": 0.0025, "friction": 0.7, "warmup_s": 1.0, "stall_fraction": 0.2, "kp": 200.0, "kd": 28.0},
+  "motors": {"supply_v": 5.0, "default": {"stall_nm": 0.52, "no_load_rad_s": 10.7861347773}, "overrides": {"left_hip_pitch_joint": {"stall_nm": 0.93, "no_load_rad_s": 8.4823001647}, "left_knee_pitch_joint": {"stall_nm": 0.93, "no_load_rad_s": 8.4823001647}, "right_hip_pitch_joint": {"stall_nm": 0.93, "no_load_rad_s": 8.4823001647}, "right_knee_pitch_joint": {"stall_nm": 0.93, "no_load_rad_s": 8.4823001647}}, "measured_continuous_rating": false},
+  "generation": {"period_s": 2.4, "speed_m_s": 0.006, "clearance_m": 0.004, "swing_fraction": 0.32, "pelvis_bob_m": 0.0005, "pelvis_offset_m": -0.003, "torso_roll_deg": 1.0, "torso_pitch_deg": 2.0, "neck_yaw_deg": 2.0},
+  "gates": {"foot_error_m": 0.003, "com_error_m": 0.003, "floor_tolerance_m": 0.001, "support_gap_m": 0.003, "collision_tolerance_m": 0.0001, "max_tilt_deg": 15.0, "tracking_rmse_rad": 0.15},
+  "assumptions": ["SNU GOM 12-joint contract; geometry/mass/limits may change. A changed topology needs an explicit profile and training adapter review.", "URDF effort/velocity limits remain active. Stall fractions and contact parameters are provisional, not continuous ratings.", "Default collision policy is strict. CAD allowances must be explicit and appear in the report."]
+}

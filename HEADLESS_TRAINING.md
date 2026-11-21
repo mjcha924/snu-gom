@@ -1,5 +1,7 @@
 # SNU-GOM headless walking experiments
 
+For versioned, URDF-bound offline motion libraries, use the [motion pipeline](docs/MOTION_PIPELINE.md) / [한국어 안내](docs/MOTION_PIPELINE_KO.md). It connects to this trainer with `--motion-manifest`; `--allow-kinematic` explicitly permits provisional references. Its new reference-conditioned policy has different observations and explicit bounded effort, so it starts a new experiment rather than resuming an old policy. / URDF 기반 모션은 새 라이브러리 경로로 연결하며 기존 정책과 관측·모터 구성이 달라 새 실험으로 시작합니다.
+
 The supplied robot remains in `snu_gom_description/`. New code uses Isaac Sim 5.1,
 Isaac Lab, and RSL-RL 5.x from the existing local environment. No shared simulator
 source or packages are modified. See [the plan](WALKING_TRAINING_PLAN.md) for

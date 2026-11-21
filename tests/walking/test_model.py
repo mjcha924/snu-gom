@@ -1,12 +1,15 @@
 """CPU checks for the supplied detailed robot, independent of the legacy proxy."""
 
 from pathlib import Path
+import tempfile
+from unittest.mock import patch
 import unittest
 import xml.etree.ElementTree as ET
 
 import numpy as np
 
 from snu_gom_walk.model import ALL_JOINTS, FOOT_LINKS, LEG_JOINTS, ROOT, URDF, audit_model
+import snu_gom_walk.model as model_module
 
 
 class DetailedRobotTests(unittest.TestCase):
@@ -31,7 +34,7 @@ class DetailedRobotTests(unittest.TestCase):
             path = (URDF.parent / name).resolve()
             self.assertTrue(path.is_relative_to(ROOT / "snu_gom_description"))
             self.assertTrue(path.is_file(), str(path))
-            self.assertIn(str(path.relative_to(ROOT)), self.model["hashes"])
+            self.assertIn(path.relative_to(ROOT).as_posix(), self.model["hashes"])
 
     def test_provisional_limits_and_axes(self):
         for name, values in self.model["joints"].items():
@@ -42,6 +45,14 @@ class DetailedRobotTests(unittest.TestCase):
         left = self.model["joints"]["left_knee_pitch_joint"]["axis_at_neutral"]
         right = self.model["joints"]["right_knee_pitch_joint"]["axis_at_neutral"]
         self.assertLess(np.dot(left, right), -0.99)
+
+    def test_changed_root_datum_requires_an_explicit_training_adapter(self):
+        with tempfile.TemporaryDirectory() as directory:
+            tree=ET.parse(URDF)
+            tree.getroot().find("joint[@name='base_reference_joint']/origin").set('xyz','.01 0 0')
+            filename=Path(directory)/'robot.urdf';tree.write(filename,encoding='utf-8')
+            with patch.object(model_module,'URDF',filename):
+                with self.assertRaisesRegex(ValueError,'Changed root datum'):audit_model()
 
     def test_primitive_collision_and_foot_contract(self):
         collisions = self.robot.findall("link/collision")

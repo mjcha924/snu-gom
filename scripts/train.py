@@ -6,6 +6,7 @@ import hashlib
 import importlib.metadata
 import json
 import math
+import os
 from pathlib import Path
 import subprocess
 import shutil
@@ -17,8 +18,8 @@ from snu_gom_walk.bam import add_bam_arguments, bam_settings, provenance
 
 def source_hashes():
     return {
-        str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
-        for path in sorted((ROOT / "snu_gom_walk").glob("*.py"))
+        path.relative_to(ROOT).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in sorted((ROOT / "snu_gom_walk").rglob("*.py"))
     }
 
 
@@ -41,9 +42,27 @@ def main():
     parser.add_argument("--support-reference", action="store_true")
     parser.add_argument("--dense-lift", action="store_true")
     parser.add_argument("--short-support", action="store_true")
+    parser.add_argument('--motion-manifest',type=Path,help='Versioned library from scripts/motion_pipeline.py')
+    parser.add_argument('--allow-kinematic',action='store_true',help='Explicit provisional imitation experiment; physics validation may have failed')
+    parser.add_argument('--urdf',type=Path,help='Selected URDF; library/model fingerprints must still agree')
+    parser.add_argument('--memory-fraction',type=float,default=.35)
     add_bam_arguments(parser)
     AppLauncher.add_app_launcher_args(parser)
     args = parser.parse_args()
+    motion=None
+    if not 0<args.memory_fraction<=.4:parser.error('Shared-GPU Torch memory fraction must be in (0, 0.4]')
+    if args.allow_kinematic and not args.motion_manifest:parser.error('--allow-kinematic requires --motion-manifest')
+    if args.motion_manifest:
+        if args.reference or args.support_reference or args.dense_lift or args.short_support:parser.error('Choose a motion library or a legacy reference, not both')
+        if args.actuator_model!='implicit':parser.error('Motion library uses explicit bounded PD efforts. Do not combine it with the separate BAM experiment.')
+        from snu_gom_walk.motion_pipeline.library import load_library
+        selected,motion,_=load_library(args.motion_manifest,kind=args.task,allow_kinematic=args.allow_kinematic,urdf=args.urdf)
+        load_library(args.motion_manifest,kind=args.task,split='val',allow_kinematic=args.allow_kinematic,urdf=args.urdf)
+        os.environ['SNU_GOM_URDF']=str(selected.urdf)
+        os.environ['SNU_GOM_PACKAGE_ROOTS']=json.dumps(selected.profile.get('package_roots',{}))
+        if selected.profile['root_link']!='base_reference' or selected.feet!=['left_foot_link','right_foot_link']:
+            parser.error('Changed root/foot roles require an explicit Isaac adapter update')
+    elif args.urdf:os.environ['SNU_GOM_URDF']=str(args.urdf.resolve())
     try:
         actuator_settings = bam_settings(args)
     except (ValueError, OSError) as error:
@@ -56,7 +75,7 @@ def main():
         parser.error("Environment count and iterations must be positive")
     if not math.isfinite(args.reference_weight) or args.reference_weight < 0:
         parser.error("Reference weight must be finite and nonnegative")
-    if args.reference_weight != 3.0 and not (args.reference or args.support_reference):
+    if args.reference_weight != 3.0 and not (args.reference or args.support_reference or args.motion_manifest):
         parser.error("A nondefault reference weight requires a reference")
     if not math.isfinite(args.speed) or args.speed < 0:
         parser.error("Speed must be finite and nonnegative")
@@ -68,6 +87,7 @@ def main():
     launcher = AppLauncher(args)
     try:
         import torch
+        if torch.cuda.is_available():torch.cuda.set_per_process_memory_fraction(args.memory_fraction)
         import warp
         from isaaclab.utils.io import dump_yaml
         from isaaclab_rl.rsl_rl import RslRlVecEnvWrapper
@@ -91,7 +111,12 @@ def main():
         cfg.scene_layout = args.scene
         cfg.speed = args.speed
         cfg.gait_period = args.gait_period
-        cfg.reference_assistance = args.reference or args.support_reference
+        cfg.reference_assistance = bool(args.reference or args.support_reference or args.motion_manifest)
+        if args.motion_manifest:
+            manifest_path=args.motion_manifest.resolve()
+            cfg.motion_manifest=manifest_path.relative_to(ROOT).as_posix() if manifest_path.is_relative_to(ROOT) else str(manifest_path)
+            cfg.motion_allow_kinematic=args.allow_kinematic
+            cfg.reference_kind='library';cfg.observation_space=72;cfg.state_space=90
         cfg.reference_reward_weight = args.reference_weight
         cfg.dense_lift_rewards = args.dense_lift
         if cfg.reference_assistance:
@@ -123,6 +148,13 @@ def main():
                         reference_speed_scale=cfg.reference_speed_scale,
                         reference_roll_pulse=cfg.reference_roll_pulse)
         settings.update(actuator_settings)
+        settings['model_urdf']=str(Path(os.environ.get('SNU_GOM_URDF',str(ROOT/'snu_gom_description/urdf/snu_gom_preview_relative.urdf'))).resolve())
+        if Path(settings['model_urdf']).is_relative_to(ROOT):settings['model_urdf']=Path(settings['model_urdf']).relative_to(ROOT).as_posix()
+        if args.motion_manifest:
+            settings.update(motion_manifest=cfg.motion_manifest,motion_allow_kinematic=cfg.motion_allow_kinematic,
+                            motion_manifest_sha256=hashlib.sha256(args.motion_manifest.read_bytes()).hexdigest(),
+                            motion_model_id=motion['model_id'])
+            settings['motion_actuation']='explicit_pd_5v_torque_speed_envelope'
         if args.checkpoint:
             saved = json.loads((args.checkpoint.resolve().parent / "config.json").read_text())
             if saved["model_hashes"] != MODEL["hashes"] or saved["source_hashes"] != source_hashes():
